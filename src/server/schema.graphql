@@ -1,0 +1,20 @@
+type User {
+  id: ID!
+  googleID: String!
+  email: String!
+}
+
+type Query {
+  me: User
+  loginURL: String!
+}
+
+type Mutation {
+  login(code: String!): Query
+  logout: Query
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}

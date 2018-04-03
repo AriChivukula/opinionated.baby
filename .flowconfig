@@ -1,0 +1,16 @@
+[ignore]
+.*/_test/.*
+.*/_build/.*
+.*/_bin/.*
+.*/_sql/.*
+.*/config-chain/test/.*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]
