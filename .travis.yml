@@ -8,10 +8,11 @@ script:
 - yarn test
 - yarn build
 before_deploy:
+- mv _bin/client/index.remote.js _bin/client/index.js
+- rm _bin/client/index.local.js
+- mv _bin/server/index.remote.js index.js
 - rm -rf node_modules
 - yarn install --prod
-- yarn prepare-remote
-- mv _bin/server/index.js index.js
 - zip -r prod.zip node_modules index.js
 deploy:
   - provider: s3

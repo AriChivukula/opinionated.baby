@@ -54,7 +54,6 @@
     "test": "gulp test",
     "build": "gulp build",
     "migrate": "gulp migrate",
-    "start": "gulp start",
-    "prepare-remote": "prepare-remote"
+    "start": "gulp start"
   }
 }
