@@ -53,7 +53,7 @@ const root = async (request, response): Promise<Object> => ({
     const info = await google
       .oauth2('v2')
       .tokeninfo({access_token: access_token});
-    response.cookie('access_token', access_token + process.env.COOKIE_DOMAIN);
+    response.cookie('access_token', access_token);
     const result = await User.findOrCreate(
       {where: {googleID: info.data.user_id, email: info.data.email}}
     );
