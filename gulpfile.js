@@ -126,9 +126,9 @@ gulp.task('build-graphql', function () {
 
 gulp.task('build', gulp.series('lint', 'build-copy', 'build-html', 'build-sass', 'build-material', 'build-client-remote', 'build-client-local', 'build-server-remote', 'build-server-local', 'build-graphql'));
 
-gulp.task('prepare', shell.task('mv _bin/client/index.local.js _bin/client/index.js && rm _bin/client/index.remote.js && mv _bin/server/index.local.js _bin/server/index.js && rm _bin/server/index.remote.js && source secrets'));
+gulp.task('prepare', shell.task('cp _bin/client/index.local.js _bin/client/index.js && cp _bin/server/index.local.js _bin/server/index.js'));
 
-gulp.task('localhost', shell.task('DEBUG=* node _bin/server/index.js'));
+gulp.task('localhost', shell.task('source secrets && DEBUG=* node _bin/server/index.js'));
 
 gulp.task('start', gulp.series('prepare', 'localhost'));
 
