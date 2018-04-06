@@ -71,8 +71,12 @@ const root = async (request, response): Promise<Object> => ({
   }
 });
 
-export default graphqlHTTP(async (request, response): Promise<Object> => ({
-  schema: schema,
-  rootValue: await root(request, response),
-  graphiql: true
-}));
+export default graphqlHTTP(async (request, response): Promise<Object> => {
+  response.header('Access-Control-Allow-Origin', '*');
+  response.header('Access-Control-Allow-Credentials', 'true');
+  return {
+    schema: schema,
+    rootValue: await root(request, response),
+    graphiql: true
+  };
+});

@@ -34,13 +34,5 @@ const types = [
 
 const serverless = awsServerlessExpress.createServer(app, null, types)
 
-export const handler = (event: Object, context: Object, callback: (?Object, ?Object) => void) => {
-  const payload = {
-      headers: {
-        "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "*"
-      }
-  };
-  callback(null, payload);
-  return awsServerlessExpress.proxy(serverless, event, context);
-}
+export const handler = (event: Object, context: Object) =>
+  awsServerlessExpress.proxy(serverless, event, context);
