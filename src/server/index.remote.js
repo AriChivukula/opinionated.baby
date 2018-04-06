@@ -9,19 +9,38 @@ import server from './server.js';
 
 const app = express();
 app.use(cookieParser());
-app.use('/', cors(), server);
+app.use(cors());
+app.use(server);
 
-const types = [
+const binaryMimeTypes = [
+  'application/javascript',
+  'application/json',
   'application/octet-stream',
+  'application/xml',
   'font/eot',
   'font/opentype',
   'font/otf',
   'image/jpeg',
   'image/png',
-  'image/svg+xml'
-]
+  'image/svg+xml',
+  'text/comma-separated-values',
+  'text/css',
+  'text/html',
+  'text/javascript',
+  'text/plain',
+  'text/text',
+  'text/xml'
+];
 
 const serverless = awsServerlessExpress.createServer(app, null, types)
 
-export const handler = (event: Object, context: Object) =>
-  awsServerlessExpress.proxy(serverless, event, context)
+export const handler = (event: Object, context: Object, callback: Object) => {
+  const payload = {
+      headers: {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*"
+      }
+  };
+  callback(null, payload);
+  return awsServerlessExpress.proxy(serverless, event, context);
+}
