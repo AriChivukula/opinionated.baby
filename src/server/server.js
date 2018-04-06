@@ -71,15 +71,8 @@ const root = async (request, response): Promise<Object> => ({
   }
 });
 
-export default graphqlHTTP(async (request, response): Promise<Object> => {
-  response.setHeader('X-Requested-With', '*');
-  response.setHeader('Access-Control-Allow-Credentials', 'true');
-  response.setHeader('Access-Control-Allow-Headers', 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with');
-  response.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-  response.setHeader('Access-Control-Allow-Origin', '*');
-  return {
-    schema: schema,
-    rootValue: await root(request, response),
-    graphiql: true
-  };
-});
+export default graphqlHTTP(async (request, response): Promise<Object> => ({
+  schema: schema,
+  rootValue: await root(request, response),
+  graphiql: true
+}));
