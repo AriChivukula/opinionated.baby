@@ -31,49 +31,45 @@ type Query = {
   loginURL: string,
 }
 
-const root = async (request, response): Promise<Object> => {
-  response.header('Access-Control-Allow-Origin', '*');
-  response.header('Access-Control-Allow-Credentials', 'true');
-  return {
-    me: async (): Promise<?User> => {
-      try {
-        const info = await google
-          .oauth2('v2')
-          .tokeninfo({access_token: request.cookies.access_token});
-        return await User.findOne(
-          {where: {googleID: info.data.user_id, email: info.data.email}}
-        );
-      } catch (error) {
-        console.log(error);
-        return null;
-      }
-    },
-    loginURL: async (): Promise<string> => getLoginURL(),
-    login: async (code: string): Promise<Query> => {
-      const oauth = getOAuthClient();
-      const token = await oauth.getToken(code);
-      const access_token = token.tokens.access_token;
+const root = async (request, response): Promise<Object> => ({
+  me: async (): Promise<?User> => {
+    try {
       const info = await google
         .oauth2('v2')
-        .tokeninfo({access_token: access_token});
-      response.cookie('access_token', access_token);
-      const result = await User.findOrCreate(
+        .tokeninfo({access_token: request.cookies.access_token});
+      return await User.findOne(
         {where: {googleID: info.data.user_id, email: info.data.email}}
       );
-      return {
-        me: result[0],
-        loginURL: getLoginURL(),
-      };
-    },
-    logout: async(): Promise<Query> => {
-      response.cookie('access_token', '');
-      return {
-        me: null,
-        loginURL: getLoginURL(),
-      };
+    } catch (error) {
+      console.log(error);
+      return null;
     }
-  };
-};
+  },
+  loginURL: async (): Promise<string> => getLoginURL(),
+  login: async (code: string): Promise<Query> => {
+    const oauth = getOAuthClient();
+    const token = await oauth.getToken(code);
+    const access_token = token.tokens.access_token;
+    const info = await google
+      .oauth2('v2')
+      .tokeninfo({access_token: access_token});
+    response.cookie('access_token', access_token);
+    const result = await User.findOrCreate(
+      {where: {googleID: info.data.user_id, email: info.data.email}}
+    );
+    return {
+      me: result[0],
+      loginURL: getLoginURL(),
+    };
+  },
+  logout: async(): Promise<Query> => {
+    response.cookie('access_token', '');
+    return {
+      me: null,
+      loginURL: getLoginURL(),
+    };
+  }
+});
 
 export default graphqlHTTP(async (request, response): Promise<Object> => ({
   schema: schema,
