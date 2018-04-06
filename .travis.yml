@@ -14,5 +14,6 @@ deploy:
     region: $REGION
     local_dir: _bin/client
     acl: public_read
+    skip_cleanup: true
     on:
       branch: master
