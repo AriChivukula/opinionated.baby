@@ -1,6 +1,6 @@
 // @flow
 
-export const database = String(process.env.DB_DB);
+export const database = String(process.env.DB_NAME);
 export const username = String(process.env.DB_USERNAME);
 export const password = String(process.env.DB_PASSWORD);
 export const dialect = 'postgres';

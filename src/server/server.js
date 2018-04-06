@@ -16,9 +16,9 @@ const schema = buildSchema(fs.readFileSync(path.join(__dirname, 'schema.graphql'
 
 function getOAuthClient(): OAuth2Client {
   return new OAuth2Client(
-    process.env.GOOGLE_CLIENT_ID,
-    process.env.GOOGLE_CLIENT_SECRET,
-    process.env.GOOGLE_REDIRECT_URL
+    process.env.CLIENT_ID,
+    process.env.CLIENT_SECRET,
+    process.env.REDIRECT_URL
   );
 }
 
@@ -76,10 +76,6 @@ const app = express();
 app.use(cookieParser())
 app.use(
   '/',
-  express.static('_bin/client')
-);
-app.use(
-  '/graphql',
   graphqlHTTP(async (request, response): Promise<Object> => ({
     schema: schema,
     rootValue: await root(request, response),
