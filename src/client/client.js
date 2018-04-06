@@ -19,7 +19,7 @@ export default function client_render(api_url: string) {
     network: new RelayNetworkLayer([
       urlMiddleware({
         url: api_url,
-        credentials: 'same-origin'
+        credentials: 'include'
       })
     ]),
     store: new Store(new RecordSource())
