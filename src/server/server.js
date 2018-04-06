@@ -74,4 +74,5 @@ const root = async (request, response): Promise<Object> => ({
 export default graphqlHTTP(async (request, response): Promise<Object> => ({
   schema: schema,
   rootValue: await root(request, response),
+  graphiql: true
 }));
