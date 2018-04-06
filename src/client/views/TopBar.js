@@ -19,6 +19,7 @@ import {
   ToolbarTitle,
 } from 'rmwc/Toolbar';
 import url from 'url';
+import cookie from 'js-cookie';
 
 type Props = {
   data: ?TopBarQuery,
@@ -95,7 +96,7 @@ class TopBar extends Component<Props> {
         mutation: graphql`
           mutation TopBarLoginMutation($code: String!) {
             login(code: $code) {
-              ...TopBarQuery
+              accessToken
             }
           }
         `,
@@ -103,6 +104,7 @@ class TopBar extends Component<Props> {
           code: code
         },
         onCompleted: (response, errors) => {
+          cookie.set('access_token', response.login.accessToken);
           window.location = '/';
         }
       }
@@ -117,12 +119,13 @@ class TopBar extends Component<Props> {
         mutation: graphql`
           mutation TopBarLogoutMutation {
             logout {
-              ...TopBarQuery
+              accessToken
             }
           }
         `,
         variables: {},
         onCompleted: (response, errors) => {
+          cookie.set('access_token', response.logout.accessToken);
           window.location = '/';
         }
       }
@@ -134,9 +137,11 @@ class TopBar extends Component<Props> {
 export default createFragmentContainer(
   TopBar,
   graphql`
-    fragment TopBarQuery on Query {
+    fragment TopBarQuery on Query @argumentDefinitions(
+      access_token: {type: "String!"}
+    ) {
       loginURL,
-      me {
+      me(access_token: $access_token) {
         googleID,
         email
       }

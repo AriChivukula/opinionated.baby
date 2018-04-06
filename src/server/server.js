@@ -26,17 +26,16 @@ function getLoginURL(): string {
     });
 }
 
-type Query = {
-  me: ?User,
-  loginURL: string,
+type AccessToken = {
+  accessToken: string
 }
 
 const root = async (request, response): Promise<Object> => ({
-  me: async (): Promise<?User> => {
+  me: async ({access_token}): Promise<?User> => {
     try {
       const info = await google
         .oauth2('v2')
-        .tokeninfo({access_token: request.cookies.access_token});
+        .tokeninfo({access_token: access_token});
       return await User.findOne(
         {where: {googleID: info.data.user_id, email: info.data.email}}
       );
@@ -46,27 +45,23 @@ const root = async (request, response): Promise<Object> => ({
     }
   },
   loginURL: async (): Promise<string> => getLoginURL(),
-  login: async (code: string): Promise<Query> => {
+  login: async (code: string): Promise<AccessToken> => {
     const oauth = getOAuthClient();
     const token = await oauth.getToken(code);
     const access_token = token.tokens.access_token;
     const info = await google
       .oauth2('v2')
       .tokeninfo({access_token: access_token});
-    response.cookie('access_token', access_token);
-    const result = await User.findOrCreate(
+    await User.findOrCreate(
       {where: {googleID: info.data.user_id, email: info.data.email}}
     );
     return {
-      me: result[0],
-      loginURL: getLoginURL(),
+      accessToken: access_token
     };
   },
-  logout: async(): Promise<Query> => {
-    response.cookie('access_token', '');
+  logout: async(): Promise<AccessToken> => {
     return {
-      me: null,
-      loginURL: getLoginURL(),
+      accessToken: ''
     };
   }
 });

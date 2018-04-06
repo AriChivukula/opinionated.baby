@@ -12,6 +12,7 @@ import {
 } from 'relay-runtime';
 import { LinearProgress } from 'rmwc/LinearProgress';
 import TopBar from './TopBar.js';
+import cookie from 'js-cookie';
 
 type Props = {
   environment: Environment
@@ -29,14 +30,20 @@ class Root extends Component<Props, State> {
 
   render() {
     const blockUntilReload = () => this.setState({isBlockingUntilReload: true});
+    let access_token = cookie.get('access_token');
+    if (!access_token) {
+      access_token = '';
+    }
 
     return (
       <QueryRenderer
         environment={this.props.environment}
-        variables={{}}
+        variables={{
+          access_token: access_token
+        }}
         query={graphql`
-          query RootQuery {
-            ...TopBarQuery
+          query RootQuery($access_token: String!) {
+            ...TopBarQuery @arguments(access_token: $access_token)
           }
         `}
         render={({error, props}) => {

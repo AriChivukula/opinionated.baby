@@ -1,17 +1,21 @@
 type User {
-  id: ID!
-  googleID: String!
-  email: String!
+  id: ID
+  googleID: String
+  email: String
 }
 
 type Query {
-  me: User
+  me(access_token: String!): User
   loginURL: String!
 }
 
+type AccessToken {
+  accessToken: String!
+}
+
 type Mutation {
-  login(code: String!): Query
-  logout: Query
+  login(code: String!): AccessToken!
+  logout: AccessToken!
 }
 
 schema {
