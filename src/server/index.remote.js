@@ -9,7 +9,9 @@ import server from './server.js';
 
 const app = express();
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+  origin: 'https://opinionated.baby',
+}));
 app.use(server);
 
 const types = [
