@@ -12,7 +12,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use(server);
 
-const binaryMimeTypes = [
+const types = [
   'application/javascript',
   'application/json',
   'application/octet-stream',
@@ -34,7 +34,7 @@ const binaryMimeTypes = [
 
 const serverless = awsServerlessExpress.createServer(app, null, types)
 
-export const handler = (event: Object, context: Object, callback: Object) => {
+export const handler = (event: Object, context: Object, callback: (?Object, ?Object) => void) => {
   const payload = {
       headers: {
         "Access-Control-Allow-Credentials": "true",
