@@ -44,7 +44,7 @@ class TopBar extends Component<Props> {
   }
 
   render() {
-    let title = <ToolbarTitle>{process.env.TITLE}</ToolbarTitle>;
+    let title = <ToolbarTitle>Opinionated Baby</ToolbarTitle>;
     let icon = (
       <ToolbarIcon
         use="settings"

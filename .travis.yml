@@ -6,29 +6,13 @@ before_script:
 - ./refresh
 script:
 - yarn build
-before_deploy:
-- if [[ -z "$TRAVIS_TAG" ]] ; then cp .robots.txt _bin/client/robots.txt ; fi
-- git add -f _bin
-- git rm -r src
 deploy:
-  - provider: elasticbeanstalk
-    skip_cleanup: true
-    access_key_id: $AWS_ACCESS_KEY_ID
-    secret_access_key: $AWS_SECRET_ACCESS_KEY
-    region: $AWS_REGION
-    app: $AWS_APP
-    env: $AWS_ENV_BETA
-    bucket_name: $AWS_BUCKET_NAME
-    on:
-      branch: master
-  - provider: elasticbeanstalk
-    skip_cleanup: true
+  - provider: s3
     access_key_id: $ACCESS_KEY_ID
     secret_access_key: $SECRET_ACCESS_KEY
-    region: AWS_REGION
-    app: $AWS_APP
-    env: $AWS_ENV_PROD
-    bucket_name: $AWS_BUCKET_NAME
+    bucket: $BUCKET
+    region: $REGION
+    local_dir: _bin/client
+    acl: public_read
     on:
-      tags: true
-      condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
+      branch: master
