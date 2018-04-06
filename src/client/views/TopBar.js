@@ -46,10 +46,12 @@ class TopBar extends Component<Props> {
   render() {
     let title = <ToolbarTitle>Opinionated Baby</ToolbarTitle>;
     let icon = (
-      <ToolbarIcon
-        use="settings"
-        onClick={() => this.googleAuth()}
-      />
+      <ToolbarSection alignEnd>
+        <ToolbarIcon
+          use="settings"
+          onClick={() => this.googleAuth()}
+        />
+      </ToolbarSection>
     );
     const data = this.props.data;
     if (data != null) {
@@ -57,13 +59,13 @@ class TopBar extends Component<Props> {
       if (me != null && me.googleID != undefined && me.googleID != '0') {
         title = <ToolbarTitle>{process.env.TITLE}</ToolbarTitle>;
         icon = (
-          <div>
-            {me.email}
+          <ToolbarSection alignEnd>
+            <ToolbarTitle>{me.email}</ToolbarTitle>
             <ToolbarIcon
               use="exit_to_app"
               onClick={() => this.logout()}
             />
-          </div>
+          </ToolbarSection>
         );
       }
     }
@@ -73,9 +75,7 @@ class TopBar extends Component<Props> {
           <ToolbarSection alignStart>
             {title}
           </ToolbarSection>
-          <ToolbarSection alignEnd>
-            {icon}
-          </ToolbarSection>
+          {icon}
         </ToolbarRow>
       </Toolbar>
     );

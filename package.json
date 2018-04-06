@@ -32,6 +32,7 @@
     "gulp-cli": "^2.0.1",
     "gulp-sass": "^4.0.0",
     "gulp-shell": "^0.6.5",
+    "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "jest": "^22.4.2",
     "nullthrows": "^1.0.1",
@@ -51,8 +52,8 @@
     "lint": "gulp lint",
     "test": "gulp test",
     "build": "gulp build",
-    "localhost": "gulp localhost",
     "migrate": "gulp migrate",
-    "start": "node _bin/server/server.js"
+    "start": "gulp start",
+    "prepare-remote": "prepare-remote"
   }
 }

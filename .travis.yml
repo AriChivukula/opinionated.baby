@@ -6,6 +6,7 @@ before_script:
 - ./refresh
 script:
 - yarn build
+- yarn prepare-remote
 deploy:
   - provider: s3
     access_key_id: $ACCESS_KEY_ID

@@ -1,8 +1,5 @@
 // @flow
 
-import 'babel-polyfill';
-import cookieParser from 'cookie-parser'
-import express from 'express';
 import fs from 'fs';
 import { OAuth2Client } from 'google-auth-library';
 import { google } from 'googleapis';
@@ -36,15 +33,17 @@ type Query = {
 
 const root = async (request, response): Promise<Object> => ({
   me: async (): Promise<?User> => {
-    if (!request.cookies.access_token) {
+    try {
+      const info = await google
+        .oauth2('v2')
+        .tokeninfo({access_token: request.cookies.access_token});
+      return await User.findOne(
+        {where: {googleID: info.data.user_id, email: info.data.email}}
+      );
+    } catch (error) {
+      console.log(error);
       return null;
     }
-    const info = await google
-      .oauth2('v2')
-      .tokeninfo({access_token: request.cookies.access_token});
-    return await User.findOne(
-      {where: {googleID: info.data.user_id, email: info.data.email}}
-    );
   },
   loginURL: async (): Promise<string> => getLoginURL(),
   login: async (code: string): Promise<Query> => {
@@ -72,13 +71,7 @@ const root = async (request, response): Promise<Object> => ({
   }
 });
 
-const app = express();
-app.use(cookieParser())
-app.use(
-  '/',
-  graphqlHTTP(async (request, response): Promise<Object> => ({
-    schema: schema,
-    rootValue: await root(request, response),
-  }))
-);
-app.listen(parseInt(process.env.PORT));
+export default graphqlHTTP(async (request, response): Promise<Object> => ({
+  schema: schema,
+  rootValue: await root(request, response),
+}));

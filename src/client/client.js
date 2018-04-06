@@ -1,6 +1,5 @@
 // @flow
 
-import 'babel-polyfill';
 import nullthrows from 'nullthrows';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -15,21 +14,19 @@ import {
 } from 'react-relay-network-modern';
 import Root from './views/Root.js';
 
-const environment = new Environment({
-  network: new RelayNetworkLayer([
-    urlMiddleware({
-      url: '/graphql',
-      credentials: 'same-origin',
-    }),
-  ]),
-  store: new Store(new RecordSource())
-});
+export default function client_render(api_url: string) {
+  const environment = new Environment({
+    network: new RelayNetworkLayer([
+      urlMiddleware({
+        url: api_url,
+        credentials: 'same-origin'
+      })
+    ]),
+    store: new Store(new RecordSource())
+  })
 
-function client_render() {
   ReactDOM.render(
     <Root environment={environment} />,
     nullthrows(document.getElementById('root'))
   );
 }
-
-window.onload = client_render;
