@@ -30,7 +30,7 @@ deploy:
     function_name: $FUNCTION_NAME
     region: $REGION
     role: $ROLE
-    runtime: nodejs8.1
+    runtime: nodejs
     handler_name: handler
     zip_file: prod.zip
     skip_cleanup: true
