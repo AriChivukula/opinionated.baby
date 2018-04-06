@@ -80,11 +80,11 @@ gulp.task('build-server-remote', function () {
           exclude: 'node_modules/**',
           "presets": [
             [
-              "env",
+              "@babel/preset-env",
               { "modules": false }
             ],
-            "flow",
-            "react"
+            "@babel/preset-flow",
+            "@babel/preset-react"
           ]
         }),
       ] },
@@ -104,11 +104,11 @@ gulp.task('build-server-local', function () {
           exclude: 'node_modules/**',
           "presets": [
             [
-              "env",
+              "@babel/preset-env",
               { "modules": false }
             ],
-            "flow",
-            "react"
+            "@babel/preset-flow",
+            "@babel/preset-react"
           ]
         }),
       ] },
