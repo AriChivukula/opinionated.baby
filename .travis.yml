@@ -32,6 +32,7 @@ deploy:
     role: $ROLE
     runtime: nodejs8.10
     handler_name: handler
+    module_name: index
     zip: prod.zip
     timeout: 300
     memory_size: 512
@@ -47,7 +48,7 @@ deploy:
     - DEBUG=*
     - REDIRECT_URL=$REDIRECT_URL
     function_tags:
-    - NAME=$FUNCTION_NAME
+    - Name=$FUNCTION_NAME
     skip_cleanup: true
     on:
       branch: master
