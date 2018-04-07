@@ -29,16 +29,14 @@ class Root extends Component<Props, State> {
     isBlockingUntilReload: false
   }
 
-  blockUntilReload() {
-    this.setState({isBlockingUntilReload: true});
-  }
-
   render() {
+    const blockUntilReload = () => this.setState({isBlockingUntilReload: true});
     return (
       <QueryRenderer
         environment={this.props.environment}
         variables={{
-          access_token: cookie.get('access_token') ?? ''
+          access_token: cookie.get('access_token')
+            ? cookie.get('access_token') : ''
         }}
         query={graphql`
           query RootQuery($access_token: String!) {
@@ -54,7 +52,7 @@ class Root extends Component<Props, State> {
           } else {
             return (
               <TopBar
-                blockUntilReload={this::blockUntilReload}
+                blockUntilReload={blockUntilReload}
                 data={props}
               />
             );

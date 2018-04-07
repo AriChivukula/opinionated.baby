@@ -4,6 +4,7 @@
 .*/_bin/.*
 .*/_sql/.*
 .*/config-chain/test/.*
+.*/rmwc/src/.*
 
 [include]
 

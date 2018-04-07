@@ -2,6 +2,7 @@
 
 import type {TopBarQuery} from './__generated__/TopBarQuery.graphql.js';
 
+import cookie from 'js-cookie';
 import React, { Component } from 'react';
 import {
   createFragmentContainer,
@@ -19,7 +20,6 @@ import {
   ToolbarTitle,
 } from 'rmwc/Toolbar';
 import url from 'url';
-import cookie from 'js-cookie';
 
 type Props = {
   data: ?TopBarQuery,
@@ -45,7 +45,7 @@ class TopBar extends Component<Props> {
   }
 
   render() {
-    let title = <ToolbarTitle>Opinionated Baby</ToolbarTitle>;
+    const title = <ToolbarTitle>Opinionated Baby</ToolbarTitle>;
     let icon = (
       <ToolbarSection alignEnd>
         <ToolbarIcon
@@ -57,8 +57,7 @@ class TopBar extends Component<Props> {
     const data = this.props.data;
     if (data != null) {
       const me = data.me;
-      if (me != null && me.googleID != undefined && me.googleID != '0') {
-        title = <ToolbarTitle>{process.env.TITLE}</ToolbarTitle>;
+      if (me != null) {
         icon = (
           <ToolbarSection alignEnd>
             <ToolbarTitle>{me.email}</ToolbarTitle>
