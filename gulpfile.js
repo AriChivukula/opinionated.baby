@@ -93,7 +93,7 @@ gulp.task(
 
 gulp.task(
   'build-test-run',
-  shell.task('jest _test/')
+  shell.task('source secrets && jest _test/')
 );
 
 gulp.task(
