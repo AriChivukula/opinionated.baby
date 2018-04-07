@@ -32,7 +32,7 @@ deploy:
     role: $ROLE
     runtime: nodejs8.10
     handler_name: handler
-    zip_file: prod.zip
+    zip: prod.zip
     skip_cleanup: true
     on:
       branch: master
