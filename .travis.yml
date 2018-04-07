@@ -9,6 +9,7 @@ script:
 - mv _bin/client/index.remote.js _bin/client/index.js
 - rm _bin/client/index.local.js
 - mv _bin/server/index.remote.js index.js
+- chmod +x index.js
 - mv _bin/server/schema.graphql schema.graphql
 - rm -rf node_modules
 - yarn install --prod
