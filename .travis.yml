@@ -36,7 +36,18 @@ deploy:
     timeout: 300
     memory_size: 512
     publish: true
-    function_tags: NAME=$FUNCTION_NAME
+    environment_variables:
+    - CLIENT_ID=$CLIENT_ID
+    - CLIENT_SECRET=$CLIENT_SECRET
+    - DB_HOST=$DB_HOST
+    - DB_NAME=$DB_NAME
+    - DB_PASSWORD=$DB_PASSWORD
+    - DB_PORT=$DB_PORT
+    - DB_USERNAME=$DB_USERNAME
+    - DEBUG=$DEBUG
+    - REDIRECT_URL=$REDIRECT_URL
+    function_tags:
+    - NAME=$FUNCTION_NAME
     skip_cleanup: true
     on:
       branch: master
