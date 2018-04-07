@@ -65,16 +65,11 @@ class TopBar extends Component<Props> {
   }
 
   render() {
-    const title = <ToolbarTitle>Opinionated Baby</ToolbarTitle>;
     let icon = (
       <ToolbarSection alignEnd>
         <ToolbarIcon
           use="settings"
           onClick={() => this.googleAuth()}
-        />
-        <ToolbarIcon
-          use="code"
-          onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/')}
         />
       </ToolbarSection>
     );
@@ -89,10 +84,6 @@ class TopBar extends Component<Props> {
               use="exit_to_app"
               onClick={() => this.logout()}
             />
-            <ToolbarIcon
-              use="code"
-              onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/')}
-            />
           </ToolbarSection>
         );
       }
@@ -102,7 +93,11 @@ class TopBar extends Component<Props> {
         <Toolbar fixed={true}>
           <ToolbarRow>
             <ToolbarSection alignStart>
-              {title}
+              <ToolbarIcon
+                use="code"
+                onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/')}
+              />
+              <ToolbarTitle>Opinionated Baby</ToolbarTitle>
             </ToolbarSection>
             {icon}
           </ToolbarRow>
@@ -117,8 +112,8 @@ class TopBar extends Component<Props> {
           <GridCell span={12}>
             <Typography use="subheading2" tag="div">
               The hardest part of building a new dynamic websites is avoiding
-              all the dragons. Starting a development environment from scratch
-              should be easy, but we{'\''}re frozen by choice overload.
+              all the dragons. Starting a development environment can freeze us
+              with choice overload.
               {' '}
               <Typography theme="text-secondary-on-background">
                 Opinionated Baby
@@ -130,7 +125,7 @@ class TopBar extends Component<Props> {
           </GridCell>
           <GridCell span={12}>
             <Typography use="display2" tag="div">
-              Choices I made for you
+              Important choices I made for you
             </Typography>
           </GridCell>
           <GridCell span={3}>
@@ -244,6 +239,35 @@ class TopBar extends Component<Props> {
                 onClick={() => this.goto('https://sass-lang.com/')}
               />
             </List>
+          </GridCell>
+          <GridCell span={12}>
+            <Typography use="display2" tag="div">
+              <span style={{textDecoration: 'line-through'}}>
+                Self justification
+              </span>
+              {' '}
+              Philosophy
+            </Typography>
+          </GridCell>
+          <GridCell span={12}>
+            <Typography use="subheading2" tag="div">
+              This framework is one-size-fits-me. It{'\''}s an open source
+              version of a system I use when building complex websites.
+              Anyone may attempt to use, contribute, or critique it. The
+              consistency with which feedback is incorporated will be nothing
+              short of capricious. My general mission and purpose is to support
+              the vitality and happy, healthy development of our
+              {' '}
+              <a href={'http://www.nic.baby/policies.html'}>
+                babies and children
+              </a>
+              .
+            </Typography>
+          </GridCell>
+          <GridCell span={12}>
+            <Typography use="display2" tag="div">
+              Release history
+            </Typography>
           </GridCell>
           <GridCell span={4}>
             <Card>
