@@ -4,7 +4,6 @@ node_js:
 cache: yarn
 before_script:
 - yarn clean
-- touch secrets
 script:
 - yarn build
 - mv _bin/client/index.remote.js _bin/client/index.js
