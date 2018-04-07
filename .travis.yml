@@ -27,15 +27,15 @@ deploy:
   - provider: lambda
     access_key_id: $ACCESS_KEY_ID
     secret_access_key: $SECRET_ACCESS_KEY
-    function_name: $FUNCTION_NAME
     region: $REGION
+    function_name: $FUNCTION_NAME
     role: $ROLE
-    runtime: nodejs8.10
     handler_name: handler
     module_name: index
     zip: prod.zip
     timeout: 300
     memory_size: 512
+    runtime: nodejs8.10
     publish: true
     environment_variables:
     - CLIENT_ID=$CLIENT_ID
