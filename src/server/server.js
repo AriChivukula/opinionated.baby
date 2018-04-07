@@ -1,15 +1,18 @@
 // @flow
 
 import fs from 'fs';
+import graphqlHTTP from 'express-graphql';
 import { OAuth2Client } from 'google-auth-library';
 import { google } from 'googleapis';
-import graphqlHTTP from 'express-graphql';
 import { buildSchema } from 'graphql';
 import invariant from 'invariant';
-import { User } from './models/index.js';
 import path from 'path';
 
-const schema = buildSchema(fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'ascii'));
+import { User } from './models/index.js';
+
+const schema = buildSchema(
+  fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'ascii')
+);
 
 function getOAuthClient(): OAuth2Client {
   return new OAuth2Client(

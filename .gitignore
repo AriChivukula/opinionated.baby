@@ -1,9 +1,7 @@
 .DS_Store
-_test
-_build
 _bin
+_test
 _sql
-__generated__
 flow-typed
 node_modules
 yarn-error.log
