@@ -65,26 +65,24 @@ class TopBar extends Component<Props> {
   }
 
   render() {
-    let icon = (
-      <ToolbarSection alignEnd>
-        <ToolbarIcon
-          use="settings"
-          onClick={() => this.googleAuth()}
-        />
-      </ToolbarSection>
+    let login = (
+      <ToolbarIcon
+        use="person"
+        onClick={() => this.googleAuth()}
+      />
     );
     const data = this.props.data;
     if (data != null) {
       const me = data.me;
       if (me != null) {
-        icon = (
-          <ToolbarSection alignEnd>
+        login = (
+          <span>
             <ToolbarTitle>{me.email}</ToolbarTitle>
             <ToolbarIcon
               use="exit_to_app"
               onClick={() => this.logout()}
             />
-          </ToolbarSection>
+          </span>
         );
       }
     }
@@ -93,13 +91,19 @@ class TopBar extends Component<Props> {
         <Toolbar fixed>
           <ToolbarRow>
             <ToolbarSection alignStart>
+              <ToolbarTitle>Opinionated Baby</ToolbarTitle>
+            </ToolbarSection>
+            <ToolbarSection alignEnd>
+              {login}
               <ToolbarIcon
                 use="code"
                 onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/')}
               />
-              <ToolbarTitle>Opinionated Baby</ToolbarTitle>
+              <ToolbarIcon
+                use="info"
+                onClick={() => this.goto('http://chivuku.la/')}
+              />
             </ToolbarSection>
-            {icon}
           </ToolbarRow>
         </Toolbar>
         <ToolbarFixedAdjust />
