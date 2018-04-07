@@ -1,6 +1,0 @@
-#!/bin/bash
-set -e
-
-yarn install
-yarn upgrade --latest
-yarn flow-typed install

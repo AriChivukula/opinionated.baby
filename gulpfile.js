@@ -236,11 +236,13 @@ gulp.task(
 
 gulp.task(
   'build',
-  gulp.parallel(
+  gulp.series(
     'build-lint',
-    'build-test',
-    'build-client',
-    'build-server'
+    gulp.parallel(
+      'build-test',
+      'build-client',
+      'build-server'
+    ),
   )
 );
 

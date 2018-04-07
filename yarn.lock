@@ -7270,7 +7270,7 @@ rmwc@^1.5.2:
     classnames "^2.2.5"
     material-components-web "0.34.1"
 
-rollup-plugin-babel@^4.0.0-beta.2:
+rollup-plugin-babel@^4.0.0-beta.3:
   version "4.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/rollup-plugin-babel/-/rollup-plugin-babel-4.0.0-beta.3.tgz#357d444acbb12e9f02887ad007aa77aec9c19ceb"
   dependencies:

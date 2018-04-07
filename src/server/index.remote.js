@@ -20,7 +20,7 @@ const types = [
   'image/svg+xml'
 ];
 
-const serverless = awsServerlessExpress.createServer(app, null, types)
+const serverless = awsServerlessExpress.createServer(app, null, types);
 
 export const handler = (event: Object, context: Object) =>
   awsServerlessExpress.proxy(serverless, event, context);
