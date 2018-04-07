@@ -92,6 +92,12 @@ gulp.task(
 );
 
 gulp.task(
+  'build-test-copy',
+  () => gulp.src(['src/**/*.snap', 'src/**/*.graphql'])
+    .pipe(gulp.dest('_test')),
+);
+
+gulp.task(
   'build-test-run',
   shell.task('jest _test/')
 );
@@ -100,6 +106,7 @@ gulp.task(
   'build-test',
   gulp.series(
     'build-test-transform',
+    'build-test-copy',
     'build-test-run'
   )
 );
