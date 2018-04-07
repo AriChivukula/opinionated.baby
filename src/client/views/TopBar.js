@@ -105,7 +105,7 @@ class TopBar extends Component<Props> {
           </ToolbarRow>
         </Toolbar>
         <ToolbarFixedAdjust />
-        <Grid fixedColumnWidth>
+        <Grid>
           <GridCell span={12}>
             <Typography use="display2" tag="div">
               A confidently immature starting point
