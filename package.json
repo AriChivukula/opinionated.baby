@@ -55,7 +55,7 @@
     "sequelize-cli": "^4.0.0"
   },
   "scripts": {
-    "clean": "gulp clean",
+    "prepare": "gulp prepare",
     "build": "gulp build",
     "start": "gulp start",
     "snap": "gulp snap",

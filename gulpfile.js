@@ -11,52 +11,52 @@ var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 
 gulp.task(
-  'clean-build',
+  'prepare-build',
   shell.task('rm -rf _*')
 );
 
 gulp.task(
-  'clean-flow',
+  'prepare-flow',
   shell.task('rm -rf flow-typed')
 );
 
 gulp.task(
-  'clean-node',
+  'prepare-node',
   shell.task('rm -rf node_modules')
 );
 
 gulp.task(
-  'clean-yarn',
+  'prepare-yarn',
   shell.task('rm -rf yarn*')
 );
 
 gulp.task(
-  'clean-install',
+  'prepare-install',
   shell.task('yarn install')
 );
 
 gulp.task(
-  'clean-upgrade',
+  'prepare-upgrade',
   shell.task('yarn upgrade --latest')
 );
 
 gulp.task(
-  'clean-types',
+  'prepare-types',
   shell.task('yarn flow-typed install')
 );
 
 gulp.task(
-  'clean',
+  'prepare',
   gulp.series(
     gulp.parallel(
-      'clean-build',
-      'clean-flow',
-      'clean-node',
-      'clean-yarn'
+      'prepare-build',
+      'prepare-flow',
+      'prepare-node',
+      'prepare-yarn'
     ),
-    'clean-install',
-    'clean-upgrade',
-    'clean-types',
+    'prepare-install',
+    'prepare-upgrade',
+    'prepare-types',
   )
 );
 
