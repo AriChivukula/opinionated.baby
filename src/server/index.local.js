@@ -1,6 +1,6 @@
 // @flow
 
-import 'babel-polyfill';
+import '@babel/polyfill';
 import express from 'express';
 import server from './server.js';
 

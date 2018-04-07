@@ -1,6 +1,6 @@
 // @flow
 
-import 'babel-polyfill';
+import '@babel/polyfill';
 import awsServerlessExpress from 'aws-serverless-express';
 import cors from 'cors';
 import express from 'express';
