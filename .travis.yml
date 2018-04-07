@@ -3,9 +3,10 @@ node_js:
 - node
 cache: yarn
 before_script:
-- yarn clean
+- yarn prep
 script:
 - yarn build
+after_script:
 - mv _bin/client/index.remote.js _bin/client/index.js
 - rm _bin/client/index.local.js
 - mv _bin/server/index.remote.js index.js
