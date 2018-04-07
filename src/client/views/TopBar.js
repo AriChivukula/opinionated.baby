@@ -3,7 +3,7 @@
 import type {TopBarQuery} from './__generated__/TopBarQuery.graphql.js';
 
 import cookie from 'js-cookie';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   createFragmentContainer,
   commitMutation,
@@ -75,13 +75,13 @@ class TopBar extends Component<Props> {
     if (data != null) {
       const me = data.me;
       if (me != null) {
-        login = <React.Fragment>
+        login = <Fragment>
           <ToolbarTitle>{me.email}</ToolbarTitle>
           <ToolbarIcon
             use="exit_to_app"
             onClick={() => this.logout()}
           />
-        </React.Fragment>;
+        </Fragment>;
       }
     }
     return (
