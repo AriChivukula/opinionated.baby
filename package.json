@@ -62,10 +62,9 @@
   },
   "scripts": {
     "clean": "gulp clean",
-    "lint": "gulp lint",
-    "test": "gulp test",
+    "artifact": "gulp artifact",
     "build": "gulp build",
-    "migrate": "gulp migrate",
-    "start": "gulp start"
+    "start": "gulp start",
+    "sql": "gulp sql"
   }
 }

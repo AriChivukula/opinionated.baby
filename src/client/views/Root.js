@@ -2,6 +2,7 @@
 
 import type {RootQuery} from './__generated__/RootQuery.graphql.js';
 
+import cookie from 'js-cookie';
 import React, { Component } from 'react';
 import {
   graphql,
@@ -11,8 +12,8 @@ import {
   Environment,
 } from 'relay-runtime';
 import { LinearProgress } from 'rmwc/LinearProgress';
+
 import TopBar from './TopBar.js';
-import cookie from 'js-cookie';
 
 type Props = {
   environment: Environment
@@ -28,18 +29,16 @@ class Root extends Component<Props, State> {
     isBlockingUntilReload: false
   }
 
-  render() {
-    const blockUntilReload = () => this.setState({isBlockingUntilReload: true});
-    let access_token = cookie.get('access_token');
-    if (!access_token) {
-      access_token = '';
-    }
+  blockUntilReload() {
+    this.setState({isBlockingUntilReload: true});
+  }
 
+  render() {
     return (
       <QueryRenderer
         environment={this.props.environment}
         variables={{
-          access_token: access_token
+          access_token: cookie.get('access_token') ?? ''
         }}
         query={graphql`
           query RootQuery($access_token: String!) {
@@ -53,7 +52,12 @@ class Root extends Component<Props, State> {
           } else if (!props || this.state.isBlockingUntilReload) {
             return <LinearProgress determinate={false}></LinearProgress>;
           } else {
-            return <TopBar blockUntilReload={blockUntilReload} data={props} />
+            return (
+              <TopBar
+                blockUntilReload={this::blockUntilReload}
+                data={props}
+              />
+            );
           }
         }}
       />

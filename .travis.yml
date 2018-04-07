@@ -3,9 +3,8 @@ node_js:
 - node
 cache: yarn
 before_script:
-- ./refresh
+- yarn clean
 script:
-- yarn test
 - yarn build
 - mv _bin/client/index.remote.js _bin/client/index.js
 - rm _bin/client/index.local.js

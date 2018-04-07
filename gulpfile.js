@@ -10,15 +10,117 @@ var shell = require('gulp-shell');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 
-gulp.task('clean', shell.task('rm -rf _*'));
+gulp.task(
+  'clean-build',
+  shell.task('rm -rf _*')
+);
 
-gulp.task('lint-relay', shell.task('relay-compiler --src src/client --schema src/server/schema.graphql'));
+gulp.task(
+  'clean-flow',
+  shell.task('rm -rf flow-typed')
+);
+
+gulp.task(
+  'clean-node',
+  shell.task('rm -rf node_modules')
+);
+
+gulp.task(
+  'clean-yarn',
+  shell.task('rm -rf yarn*')
+);
+
+gulp.task(
+  'clean-install',
+  shell.task('yarn install')
+);
+
+gulp.task(
+  'clean-upgrade',
+  shell.task('yarn upgrade --latest')
+);
+
+gulp.task(
+  'clean-types',
+  shell.task('yarn flow-typed install')
+);
+
+gulp.task(
+  'clean',
+  gulp.series(
+    gulp.parallel(
+      'clean-build',
+      'clean-flow',
+      'clean-node',
+      'clean-yarn'
+    ),
+    'clean-install',
+    'clean-upgrade',
+    'clean-types'
+  )
+);
+
+gulp.task(
+  'artifact-clean',
+  shell.task('rm -rf _artifact')
+);
+
+gulp.task(
+  'artifact-purge',
+  shell.task('rm -rf src/client/views/__generated__')
+);
+
+gulp.task(
+  'artifact-transform',
+  () => gulp.src('src/**/*.js')
+    .pipe(babel({
+			babelrc: false,
+      "plugins": [
+        "@babel/plugin-proposal-async-generator-functions",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-function-bind",
+        "@babel/plugin-proposal-logical-assignment-operators",
+        "@babel/plugin-proposal-nullish-coalescing-operator",
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-proposal-optional-catch-binding",
+        "@babel/plugin-proposal-optional-chaining",
+        "@babel/plugin-proposal-pipeline-operator",
+        "@babel/plugin-proposal-throw-expressions",
+      ],
+      "presets": [
+        "@babel/preset-flow",
+        "@babel/preset-react"
+      ]
+		}))
+    .pipe(gulp.dest('_artifact'))
+);
+
+gulp.task(
+  'artifact-compile',
+  shell.task('relay-compiler --src _artifact/client --schema src/server/schema.graphql')
+);
+
+gulp.task(
+  'artifact-copy',
+  shell.task('cp -r _artifact/client/views/__generated__ src/client/views/__generated__')
+);
+
+gulp.task(
+  'artifact',
+  gulp.series(
+    'artifact-clean',
+    'artifact-purge',
+    'artifact-transform',
+    'artifact-compile',
+    'artifact-copy'
+  )
+);
 
 gulp.task('lint-flow', shell.task('flow'));
 
 gulp.task('lint-sass', shell.task('sass-lint src/**/*.scss'));
 
-gulp.task('lint', gulp.series('lint-relay', 'lint-flow', 'lint-sass'));
+gulp.task('lint', gulp.series('lint-flow', 'lint-sass'));
 
 gulp.task('test-build', function () {
   return gulp.src('src/**/*.js')
