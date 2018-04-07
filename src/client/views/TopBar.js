@@ -133,30 +133,70 @@ class TopBar extends Component<Props> {
               Choices I made for you
             </Typography>
           </GridCell>
-          <GridCell span={4}>
+          <GridCell span={3}>
             <List twoLine>
               <SimpleListItem
-                graphic="language"
-                text="JavaScript"
-                secondaryText="Programming Language"
-                onClick={() => this.goto('https://developer.mozilla.org/en-US/docs/Web/JavaScript/')}
+                graphic="memory"
+                text="Lambda"
+                secondaryText="Server(less)"
+                onClick={() => this.goto('https://aws.amazon.com/lambda/')}
               />
               <SimpleListItem
-                graphic="http"
-                text="Node.js"
-                secondaryText="Runtime Environment"
-                onClick={() => this.goto('https://nodejs.org/en/')}
+                graphic="share"
+                text="PostgresSQL"
+                secondaryText="Database"
+                onClick={() => this.goto('https://www.postgresql.org/')}
               />
               <SimpleListItem
-                graphic="markunread_mailbox"
-                text="yarn"
-                secondaryText="Package Manager"
-                onClick={() => this.goto('https://yarnpkg.com/en/')}
+                graphic="storage"
+                text="S3"
+                secondaryText="Storage"
+                onClick={() => this.goto('https://aws.amazon.com/s3/')}
+              />
+              <SimpleListItem
+                graphic="bug_report"
+                text="Travis CI"
+                secondaryText="CI/CD"
+                onClick={() => this.goto('https://travis-ci.org/')}
               />
             </List>
           </GridCell>
-          <GridCell span={4}>
+          <GridCell span={3}>
             <List twoLine>
+              <SimpleListItem
+                graphic="description"
+                text="JavaScript"
+                secondaryText="Language"
+                onClick={() => this.goto('https://developer.mozilla.org/en-US/docs/Web/JavaScript/')}
+              />
+              <SimpleListItem
+                graphic="language"
+                text="Babel"
+                secondaryText="Transpiler"
+                onClick={() => this.goto('https://babeljs.io/')}
+              />
+              <SimpleListItem
+                graphic="merge_type"
+                text="Flow"
+                secondaryText="Typing"
+                onClick={() => this.goto('https://flow.org/')}
+              />
+              <SimpleListItem
+                graphic="cached"
+                text="Node.js"
+                secondaryText="Runtime"
+                onClick={() => this.goto('https://nodejs.org/en/')}
+              />
+            </List>
+          </GridCell>
+          <GridCell span={3}>
+            <List twoLine>
+              <SimpleListItem
+                graphic="unarchive"
+                text="yarn"
+                secondaryText="Dependency"
+                onClick={() => this.goto('https://yarnpkg.com/en/')}
+              />
               <SimpleListItem
                 graphic="build"
                 text="Gulp"
@@ -164,24 +204,45 @@ class TopBar extends Component<Props> {
                 onClick={() => this.goto('https://gulpjs.com/')}
               />
               <SimpleListItem
-                graphic="bug_report"
-                text="Travis CI"
-                secondaryText="Continuous Integration and Deployment"
-                onClick={() => this.goto('https://travis-ci.org/')}
+                graphic="playlist_add_check"
+                text="Jest"
+                secondaryText="Testing"
+                onClick={() => this.goto('https://facebook.github.io/jest/')}
               />
               <SimpleListItem
-                graphic="markunread_mailbox"
-                text="yarn"
-                secondaryText="Package Manager"
-                onClick={() => this.goto('https://yarnpkg.com/en/')}
+                graphic="graphic_eq"
+                text="GraphQL"
+                secondaryText="API"
+                onClick={() => this.goto('https://graphql.org/')}
               />
             </List>
           </GridCell>
-          <GridCell span={4}>
+          <GridCell span={3}>
             <List twoLine>
-              <SimpleListItem graphic="star_border" text="Cookies" secondaryText="Chocolate chip" />
-              <SimpleListItem graphic="favorite_border" text="Pizza" secondaryText="Pepperoni" />
-              <SimpleListItem graphic="mood" text="Icecream" secondaryText="Chocolate cookie dough" />
+              <SimpleListItem
+                graphic="flip_to_front"
+                text="React"
+                secondaryText="Interface"
+                onClick={() => this.goto('https://reactjs.org/')}
+              />
+              <SimpleListItem
+                graphic="local_library"
+                text="Relay"
+                secondaryText="Fetch"
+                onClick={() => this.goto('http://facebook.github.io/relay/')}
+              />
+              <SimpleListItem
+                graphic="style"
+                text="Material Design"
+                secondaryText="Theme"
+                onClick={() => this.goto('https://material.io/components/web/')}
+              />
+              <SimpleListItem
+                graphic="line_style"
+                text="SASS"
+                secondaryText="Style"
+                onClick={() => this.goto('https://sass-lang.com/')}
+              />
             </List>
           </GridCell>
           <GridCell span={4}>
