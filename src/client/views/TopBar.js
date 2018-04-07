@@ -90,7 +90,7 @@ class TopBar extends Component<Props> {
     }
     return (
       <div>
-        <Toolbar fixed={true}>
+        <Toolbar fixed>
           <ToolbarRow>
             <ToolbarSection alignStart>
               <ToolbarIcon
@@ -103,7 +103,7 @@ class TopBar extends Component<Props> {
           </ToolbarRow>
         </Toolbar>
         <ToolbarFixedAdjust />
-        <Grid fixedColumnWidth={true}>
+        <Grid fixedColumnWidth>
           <GridCell span={12}>
             <Typography use="display2" tag="div">
               A confidently immature starting point

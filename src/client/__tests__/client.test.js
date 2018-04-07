@@ -61,6 +61,6 @@ test(
         )
       )
     );
-    expect(component).toMatchSnapshot();
+    expect(component.html()).toMatchSnapshot();
   }
 );
