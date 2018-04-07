@@ -75,15 +75,13 @@ class TopBar extends Component<Props> {
     if (data != null) {
       const me = data.me;
       if (me != null) {
-        login = (
-          <span>
-            <ToolbarTitle>{me.email}</ToolbarTitle>
-            <ToolbarIcon
-              use="exit_to_app"
-              onClick={() => this.logout()}
-            />
-          </span>
-        );
+        login = <>
+          <ToolbarTitle>{me.email}</ToolbarTitle>
+          <ToolbarIcon
+            use="exit_to_app"
+            onClick={() => this.logout()}
+          />
+        </>;
       }
     }
     return (
