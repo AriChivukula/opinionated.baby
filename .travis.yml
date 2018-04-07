@@ -33,6 +33,10 @@ deploy:
     runtime: nodejs8.10
     handler_name: handler
     zip: prod.zip
+    timeout: 300
+    memory_size: 512
+    publish: true
+    function_tags: NAME=$FUNCTION_NAME
     skip_cleanup: true
     on:
       branch: master
