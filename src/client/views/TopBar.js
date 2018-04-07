@@ -75,13 +75,13 @@ class TopBar extends Component<Props> {
     if (data != null) {
       const me = data.me;
       if (me != null) {
-        login = <>
+        login = <React.Fragment>
           <ToolbarTitle>{me.email}</ToolbarTitle>
           <ToolbarIcon
             use="exit_to_app"
             onClick={() => this.logout()}
           />
-        </>;
+        </React.Fragment>;
       }
     }
     return (
