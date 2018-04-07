@@ -99,7 +99,7 @@ gulp.task(
 
 gulp.task(
   'build-test-run',
-  shell.task('source secrets && jest _test/')
+  shell.task('. secrets && jest _test/')
 );
 
 gulp.task(
@@ -254,7 +254,7 @@ gulp.task(
 
 gulp.task(
   'start-localhost',
-  shell.task('source secrets && DEBUG=* node _bin/server/index.js')
+  shell.task('. secrets && DEBUG=* node _bin/server/index.js')
 );
 
 gulp.task(
@@ -277,7 +277,7 @@ gulp.task(
 
 gulp.task(
   'sql-run',
-  shell.task('source secrets && node_modules/.bin/sequelize db:migrate')
+  shell.task('. secrets && node_modules/.bin/sequelize db:migrate')
 );
 
 gulp.task(
