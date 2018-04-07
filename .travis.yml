@@ -44,7 +44,7 @@ deploy:
     - DB_PASSWORD=$DB_PASSWORD
     - DB_PORT=$DB_PORT
     - DB_USERNAME=$DB_USERNAME
-    - DEBUG=$DEBUG
+    - DEBUG=*
     - REDIRECT_URL=$REDIRECT_URL
     function_tags:
     - NAME=$FUNCTION_NAME
