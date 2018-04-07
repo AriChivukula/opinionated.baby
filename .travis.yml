@@ -13,6 +13,8 @@ script:
 - rm -rf node_modules
 - yarn install --prod
 - chmod -R 775 node_modules
+- chmod 775 index.js
+- chmod 775 schema.graphql
 - zip -r prod.zip node_modules index.js schema.graphql
 deploy:
   - provider: s3
