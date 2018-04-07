@@ -1,7 +1,7 @@
 [ignore]
-.*/_test/.*
-.*/_build/.*
 .*/_bin/.*
+.*/_test/.*
+.*/_snap/.*
 .*/_sql/.*
 .*/config-chain/test/.*
 .*/rmwc/src/.*

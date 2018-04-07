@@ -46,11 +46,6 @@ gulp.task(
 );
 
 gulp.task(
-  'clean-relay',
-  shell.task('relay-compiler --src src/client --schema src/server/schema.graphql')
-);
-
-gulp.task(
   'clean',
   gulp.series(
     gulp.parallel(
@@ -62,8 +57,12 @@ gulp.task(
     'clean-install',
     'clean-upgrade',
     'clean-types',
-    'clean-relay'
   )
+);
+
+gulp.task(
+  'build-lint-graphql',
+  shell.task('relay-compiler --src src/client --schema src/server/schema.graphql')
 );
 
 gulp.task(
@@ -79,7 +78,10 @@ gulp.task(
 gulp.task(
   'build-lint',
   gulp.parallel(
-    'build-lint-flow',
+    gulp.series(
+      'build-lint-graphql',
+      'build-lint-flow'
+    ),
     'build-lint-sass'
   )
 );
@@ -254,7 +256,7 @@ gulp.task(
 
 gulp.task(
   'start-localhost',
-  shell.task('source secrets && DEBUG=* node _bin/server/index.js')
+  shell.task('DEBUG=* node _bin/server/index.js')
 );
 
 gulp.task(
@@ -269,6 +271,32 @@ gulp.task(
 );
 
 gulp.task(
+  'snap-build',
+  () => gulp.src('src/**/*.js')
+    .pipe(babel())
+    .pipe(gulp.dest('_snap'))
+);
+
+gulp.task(
+  'snap-run',
+  shell.task('jest -u _snap/client')
+);
+
+gulp.task(
+  'snap-update',
+  shell.task('cp -R _snap/client/__tests__/__snapshots__/ src/client/__tests__/__snapshots__/')
+);
+
+gulp.task(
+  'snap',
+  gulp.series(
+    'snap-build',
+    'snap-run',
+    'snap-update'
+  )
+);
+
+gulp.task(
   'sql-build',
   () => gulp.src('src/**/*.js')
     .pipe(babel())
@@ -277,7 +305,7 @@ gulp.task(
 
 gulp.task(
   'sql-run',
-  shell.task('source secrets && node_modules/.bin/sequelize db:migrate')
+  shell.task('node_modules/.bin/sequelize db:migrate')
 );
 
 gulp.task(

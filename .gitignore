@@ -1,6 +1,7 @@
 .DS_Store
 _bin
 _test
+_snap
 _sql
 flow-typed
 node_modules

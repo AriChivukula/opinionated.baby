@@ -1,9 +1,10 @@
 // @flow
 
 import 'babel-polyfill';
-import express from 'express';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
-import renderer from 'react-test-renderer';
+import context from 'react-test-context-provider';
 import {
   Environment,
   RecordSource,
@@ -14,28 +15,52 @@ import {
   RelayNetworkLayer
 } from 'react-relay-network-modern';
 
-import Root from '../views/Root.js';
-import server from '../../server/server.js';
+import TopBar from '../views/TopBar.js';
 
-express()
-  .use(server)
-  .listen(8080);
+Enzyme.configure({
+  adapter: new Adapter()
+});
+
+const environment = new Environment({
+  network: new RelayNetworkLayer([
+    urlMiddleware({
+      url: 'http://127.0.0.1:8080',
+    })
+  ]),
+  store: new Store(new RecordSource())
+});
 
 test(
-  'Root',
+  'TopBar',
   async () => {
-    const environment = new Environment({
-      network: new RelayNetworkLayer([
-        urlMiddleware({
-          url: 'http://127.0.0.1:8080',
-        })
-      ]),
-      store: new Store(new RecordSource())
-    });
-    const component = renderer.create(
-      <Root environment={environment} />,
+    const component = Enzyme.render(
+      Enzyme.mount(
+        context(
+          {
+            relay:{
+              environment: environment,
+              variables: {}
+            }
+          },
+          // $FlowFixMe
+          <TopBar
+            data={{
+              __id: '0',
+              __fragments: {
+                'TopBarQuery': {}
+              },
+              me: {
+                id: 'TEST',
+                googleID: 'TEST',
+                email: 'TEST'
+              },
+              loginURL: 'http://fake.com/'
+            }}
+            blockUntilReload={() => {}}
+          />
+        )
+      )
     );
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   }
 );
