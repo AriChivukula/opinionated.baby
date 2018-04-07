@@ -133,6 +133,12 @@ gulp.task(
 );
 
 gulp.task(
+  'build-client-images',
+  () => gulp.src('src/client/static/images/*.jpg')
+    .pipe(gulp.dest('_bin/client/images'))
+);
+
+gulp.task(
   'build-client-local',
   () => gulp.src('src/client/index.local.js')
     .pipe(sourcemaps.init())
@@ -160,6 +166,7 @@ gulp.task(
     'build-client-html',
     'build-client-sass',
     'build-client-material',
+    'build-client-images',
     'build-client-local',
     'build-client-remote'
   )

@@ -1,1 +1,1 @@
-# Opinionated Baby
+# [Opinionated Baby](https://opinionated.baby/)

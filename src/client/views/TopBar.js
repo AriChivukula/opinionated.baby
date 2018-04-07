@@ -13,12 +13,32 @@ import {
   Environment,
 } from 'relay-runtime';
 import {
+  Card,
+  CardPrimaryAction,
+  CardMedia,
+  CardAction,
+  CardActions,
+  CardActionButtons,
+  CardActionIcons
+} from 'rmwc/Card';
+import {
+  Grid,
+  GridCell,
+  GridInner
+} from 'rmwc/Grid';
+import {
+  List,
+  SimpleListItem
+} from 'rmwc/List';
+import {
   Toolbar,
+  ToolbarFixedAdjust,
   ToolbarIcon,
   ToolbarRow,
   ToolbarSection,
   ToolbarTitle,
 } from 'rmwc/Toolbar';
+import { Typography } from 'rmwc/Typography';
 import url from 'url';
 
 type Props = {
@@ -52,6 +72,10 @@ class TopBar extends Component<Props> {
           use="settings"
           onClick={() => this.googleAuth()}
         />
+        <ToolbarIcon
+          use="code"
+          onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/')}
+        />
       </ToolbarSection>
     );
     const data = this.props.data;
@@ -65,19 +89,122 @@ class TopBar extends Component<Props> {
               use="exit_to_app"
               onClick={() => this.logout()}
             />
+            <ToolbarIcon
+              use="code"
+              onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/')}
+            />
           </ToolbarSection>
         );
       }
     }
     return (
-      <Toolbar>
-        <ToolbarRow>
-          <ToolbarSection alignStart>
-            {title}
-          </ToolbarSection>
-          {icon}
-        </ToolbarRow>
-      </Toolbar>
+      <div>
+        <Toolbar fixed={true}>
+          <ToolbarRow>
+            <ToolbarSection alignStart>
+              {title}
+            </ToolbarSection>
+            {icon}
+          </ToolbarRow>
+        </Toolbar>
+        <ToolbarFixedAdjust />
+        <Grid fixedColumnWidth={true}>
+          <GridCell span={12}>
+            <Typography use="display2" tag="div">
+              A confidently immature starting point
+            </Typography>
+          </GridCell>
+          <GridCell span={12}>
+            <Typography use="subheading2" tag="div">
+              The hardest part of building a new dynamic websites is avoiding
+              all the dragons. Starting a development environment from scratch
+              should be easy, but we{'\''}re frozen by choice overload.
+              {' '}
+              <Typography theme="text-secondary-on-background">
+                Opinionated Baby
+              </Typography>
+              {' '}
+              solves this by moving the starting line past the quagmire of setup
+              and into the pleasure of production logic.
+            </Typography>
+          </GridCell>
+          <GridCell span={12}>
+            <Typography use="display2" tag="div">
+              Choices I made for you
+            </Typography>
+          </GridCell>
+          <GridCell span={4}>
+            <List twoLine>
+              <SimpleListItem
+                graphic="language"
+                text="JavaScript"
+                secondaryText="Programming Language"
+                onClick={() => this.goto('https://developer.mozilla.org/en-US/docs/Web/JavaScript/')}
+              />
+              <SimpleListItem
+                graphic="http"
+                text="Node.js"
+                secondaryText="Runtime Environment"
+                onClick={() => this.goto('https://nodejs.org/en/')}
+              />
+              <SimpleListItem
+                graphic="markunread_mailbox"
+                text="yarn"
+                secondaryText="Package Manager"
+                onClick={() => this.goto('https://yarnpkg.com/en/')}
+              />
+            </List>
+          </GridCell>
+          <GridCell span={4}>
+            <List twoLine>
+              <SimpleListItem
+                graphic="build"
+                text="Gulp"
+                secondaryText="Toolchain"
+                onClick={() => this.goto('https://gulpjs.com/')}
+              />
+              <SimpleListItem
+                graphic="bug_report"
+                text="Travis CI"
+                secondaryText="Continuous Integration and Deployment"
+                onClick={() => this.goto('https://travis-ci.org/')}
+              />
+              <SimpleListItem
+                graphic="markunread_mailbox"
+                text="yarn"
+                secondaryText="Package Manager"
+                onClick={() => this.goto('https://yarnpkg.com/en/')}
+              />
+            </List>
+          </GridCell>
+          <GridCell span={4}>
+            <List twoLine>
+              <SimpleListItem graphic="star_border" text="Cookies" secondaryText="Chocolate chip" />
+              <SimpleListItem graphic="favorite_border" text="Pizza" secondaryText="Pepperoni" />
+              <SimpleListItem graphic="mood" text="Icecream" secondaryText="Chocolate cookie dough" />
+            </List>
+          </GridCell>
+          <GridCell span={4}>
+            <Card>
+              <CardPrimaryAction onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/releases/tag/v0/')}>
+                <CardMedia
+                  square
+                  style={{backgroundImage: 'url(images/v0.jpg)'}}
+                />
+                <Typography
+                  use="display1"
+                  style={{padding: '1rem'}}>
+                  <Typography theme="text-secondary-on-background">
+                    v0
+                  </Typography>
+                  {' '}
+                  Cocksure Castle
+                </Typography>
+              </CardPrimaryAction>
+            </Card>
+          </GridCell>
+        </Grid>
+      </div>
     );
   }
 
@@ -130,6 +257,10 @@ class TopBar extends Component<Props> {
       }
     );
     this.props.blockUntilReload();
+  }
+
+  goto(url: string): void {
+    window.location = url;
   }
 }
 

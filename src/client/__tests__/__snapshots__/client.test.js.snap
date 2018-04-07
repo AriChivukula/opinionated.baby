@@ -4,7 +4,7 @@ exports[`TopBar 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
-      "class": " mdc-toolbar",
+      "class": " mdc-toolbar mdc-toolbar--fixed",
     },
     "children": Array [
       Object {
