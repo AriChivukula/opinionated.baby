@@ -1,4 +1,5 @@
 [ignore]
+.*/.flow-type-cache/*
 .*/_bin/.*
 .*/_test/.*
 .*/_snap/.*
