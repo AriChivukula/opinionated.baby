@@ -1,7 +1,12 @@
 language: node_js
 node_js:
 - node
-cache: yarn
+cache:
+  yarn: true
+  directories:
+  - flow-typed
+  - node_modules
+  - node_modules_prod
 before_script:
 - yarn gulp flow-typed
 script:
