@@ -6,7 +6,7 @@ before_script:
 - yarn prep
 script:
 - yarn build
-after_script:
+after_success:
 - rm -rf node_modules
 - yarn install --prod
 - mv _bin/client/index.remote.js _bin/client/index.js
