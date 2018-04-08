@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TopBar 1`] = `
+exports[`Page 1`] = `
 <div>
   <header
     class=" mdc-toolbar mdc-toolbar--fixed"
