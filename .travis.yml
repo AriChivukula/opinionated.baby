@@ -12,7 +12,7 @@ after_success:
 - yarn install --prod
 - mv _bin/client/index.remote.js _bin/client/index.js
 - rm _bin/client/index.local.js
-- if [[ -z "$TRAVIS_TAG" ]] ; then cp robots.txt _bin/client/robots.txt ; fi
+- if [[ -z "$TRAVIS_TAG" ]] ; then cp src/client/static/robots.txt _bin/client/robots.txt ; fi
 - mv _bin/server/index.remote.js index.js
 - mv _bin/server/schema.graphql schema.graphql
 - zip -r dist.zip node_modules index.js schema.graphql
