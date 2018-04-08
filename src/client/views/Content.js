@@ -179,7 +179,7 @@ class Content extends Component<Props> {
           <Typography use="subheading2" tag="div">
             This framework is one-size-fits-me. It{'\''}s an open source
             version of a system I use when building complex websites.
-            Anyone may attempt to use, contribute, or critique it. The
+            Anyone may attempt to use, critique, or contribute to it. The
             consistency with which feedback is incorporated will be nothing
             short of capricious. My general mission and purpose is to support
             the vitality and happy, healthy development of our
