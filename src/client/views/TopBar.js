@@ -113,7 +113,7 @@ class TopBar extends Component<Props> {
           </GridCell>
           <GridCell span={12}>
             <Typography use="subheading2" tag="div">
-              The hardest part of building a new dynamic websites is avoiding
+              The hardest part of building a new dynamic website is avoiding
               all the dragons. Starting a development environment can freeze us
               with choice overload.
               {' '}

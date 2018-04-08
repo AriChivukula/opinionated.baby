@@ -1,6 +1,7 @@
 // @flow
 
-import 'babel-polyfill';
+import '@babel/polyfill';
+import 'jest-enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
@@ -61,6 +62,6 @@ test(
         )
       )
     );
-    expect(component.html()).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   }
 );

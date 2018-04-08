@@ -1,6 +1,6 @@
 // @flow
 
-import 'babel-polyfill';
+import '@babel/polyfill';
 import { getLoginURL } from '../google.js';
 import { User } from '../models/index.js';
 
