@@ -12,37 +12,37 @@ var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 
 gulp.task(
-  'prep-build',
+  'delete-all-artifacts',
   shell.task('rm -rf _*')
 );
 
 gulp.task(
-  'prep-flow',
+  'delete-flow-typed',
   shell.task('rm -rf flow-typed')
 );
 
 gulp.task(
-  'prep-node',
+  'delete-node-modules',
   shell.task('rm -rf node_modules')
 );
 
 gulp.task(
-  'prep-yarn',
+  'delete-yarn-lock',
   shell.task('rm -rf yarn*')
 );
 
 gulp.task(
-  'prep-install',
+  'run-yarn-install',
   shell.task('yarn install')
 );
 
 gulp.task(
-  'prep-upgrade',
+  'run-yarn-upgrade',
   shell.task('yarn upgrade --latest')
 );
 
 gulp.task(
-  'prep-types',
+  'run-flow-typed',
   shell.task('yarn flow-typed install')
 );
 
@@ -50,14 +50,16 @@ gulp.task(
   'prep',
   gulp.series(
     gulp.parallel(
-      'prep-build',
-      'prep-flow',
-      'prep-node',
-      'prep-yarn'
+      'delete-all-artifacts',
+      'delete-flow-typed',
+      'delete-node-modules',
+      'delete-yarn-lock'
     ),
-    'prep-install',
-    'prep-upgrade',
-    'prep-types',
+    'run-yarn-install',
+    gulp.parallel(
+      'run-yarn-upgrade',
+      'run-flow-typed',
+    ),
   )
 );
 
