@@ -72,7 +72,9 @@ class TopBar extends Component<Props> {
         <Toolbar fixed>
           <ToolbarRow>
             <ToolbarSection alignStart>
-              <ToolbarTitle>Opinionated Baby</ToolbarTitle>
+              <ToolbarTitle>
+                Opinionated Baby
+              </ToolbarTitle onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/')}>
             </ToolbarSection>
             <ToolbarSection alignEnd>
               {login}
