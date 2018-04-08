@@ -18,7 +18,7 @@ gulp.task(
 
 gulp.task(
   'delete-flow-typed',
-  shell.task('rm -rf flow-typed')
+  shell.task('rm -rf flow-typed && rm -rf .flow-type-cache')
 );
 
 gulp.task(
@@ -43,7 +43,7 @@ gulp.task(
 
 gulp.task(
   'flow-typed',
-  shell.task('yarn flow-typed install')
+  shell.task('yarn flow-typed install --cacheDir .flow-type-cache')
 );
 
 gulp.task(
