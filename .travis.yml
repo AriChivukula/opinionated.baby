@@ -7,12 +7,13 @@ before_script:
 script:
 - yarn build
 after_script:
-- mv _bin/client/index.remote.js _bin/client/index.js
-- rm _bin/client/index.local.js
-- mv _bin/server/index.remote.js index.js
-- mv _bin/server/schema.graphql schema.graphql
 - rm -rf node_modules
 - yarn install --prod
+- mv _bin/client/index.remote.js _bin/client/index.js
+- rm _bin/client/index.local.js
+- if [[ -z "$TRAVIS_TAG" ]] ; then cp robots.txt _bin/client/robots.txt ; fi
+- mv _bin/server/index.remote.js index.js
+- mv _bin/server/schema.graphql schema.graphql
 - zip -r prod.zip node_modules index.js schema.graphql
 deploy:
   - provider: s3
