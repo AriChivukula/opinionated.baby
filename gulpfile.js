@@ -203,10 +203,26 @@ gulp.task(
 
 gulp.task(
   'compile-remote-server',
-  () => gulp.src('_bin/server/index.local.js')
-    .pipe(rename('index.remote.js'))
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(purgeSourcemaps())
+  () => gulp.src('src/server/index.remote.js')
+    .pipe(rollup(
+      {
+        plugins: [
+          rollupBabel({
+            babelrc: false,
+            exclude: 'node_modules/**',
+            "presets": [
+              [
+                "@babel/preset-env",
+                { "modules": false }
+              ],
+              "@babel/preset-flow",
+              "@babel/preset-react"
+            ]
+          }),
+        ]
+      },
+      { format: 'cjs' }
+    ))
     .pipe(uglify())
     .pipe(gulp.dest('_bin/server'))
 );
@@ -215,10 +231,8 @@ gulp.task(
   'build-server',
   gulp.parallel(
     'copy-graphql',
-    gulp.series(
-      'compile-local-server',
-      'compile-remote-server'
-    )
+    'compile-local-server',
+    'compile-remote-server'
   )
 );
 
