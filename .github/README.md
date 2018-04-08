@@ -8,8 +8,8 @@
 1. Download the [latest release](https://github.com/arichiv/opinionated.baby/releases)
 2. Install [Node.js](https://nodejs.org/en/) and [yarn](https://yarnpkg.com/en/)
 3. Setup your environment:
-   1. Google Login (CLIENT_ID, CLIENT_SECRET, REDIRECT_URL)
-   2. PostgreSQL (DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD, DB_HOST)
+   1. [Google OAuth](https://developers.google.com/identity/protocols/OAuth2) (CLIENT_ID, CLIENT_SECRET, REDIRECT_URL)
+   2. [PostgreSQL](https://www.postgresql.org/) (DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD, DB_HOST)
 4. Run `yarn prep && yarn sql && yarn build && yarn start`
 5. Navigate to [127.0.0.1:8080](http://127.0.0.1:8080)
 
