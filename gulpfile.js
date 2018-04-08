@@ -32,17 +32,17 @@ gulp.task(
 );
 
 gulp.task(
-  'run-yarn-install',
+  'yarn-install',
   shell.task('yarn install')
 );
 
 gulp.task(
-  'run-yarn-upgrade',
+  'yarn-upgrade',
   shell.task('yarn upgrade --latest')
 );
 
 gulp.task(
-  'run-flow-typed',
+  'flow-typed',
   shell.task('yarn flow-typed install')
 );
 
@@ -55,82 +55,82 @@ gulp.task(
       'delete-node-modules',
       'delete-yarn-lock'
     ),
-    'run-yarn-install',
+    'yarn-install',
     gulp.parallel(
-      'run-yarn-upgrade',
-      'run-flow-typed',
+      'yarn-upgrade',
+      'flow-typed',
     ),
   )
 );
 
 gulp.task(
-  'build-relay-graphql',
+  'relay-compile',
   shell.task('relay-compiler --src src/client --schema src/server/schema.graphql')
 );
 
 gulp.task(
-  'lint-flow',
+  'flow-lint',
   shell.task('flow')
 );
 
 gulp.task(
-  'lint-sass',
+  'sass-lint',
   shell.task('sass-lint src/**/*.scss')
 );
 
 gulp.task(
-  'test-compile',
+  'compile-test',
   () => gulp.src('src/**/*.js')
     .pipe(babel())
     .pipe(gulp.dest('_test')),
 );
 
 gulp.task(
-  'test-copy',
+  'copy-test',
   () => gulp.src(['src/**/*.snap', 'src/**/*.graphql'])
     .pipe(gulp.dest('_test')),
 );
 
 gulp.task(
-  'test-run',
+  'run-test',
   shell.task('jest _test/')
 );
 
 gulp.task(
   'test',
   gulp.series(
-    'build-relay-graphql',
+    'relay-compile',
     gulp.parallel(
-      'lint-flow',
-      'lint-sass',
-      'test-compile',
-      'test-copy'
+      'flow-lint',
+      'sass-lint',
+      'compile-test',
+      'copy-test'
     ),
-    'test-run'
+    'run-test'
   )
 );
 
 gulp.task(
-  'build-client-html',
+  'client-html',
   () => gulp.src('src/client/static/index.html')
     .pipe(gulp.dest('_bin/client'))
 );
 
 gulp.task(
-  'build-client-sass',
+  'client-sass',
   () => gulp.src('src/client/static/index.scss')
     .pipe(sass({includePaths: 'node_modules', outputStyle: 'compressed'}))
     .pipe(gulp.dest('_bin/client'))
 );
 
 gulp.task(
-  'build-client-images',
+  'client-images',
   () => gulp.src('src/client/static/images/*.jpg')
     .pipe(gulp.dest('_bin/client/images'))
 );
 
 gulp.task(
-  'build-client-local',
+  'client-js-local',
   () => gulp.src('src/client/index.js')
     .pipe(rename('index.local.js'))
     .pipe(sourcemaps.init())
@@ -143,7 +143,7 @@ gulp.task(
 );
 
 gulp.task(
-  'build-client-remote',
+  'client-js-remote',
   () => gulp.src('src/client/index.js')
     .pipe(rename('index.remote.js'))
     .pipe(browserify(
@@ -156,22 +156,22 @@ gulp.task(
 gulp.task(
   'build-client',
   gulp.parallel(
-    'build-client-html',
-    'build-client-sass',
-    'build-client-images',
-    'build-client-local',
-    'build-client-remote'
+    'client-html',
+    'client-sass',
+    'client-images',
+    'client-js-local',
+    'client-js-remote'
   )
 );
 
 gulp.task(
-  'build-server-graphql',
+  'server-graphql',
   () => gulp.src('src/server/schema.graphql')
     .pipe(gulp.dest('_bin/server'))
 );
 
 gulp.task(
-  'build-server-local',
+  'server-js-local',
   () => gulp.src('src/server/index.local.js')
     .pipe(sourcemaps.init())
     .pipe(rollup(
@@ -199,7 +199,7 @@ gulp.task(
 );
 
 gulp.task(
-  'build-server-remote',
+  'server-js-remote',
   () => gulp.src('src/server/index.remote.js')
     .pipe(rollup(
       {
@@ -227,16 +227,16 @@ gulp.task(
 gulp.task(
   'build-server',
   gulp.parallel(
-    'build-server-graphql',
-    'build-server-local',
-    'build-server-remote'
+    'server-graphql',
+    'server-js-local',
+    'server-js-remote'
   )
 );
 
 gulp.task(
   'build',
   gulp.series(
-    'build-relay-graphql',
+    'relay-compile',
     gulp.parallel(
       'build-client',
       'build-server'
