@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var babel = require('gulp-babel');
 var browserify = require('gulp-browserify');
+var rename = require('gulp-rename');
 var rollup = require('gulp-better-rollup');
 var rollupBabel = require('rollup-plugin-babel');
 var sass = require('gulp-sass');
@@ -11,52 +12,52 @@ var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 
 gulp.task(
-  'clean-build',
+  'prep-build',
   shell.task('rm -rf _*')
 );
 
 gulp.task(
-  'clean-flow',
+  'prep-flow',
   shell.task('rm -rf flow-typed')
 );
 
 gulp.task(
-  'clean-node',
+  'prep-node',
   shell.task('rm -rf node_modules')
 );
 
 gulp.task(
-  'clean-yarn',
+  'prep-yarn',
   shell.task('rm -rf yarn*')
 );
 
 gulp.task(
-  'clean-install',
+  'prep-install',
   shell.task('yarn install')
 );
 
 gulp.task(
-  'clean-upgrade',
+  'prep-upgrade',
   shell.task('yarn upgrade --latest')
 );
 
 gulp.task(
-  'clean-types',
+  'prep-types',
   shell.task('yarn flow-typed install')
 );
 
 gulp.task(
-  'clean',
+  'prep',
   gulp.series(
     gulp.parallel(
-      'clean-build',
-      'clean-flow',
-      'clean-node',
-      'clean-yarn'
+      'prep-build',
+      'prep-flow',
+      'prep-node',
+      'prep-yarn'
     ),
-    'clean-install',
-    'clean-upgrade',
-    'clean-types',
+    'prep-install',
+    'prep-upgrade',
+    'prep-types',
   )
 );
 
@@ -140,7 +141,8 @@ gulp.task(
 
 gulp.task(
   'build-client-local',
-  () => gulp.src('src/client/index.local.js')
+  () => gulp.src('src/client/index.js')
+    .pipe(rename('index.local.js'))
     .pipe(sourcemaps.init())
     .pipe(browserify({
       transform: ['babelify']
@@ -152,7 +154,8 @@ gulp.task(
 
 gulp.task(
   'build-client-remote',
-  () => gulp.src('src/client/index.remote.js')
+  () => gulp.src('src/client/index.js')
+    .pipe(rename('index.remote.js'))
     .pipe(browserify(
       { transform: ['babelify'] }
     ))

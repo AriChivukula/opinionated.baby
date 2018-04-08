@@ -117,7 +117,9 @@ class TopBar extends Component<Props> {
               all the dragons. Starting a development environment can freeze us
               with choice overload.
               {' '}
-              <Typography theme="text-secondary-on-background">
+              <Typography
+                theme="text-secondary-on-background"
+                onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/')}>
                 Opinionated Baby
               </Typography>
               {' '}
@@ -260,9 +262,11 @@ class TopBar extends Component<Props> {
               short of capricious. My general mission and purpose is to support
               the vitality and happy, healthy development of our
               {' '}
-              <a href={'http://www.nic.baby/policies.html'}>
+              <Typography
+                theme="text-secondary-on-background"
+                onClick={() => this.goto('http://www.nic.baby/policies.html')}>
                 babies and children
-              </a>
+              </Typography>
               .
             </Typography>
           </GridCell>
@@ -270,6 +274,25 @@ class TopBar extends Component<Props> {
             <Typography use="display2" tag="div">
               Release history
             </Typography>
+          </GridCell>
+          <GridCell span={4}>
+            <Card>
+              <CardPrimaryAction onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/releases/tag/v1/')}>
+                <CardMedia
+                  square
+                  style={{backgroundImage: 'url(images/v1.jpg)'}}
+                />
+                <Typography
+                  use="display1"
+                  style={{padding: '1rem'}}>
+                  <Typography theme="text-secondary-on-background">
+                    v1
+                  </Typography>
+                  {' '}
+                  Dogged Dapper
+                </Typography>
+              </CardPrimaryAction>
+            </Card>
           </GridCell>
           <GridCell span={4}>
             <Card>
