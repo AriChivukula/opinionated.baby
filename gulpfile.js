@@ -43,7 +43,7 @@ gulp.task(
 
 gulp.task(
   'flow-typed',
-  shell.task('yarn flow-typed install --cacheDir .flow-typed-cache')
+  shell.task('yarn flow-typed install')
 );
 
 gulp.task(
