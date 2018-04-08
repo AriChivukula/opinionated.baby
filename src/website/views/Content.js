@@ -99,16 +99,16 @@ class Content extends Component<Props> {
               onClick={() => goto('https://babeljs.io/')}
             />
             <SimpleListItem
-              graphic="merge_type"
-              text="Flow"
-              secondaryText="Typing"
-              onClick={() => goto('https://flow.org/')}
-            />
-            <SimpleListItem
               graphic="cached"
               text="Node.js"
               secondaryText="Runtime"
               onClick={() => goto('https://nodejs.org/en/')}
+            />
+            <SimpleListItem
+              graphic="desktop_mac"
+              text="Electron"
+              secondaryText="Desktop"
+              onClick={() => goto('https://electronjs.org/')}
             />
           </List>
         </GridCell>
@@ -198,6 +198,25 @@ class Content extends Component<Props> {
           <Typography use="display2" tag="div">
             Release history
           </Typography>
+        </GridCell>
+        <GridCell span={4}>
+          <Card>
+            <CardPrimaryAction onClick={() => goto('https://github.com/arichiv/opinionated.baby/releases/tag/v2/')}>
+              <CardMedia
+                square
+                style={{backgroundImage: 'url(images/v2.jpg)'}}
+              />
+              <Typography
+                use="display1"
+                style={{padding: '1rem'}}>
+                <Typography theme="text-secondary-on-background">
+                  v2
+                </Typography>
+                <br />
+                Assertive Actor
+              </Typography>
+            </CardPrimaryAction>
+          </Card>
         </GridCell>
         <GridCell span={4}>
           <Card>
