@@ -5750,7 +5750,7 @@ matchdep@^2.0.0:
     resolve "^1.4.0"
     stack-trace "0.0.10"
 
-material-components-web@0.34.1:
+material-components-web@0.34.1, material-components-web@^0.34.1:
   version "0.34.1"
   resolved "https://registry.yarnpkg.com/material-components-web/-/material-components-web-0.34.1.tgz#e43fdfee4da622df47bbfb624d8f3f80a997b709"
   dependencies:

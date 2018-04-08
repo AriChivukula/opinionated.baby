@@ -3,7 +3,7 @@
 exports[`Page 1`] = `
 Array [
   <header
-    class=" mdc-toolbar mdc-toolbar--fixed"
+    class=" mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall"
   >
     <div
       class=" mdc-toolbar__row"
@@ -481,7 +481,8 @@ Array [
               >
                 v1
               </span>
-               Dogged Dapper
+              <br />
+              Dogged Dapper
             </span>
           </div>
         </div>
@@ -508,7 +509,8 @@ Array [
               >
                 v0
               </span>
-               Cocksure Castle
+              <br />
+              Cocksure Castle
             </span>
           </div>
         </div>

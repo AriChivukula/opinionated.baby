@@ -123,13 +123,7 @@ gulp.task(
 gulp.task(
   'build-client-sass',
   () => gulp.src('src/client/static/index.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('_bin/client'))
-);
-
-gulp.task(
-  'build-client-material',
-  () => gulp.src('node_modules/material-components-web/dist/material-components-web.min.css')
+    .pipe(sass({includePaths: 'node_modules', outputStyle: 'compressed'}))
     .pipe(gulp.dest('_bin/client'))
 );
 
@@ -168,7 +162,6 @@ gulp.task(
   gulp.parallel(
     'build-client-html',
     'build-client-sass',
-    'build-client-material',
     'build-client-images',
     'build-client-local',
     'build-client-remote'
