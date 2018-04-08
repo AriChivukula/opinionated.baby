@@ -1,5 +1,5 @@
 .DS_Store
-.flow-type-cache
+.flow-typed-cache
 _bin
 _test
 _snap
