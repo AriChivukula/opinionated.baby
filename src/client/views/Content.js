@@ -12,8 +12,7 @@ import {
 } from 'rmwc/Card';
 import {
   Grid,
-  GridCell,
-  GridInner
+  GridCell
 } from 'rmwc/Grid';
 import {
   List,

@@ -69,12 +69,12 @@ class TopBar extends Component<Props> {
     }
     return (
       <Fragment>
-        <Toolbar fixed>
+        <Toolbar fixed waterfall>
           <ToolbarRow>
             <ToolbarSection alignStart>
-              <ToolbarTitle>
+              <ToolbarTitle onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/')}>
                 Opinionated Baby
-              </ToolbarTitle onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/')}>
+              </ToolbarTitle>
             </ToolbarSection>
             <ToolbarSection alignEnd>
               {login}
