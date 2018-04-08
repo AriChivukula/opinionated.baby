@@ -12,16 +12,17 @@ before_script:
 script:
 - yarn test
 - yarn build
-after_success:
+before_cache:
 - yarn install --prod --modules-folder node_modules_prod
-- mv node_modules node_modules_dev
+after_success:
+- rm -rf node_modules
 - mv node_modules_prod node_modules
 - mv _bin/client/index.remote.js _bin/client/index.js
 - rm _bin/client/index.local.js
 - if [[ -z "$TRAVIS_TAG" ]] ; then cp src/client/static/robots.txt _bin/client/robots.txt ; fi
 - mv _bin/server/index.remote.js index.js
 - mv _bin/server/schema.graphql schema.graphql
-- zip -r dist.zip node_modules index.js schema.graphql
+- zip -q -r dist.zip node_modules index.js schema.graphql
 deploy:
   - provider: s3
     access_key_id: $ACCESS_KEY_ID
@@ -101,6 +102,3 @@ deploy:
     on:
       tags: true
       condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
-after_script:
-- mv node_modules node_modules_prod
-- mv node_modules_dev node_modules
