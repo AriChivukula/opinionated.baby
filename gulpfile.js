@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var babel = require('gulp-babel');
 var browserify = require('gulp-browserify');
+var purgeSourcemaps = require('gulp-purge-sourcemaps');
 var rename = require('gulp-rename');
 var rollup = require('gulp-better-rollup');
 var rollupBabel = require('rollup-plugin-babel');
@@ -145,12 +146,10 @@ gulp.task(
 
 gulp.task(
   'compile-remote-website',
-  () => gulp.src('src/website/index.js')
+  () => gulp.src('_bin/website/index.local.js')
     .pipe(rename('index.remote.js'))
-    .pipe(browserify({
-      ignore: ['electron'],
-      transform: ['babelify']
-    }))
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(purgeSourcemaps())
     .pipe(uglify())
     .pipe(gulp.dest('_bin/website'))
 );
@@ -161,8 +160,10 @@ gulp.task(
     'copy-html',
     'compile-sass',
     'copy-images',
-    'compile-local-website',
-    'compile-remote-website'
+    gulp.series(
+      'compile-local-website',
+      'compile-remote-website'
+    )
   )
 );
 
@@ -202,26 +203,10 @@ gulp.task(
 
 gulp.task(
   'compile-remote-server',
-  () => gulp.src('src/server/index.remote.js')
-    .pipe(rollup(
-      {
-        plugins: [
-          rollupBabel({
-            babelrc: false,
-            exclude: 'node_modules/**',
-            "presets": [
-              [
-                "@babel/preset-env",
-                { "modules": false }
-              ],
-              "@babel/preset-flow",
-              "@babel/preset-react"
-            ]
-          }),
-        ]
-      },
-      { format: 'cjs' }
-    ))
+  () => gulp.src('_bin/server/index.local.js')
+    .pipe(rename('index.remote.js'))
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(purgeSourcemaps())
     .pipe(uglify())
     .pipe(gulp.dest('_bin/server'))
 );
@@ -230,8 +215,10 @@ gulp.task(
   'build-server',
   gulp.parallel(
     'copy-graphql',
-    'compile-local-server',
-    'compile-remote-server'
+    gulp.series(
+      'compile-local-server',
+      'compile-remote-server'
+    )
   )
 );
 
@@ -271,27 +258,11 @@ gulp.task(
 
 gulp.task(
   'compile-remote-application',
-  () => gulp.src('src/application/index.js')
-    .pipe(rollup(
-      {
-        plugins: [
-          rollupBabel({
-            babelrc: false,
-            exclude: 'node_modules/**',
-            "presets": [
-              [
-                "@babel/preset-env",
-                { "modules": false }
-              ],
-              "@babel/preset-flow"
-            ]
-          }),
-        ]
-      },
-      { format: 'cjs' }
-    ))
-    .pipe(uglify())
+  () => gulp.src('_bin/application/index.local.js')
     .pipe(rename('index.remote.js'))
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(purgeSourcemaps())
+    .pipe(uglify())
     .pipe(gulp.dest('_bin/application'))
 );
 
@@ -299,8 +270,10 @@ gulp.task(
   'build-application',
   gulp.parallel(
     'copy-application-static',
-    'compile-local-application',
-    'compile-remote-application',
+    gulp.series(
+      'compile-local-application',
+      'compile-remote-application'
+    )
   )
 );
 
@@ -354,13 +327,16 @@ gulp.task(
 
 gulp.task(
   'localrun',
-  shell.task('ELECTRON_ENABLE_LOGGING=1 DEBUG=* electron _bin/application/application.js')
+  shell.task('ELECTRON_ENABLE_LOGGING=1 DEBUG=* electron _bin/application/index.js')
 );
 
 gulp.task(
   'launch',
   gulp.series(
-    'move-application-static',
+    gulp.parallel(
+      'move-application',
+      'move-application-static'
+    ),
     'localrun'
   )
 );
