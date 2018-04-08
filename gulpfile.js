@@ -135,6 +135,7 @@ gulp.task(
     .pipe(rename('index.local.js'))
     .pipe(sourcemaps.init())
     .pipe(browserify({
+      ignore: ['electron'],
       transform: ['babelify']
     }))
     .pipe(uglify())
@@ -146,9 +147,10 @@ gulp.task(
   'compile-remote-website',
   () => gulp.src('src/website/index.js')
     .pipe(rename('index.remote.js'))
-    .pipe(browserify(
-      { transform: ['babelify'] }
-    ))
+    .pipe(browserify({
+      ignore: ['electron'],
+      transform: ['babelify']
+    }))
     .pipe(uglify())
     .pipe(gulp.dest('_bin/website'))
 );
@@ -234,6 +236,47 @@ gulp.task(
 );
 
 gulp.task(
+  'copy-application',
+  () => gulp.src('_bin/website/**')
+    .pipe(gulp.dest('_bin/application'))
+);
+
+gulp.task(
+  'compile-application',
+  () => gulp.src('src/application/application.js')
+    .pipe(sourcemaps.init())
+    .pipe(rollup(
+      {
+        plugins: [
+          rollupBabel({
+            babelrc: false,
+            exclude: 'node_modules/**',
+            "presets": [
+              [
+                "@babel/preset-env",
+                { "modules": false }
+              ],
+              "@babel/preset-flow"
+            ]
+          }),
+        ]
+      },
+      { format: 'cjs' }
+    ))
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('_bin/application'))
+);
+
+gulp.task(
+  'build-application',
+  gulp.parallel(
+    'copy-application',
+    'compile-application',
+  )
+);
+
+gulp.task(
   'build',
   gulp.series(
     'compile-relay',
@@ -241,6 +284,7 @@ gulp.task(
       'build-website',
       'build-server'
     ),
+    'build-application'
   )
 );
 
@@ -260,13 +304,31 @@ gulp.task(
 );
 
 gulp.task(
-  'start',
+  'serve',
   gulp.series(
     gulp.parallel(
       'move-website',
       'move-server'
     ),
     'localhost'
+  )
+);
+
+gulp.task(
+  'move-application',
+  shell.task('cp _bin/application/index.local.js _bin/application/index.js')
+);
+
+gulp.task(
+  'localrun',
+  shell.task('ELECTRON_ENABLE_LOGGING=1 DEBUG=* electron _bin/application/application.js')
+);
+
+gulp.task(
+  'launch',
+  gulp.series(
+    'move-application',
+    'localrun'
   )
 );
 

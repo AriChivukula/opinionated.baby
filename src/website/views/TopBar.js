@@ -22,6 +22,8 @@ import {
 } from 'rmwc/Toolbar';
 import url from 'url';
 
+import { goto } from '../util.js';
+
 type Props = {
   data: ?TopBarQuery,
   blockUntilReload: () => void,
@@ -72,7 +74,7 @@ class TopBar extends Component<Props> {
         <Toolbar fixed waterfall>
           <ToolbarRow>
             <ToolbarSection alignStart>
-              <ToolbarTitle onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/')}>
+              <ToolbarTitle onClick={() => goto('https://github.com/arichiv/opinionated.baby/')}>
                 Opinionated Baby
               </ToolbarTitle>
             </ToolbarSection>
@@ -80,11 +82,11 @@ class TopBar extends Component<Props> {
               {login}
               <ToolbarIcon
                 use="code"
-                onClick={() => this.goto('https://github.com/arichiv/opinionated.baby/')}
+                onClick={() => goto('https://github.com/arichiv/opinionated.baby/')}
               />
               <ToolbarIcon
                 use="info"
-                onClick={() => this.goto('http://chivuku.la/')}
+                onClick={() => goto('http://chivuku.la/')}
               />
             </ToolbarSection>
           </ToolbarRow>
@@ -143,10 +145,6 @@ class TopBar extends Component<Props> {
       }
     );
     this.props.blockUntilReload();
-  }
-
-  goto(url: string): void {
-    window.location = url;
   }
 }
 

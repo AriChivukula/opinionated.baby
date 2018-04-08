@@ -14,7 +14,7 @@ import {
 } from 'react-relay-network-modern';
 import Root from './views/Root.js';
 
-export default function client_render(api_url: string) {
+export default function website_render(api_url: string) {
   const environment = new Environment({
     network: new RelayNetworkLayer([
       urlMiddleware({
