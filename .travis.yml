@@ -3,8 +3,9 @@ node_js:
 - node
 cache: yarn
 before_script:
-- yarn prep
+- yarn gulp flow-typed
 script:
+- yarn test
 - yarn build
 after_success:
 - rm -rf node_modules
