@@ -1,6 +1,12 @@
 {
   "name": "opinionated.baby",
-  "version": "1",
+  "version": "2.0.0",
+  "description": "A confidently immature starting point",
+  "author": {
+    "name": "Ari Chivukula",
+    "email": "ari@chivuku.la",
+    "github": "@arichiv"
+  },
   "private": true,
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.44",
@@ -25,6 +31,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-plugin-relay": "^1.5.0",
     "babelify": "github:ylemkimon/babelify",
+    "electron": "^2.0.0-beta.7",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "flow-bin": "^0.69.0",
@@ -34,6 +41,7 @@
     "gulp-better-rollup": "^3.1.0",
     "gulp-browserify": "^0.5.1",
     "gulp-cli": "^2.0.1",
+    "gulp-purge-sourcemaps": "^1.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^4.0.1",
     "gulp-shell": "^0.6.5",
@@ -61,7 +69,8 @@
     "prep": "gulp prep",
     "test": "gulp test",
     "build": "gulp build",
-    "start": "gulp start",
+    "serve": "gulp serve",
+    "launch": "gulp launch",
     "snap": "gulp snap",
     "sql": "gulp sql"
   }

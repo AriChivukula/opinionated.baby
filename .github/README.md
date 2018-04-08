@@ -10,8 +10,9 @@
 3. Setup your environment:
    1. [Google OAuth](https://developers.google.com/identity/protocols/OAuth2) (CLIENT_ID, CLIENT_SECRET, REDIRECT_URL)
    2. [PostgreSQL](https://www.postgresql.org/) (DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD, DB_HOST)
-4. Run `yarn prep && yarn sql && yarn build && yarn start`
+4. Run `yarn prep && yarn sql && yarn build && yarn serve`
 5. Navigate to [127.0.0.1:8080](http://127.0.0.1:8080)
+6. Use `yarn launch` to try the electron version of the same app
 
 ## Next Steps
 1. Deploy using:
