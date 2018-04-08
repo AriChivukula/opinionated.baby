@@ -2,9 +2,10 @@
 
 import type {RootQuery} from './__generated__/RootQuery.graphql.js';
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { LinearProgress } from 'rmwc/LinearProgress';
 
+import Content from './Content.js';
 import TopBar from './TopBar.js';
 
 type Props = {
@@ -26,10 +27,13 @@ class Page extends Component<Props, State> {
       return <LinearProgress determinate={false} />;
     } else {
       return (
-        <TopBar
-          blockUntilReload={() => this.setState({isBlockingUntilReload: true})}
-          data={this.props.data}
-        />
+        <Fragment>
+          <TopBar
+            blockUntilReload={() => this.setState({isBlockingUntilReload: true})}
+            data={this.props.data}
+          />
+          <Content />
+        </Fragment>
       );
     }
   }
