@@ -1,6 +1,6 @@
 # Opinionated Baby
 
-## Demo Sites
+## Self-Hosting
 * [Production](https://opinionated.baby/) (Current Release)
 * [Beta](https://beta.opinionated.baby/) (Current Master)
 

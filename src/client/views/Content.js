@@ -64,7 +64,7 @@ class Content extends Component<Props> {
             />
             <SimpleListItem
               graphic="share"
-              text="PostgresSQL"
+              text="PostgreSQL"
               secondaryText="Database"
               onClick={() => this.goto('https://www.postgresql.org/')}
             />
