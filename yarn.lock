@@ -4044,6 +4044,10 @@ gulp-cli@^2.0.0, gulp-cli@^2.0.1:
     v8flags "^3.0.1"
     yargs "^7.1.0"
 
+gulp-rename@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/gulp-rename/-/gulp-rename-1.2.2.tgz#3ad4428763f05e2764dec1c67d868db275687817"
+
 gulp-sass@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/gulp-sass/-/gulp-sass-4.0.0.tgz#8b7f89298959fc2491b99a67939e25e9a0db0f3f"

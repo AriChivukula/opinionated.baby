@@ -34,6 +34,7 @@
     "gulp-better-rollup": "^3.1.0",
     "gulp-browserify": "^0.5.1",
     "gulp-cli": "^2.0.1",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^4.0.0",
     "gulp-shell": "^0.6.5",
     "gulp-sourcemaps": "^2.6.4",

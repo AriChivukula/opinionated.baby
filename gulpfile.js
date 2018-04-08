@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var babel = require('gulp-babel');
 var browserify = require('gulp-browserify');
+var rename = require('gulp-rename');
 var rollup = require('gulp-better-rollup');
 var rollupBabel = require('rollup-plugin-babel');
 var sass = require('gulp-sass');
@@ -141,23 +142,25 @@ gulp.task(
 gulp.task(
   'build-client-local',
   () => gulp.src('src/client/index.js')
+    .pipe(rename('index.local.js'))
     .pipe(sourcemaps.init())
     .pipe(browserify({
       transform: ['babelify']
     }))
     .pipe(uglify())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('_bin/client/index.local.js'))
+    .pipe(gulp.dest('_bin/client'))
 );
 
 gulp.task(
   'build-client-remote',
   () => gulp.src('src/client/index.js')
+    .pipe(rename('index.remote.js'))
     .pipe(browserify(
       { transform: ['babelify'] }
     ))
     .pipe(uglify())
-    .pipe(gulp.dest('_bin/client/index.remote.js'))
+    .pipe(gulp.dest('_bin/client'))
 );
 
 gulp.task(
