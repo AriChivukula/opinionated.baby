@@ -64,7 +64,7 @@ gulp.task(
 );
 
 gulp.task(
-  'relay-compile',
+  'compile-relay',
   shell.task('relay-compiler --src src/client --schema src/server/schema.graphql')
 );
 
@@ -99,7 +99,7 @@ gulp.task(
 gulp.task(
   'test',
   gulp.series(
-    'relay-compile',
+    'compile-relay',
     gulp.parallel(
       'flow-lint',
       'sass-lint',
@@ -111,26 +111,26 @@ gulp.task(
 );
 
 gulp.task(
-  'client-html',
+  'copy-html',
   () => gulp.src('src/client/static/index.html')
     .pipe(gulp.dest('_bin/client'))
 );
 
 gulp.task(
-  'client-sass',
+  'compile-sass',
   () => gulp.src('src/client/static/index.scss')
     .pipe(sass({includePaths: 'node_modules', outputStyle: 'compressed'}))
     .pipe(gulp.dest('_bin/client'))
 );
 
 gulp.task(
-  'client-images',
+  'copy-images',
   () => gulp.src('src/client/static/images/*.jpg')
     .pipe(gulp.dest('_bin/client/images'))
 );
 
 gulp.task(
-  'client-js-local',
+  'compile-local-client',
   () => gulp.src('src/client/index.js')
     .pipe(rename('index.local.js'))
     .pipe(sourcemaps.init())
@@ -143,7 +143,7 @@ gulp.task(
 );
 
 gulp.task(
-  'client-js-remote',
+  'compile-remote-client',
   () => gulp.src('src/client/index.js')
     .pipe(rename('index.remote.js'))
     .pipe(browserify(
@@ -156,22 +156,22 @@ gulp.task(
 gulp.task(
   'build-client',
   gulp.parallel(
-    'client-html',
-    'client-sass',
-    'client-images',
-    'client-js-local',
-    'client-js-remote'
+    'copy-html',
+    'compile-sass',
+    'copy-images',
+    'compile-local-client',
+    'compile-remote-client'
   )
 );
 
 gulp.task(
-  'server-graphql',
+  'copy-graphql',
   () => gulp.src('src/server/schema.graphql')
     .pipe(gulp.dest('_bin/server'))
 );
 
 gulp.task(
-  'server-js-local',
+  'compile-local-server',
   () => gulp.src('src/server/index.local.js')
     .pipe(sourcemaps.init())
     .pipe(rollup(
@@ -199,7 +199,7 @@ gulp.task(
 );
 
 gulp.task(
-  'server-js-remote',
+  'compile-remote-server',
   () => gulp.src('src/server/index.remote.js')
     .pipe(rollup(
       {
@@ -227,16 +227,16 @@ gulp.task(
 gulp.task(
   'build-server',
   gulp.parallel(
-    'server-graphql',
-    'server-js-local',
-    'server-js-remote'
+    'copy-graphql',
+    'compile-local-server',
+    'compile-remote-server'
   )
 );
 
 gulp.task(
   'build',
   gulp.series(
-    'relay-compile',
+    'compile-relay',
     gulp.parallel(
       'build-client',
       'build-server'
@@ -245,17 +245,17 @@ gulp.task(
 );
 
 gulp.task(
-  'start-client',
+  'move-client',
   shell.task('cp _bin/client/index.local.js _bin/client/index.js')
 );
 
 gulp.task(
-  'start-server',
+  'move-server',
   shell.task('cp _bin/server/index.local.js _bin/server/index.js')
 );
 
 gulp.task(
-  'start-localhost',
+  'localhost',
   shell.task('DEBUG=* node _bin/server/index.js')
 );
 
@@ -263,55 +263,55 @@ gulp.task(
   'start',
   gulp.series(
     gulp.parallel(
-      'start-client',
-      'start-server'
+      'move-client',
+      'move-server'
     ),
-    'start-localhost'
+    'localhost'
   )
 );
 
 gulp.task(
-  'snap-build',
+  'compile-snap',
   () => gulp.src('src/**/*.js')
     .pipe(babel())
     .pipe(gulp.dest('_snap'))
 );
 
 gulp.task(
-  'snap-run',
+  'run-snap',
   shell.task('jest -u _snap/client')
 );
 
 gulp.task(
-  'snap-update',
+  'update-snap',
   shell.task('cp -R _snap/client/__tests__/__snapshots__/ src/client/__tests__/__snapshots__/')
 );
 
 gulp.task(
   'snap',
   gulp.series(
-    'snap-build',
-    'snap-run',
-    'snap-update'
+    'compile-snap',
+    'run-snap',
+    'update-snap'
   )
 );
 
 gulp.task(
-  'sql-build',
+  'compile-sql',
   () => gulp.src('src/**/*.js')
     .pipe(babel())
     .pipe(gulp.dest('_sql'))
 );
 
 gulp.task(
-  'sql-run',
+  'run-sql',
   shell.task('node_modules/.bin/sequelize db:migrate')
 );
 
 gulp.task(
   'sql',
   gulp.series(
-    'sql-build',
-    'sql-run'
+    'compile-sql',
+    'run-sql'
   )
 );
