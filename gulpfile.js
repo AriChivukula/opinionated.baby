@@ -236,14 +236,14 @@ gulp.task(
 );
 
 gulp.task(
-  'copy-application',
+  'copy-application-static',
   () => gulp.src('_bin/website/**')
-    .pipe(gulp.dest('_bin/application'))
+    .pipe(gulp.dest('_bin/application/static'))
 );
 
 gulp.task(
-  'compile-application',
-  () => gulp.src('src/application/application.js')
+  'compile-local-application',
+  () => gulp.src('src/application/index.js')
     .pipe(sourcemaps.init())
     .pipe(rollup(
       {
@@ -265,14 +265,42 @@ gulp.task(
     ))
     .pipe(uglify())
     .pipe(sourcemaps.write())
+    .pipe(rename('index.local.js'))
+    .pipe(gulp.dest('_bin/application'))
+);
+
+gulp.task(
+  'compile-remote-application',
+  () => gulp.src('src/application/index.js')
+    .pipe(rollup(
+      {
+        plugins: [
+          rollupBabel({
+            babelrc: false,
+            exclude: 'node_modules/**',
+            "presets": [
+              [
+                "@babel/preset-env",
+                { "modules": false }
+              ],
+              "@babel/preset-flow"
+            ]
+          }),
+        ]
+      },
+      { format: 'cjs' }
+    ))
+    .pipe(uglify())
+    .pipe(rename('index.remote.js'))
     .pipe(gulp.dest('_bin/application'))
 );
 
 gulp.task(
   'build-application',
   gulp.parallel(
-    'copy-application',
-    'compile-application',
+    'copy-application-static',
+    'compile-local-application',
+    'compile-remote-application',
   )
 );
 
@@ -320,6 +348,11 @@ gulp.task(
 );
 
 gulp.task(
+  'move-application-static',
+  shell.task('cp _bin/application/static/index.local.js _bin/application/static/index.js')
+);
+
+gulp.task(
   'localrun',
   shell.task('ELECTRON_ENABLE_LOGGING=1 DEBUG=* electron _bin/application/application.js')
 );
@@ -327,7 +360,7 @@ gulp.task(
 gulp.task(
   'launch',
   gulp.series(
-    'move-application',
+    'move-application-static',
     'localrun'
   )
 );
