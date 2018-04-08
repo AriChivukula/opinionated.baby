@@ -8,8 +8,9 @@ script:
 - yarn test
 - yarn build
 after_success:
-- rm -rf node_modules
-- yarn install --prod
+- yarn install --prod --modules-folder node_modules_prod
+- mv node_modules node_modules_dev
+- mv node_modules_prod node_modules
 - mv _bin/client/index.remote.js _bin/client/index.js
 - rm _bin/client/index.local.js
 - if [[ -z "$TRAVIS_TAG" ]] ; then cp src/client/static/robots.txt _bin/client/robots.txt ; fi
@@ -95,3 +96,6 @@ deploy:
     on:
       tags: true
       condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
+after_script:
+- mv node_modules node_modules_prod
+- mv node_modules_dev node_modules
