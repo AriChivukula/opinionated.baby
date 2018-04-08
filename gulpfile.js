@@ -64,55 +64,49 @@ gulp.task(
 );
 
 gulp.task(
-  'build-lint-graphql',
+  'build-relay-graphql',
   shell.task('relay-compiler --src src/client --schema src/server/schema.graphql')
 );
 
 gulp.task(
-  'build-lint-flow',
+  'lint-flow',
   shell.task('flow')
 );
 
 gulp.task(
-  'build-lint-sass',
+  'lint-sass',
   shell.task('sass-lint src/**/*.scss')
 );
 
 gulp.task(
-  'build-lint',
-  gulp.parallel(
-    gulp.series(
-      'build-lint-graphql',
-      'build-lint-flow'
-    ),
-    'build-lint-sass'
-  )
-);
-
-gulp.task(
-  'build-test-transform',
+  'test-compile',
   () => gulp.src('src/**/*.js')
     .pipe(babel())
     .pipe(gulp.dest('_test')),
 );
 
 gulp.task(
-  'build-test-copy',
+  'test-copy',
   () => gulp.src(['src/**/*.snap', 'src/**/*.graphql'])
     .pipe(gulp.dest('_test')),
 );
 
 gulp.task(
-  'build-test-run',
+  'test-run',
   shell.task('jest _test/')
 );
 
 gulp.task(
-  'build-test',
+  'test',
   gulp.series(
-    'build-test-transform',
-    'build-test-copy',
-    'build-test-run'
+    'build-relay-graphql',
+    gulp.parallel(
+      'lint-flow',
+      'lint-sass',
+      'test-compile',
+      'test-copy'
+    ),
+    'test-run'
   )
 );
 
@@ -242,9 +236,8 @@ gulp.task(
 gulp.task(
   'build',
   gulp.series(
-    'build-lint',
+    'build-relay-graphql',
     gulp.parallel(
-      'build-test',
       'build-client',
       'build-server'
     ),

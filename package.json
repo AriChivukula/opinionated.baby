@@ -59,6 +59,7 @@
   },
   "scripts": {
     "prep": "gulp prep",
+    "test": "gulp test",
     "build": "gulp build",
     "start": "gulp start",
     "snap": "gulp snap",

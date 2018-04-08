@@ -5,6 +5,7 @@ cache: yarn
 before_script:
 - yarn prep
 script:
+- yarn test
 - yarn build
 after_success:
 - rm -rf node_modules
