@@ -210,7 +210,7 @@ class Content extends Component<Props> {
                 <Typography theme="text-secondary-on-background">
                   v1
                 </Typography>
-                {' '}
+                <br />
                 Dogged Dapper
               </Typography>
             </CardPrimaryAction>
@@ -229,7 +229,7 @@ class Content extends Component<Props> {
                 <Typography theme="text-secondary-on-background">
                   v0
                 </Typography>
-                {' '}
+                <br />
                 Cocksure Castle
               </Typography>
             </CardPrimaryAction>
