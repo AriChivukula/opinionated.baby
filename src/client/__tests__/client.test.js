@@ -16,7 +16,7 @@ import {
   RelayNetworkLayer
 } from 'react-relay-network-modern';
 
-import TopBar from '../views/TopBar.js';
+import Page from '../views/Page.js';
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -32,7 +32,7 @@ const environment = new Environment({
 });
 
 test(
-  'TopBar',
+  'Page',
   async () => {
     const component = Enzyme.render(
       Enzyme.mount(
@@ -44,7 +44,7 @@ test(
             }
           },
           // $FlowFixMe
-          <TopBar
+          <Page
             data={{
               __id: '0',
               __fragments: {
