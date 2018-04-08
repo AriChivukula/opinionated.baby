@@ -43,7 +43,6 @@ test(
               variables: {}
             }
           },
-          // $FlowFixMe
           <Page
             data={{
               __id: '0',
