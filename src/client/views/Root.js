@@ -1,7 +1,5 @@
 // @flow
 
-import type {RootQuery} from './__generated__/RootQuery.graphql.js';
-
 import cookie from 'js-cookie';
 import React, { Component } from 'react';
 import {
@@ -11,26 +9,16 @@ import {
 import {
   Environment,
 } from 'relay-runtime';
-import { LinearProgress } from 'rmwc/LinearProgress';
 
-import TopBar from './TopBar.js';
+import Page from './Page.js';
 
 type Props = {
   environment: Environment
 }
 
-type State = {
-  isBlockingUntilReload: bool
-}
-
-class Root extends Component<Props, State> {
-
-  state = {
-    isBlockingUntilReload: false
-  }
+class Root extends Component<Props> {
 
   render() {
-    const blockUntilReload = () => this.setState({isBlockingUntilReload: true});
     return (
       <QueryRenderer
         environment={this.props.environment}
@@ -47,15 +35,8 @@ class Root extends Component<Props, State> {
           if (error) {
             console.log(error);
             return <div />;
-          } else if (!props || this.state.isBlockingUntilReload) {
-            return <LinearProgress determinate={false}></LinearProgress>;
           } else {
-            return (
-              <TopBar
-                blockUntilReload={blockUntilReload}
-                data={props}
-              />
-            );
+            return <Page data={props} />;
           }
         }}
       />
