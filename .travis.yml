@@ -4,6 +4,7 @@ node_js:
 cache:
   yarn: true
   directories:
+  - .flow-typed-cache
   - flow-typed
   - node_modules
   - node_modules_prod
