@@ -140,24 +140,24 @@ gulp.task(
 
 gulp.task(
   'build-client-local',
-  () => gulp.src('src/client/index.local.js')
+  () => gulp.src('src/client/index.js')
     .pipe(sourcemaps.init())
     .pipe(browserify({
       transform: ['babelify']
     }))
     .pipe(uglify())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('_bin/client'))
+    .pipe(gulp.dest('_bin/client/index.local.js'))
 );
 
 gulp.task(
   'build-client-remote',
-  () => gulp.src('src/client/index.remote.js')
+  () => gulp.src('src/client/index.js')
     .pipe(browserify(
       { transform: ['babelify'] }
     ))
     .pipe(uglify())
-    .pipe(gulp.dest('_bin/client'))
+    .pipe(gulp.dest('_bin/client/index.remote.js'))
 );
 
 gulp.task(

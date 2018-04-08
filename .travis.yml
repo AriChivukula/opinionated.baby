@@ -14,7 +14,7 @@ after_script:
 - if [[ -z "$TRAVIS_TAG" ]] ; then cp robots.txt _bin/client/robots.txt ; fi
 - mv _bin/server/index.remote.js index.js
 - mv _bin/server/schema.graphql schema.graphql
-- zip -r prod.zip node_modules index.js schema.graphql
+- zip -r dist.zip node_modules index.js schema.graphql
 deploy:
   - provider: s3
     access_key_id: $ACCESS_KEY_ID
@@ -34,7 +34,7 @@ deploy:
     role: $ROLE
     handler_name: handler
     module_name: index
-    zip: prod.zip
+    zip: dist.zip
     timeout: 300
     memory_size: 256
     runtime: nodejs8.10
@@ -73,7 +73,7 @@ deploy:
     role: $ROLE
     handler_name: handler
     module_name: index
-    zip: prod.zip
+    zip: dist.zip
     timeout: 300
     memory_size: 256
     runtime: nodejs8.10
