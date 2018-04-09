@@ -182,7 +182,7 @@ gulp.task(
 
 gulp.task(
   'compile-local-server',
-  () => gulp.src('src/server/index.local.js')
+  () => gulp.src('src/server/index.js')
     .pipe(sourcemaps.init())
     .pipe(rollup(
       {
@@ -205,31 +205,16 @@ gulp.task(
     ))
     .pipe(uglify())
     .pipe(sourcemaps.write())
+    .pipe(rename('index.local.js'))
     .pipe(gulp.dest('_bin/server'))
 );
 
 gulp.task(
   'compile-remote-server',
-  () => gulp.src('src/server/index.remote.js')
-    .pipe(rollup(
-      {
-        plugins: [
-          rollupBabel({
-            babelrc: false,
-            exclude: 'node_modules/**',
-            "presets": [
-              [
-                "@babel/preset-env",
-                { "modules": false }
-              ],
-              "@babel/preset-flow",
-              "@babel/preset-react"
-            ]
-          }),
-        ]
-      },
-      { format: 'cjs' }
-    ))
+  () => gulp.src('_bin/server/index.local.js')
+    .pipe(rename('index.remote.js'))
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(purgeSourcemaps())
     .pipe(uglify())
     .pipe(gulp.dest('_bin/server'))
 );
