@@ -131,6 +131,12 @@ gulp.task(
 );
 
 gulp.task(
+  'copy-icon',
+  () => gulp.src('src/website/static/favicon.ico')
+    .pipe(gulp.dest('_bin/website'))
+);
+
+gulp.task(
   'compile-local-website',
   () => gulp.src('src/website/index.js')
     .pipe(rename('index.local.js'))
@@ -160,6 +166,7 @@ gulp.task(
     'copy-html',
     'compile-sass',
     'copy-images',
+    'copy-icon',
     gulp.series(
       'compile-local-website',
       'compile-remote-website'
