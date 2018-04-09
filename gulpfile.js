@@ -223,8 +223,10 @@ gulp.task(
   'build-server',
   gulp.parallel(
     'copy-graphql',
-    'compile-local-server',
-    'compile-remote-server'
+    gulp.series(
+      'compile-local-server',
+      'compile-remote-server'
+    )
   )
 );
 
