@@ -12,26 +12,15 @@ type Props = {
   data: ?RootQuery
 }
 
-type State = {
-  isBlockingUntilReload: bool
-}
-
-class Page extends Component<Props, State> {
-
-  state = {
-    isBlockingUntilReload: false
-  }
+class Page extends Component<Props> {
 
   render() {
-    if (!this.props.data || this.state.isBlockingUntilReload) {
+    if (!this.props.data) {
       return <LinearProgress determinate={false} />;
     } else {
       return (
         <Fragment>
-          <TopBar
-            blockUntilReload={() => this.setState({isBlockingUntilReload: true})}
-            data={this.props.data}
-          />
+          <TopBar data={this.props.data} />
           <Content />
         </Fragment>
       );

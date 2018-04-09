@@ -82,7 +82,9 @@ gulp.task(
 gulp.task(
   'compile-test',
   () => gulp.src('src/**/*.js')
+    .pipe(sourcemaps.init())
     .pipe(babel())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('_test')),
 );
 
@@ -94,7 +96,7 @@ gulp.task(
 
 gulp.task(
   'run-test',
-  shell.task('jest _test/')
+  shell.task('jest --collectCoverage _test/')
 );
 
 gulp.task(

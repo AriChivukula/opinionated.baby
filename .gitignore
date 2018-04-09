@@ -3,6 +3,7 @@ _bin
 _test
 _snap
 _sql
+coverage
 flow-typed
 node_modules
 yarn-error.log

@@ -43,7 +43,7 @@ class Content extends Component<Props> {
             {' '}
             <Typography
               theme="text-secondary-on-background"
-              onClick={() => goto('https://github.com/arichiv/opinionated.baby/')}>
+              onClick={goto('https://github.com/arichiv/opinionated.baby/')}>
               Opinionated Baby
             </Typography>
             {' '}
@@ -62,25 +62,25 @@ class Content extends Component<Props> {
               graphic="memory"
               text="Lambda"
               secondaryText="Server(less)"
-              onClick={() => goto('https://aws.amazon.com/lambda/')}
+              onClick={goto('https://aws.amazon.com/lambda/')}
             />
             <SimpleListItem
               graphic="share"
               text="PostgreSQL"
               secondaryText="Database"
-              onClick={() => goto('https://www.postgresql.org/')}
+              onClick={goto('https://www.postgresql.org/')}
             />
             <SimpleListItem
               graphic="storage"
               text="S3"
               secondaryText="Storage"
-              onClick={() => goto('https://aws.amazon.com/s3/')}
+              onClick={goto('https://aws.amazon.com/s3/')}
             />
             <SimpleListItem
               graphic="bug_report"
               text="Travis CI"
               secondaryText="CI/CD"
-              onClick={() => goto('https://travis-ci.org/')}
+              onClick={goto('https://travis-ci.org/')}
             />
           </List>
         </GridCell>
@@ -90,25 +90,25 @@ class Content extends Component<Props> {
               graphic="description"
               text="JavaScript"
               secondaryText="Language"
-              onClick={() => goto('https://developer.mozilla.org/en-US/docs/Web/JavaScript/')}
+              onClick={goto('https://developer.mozilla.org/en-US/docs/Web/JavaScript/')}
             />
             <SimpleListItem
               graphic="language"
               text="Babel"
               secondaryText="Transpiler"
-              onClick={() => goto('https://babeljs.io/')}
+              onClick={goto('https://babeljs.io/')}
             />
             <SimpleListItem
               graphic="cached"
               text="Node.js"
               secondaryText="Runtime"
-              onClick={() => goto('https://nodejs.org/en/')}
+              onClick={goto('https://nodejs.org/en/')}
             />
             <SimpleListItem
               graphic="desktop_mac"
               text="Electron"
               secondaryText="Desktop"
-              onClick={() => goto('https://electronjs.org/')}
+              onClick={goto('https://electronjs.org/')}
             />
           </List>
         </GridCell>
@@ -118,25 +118,25 @@ class Content extends Component<Props> {
               graphic="unarchive"
               text="yarn"
               secondaryText="Dependency"
-              onClick={() => goto('https://yarnpkg.com/en/')}
+              onClick={goto('https://yarnpkg.com/en/')}
             />
             <SimpleListItem
               graphic="build"
               text="Gulp"
               secondaryText="Toolchain"
-              onClick={() => goto('https://gulpjs.com/')}
+              onClick={goto('https://gulpjs.com/')}
             />
             <SimpleListItem
               graphic="playlist_add_check"
               text="Jest"
               secondaryText="Testing"
-              onClick={() => goto('https://facebook.github.io/jest/')}
+              onClick={goto('https://facebook.github.io/jest/')}
             />
             <SimpleListItem
               graphic="graphic_eq"
               text="GraphQL"
               secondaryText="API"
-              onClick={() => goto('https://graphql.org/')}
+              onClick={goto('https://graphql.org/')}
             />
           </List>
         </GridCell>
@@ -146,25 +146,25 @@ class Content extends Component<Props> {
               graphic="flip_to_front"
               text="React"
               secondaryText="Interface"
-              onClick={() => goto('https://reactjs.org/')}
+              onClick={goto('https://reactjs.org/')}
             />
             <SimpleListItem
               graphic="local_library"
               text="Relay"
               secondaryText="Fetch"
-              onClick={() => goto('http://facebook.github.io/relay/')}
+              onClick={goto('http://facebook.github.io/relay/')}
             />
             <SimpleListItem
               graphic="style"
               text="Material Design"
               secondaryText="Theme"
-              onClick={() => goto('https://material.io/components/web/')}
+              onClick={goto('https://material.io/components/web/')}
             />
             <SimpleListItem
               graphic="line_style"
               text="SASS"
               secondaryText="Style"
-              onClick={() => goto('https://sass-lang.com/')}
+              onClick={goto('https://sass-lang.com/')}
             />
           </List>
         </GridCell>
@@ -188,7 +188,7 @@ class Content extends Component<Props> {
             {' '}
             <Typography
               theme="text-secondary-on-background"
-              onClick={() => goto('http://www.nic.baby/policies.html')}>
+              onClick={goto('http://www.nic.baby/policies.html')}>
               babies and children
             </Typography>
             .
@@ -201,7 +201,7 @@ class Content extends Component<Props> {
         </GridCell>
         <GridCell span={4}>
           <Card>
-            <CardPrimaryAction onClick={() => goto('https://github.com/arichiv/opinionated.baby/releases/tag/v2/')}>
+            <CardPrimaryAction onClick={goto('https://github.com/arichiv/opinionated.baby/releases/tag/v2/')}>
               <CardMedia
                 square
                 style={{backgroundImage: 'url(images/v2.jpg)'}}
@@ -220,7 +220,7 @@ class Content extends Component<Props> {
         </GridCell>
         <GridCell span={4}>
           <Card>
-            <CardPrimaryAction onClick={() => goto('https://github.com/arichiv/opinionated.baby/releases/tag/v1/')}>
+            <CardPrimaryAction onClick={goto('https://github.com/arichiv/opinionated.baby/releases/tag/v1/')}>
               <CardMedia
                 square
                 style={{backgroundImage: 'url(images/v1.jpg)'}}
@@ -239,7 +239,7 @@ class Content extends Component<Props> {
         </GridCell>
         <GridCell span={4}>
           <Card>
-            <CardPrimaryAction onClick={() => goto('https://github.com/arichiv/opinionated.baby/releases/tag/v0/')}>
+            <CardPrimaryAction onClick={goto('https://github.com/arichiv/opinionated.baby/releases/tag/v0/')}>
               <CardMedia
                 square
                 style={{backgroundImage: 'url(images/v0.jpg)'}}
