@@ -128,14 +128,11 @@ gulp.task(
 
 gulp.task(
   'copy-images',
-  () => gulp.src('src/website/static/images/*.jpg')
+  () => gulp.src([
+    'src/website/static/images/*.jpg',
+    'src/website/static/images/*.png'
+  ])
     .pipe(gulp.dest('_bin/website/images'))
-);
-
-gulp.task(
-  'copy-icon',
-  () => gulp.src('src/website/static/favicon.ico')
-    .pipe(gulp.dest('_bin/website'))
 );
 
 gulp.task(
@@ -168,7 +165,6 @@ gulp.task(
     'copy-html',
     'compile-sass',
     'copy-images',
-    'copy-icon',
     gulp.series(
       'compile-local-website',
       'compile-remote-website'
