@@ -5,17 +5,19 @@ import 'jest-enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
-import context from 'react-test-context-provider';
+import {
+  urlMiddleware,
+  RelayNetworkLayer
+} from 'react-relay-network-modern';
+import { BrowserRouter } from 'react-router-dom';
 import {
   Environment,
   RecordSource,
   Store,
 } from 'relay-runtime';
-import {
-  urlMiddleware,
-  RelayNetworkLayer
-} from 'react-relay-network-modern';
+import context from 'react-test-context-provider';
 
+import FourOhFour from '../views/FourOhFour.js';
 import Page from '../views/Page.js';
 
 Enzyme.configure({
@@ -30,6 +32,20 @@ const environment = new Environment({
   ]),
   store: new Store(new RecordSource())
 });
+
+test(
+  'FourOhFour',
+  async () => {
+    const component = Enzyme.render(
+      Enzyme.mount(
+        <BrowserRouter>
+          <FourOhFour />
+        </BrowserRouter>
+      )
+    );
+    expect(component).toMatchSnapshot();
+  }
+);
 
 test(
   'PageUnloaded',
