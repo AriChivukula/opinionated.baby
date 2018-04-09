@@ -8,10 +8,10 @@ import server from './server.js';
 
 const app = express();
 app.use(cors());
-app.use('/graphql', server);
 let lambdaHandle = undefined;
 
 if (process.env.LAMBDA_TASK_ROOT && process.env.AWS_EXECUTION_ENV) {
+  app.use('/', server);
   const server = lambda.createServer(
     app,
     null,
@@ -29,6 +29,7 @@ if (process.env.LAMBDA_TASK_ROOT && process.env.AWS_EXECUTION_ENV) {
     (event: Object, context: Object) => lambda.proxy(server, event, context);
 } else {
   app.use('/', express.static('_bin/website'));
+  app.use('/graphql', server);
   app.listen(8080);
 }
 
