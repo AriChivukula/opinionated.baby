@@ -201,6 +201,25 @@ class Content extends Component<Props> {
         </GridCell>
         <GridCell span={4}>
           <Card>
+            <CardPrimaryAction onClick={goto('https://github.com/arichiv/opinionated.baby/releases/tag/v3/')}>
+              <CardMedia
+                square
+                style={{backgroundImage: 'url(images/v3.jpg)'}}
+              />
+              <Typography
+                use="display1"
+                style={{padding: '1rem'}}>
+                <Typography theme="text-secondary-on-background">
+                  v3
+                </Typography>
+                <br />
+                Tilted Turtle
+              </Typography>
+            </CardPrimaryAction>
+          </Card>
+        </GridCell>
+        <GridCell span={4}>
+          <Card>
             <CardPrimaryAction onClick={goto('https://github.com/arichiv/opinionated.baby/releases/tag/v2/')}>
               <CardMedia
                 square
