@@ -32,7 +32,56 @@ const environment = new Environment({
 });
 
 test(
-  'Page',
+  'PageUnloaded',
+  async () => {
+    const component = Enzyme.render(
+      Enzyme.mount(
+        context(
+          {
+            relay:{
+              environment: environment,
+              variables: {}
+            }
+          },
+          <Page data={null} />
+        )
+      )
+    );
+    expect(component).toMatchSnapshot();
+  }
+);
+
+test(
+  'PageLoggedOut',
+  async () => {
+    const component = Enzyme.render(
+      Enzyme.mount(
+        context(
+          {
+            relay:{
+              environment: environment,
+              variables: {}
+            }
+          },
+          <Page
+            data={{
+              __id: '0',
+              __fragments: {
+                'TopBarQuery': {}
+              },
+              me: null,
+              loginURL: 'http://fake.com/'
+            }}
+          />
+        )
+      )
+    );
+    expect(component).toMatchSnapshot();
+  }
+);
+
+test(
+  'PageLoggedIn',
   async () => {
     const component = Enzyme.render(
       Enzyme.mount(
@@ -56,7 +105,6 @@ test(
               },
               loginURL: 'http://fake.com/'
             }}
-            blockUntilReload={() => {}}
           />
         )
       )

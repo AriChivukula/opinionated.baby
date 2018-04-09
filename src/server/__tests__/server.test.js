@@ -1,13 +1,21 @@
 // @flow
 
 import '@babel/polyfill';
-import { getLoginURL } from '../google.js';
+import { getLoginURL, genAccessTokenInfo } from '../google.js';
 import { User } from '../models/index.js';
 
 test(
   'getLoginURL',
   async () => {
-    expect(getLoginURL()).toMatch('/accounts.google.com/');
+    const url = getLoginURL();
+    expect(url).toMatch('/accounts.google.com/');
+  }
+);
+
+test(
+  'genAccessTokenInfo',
+  async () => {
+    await expect(genAccessTokenInfo('ERROR')).rejects.toThrow(Error);
   }
 );
 

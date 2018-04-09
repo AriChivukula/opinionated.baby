@@ -7,6 +7,25 @@
     "email": "ari@chivuku.la",
     "github": "@arichiv"
   },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/_test/application/index.js",
+      "/_test/server/index.js",
+      "/_test/server/models/migrations/",
+      "/_test/website/views/__generated__/",
+      "/_test/website/index.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 75,
+        "statements": 75
+      }
+    },
+    "verbose": true
+  },
   "private": true,
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.44",

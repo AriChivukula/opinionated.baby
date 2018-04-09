@@ -16,7 +16,7 @@ export const getLoginURL =
       scope: ['profile', 'email'],
     });
 
-export const getAccessTokenInfo =
+export const genAccessTokenInfo =
   async (access_token: string): Promise<Object> => await google
     .oauth2('v2')
     .tokeninfo({access_token: access_token});
