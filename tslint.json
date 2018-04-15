@@ -4,6 +4,8 @@
   ],
   "rules": {
     "completed-docs": false,
-    "no-console": false
+    "no-console": false,
+    "no-implicit-dependencies": false,
+    "no-unsafe-any": false
   }
 }

@@ -1,11 +1,15 @@
-import website from './website';
+import { website } from "./website";
 
-let api_url = 'http://127.0.0.1:8080/graphql/';
+let apiURL: string;
 
-if (window.location.hostname == 'opinionated.baby') {
-  api_url = 'https://api.opinionated.baby/opinionatedbaby/'
-} else if (window.location.hostname == 'beta.opinionated.baby') {
-  api_url = 'https://api-beta.opinionated.baby/betaopinionatedbaby/'
+if (window.location.hostname === "opinionated.baby") {
+  apiURL = "https://api.opinionated.baby/opinionatedbaby/";
+} else if (window.location.hostname === "beta.opinionated.baby") {
+  apiURL = "https://api-beta.opinionated.baby/betaopinionatedbaby/";
+} else {
+  apiURL = "http://127.0.0.1:8080/graphql/";
 }
 
-window.onload = () => website(api_url);
+window.onload = (): void => {
+  website(apiURL);
+};

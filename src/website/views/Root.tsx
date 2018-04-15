@@ -1,14 +1,14 @@
-import * as cookie from 'js-cookie';
-import * as React from 'react';
+import * as cookie from "js-cookie";
+import * as React from "react";
 import {
   graphql,
   QueryRenderer
-} from 'react-relay';
+} from "react-relay";
 import {
   Environment,
-} from 'relay-runtime';
+} from "relay-runtime";
 
-import Page from './Page';
+import Page from "./Page";
 
 type Props = {
   environment: Environment
@@ -21,8 +21,8 @@ class Root extends React.Component<Props> {
       <QueryRenderer
         environment={this.props.environment}
         variables={{
-          access_token: cookie.get('access_token')
-            ? cookie.get('access_token') : ''
+          access_token: cookie.get("access_token")
+            ? cookie.get("access_token") : ""
         }}
         query={graphql`
           query RootQuery($access_token: String!) {

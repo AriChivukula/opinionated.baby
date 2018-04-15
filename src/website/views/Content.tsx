@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   Card,
   CardPrimaryAction,
@@ -7,22 +7,18 @@ import {
   CardActions,
   CardActionButtons,
   CardActionIcons
-// @ts-ignore
-} from 'rmwc/Card';
+} from "rmwc/Card";
 import {
   Grid,
   GridCell
-// @ts-ignore
-} from 'rmwc/Grid';
+} from "rmwc/Grid";
 import {
   List,
   SimpleListItem
-// @ts-ignore
-} from 'rmwc/List';
-// @ts-ignore
-import { Typography } from 'rmwc/Typography';
+} from "rmwc/List";
+import { Typography } from "rmwc/Typography";
 
-import { goto } from '../util';
+import { goto } from "../util";
 
 class Content extends React.Component<{}> {
 
@@ -39,13 +35,13 @@ class Content extends React.Component<{}> {
             The hardest part of building a new dynamic website is avoiding
             all the dragons. Starting a development environment can freeze us
             with choice overload.
-            {' '}
+            {" "}
             <Typography
               theme="text-secondary-on-background"
-              onClick={goto('https://github.com/arichiv/opinionated.baby/')}>
+              onClick={goto("https://github.com/arichiv/opinionated.baby/")}>
               Opinionated Baby
             </Typography>
-            {' '}
+            {" "}
             solves this by moving the starting line past the quagmire of setup
             and into the pleasure of production logic.
           </Typography>
@@ -61,25 +57,25 @@ class Content extends React.Component<{}> {
               graphic="memory"
               text="Lambda"
               secondaryText="Server(less)"
-              onClick={goto('https://aws.amazon.com/lambda/')}
+              onClick={goto("https://aws.amazon.com/lambda/")}
             />
             <SimpleListItem
               graphic="share"
               text="PostgreSQL"
               secondaryText="Database"
-              onClick={goto('https://www.postgresql.org/')}
+              onClick={goto("https://www.postgresql.org/")}
             />
             <SimpleListItem
               graphic="storage"
               text="S3"
               secondaryText="Storage"
-              onClick={goto('https://aws.amazon.com/s3/')}
+              onClick={goto("https://aws.amazon.com/s3/")}
             />
             <SimpleListItem
               graphic="bug_report"
               text="Travis CI"
               secondaryText="CI/CD"
-              onClick={goto('https://travis-ci.org/')}
+              onClick={goto("https://travis-ci.org/")}
             />
           </List>
         </GridCell>
@@ -89,25 +85,25 @@ class Content extends React.Component<{}> {
               graphic="description"
               text="JavaScript"
               secondaryText="Language"
-              onClick={goto('https://developer.mozilla.org/en-US/docs/Web/JavaScript/')}
+              onClick={goto("https://developer.mozilla.org/en-US/docs/Web/JavaScript/")}
             />
             <SimpleListItem
               graphic="language"
               text="Babel"
               secondaryText="Transpiler"
-              onClick={goto('https://babeljs.io/')}
+              onClick={goto("https://babeljs.io/")}
             />
             <SimpleListItem
               graphic="cached"
               text="Node.js"
               secondaryText="Runtime"
-              onClick={goto('https://nodejs.org/en/')}
+              onClick={goto("https://nodejs.org/en/")}
             />
             <SimpleListItem
               graphic="desktop_mac"
               text="Electron"
               secondaryText="Desktop"
-              onClick={goto('https://electronjs.org/')}
+              onClick={goto("https://electronjs.org/")}
             />
           </List>
         </GridCell>
@@ -117,25 +113,25 @@ class Content extends React.Component<{}> {
               graphic="unarchive"
               text="yarn"
               secondaryText="Dependency"
-              onClick={goto('https://yarnpkg.com/en/')}
+              onClick={goto("https://yarnpkg.com/en/")}
             />
             <SimpleListItem
               graphic="build"
               text="Gulp"
               secondaryText="Toolchain"
-              onClick={goto('https://gulpjs.com/')}
+              onClick={goto("https://gulpjs.com/")}
             />
             <SimpleListItem
               graphic="playlist_add_check"
               text="Jest"
               secondaryText="Testing"
-              onClick={goto('https://facebook.github.io/jest/')}
+              onClick={goto("https://facebook.github.io/jest/")}
             />
             <SimpleListItem
               graphic="graphic_eq"
               text="GraphQL"
               secondaryText="API"
-              onClick={goto('https://graphql.org/')}
+              onClick={goto("https://graphql.org/")}
             />
           </List>
         </GridCell>
@@ -145,49 +141,49 @@ class Content extends React.Component<{}> {
               graphic="flip_to_front"
               text="React"
               secondaryText="Interface"
-              onClick={goto('https://reactjs.org/')}
+              onClick={goto("https://reactjs.org/")}
             />
             <SimpleListItem
               graphic="local_library"
               text="Relay"
               secondaryText="Fetch"
-              onClick={goto('http://facebook.github.io/relay/')}
+              onClick={goto("http://facebook.github.io/relay/")}
             />
             <SimpleListItem
               graphic="style"
               text="Material Design"
               secondaryText="Theme"
-              onClick={goto('https://material.io/components/web/')}
+              onClick={goto("https://material.io/components/web/")}
             />
             <SimpleListItem
               graphic="line_style"
               text="SASS"
               secondaryText="Style"
-              onClick={goto('https://sass-lang.com/')}
+              onClick={goto("https://sass-lang.com/")}
             />
           </List>
         </GridCell>
         <GridCell span={12}>
           <Typography use="display2" tag="div">
-            <span style={{textDecoration: 'line-through'}}>
+            <span style={{textDecoration: "line-through"}}>
               Self justification
             </span>
-            {' '}
+            {" "}
             Philosophy
           </Typography>
         </GridCell>
         <GridCell span={12}>
           <Typography use="subheading2" tag="div">
-            This framework is one-size-fits-me. It{'\''}s an open source
+            This framework is one-size-fits-me. It{"\"}s an open source
             version of a system I use when building complex websites.
             Anyone may attempt to use, critique, or contribute to it. The
             consistency with which feedback is incorporated will be nothing
             short of capricious. My general mission and purpose is to support
             the vitality and happy, healthy development of our
-            {' '}
+            {" "}
             <Typography
               theme="text-secondary-on-background"
-              onClick={goto('http://www.nic.baby/policies.html')}>
+              onClick={goto("http://www.nic.baby/policies.html")}>
               babies and children
             </Typography>
             .
@@ -200,14 +196,14 @@ class Content extends React.Component<{}> {
         </GridCell>
         <GridCell span={4}>
           <Card>
-            <CardPrimaryAction onClick={goto('https://github.com/arichiv/opinionated.baby/releases/tag/v3/')}>
+            <CardPrimaryAction onClick={goto("https://github.com/arichiv/opinionated.baby/releases/tag/v3/")}>
               <CardMedia
                 square
-                style={{backgroundImage: 'url(images/v3.jpg)'}}
+                style={{backgroundImage: "url(images/v3.jpg)"}}
               />
               <Typography
                 use="display1"
-                style={{padding: '1rem'}}>
+                style={{padding: "1rem"}}>
                 <Typography theme="text-secondary-on-background">
                   v3
                 </Typography>
@@ -219,14 +215,14 @@ class Content extends React.Component<{}> {
         </GridCell>
         <GridCell span={4}>
           <Card>
-            <CardPrimaryAction onClick={goto('https://github.com/arichiv/opinionated.baby/releases/tag/v2/')}>
+            <CardPrimaryAction onClick={goto("https://github.com/arichiv/opinionated.baby/releases/tag/v2/")}>
               <CardMedia
                 square
-                style={{backgroundImage: 'url(images/v2.jpg)'}}
+                style={{backgroundImage: "url(images/v2.jpg)"}}
               />
               <Typography
                 use="display1"
-                style={{padding: '1rem'}}>
+                style={{padding: "1rem"}}>
                 <Typography theme="text-secondary-on-background">
                   v2
                 </Typography>
@@ -238,14 +234,14 @@ class Content extends React.Component<{}> {
         </GridCell>
         <GridCell span={4}>
           <Card>
-            <CardPrimaryAction onClick={goto('https://github.com/arichiv/opinionated.baby/releases/tag/v1/')}>
+            <CardPrimaryAction onClick={goto("https://github.com/arichiv/opinionated.baby/releases/tag/v1/")}>
               <CardMedia
                 square
-                style={{backgroundImage: 'url(images/v1.jpg)'}}
+                style={{backgroundImage: "url(images/v1.jpg)"}}
               />
               <Typography
                 use="display1"
-                style={{padding: '1rem'}}>
+                style={{padding: "1rem"}}>
                 <Typography theme="text-secondary-on-background">
                   v1
                 </Typography>
@@ -257,14 +253,14 @@ class Content extends React.Component<{}> {
         </GridCell>
         <GridCell span={4}>
           <Card>
-            <CardPrimaryAction onClick={goto('https://github.com/arichiv/opinionated.baby/releases/tag/v0/')}>
+            <CardPrimaryAction onClick={goto("https://github.com/arichiv/opinionated.baby/releases/tag/v0/")}>
               <CardMedia
                 square
-                style={{backgroundImage: 'url(images/v0.jpg)'}}
+                style={{backgroundImage: "url(images/v0.jpg)"}}
               />
               <Typography
                 use="display1"
-                style={{padding: '1rem'}}>
+                style={{padding: "1rem"}}>
                 <Typography theme="text-secondary-on-background">
                   v0
                 </Typography>

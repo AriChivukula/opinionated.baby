@@ -1,12 +1,11 @@
-import { TopBarQuery } from './__generated__/TopBarQuery.graphql';
+import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
 
-import * as React from 'react';
-// @ts-ignore
-import { LinearProgress } from 'rmwc/LinearProgress';
-import { parse } from 'url';
+import * as React from "react";
+import { LinearProgress } from "rmwc/LinearProgress";
+import { parse } from "url";
 
-import Content from './Content';
-import TopBar from './TopBar';
+import Content from "./Content";
+import TopBar from "./TopBar";
 
 type Props = {
   data: TopBarQuery

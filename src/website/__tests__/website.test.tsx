@@ -1,17 +1,17 @@
-import 'jest-enzyme';
-import * as enzyme from 'enzyme';
-import * as adapter from 'enzyme-adapter-react-16';
-import * as React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import "jest-enzyme";
+import * as enzyme from "enzyme";
+import * as adapter from "enzyme-adapter-react-16";
+import * as React from "react";
+import { BrowserRouter } from "react-router-dom";
 import {
   Environment,
   Network,
   RecordSource,
   Store,
-} from 'relay-runtime';
+} from "relay-runtime";
 
-import FourOhFour from '../views/FourOhFour';
-import Page from '../views/Page';
+import FourOhFour from "../views/FourOhFour";
+import Page from "../views/Page";
 
 enzyme.configure({
   adapter: new adapter()
@@ -23,7 +23,7 @@ const environment = new Environment({
 });
 
 test(
-  'FourOhFour',
+  "FourOhFour",
   async () => {
     const component = enzyme.render(
       <BrowserRouter>
@@ -35,7 +35,7 @@ test(
 );
 
 test(
-  'PageUnloaded',
+  "PageUnloaded",
   async () => {
     const component = enzyme.render(
       <Page data={null} />,
@@ -53,17 +53,17 @@ test(
 );
 
 test(
-  'PageLoggedOut',
+  "PageLoggedOut",
   async () => {
     const component = enzyme.render(
       <Page
         data={{
-          __id: '0',
+          __id: "0",
           __fragments: {
-            'TopBarQuery': {}
+            "TopBarQuery": {}
           },
           me: null,
-          loginURL: 'http://fake.com/'
+          loginURL: "http://fake.com/"
         }}
       />,
       {
@@ -80,21 +80,21 @@ test(
 );
 
 test(
-  'PageLoggedIn',
+  "PageLoggedIn",
   async () => {
     const component = enzyme.render(
       <Page
         data={{
-          __id: '0',
+          __id: "0",
           __fragments: {
-            'TopBarQuery': {}
+            "TopBarQuery": {}
           },
           me: {
-            id: 'TEST',
-            googleID: 'TEST',
-            email: 'TEST'
+            id: "TEST",
+            googleID: "TEST",
+            email: "TEST"
           },
-          loginURL: 'http://fake.com/'
+          loginURL: "http://fake.com/"
         }}
       />,
       {

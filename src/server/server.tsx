@@ -24,7 +24,7 @@ const root: (request: Request, response: Response) => Promise<object> =
   async (request: Request, response: Response): Promise<object> => ({
     login: async (code: string): Promise<object> => {
       const token: IAccessToken = await genAccessToken(code);
-      const accessToken: string = token.tokens.access_token;
+      const accessToken: string = token.tokens.access_token as string;
       const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
       let user: User | undefined = await entityManager.findOneById(User, info.data.user_id);
       if (user !== undefined) {
@@ -40,7 +40,7 @@ const root: (request: Request, response: Response) => Promise<object> =
     logout: async (): Promise<object> => ({
       accessToken: "",
     }),
-    me: async ({ accessToken }: { accessToken: string }): Promise<object> => {
+    me: async ({ accessToken }: { accessToken: string }): Promise<object | undefined> => {
       try {
         const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
 

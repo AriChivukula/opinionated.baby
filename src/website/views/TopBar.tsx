@@ -1,15 +1,15 @@
-import { TopBarQuery } from './__generated__/TopBarQuery.graphql';
+import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
 
-import * as cookie from 'js-cookie';
-import * as React from 'react';
+import * as cookie from "js-cookie";
+import * as React from "react";
 import {
   createFragmentContainer,
   commitMutation,
   graphql
-} from 'react-relay';
+} from "react-relay";
 import {
   Environment,
-} from 'relay-runtime';
+} from "relay-runtime";
 import {
   Toolbar,
   ToolbarFixedAdjust,
@@ -17,11 +17,10 @@ import {
   ToolbarRow,
   ToolbarSection,
   ToolbarTitle,
-// @ts-ignore
-} from 'rmwc/Toolbar';
-import { parse } from 'url';
+} from "rmwc/Toolbar";
+import { parse } from "url";
 
-import { goto } from '../util';
+import { goto } from "../util";
 
 type Props = {
   data: TopBarQuery,
@@ -66,7 +65,7 @@ class TopBar extends React.Component<Props> {
         <Toolbar fixed waterfall>
           <ToolbarRow>
             <ToolbarSection alignStart>
-              <ToolbarTitle onClick={goto('https://github.com/arichiv/opinionated.baby/')}>
+              <ToolbarTitle onClick={goto("https://github.com/arichiv/opinionated.baby/")}>
                 Opinionated Baby
               </ToolbarTitle>
             </ToolbarSection>
@@ -74,11 +73,11 @@ class TopBar extends React.Component<Props> {
               {login}
               <ToolbarIcon
                 use="code"
-                onClick={goto('https://github.com/arichiv/opinionated.baby/')}
+                onClick={goto("https://github.com/arichiv/opinionated.baby/")}
               />
               <ToolbarIcon
                 use="info"
-                onClick={goto('http://chivuku.la/')}
+                onClick={goto("http://chivuku.la/")}
               />
             </ToolbarSection>
           </ToolbarRow>
@@ -110,8 +109,8 @@ class TopBar extends React.Component<Props> {
           code: code
         },
         onCompleted: (response, errors) => {
-          cookie.set('access_token', response.login.accessToken);
-          (window as any).location = '/';
+          cookie.set("access_token", response.login.accessToken);
+          (window as any).location = "/";
         }
       }
     );
@@ -130,8 +129,8 @@ class TopBar extends React.Component<Props> {
         `,
         variables: {},
         onCompleted: (response, errors) => {
-          cookie.set('access_token', response.logout.accessToken);
-          (window as any).location = '/';
+          cookie.set("access_token", response.logout.accessToken);
+          (window as any).location = "/";
         }
       }
     );

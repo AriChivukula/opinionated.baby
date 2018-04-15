@@ -1,4 +1,3 @@
-// tslint:disable-next-line:no-implicit-dependencies
 import { app, BrowserWindow } from "electron";
 import { join } from "path";
 import { format } from "url";

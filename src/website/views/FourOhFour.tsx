@@ -1,7 +1,6 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-// @ts-ignore
-import { Typography } from 'rmwc/Typography';
+import * as React from "react";
+import { Link } from "react-router-dom";
+import { Typography } from "rmwc/Typography";
 
 class FourOhFour extends React.Component<{}> {
 

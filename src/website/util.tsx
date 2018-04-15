@@ -1,11 +1,15 @@
-export const isElectron = function(): boolean {
-  return window && (window as any).process && (window as any).process.type;
-}
+export const isElectron: () => boolean =
+  (): boolean => "process.type" in window;
 
-export const goto = function(url: string): () => void {
-  if (isElectron()) {
-    return () => (window as any).require('electron').shell.openExternal(url);
-  } else {
-    return () => window.open(url, '_blank');
-  }
-}
+export const goto: (url: string) => void =
+  (url: string): void => {
+    if (isElectron()) {
+      // tslint:disable-next-line:no-any
+      (window as any)
+        .require("electron")
+        .shell
+        .openExternal(url);
+    } else {
+      window.open(url, "_blank");
+    }
+  };
