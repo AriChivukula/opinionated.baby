@@ -1,21 +1,21 @@
 import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
 
 import * as React from "react";
-import { LinearProgress } from "rmwc/LinearProgress";
-import { parse } from "url";
+import { LinearProgress } from "rmwc";
+import { parse, UrlWithParsedQuery } from "url";
 
-import Content from "./Content";
-import TopBar from "./TopBar";
+import { Content } from "./Content";
+import { TopBar } from "./TopBar";
 
-type Props = {
-  data: TopBarQuery
+interface IProps {
+  data: TopBarQuery;
 }
 
-class Page extends React.Component<Props> {
+export class Page extends React.Component<IProps> {
 
-  render() {
-    const url_parts = parse(window.location.href, true);
-    if (!this.props.data || (url_parts.query && url_parts.query.code)) {
+  public render(): JSX.Element {
+    const urlParts: UrlWithParsedQuery = parse(window.location.href, true);
+    if (!("me" in this.props.data) || "code" in urlParts.query) {
       return <LinearProgress determinate={false} />;
     } else {
       return (
@@ -27,5 +27,3 @@ class Page extends React.Component<Props> {
     }
   }
 }
-
-export default Page;

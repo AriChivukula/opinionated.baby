@@ -47,12 +47,12 @@ gulp.task(
 
 gulp.task(
   'typescript-lint',
-  shell.task('tslint -p . src/**/*.tsx')
+  shell.task('tslint -p . **/*.tsx')
 );
 
 gulp.task(
   'sass-lint',
-  shell.task('sass-lint src/**/*.scss')
+  shell.task('sass-lint **/*.scss')
 );
 
 gulp.task(

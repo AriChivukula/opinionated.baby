@@ -6,6 +6,7 @@
     "inlineSourceMap": true,
     "jsx": "React",
     "moduleResolution": "Node",
+    "noImplicitAny": true,
     "strictNullChecks": true,
     "target": "ES6"
   },

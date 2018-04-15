@@ -3,9 +3,9 @@ import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
 import * as cookie from "js-cookie";
 import * as React from "react";
 import {
-  createFragmentContainer,
   commitMutation,
-  graphql
+  createFragmentContainer,
+  graphql,
 } from "react-relay";
 import {
   Environment,
@@ -17,28 +17,28 @@ import {
   ToolbarRow,
   ToolbarSection,
   ToolbarTitle,
-} from "rmwc/Toolbar";
+} from "rmwc";
 import { parse } from "url";
 
 import { goto } from "../util";
 
-type Props = {
-  data: TopBarQuery,
+interface IProps {
+  data: TopBarQuery;
   relay: {
-    environment: Environment
-  }
+    environment: Environment;
+  };
 }
 
-class TopBar extends React.Component<Props> {
+class TopBarRelay extends React.Component<IProps> {
 
-  componentDidMount() {
+  public componentDidMount(): void {
     const url_parts = parse(window.location.href, true);
     if (url_parts.query && url_parts.query.code) {
       this.login(url_parts.query.code as string);
     }
   }
 
-  render() {
+  public render(): JSX.Element {
     let login = (
       <ToolbarIcon
         use="person"
@@ -46,9 +46,9 @@ class TopBar extends React.Component<Props> {
       />
     );
     const data = this.props.data;
-    if (data != null) {
+    if (data !== null) {
       const me = data.me;
-      if (me != null) {
+      if (me !== null) {
         login = (
           <>
             <ToolbarTitle>{me.email}</ToolbarTitle>
@@ -87,14 +87,14 @@ class TopBar extends React.Component<Props> {
     );
   }
 
-  googleAuth(): void {
+  private googleAuth(): void {
     const data = this.props.data;
     if (data != null) {
       (window as any).location = data.loginURL;
     }
   }
 
-  login(code: string): void {
+  private login(code: string): void {
     commitMutation(
       this.props.relay.environment,
       {
@@ -116,7 +116,7 @@ class TopBar extends React.Component<Props> {
     );
   }
 
-  logout(): void {
+  private logout(): void {
     commitMutation(
       this.props.relay.environment,
       {
@@ -137,8 +137,8 @@ class TopBar extends React.Component<Props> {
   }
 }
 
-export default createFragmentContainer(
-  TopBar,
+export const TopBar: React.ComponentType = createFragmentContainer(
+  TopBarRelay,
   graphql`
     fragment TopBarQuery on Query @argumentDefinitions(
       access_token: {type: "String!"}

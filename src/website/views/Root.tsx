@@ -1,45 +1,46 @@
+import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
+
 import * as cookie from "js-cookie";
 import * as React from "react";
 import {
   graphql,
-  QueryRenderer
+  QueryRenderer,
 } from "react-relay";
 import {
   Environment,
 } from "relay-runtime";
 
-import Page from "./Page";
+import { Page } from "./Page";
 
-type Props = {
-  environment: Environment
+interface IProps {
+  environment: Environment;
 }
 
-class Root extends React.Component<Props> {
+export class Root extends React.Component<IProps> {
 
-  render() {
+  public render(): JSX.Element {
     return (
       <QueryRenderer
         environment={this.props.environment}
         variables={{
-          access_token: cookie.get("access_token")
-            ? cookie.get("access_token") : ""
+          access_token: cookie.get("access_token") !== undefined
+            ? cookie.get("access_token") : "",
         }}
         query={graphql`
           query RootQuery($access_token: String!) {
             ...TopBarQuery @arguments(access_token: $access_token)
           }
         `}
-        render={({error, props}) => {
-          if (error) {
+        render={({error, props}: {error: Error | null | undefined; props: TopBarQuery}): JSX.Element => {
+          if (error !== undefined) {
             console.log(error);
+
             return <div />;
           } else {
-            return <Page data={props as any} />;
+            return <Page data={props} />;
           }
         }}
       />
     );
   }
 }
-
-export default Root;
