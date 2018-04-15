@@ -18,7 +18,7 @@ import {
   ToolbarSection,
   ToolbarTitle,
 } from "rmwc";
-import { parse } from "url";
+import { parse, UrlWithParsedQuery } from "url";
 
 import { goto } from "../util";
 
@@ -32,40 +32,37 @@ interface IProps {
 class TopBarRelay extends React.Component<IProps> {
 
   public componentDidMount(): void {
-    const url_parts = parse(window.location.href, true);
-    if (url_parts.query && url_parts.query.code) {
-      this.login(url_parts.query.code as string);
+    const urlParts: UrlWithParsedQuery = parse(window.location.href, true);
+    if ("code" in urlParts.query) {
+      this.login(urlParts.query.code as string);
     }
   }
 
   public render(): JSX.Element {
-    let login = (
+    let login: JSX.Element = (
       <ToolbarIcon
         use="person"
-        onClick={() => this.googleAuth()}
+        onClick={(): void => { this.googleAuth(); }}
       />
     );
-    const data = this.props.data;
-    if (data !== null) {
-      const me = data.me;
-      if (me !== null) {
-        login = (
-          <>
-            <ToolbarTitle>{me.email}</ToolbarTitle>
-            <ToolbarIcon
-              use="exit_to_app"
-              onClick={() => this.logout()}
-            />
-          </>
-        );
-      }
+    if ("me" in this.props.data) {
+      login = (
+        <>
+          <ToolbarTitle>{this.props.data.me.email}</ToolbarTitle>
+          <ToolbarIcon
+            use="exit_to_app"
+            onClick={(): void => { this.logout(); }}
+          />
+        </>
+      );
     }
+
     return (
       <>
         <Toolbar fixed waterfall>
           <ToolbarRow>
             <ToolbarSection alignStart>
-              <ToolbarTitle onClick={goto("https://github.com/arichiv/opinionated.baby/")}>
+              <ToolbarTitle onClick={(): void => { goto("https://github.com/arichiv/opinionated.baby/"); }}>
                 Opinionated Baby
               </ToolbarTitle>
             </ToolbarSection>
@@ -73,11 +70,11 @@ class TopBarRelay extends React.Component<IProps> {
               {login}
               <ToolbarIcon
                 use="code"
-                onClick={goto("https://github.com/arichiv/opinionated.baby/")}
+                onClick={(): void => { goto("https://github.com/arichiv/opinionated.baby/"); }}
               />
               <ToolbarIcon
                 use="info"
-                onClick={goto("http://chivuku.la/")}
+                onClick={(): void => { goto("http://chivuku.la/"); }}
               />
             </ToolbarSection>
           </ToolbarRow>
@@ -88,9 +85,8 @@ class TopBarRelay extends React.Component<IProps> {
   }
 
   private googleAuth(): void {
-    const data = this.props.data;
-    if (data != null) {
-      (window as any).location = data.loginURL;
+    if ("loginURL" in this.props.data) {
+      window.open(this.props.data.loginURL);
     }
   }
 
@@ -105,14 +101,14 @@ class TopBarRelay extends React.Component<IProps> {
             }
           }
         `,
-        variables: {
-          code: code
-        },
-        onCompleted: (response, errors) => {
+        onCompleted: (response: object, errors: object): void => {
           cookie.set("access_token", response.login.accessToken);
-          (window as any).location = "/";
-        }
-      }
+          window.open("/");
+        },
+        variables: {
+          code,
+        },
+      },
     );
   }
 
@@ -127,16 +123,17 @@ class TopBarRelay extends React.Component<IProps> {
             }
           }
         `,
-        variables: {},
-        onCompleted: (response, errors) => {
+        onCompleted: (response: object, errors: object): void => {
           cookie.set("access_token", response.logout.accessToken);
-          (window as any).location = "/";
-        }
-      }
+          window.open("/");
+        },
+        variables: {},
+      },
     );
   }
 }
 
+// tslint:disable-next-line:variable-name
 export const TopBar: React.ComponentType = createFragmentContainer(
   TopBarRelay,
   graphql`

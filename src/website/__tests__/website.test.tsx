@@ -1,6 +1,7 @@
-import "jest-enzyme";
 import * as enzyme from "enzyme";
 import * as adapter from "enzyme-adapter-react-16";
+// tslint:disable-next-line:no-import-side-effect
+import "jest-enzyme";
 import * as React from "react";
 import { BrowserRouter } from "react-router-dom";
 import {
@@ -10,102 +11,110 @@ import {
   Store,
 } from "relay-runtime";
 
-import FourOhFour from "../views/FourOhFour";
-import Page from "../views/Page";
+import { FourOhFour } from "../views/FourOhFour";
+import { Page } from "../views/Page";
 
 enzyme.configure({
-  adapter: new adapter()
+  adapter: new adapter(),
 });
 
-const environment = new Environment({
+const environment: Environment = new Environment({
   network: new Network(),
-  store: new Store(new RecordSource())
+  store: new Store(new RecordSource()),
 });
 
 test(
   "FourOhFour",
-  async () => {
-    const component = enzyme.render(
+  async (): Promise<void> => {
+    // tslint:disable-next-line:no-any
+    const component: any = enzyme.render(
       <BrowserRouter>
         <FourOhFour />
-      </BrowserRouter>
+      </BrowserRouter>,
     );
-    expect(component).toMatchSnapshot();
-  }
+    expect(component)
+      .toMatchSnapshot();
+  },
 );
 
 test(
   "PageUnloaded",
-  async () => {
-    const component = enzyme.render(
-      <Page data={null} />,
+  async (): Promise<void> => {
+    // tslint:disable-next-line:no-any
+    const component: any = enzyme.render(
+      <Page data={undefined} />,
       {
         context: {
-          relay:{
-            environment: environment,
-            variables: {}
-          }
-        }
-      }
+          relay: {
+            environment,
+            variables: {},
+          },
+        },
+      },
     );
-    expect(component).toMatchSnapshot();
-  }
+    expect(component)
+      .toMatchSnapshot();
+  },
 );
 
 test(
   "PageLoggedOut",
-  async () => {
-    const component = enzyme.render(
+  async (): Promise<void> => {
+    // tslint:disable-next-line:no-any
+    const component: any = enzyme.render(
       <Page
         data={{
-          __id: "0",
           __fragments: {
-            "TopBarQuery": {}
+            TopBarQuery: {},
           },
-          me: null,
-          loginURL: "http://fake.com/"
+          __id: "0",
+          loginURL: "http://fake.com/",
+          me: undefined,
         }}
       />,
       {
         context: {
-          relay:{
-            environment: environment,
-            variables: {}
-          }
-        }
-      }
+          relay: {
+            environment,
+            variables: {},
+          },
+        },
+      },
     );
-    expect(component).toMatchSnapshot();
-  }
+    expect(component)
+      .toMatchSnapshot();
+  },
 );
 
 test(
   "PageLoggedIn",
-  async () => {
-    const component = enzyme.render(
+  async (): Promise<void> => {
+    // tslint:disable-next-line:no-any
+    const component: any = enzyme.render(
       <Page
         data={{
-          __id: "0",
           __fragments: {
-            "TopBarQuery": {}
+            TopBarQuery: {},
           },
+          __id: "0",
+          loginURL: "http://fake.com/",
           me: {
-            id: "TEST",
+            email: "TEST",
             googleID: "TEST",
-            email: "TEST"
+            id: "TEST",
           },
-          loginURL: "http://fake.com/"
         }}
       />,
       {
         context: {
-          relay:{
-            environment: environment,
-            variables: {}
-          }
-        }
-      }
+          relay: {
+            environment,
+            variables: {},
+          },
+        },
+      },
     );
-    expect(component).toMatchSnapshot();
-  }
+    expect(component)
+      .toMatchSnapshot();
+  },
 );
