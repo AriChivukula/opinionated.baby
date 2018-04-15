@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "tslint:all"
+  ],
+  "rules": {
+    "completed-docs": false,
+    "no-console": false
+  }
+}

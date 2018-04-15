@@ -1,59 +1,66 @@
-import { Request, Response } from 'express';
-import * as graphqlHTTP from 'express-graphql';
-import { readFileSync } from 'fs';
-import { buildSchema } from 'graphql';
-import * as invariant from 'invariant';
-import { join } from 'path';
-import { getManager } from "typeorm";
+import { Request, Response } from "express";
+import * as graphqlHTTP from "express-graphql";
+import { readFileSync } from "fs";
+import { buildSchema, GraphQLSchema } from "graphql";
+import { join } from "path";
+import { createConnection, EntityManager, getManager } from "typeorm";
 
-import { genAccessToken, genAccessTokenInfo, getLoginURL } from './google';
-import { User } from './entity/user';
+import { User } from "./entity/user";
+import {
+  genAccessToken,
+  genAccessTokenInfo,
+  getLoginURL,
+  IAccessToken,
+  IAccessTokenInfo,
+} from "./google";
 
-const entityManager = getManager();
+const entityManager: EntityManager = getManager();
 
-const schema = buildSchema(
-  readFileSync(join(__dirname, 'schema.graphql'), 'ascii')
+const schema: GraphQLSchema = buildSchema(
+  readFileSync(join(__dirname, "schema.graphql"), "ascii"),
 );
 
-type AccessToken = {
-  accessToken: string
-}
+const root: (request: Request, response: Response) => Promise<object> =
+  async (request: Request, response: Response): Promise<object> => ({
+    login: async (code: string): Promise<object> => {
+      const token: IAccessToken = await genAccessToken(code);
+      const accessToken: string = token.tokens.access_token;
+      const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
+      let user: User | undefined = await entityManager.findOneById(User, info.data.user_id);
+      if (user !== undefined) {
+        user = new User();
+        user.googleID = info.data.user_id;
+        user.email = info.data.email;
+        await entityManager.save(user);
+      }
 
-const root = async (request: Request, response: Response): Promise<any> => ({
-  me: async ({ access_token }: { access_token: string }): Promise<User|undefined> => {
-    try {
-      const info = await genAccessTokenInfo(access_token);
-      return await entityManager.findOneById(User, info.data.user_id);
-    } catch (error) {
-      console.log(error);
-      return undefined;
-    }
-  },
-  loginURL: async (): Promise<string> => getLoginURL(),
-  login: async (code: string): Promise<AccessToken> => {
-    const token = await genAccessToken(code);
-    const access_token = token.tokens.access_token || '';
-    const info = await genAccessTokenInfo(access_token);
-    let user = await entityManager.findOneById(User, info.data.user_id);
-    if (!user) {
-      user = new User();
-      user.googleID = info.data.user_id;
-      user.email = info.data.email;
-      await entityManager.save(user);
-    }
+      return { accessToken };
+    },
+    loginURL: async (): Promise<string> => getLoginURL(),
+    logout: async (): Promise<object> => ({
+      accessToken: "",
+    }),
+    me: async ({ accessToken }: { accessToken: string }): Promise<object> => {
+      try {
+        const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
+
+        return await entityManager.findOneById(User, info.data.user_id);
+      } catch (error) {
+        console.log(error);
+
+        return undefined;
+      }
+    },
+  });
+
+export const server: graphqlHTTP.Middleware = graphqlHTTP(
+  async (request: Request, response: Response): Promise<graphqlHTTP.OptionsData> => {
+    await createConnection();
+
     return {
-      accessToken: access_token
+      graphiql: true,
+      rootValue: await root(request, response),
+      schema,
     };
   },
-  logout: async(): Promise<AccessToken> => {
-    return {
-      accessToken: ''
-    };
-  }
-});
-
-export default graphqlHTTP(async (request, response): Promise<any> => ({
-  schema: schema,
-  rootValue: await root(request, response),
-  graphiql: true
-}));
+);

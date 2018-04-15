@@ -1,28 +1,33 @@
-import { getManager } from 'typeorm';
+import { EntityManager, getManager } from "typeorm";
 
-import { getLoginURL, genAccessTokenInfo } from '../google';
-import { User } from '../entity/user';
+import { User } from "../entity/user";
+import { genAccessTokenInfo, getLoginURL } from "../google";
 
 test(
-  'getLoginURL',
+  "getLoginURL",
   async () => {
-    const url = getLoginURL();
-    expect(url).toMatch('/accounts.google.com/');
-  }
+    const url: string = getLoginURL();
+    expect(url)
+      .toMatch("/accounts.google.com/");
+  },
 );
 
 test(
-  'genAccessTokenInfo',
+  "genAccessTokenInfo",
   async () => {
-    await expect(genAccessTokenInfo('ERROR')).rejects.toThrow(Error);
-  }
+    await expect(genAccessTokenInfo("ERROR"))
+      .rejects
+      .toThrow(Error);
+  },
 );
 
 test(
-  'User',
+  "User",
   async () => {
-    const entityManager = getManager();
-    const user = await entityManager.findOneById(User, 1);
-    expect(user).not.toBeNull();
-  }
+    const entityManager: EntityManager = getManager();
+    const user: User | undefined = await entityManager.findOneById(User, 1);
+    expect(user)
+      .not
+      .toBeNull();
+  },
 );

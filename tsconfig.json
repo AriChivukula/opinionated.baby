@@ -1,11 +1,12 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "inlineSourceMap": true,
     "jsx": "React",
     "moduleResolution": "Node",
-    "strict": true,
+    "strictNullChecks": true,
     "target": "ES6"
   },
   "include": [

@@ -1,33 +1,40 @@
-import { createServer, proxy } from 'aws-serverless-express';
-import * as cors from 'cors';
-import * as express from 'express';
-import server from './server';
+import { createServer, proxy } from "aws-serverless-express";
+import * as cors from "cors";
+import * as express from "express";
+import { server } from "./server";
 
-const app = express();
+const app: express.Express = express();
 app.use(cors());
-let lambdaHandle = undefined;
 
-if (process.env.LAMBDA_TASK_ROOT && process.env.AWS_EXECUTION_ENV) {
-  app.use('/', server);
-  const serverless = createServer(
+let lambdaHandler: (event: object, context: object) => void =
+  (event: object, context: object): void => {
+    return;
+  };
+
+if ("LAMBDA_TASK_ROOT" in process.env && "AWS_EXECUTION_ENV" in process.env) {
+  app.use("/", server);
+  const serverless: object = createServer(
     app,
     undefined,
     [
-      'application/octet-stream',
-      'font/eot',
-      'font/opentype',
-      'font/otf',
-      'image/jpeg',
-      'image/png',
-      'image/svg+xml'
-    ]
+      "application/octet-stream",
+      "font/eot",
+      "font/opentype",
+      "font/otf",
+      "image/jpeg",
+      "image/png",
+      "image/svg+xml",
+    ],
   );
-  lambdaHandle = (event: any, context: any) =>
-    proxy(serverless, event, context);
+  lambdaHandler =
+    (event: object, context: object): void => {
+      // @ts-ignore tslint:disable-next-line:no-unsafe-any
+      proxy(serverless, event, context);
+    };
 } else {
-  app.use('/', express.static('_bin/website'));
-  app.use('/graphql', server);
-  app.listen(8080);
+  app.use("/", express.static("_bin/website"));
+  app.use("/graphql", server);
+  app.listen(process.env.PORT);
 }
 
-export const handler = lambdaHandle;
+export const handler: (event: object, context: object) => void = lambdaHandler;

@@ -1,5 +1,3 @@
-// @flow
-
 var gulp = require('gulp');
 var browserify = require('gulp-browserify');
 var purgeSourcemaps = require('gulp-purge-sourcemaps');
@@ -48,6 +46,11 @@ gulp.task(
 );
 
 gulp.task(
+  'typescript-lint',
+  shell.task('tslint -p . src/**/*.tsx')
+);
+
+gulp.task(
   'sass-lint',
   shell.task('sass-lint src/**/*.scss')
 );
@@ -62,6 +65,7 @@ gulp.task(
   gulp.series(
     'compile-relay',
     gulp.parallel(
+      'typescript-lint',
       'sass-lint',
       'run-test'
     )
