@@ -1,7 +1,7 @@
-import type { TopBarQuery } from './__generated__/TopBarQuery.graphql';
+import { TopBarQuery } from './__generated__/TopBarQuery.graphql';
 
 import cookie from 'js-cookie';
-import React, { Component, Fragment } from 'react';
+import * as React from 'react';
 import {
   createFragmentContainer,
   commitMutation,
@@ -29,7 +29,7 @@ type Props = {
   }
 }
 
-class TopBar extends Component<Props> {
+class TopBar extends React.Component<Props> {
 
   static defaultProps = {
     relay: {
@@ -56,18 +56,18 @@ class TopBar extends Component<Props> {
       const me = data.me;
       if (me != null) {
         login = (
-          <Fragment>
+          <>
             <ToolbarTitle>{me.email}</ToolbarTitle>
             <ToolbarIcon
               use="exit_to_app"
               onClick={() => this.logout()}
             />
-          </Fragment>
+          </>
         );
       }
     }
     return (
-      <Fragment>
+      <>
         <Toolbar fixed waterfall>
           <ToolbarRow>
             <ToolbarSection alignStart>
@@ -89,7 +89,7 @@ class TopBar extends Component<Props> {
           </ToolbarRow>
         </Toolbar>
         <ToolbarFixedAdjust />
-      </Fragment>
+      </>
     );
   }
 

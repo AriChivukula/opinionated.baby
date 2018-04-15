@@ -1,6 +1,5 @@
-import nullthrows from 'nullthrows';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {
   Environment,
   RecordSource,
@@ -35,6 +34,6 @@ export default function website_render(api_url: string) {
         <Route component={FourOhFour} />
       </Switch>
     </BrowserRouter>,
-    nullthrows(document.getElementById('root'))
+    document.getElementById('root')
   );
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import {
   Card,
   CardPrimaryAction,
@@ -23,7 +23,7 @@ import { goto } from '../util';
 type Props = {
 }
 
-class Content extends Component<Props> {
+class Content extends React.Component<Props> {
 
   render() {
     return (

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Typography } from 'rmwc/Typography';
 
 type Props = {
 }
 
-class FourOhFour extends Component<Props> {
+class FourOhFour extends React.Component<Props> {
 
   render() {
     return (

@@ -1,5 +1,5 @@
 import cookie from 'js-cookie';
-import React, { Component } from 'react';
+import * as React from 'react';
 import {
   graphql,
   QueryRenderer
@@ -14,7 +14,7 @@ type Props = {
   environment: Environment
 }
 
-class Root extends Component<Props> {
+class Root extends React.Component<Props> {
 
   render() {
     return (
