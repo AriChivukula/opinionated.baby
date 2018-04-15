@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Typography } from "rmwc";
 
 // tslint:disable-next-line:variable-name
-export const FourOhFour: () => JSX.Element =
-  (): JSX.Element => (
+export const FourOhFour: () => React.Element =
+  (): React.Element => (
     <Link to="/">
       <Typography use="display4" tag="div">
         FourOhFour

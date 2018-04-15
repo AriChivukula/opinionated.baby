@@ -11,8 +11,8 @@ import {
   Store,
 } from "relay-runtime";
 
-import FourOhFour from "./views/FourOhFour";
-import Root from "./views/Root";
+import { FourOhFour } from "./views/FourOhFour";
+import { Root } from "./views/Root";
 
 export const website: (apiURL: string) => void =
   (apiURL: string): void => {
@@ -30,11 +30,11 @@ export const website: (apiURL: string) => void =
           <Route
             exact
             path="/"
-            render={(): JSX.Element => <Root environment={environment} />}
+            render={(): React.Element => <Root environment={environment} />}
           />
           <Route
             path="/index.html"
-            render={(): JSX.Element => <Root environment={environment} />}
+            render={(): React.Element => <Root environment={environment} />}
           />
           <Route component={FourOhFour} />
         </Switch>

@@ -38,8 +38,8 @@ class TopBarRelay extends React.Component<IProps> {
     }
   }
 
-  public render(): JSX.Element {
-    let login: JSX.Element = (
+  public render(): React.Element {
+    let login: React.Element = (
       <ToolbarIcon
         use="person"
         onClick={(): void => { this.googleAuth(); }}

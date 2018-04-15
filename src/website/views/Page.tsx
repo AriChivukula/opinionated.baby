@@ -13,7 +13,7 @@ interface IProps {
 
 export class Page extends React.Component<IProps> {
 
-  public render(): JSX.Element {
+  public render(): React.Element {
     const urlParts: UrlWithParsedQuery = parse(window.location.href, true);
     if (!("me" in this.props.data) || "code" in urlParts.query) {
       return <LinearProgress determinate={false} />;
