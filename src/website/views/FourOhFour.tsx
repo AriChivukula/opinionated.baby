@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+// @ts-ignore
 import { Typography } from 'rmwc/Typography';
 
-type Props = {
-}
-
-class FourOhFour extends React.Component<Props> {
+class FourOhFour extends React.Component<{}> {
 
   render() {
     return (

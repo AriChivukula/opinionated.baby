@@ -1,4 +1,4 @@
-import cookie from 'js-cookie';
+import * as cookie from 'js-cookie';
 import * as React from 'react';
 import {
   graphql,
@@ -34,7 +34,7 @@ class Root extends React.Component<Props> {
             console.log(error);
             return <div />;
           } else {
-            return <Page data={props} />;
+            return <Page data={props as any} />;
           }
         }}
       />

@@ -8,6 +8,7 @@ import {
 import {
   urlMiddleware,
   RelayNetworkLayer
+// @ts-ignore
 } from 'react-relay-network-modern';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 

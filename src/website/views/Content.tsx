@@ -7,23 +7,24 @@ import {
   CardActions,
   CardActionButtons,
   CardActionIcons
+// @ts-ignore
 } from 'rmwc/Card';
 import {
   Grid,
   GridCell
+// @ts-ignore
 } from 'rmwc/Grid';
 import {
   List,
   SimpleListItem
+// @ts-ignore
 } from 'rmwc/List';
+// @ts-ignore
 import { Typography } from 'rmwc/Typography';
 
 import { goto } from '../util';
 
-type Props = {
-}
-
-class Content extends React.Component<Props> {
+class Content extends React.Component<{}> {
 
   render() {
     return (

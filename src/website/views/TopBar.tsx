@@ -1,6 +1,6 @@
 import { TopBarQuery } from './__generated__/TopBarQuery.graphql';
 
-import cookie from 'js-cookie';
+import * as cookie from 'js-cookie';
 import * as React from 'react';
 import {
   createFragmentContainer,
@@ -17,13 +17,14 @@ import {
   ToolbarRow,
   ToolbarSection,
   ToolbarTitle,
+// @ts-ignore
 } from 'rmwc/Toolbar';
 import { parse } from 'url';
 
 import { goto } from '../util';
 
 type Props = {
-  data: ?TopBarQuery,
+  data: TopBarQuery,
   relay: {
     environment: Environment
   }
@@ -31,16 +32,10 @@ type Props = {
 
 class TopBar extends React.Component<Props> {
 
-  static defaultProps = {
-    relay: {
-      environment: null
-    }
-  }
-
   componentDidMount() {
     const url_parts = parse(window.location.href, true);
     if (url_parts.query && url_parts.query.code) {
-      this.login(url_parts.query.code);
+      this.login(url_parts.query.code as string);
     }
   }
 
@@ -96,7 +91,7 @@ class TopBar extends React.Component<Props> {
   googleAuth(): void {
     const data = this.props.data;
     if (data != null) {
-      window.location = data.loginURL;
+      (window as any).location = data.loginURL;
     }
   }
 
@@ -116,7 +111,7 @@ class TopBar extends React.Component<Props> {
         },
         onCompleted: (response, errors) => {
           cookie.set('access_token', response.login.accessToken);
-          window.location = '/';
+          (window as any).location = '/';
         }
       }
     );
@@ -136,7 +131,7 @@ class TopBar extends React.Component<Props> {
         variables: {},
         onCompleted: (response, errors) => {
           cookie.set('access_token', response.logout.accessToken);
-          window.location = '/';
+          (window as any).location = '/';
         }
       }
     );
