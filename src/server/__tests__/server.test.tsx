@@ -1,5 +1,5 @@
 import { getLoginURL, genAccessTokenInfo } from '../google';
-import { User } from '../models/index';
+import { User } from '../entity/user';
 
 test(
   'getLoginURL',

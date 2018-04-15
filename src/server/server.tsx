@@ -5,7 +5,7 @@ import * as invariant from 'invariant';
 import { join } from 'path';
 
 import { getOAuthClient, getLoginURL, genAccessTokenInfo } from './google';
-import { User } from './models/user';
+import { User } from './entity/user';
 
 const schema = buildSchema(
   readFileSync(join(__dirname, 'schema.graphql'), 'ascii')

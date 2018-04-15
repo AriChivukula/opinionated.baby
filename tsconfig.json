@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "inlineSourceMap": true,
     "jsx": "React",
     "strict": true,
