@@ -1,6 +1,4 @@
-// @flow
-
-import type {TopBarQuery} from './__generated__/TopBarQuery.graphql.js';
+import type { TopBarQuery } from './__generated__/TopBarQuery.graphql';
 
 import cookie from 'js-cookie';
 import React, { Component, Fragment } from 'react';
@@ -20,9 +18,9 @@ import {
   ToolbarSection,
   ToolbarTitle,
 } from 'rmwc/Toolbar';
-import url from 'url';
+import { parse } from 'url';
 
-import { goto } from '../util.js';
+import { goto } from '../util';
 
 type Props = {
   data: ?TopBarQuery,
@@ -40,7 +38,7 @@ class TopBar extends Component<Props> {
   }
 
   componentDidMount() {
-    const url_parts = url.parse(window.location.href, true);
+    const url_parts = parse(window.location.href, true);
     if (url_parts.query && url_parts.query.code) {
       this.login(url_parts.query.code);
     }

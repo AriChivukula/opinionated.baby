@@ -1,5 +1,3 @@
-// @flow
-
 import cookie from 'js-cookie';
 import React, { Component } from 'react';
 import {
@@ -10,7 +8,7 @@ import {
   Environment,
 } from 'relay-runtime';
 
-import Page from './Page.js';
+import Page from './Page';
 
 type Props = {
   environment: Environment

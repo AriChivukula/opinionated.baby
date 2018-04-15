@@ -1,13 +1,11 @@
-// @flow
-
-import type {RootQuery} from './__generated__/RootQuery.graphql.js';
+import type { RootQuery } from './__generated__/RootQuery.graphql';
 
 import React, { Component, Fragment } from 'react';
 import { LinearProgress } from 'rmwc/LinearProgress';
-import url from 'url';
+import { parse } from 'url';
 
-import Content from './Content.js';
-import TopBar from './TopBar.js';
+import Content from './Content';
+import TopBar from './TopBar';
 
 type Props = {
   data: ?RootQuery
@@ -16,7 +14,7 @@ type Props = {
 class Page extends Component<Props> {
 
   render() {
-    const url_parts = url.parse(window.location.href, true);
+    const url_parts = parse(window.location.href, true);
     if (!this.props.data || (url_parts.query && url_parts.query.code)) {
       return <LinearProgress determinate={false} />;
     } else {

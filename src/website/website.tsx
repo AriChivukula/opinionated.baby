@@ -1,5 +1,3 @@
-// @flow
-
 import nullthrows from 'nullthrows';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -14,8 +12,8 @@ import {
 } from 'react-relay-network-modern';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Root from './views/Root.js';
-import FourOhFour from './views/FourOhFour.js';
+import Root from './views/Root';
+import FourOhFour from './views/FourOhFour';
 
 export default function website_render(api_url: string) {
   const environment = new Environment({

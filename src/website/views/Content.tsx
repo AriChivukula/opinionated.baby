@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from 'react';
 import {
   Card,
@@ -20,7 +18,7 @@ import {
 } from 'rmwc/List';
 import { Typography } from 'rmwc/Typography';
 
-import { goto } from '../util.js';
+import { goto } from '../util';
 
 type Props = {
 }

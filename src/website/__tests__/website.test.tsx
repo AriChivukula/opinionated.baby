@@ -1,6 +1,3 @@
-// @flow
-
-import '@babel/polyfill';
 import 'jest-enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -17,8 +14,8 @@ import {
 } from 'relay-runtime';
 import context from 'react-test-context-provider';
 
-import FourOhFour from '../views/FourOhFour.js';
-import Page from '../views/Page.js';
+import FourOhFour from '../views/FourOhFour';
+import Page from '../views/Page';
 
 Enzyme.configure({
   adapter: new Adapter()
