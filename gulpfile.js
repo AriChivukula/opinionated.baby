@@ -48,33 +48,13 @@ gulp.task(
 );
 
 gulp.task(
-  'flow-lint',
-  shell.task('flow')
-);
-
-gulp.task(
   'sass-lint',
   shell.task('sass-lint src/**/*.scss')
 );
 
 gulp.task(
-  'compile-test',
-  () => gulp.src('src/**/*.js')
-    .pipe(sourcemaps.init())
-    .pipe(babel())
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('_test')),
-);
-
-gulp.task(
-  'copy-test',
-  () => gulp.src(['src/**/*.snap', 'src/**/*.graphql'])
-    .pipe(gulp.dest('_test')),
-);
-
-gulp.task(
   'run-test',
-  shell.task('jest --collectCoverage _test/')
+  shell.task('jest --collectCoverage src/')
 );
 
 gulp.task(
@@ -82,12 +62,9 @@ gulp.task(
   gulp.series(
     'compile-relay',
     gulp.parallel(
-      'flow-lint',
       'sass-lint',
-      'compile-test',
-      'copy-test'
-    ),
-    'run-test'
+      'run-test'
+    )
   )
 );
 
