@@ -3500,7 +3500,7 @@ graceful-fs@4.X, graceful-fs@^4.0.0, graceful-fs@^4.1.11, graceful-fs@^4.1.2, gr
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
-graphql@^0.13.0, graphql@^0.13.1:
+graphql@^0.13.1:
   version "0.13.2"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.13.2.tgz#4c740ae3c222823e7004096f832e7b93b2108270"
   dependencies:
@@ -3923,6 +3923,10 @@ ieee754@~1.1.1:
 ignore@^3.1.2:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.7.tgz#612289bfb3c220e186a58118618d5be8c1bab021"
+
+immutable@^3.7.6:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
 
 immutable@~3.7.6:
   version "3.7.6"
@@ -6640,9 +6644,16 @@ regex-not@^1.0.0, regex-not@^1.0.2:
     extend-shallow "^3.0.2"
     safe-regex "^1.1.0"
 
-relay-compiler@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/relay-compiler/-/relay-compiler-1.5.0.tgz#564f1582c549fa6b4af9d9f09dadb5e239c11055"
+relay-compiler-language-typescript@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/relay-compiler-language-typescript/-/relay-compiler-language-typescript-0.9.0.tgz#3a9967bcb8e1ca467fd7c20d2ea5a200fa98c6a5"
+  dependencies:
+    immutable "^3.7.6"
+    invariant "^2.2.2"
+
+"relay-compiler@https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/relay-compiler-1.5.0-plugin.5.tgz":
+  version "1.5.0-plugin.5"
+  resolved "https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/relay-compiler-1.5.0-plugin.5.tgz#e848448db4c21410bc6e9cc52faec5c115d13c3e"
   dependencies:
     babel-generator "^6.26.0"
     babel-polyfill "^6.20.0"
@@ -6655,13 +6666,12 @@ relay-compiler@^1.5.0:
     fast-glob "^2.0.0"
     fb-watchman "^2.0.0"
     fbjs "^0.8.14"
-    graphql "^0.13.0"
     immutable "~3.7.6"
-    relay-runtime "1.5.0"
+    relay-runtime "1.5.0-plugin.5"
     signedsource "^1.0.0"
     yargs "^9.0.0"
 
-relay-runtime@1.5.0, relay-runtime@^1.5.0:
+relay-runtime@1.5.0, relay-runtime@1.5.0-plugin.5, relay-runtime@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-1.5.0.tgz#95e7c26f95f216370f7d699290238a4d966a915c"
   dependencies:

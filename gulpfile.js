@@ -44,7 +44,7 @@ gulp.task(
 
 gulp.task(
   'compile-relay',
-  shell.task('relay-compiler --src src/website --schema src/server/schema.graphql')
+  shell.task('relay-compiler --src src/ --schema src/server/schema.graphql --language typescript')
 );
 
 gulp.task(
