@@ -6,8 +6,8 @@
     "inlineSourceMap": true,
     "jsx": "React",
     "moduleResolution": "Node",
-    "strictNullChecks": true,
-    "target": "ES6"
+    "target": "ES6",
+    "strictNullChecks": true
   },
   "include": [
     "src/**/*.tsx"

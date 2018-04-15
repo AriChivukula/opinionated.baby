@@ -30,11 +30,11 @@ export const website: (apiURL: string) => void =
           <Route
             exact
             path="/"
-            render={(): React.Element => <Root environment={environment} />}
+            render={(): JSX.Element => <Root environment={environment} />}
           />
           <Route
             path="/index.html"
-            render={(): React.Element => <Root environment={environment} />}
+            render={(): JSX.Element => <Root environment={environment} />}
           />
           <Route component={FourOhFour} />
         </Switch>

@@ -29,7 +29,7 @@ const root: (request: Request, response: Response) => Promise<object> =
       let user: User | undefined = await entityManager.findOneById(User, info.data.user_id);
       if (user !== undefined) {
         user = new User();
-        user.googleID = info.data.user_id;
+        user.id = info.data.user_id;
         user.email = info.data.email;
         await entityManager.save(user);
       }

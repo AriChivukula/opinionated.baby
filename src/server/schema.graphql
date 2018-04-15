@@ -1,6 +1,5 @@
 type User {
   id: ID
-  googleID: String
   email: String
 }
 
@@ -13,9 +12,17 @@ type AccessToken {
   accessToken: String!
 }
 
+input LoginInput {
+  code: String!
+}
+
+input LogoutInput {
+  dummy: String!
+}
+
 type Mutation {
-  login(code: String!): AccessToken!
-  logout: AccessToken!
+  login(input: LoginInput): AccessToken!
+  logout(input: LogoutInput): AccessToken!
 }
 
 schema {

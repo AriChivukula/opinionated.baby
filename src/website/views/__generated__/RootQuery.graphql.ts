@@ -19,9 +19,8 @@ query RootQuery(
 fragment TopBarQuery_3aAabH on Query {
   loginURL
   me(accessToken: $accessToken) {
-    googleID
-    email
     id
+    email
   }
 }
 */
@@ -40,7 +39,7 @@ return {
   "operationKind": "query",
   "name": "RootQuery",
   "id": null,
-  "text": "query RootQuery(\n  $accessToken: String!\n) {\n  ...TopBarQuery_3aAabH\n}\n\nfragment TopBarQuery_3aAabH on Query {\n  loginURL\n  me(accessToken: $accessToken) {\n    googleID\n    email\n    id\n  }\n}\n",
+  "text": "query RootQuery(\n  $accessToken: String!\n) {\n  ...TopBarQuery_3aAabH\n}\n\nfragment TopBarQuery_3aAabH on Query {\n  loginURL\n  me(accessToken: $accessToken) {\n    id\n    email\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -94,7 +93,7 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "googleID",
+            "name": "id",
             "args": null,
             "storageKey": null
           },
@@ -102,13 +101,6 @@ return {
             "kind": "ScalarField",
             "alias": null,
             "name": "email",
-            "args": null,
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
             "args": null,
             "storageKey": null
           }

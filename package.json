@@ -10,23 +10,9 @@
   "jest": {
     "coverageThreshold": {
       "global": {
-        "branches": 50,
-        "functions": 50,
-        "lines": 75,
-        "statements": 75
+        "lines": 50
       }
     },
-    "moduleFileExtensions": [
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "/__tests__/.*\\.tsx$",
     "verbose": true
   },
   "private": true,
@@ -42,11 +28,16 @@
     "typeorm": "^0.1.20"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
     "@types/jest": "^22.2.3",
+    "@types/react": "^16.3.10",
+    "babel-plugin-relay": "^1.5.0",
     "electron": "^2.0.0-beta.7",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0-beta.2",
     "gulp-better-rollup": "^3.1.0",
     "gulp-browserify": "^0.5.1",
     "gulp-cli": "^2.0.1",
@@ -66,6 +57,7 @@
     "react-relay": "^1.5.0",
     "react-relay-network-modern": "^2.1.1",
     "react-router-dom": "^4.2.2",
+    "react-test-context-provider": "^2.2.0",
     "reflect-metadata": "^0.1.12",
     "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/relay-compiler-1.5.0-plugin.5.tgz",
     "relay-compiler-language-typescript": "^0.9.0",

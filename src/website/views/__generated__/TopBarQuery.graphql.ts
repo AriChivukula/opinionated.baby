@@ -4,7 +4,7 @@ import { ConcreteFragment } from "relay-runtime";
 export type TopBarQuery = {
     readonly loginURL: string;
     readonly me: ({
-        readonly googleID: string | null;
+        readonly id: string | null;
         readonly email: string | null;
     }) | null;
 };
@@ -51,7 +51,7 @@ const node: ConcreteFragment = {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "googleID",
+          "name": "id",
           "args": null,
           "storageKey": null
         },
@@ -66,5 +66,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '8ad488a0b8a904ecf6878d47fff8f288';
+(node as any).hash = '43ec45f98481f80830acf8c5c02525c6';
 export default node;

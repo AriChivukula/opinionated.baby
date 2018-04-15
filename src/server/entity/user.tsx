@@ -7,5 +7,5 @@ export class User {
   public email: string;
 
   @PrimaryColumn("text")
-  public googleID: string;
+  public id: string;
 }

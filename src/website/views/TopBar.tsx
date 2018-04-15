@@ -1,3 +1,9 @@
+import {
+  TopBarLoginMutationResponse,
+ } from "./__generated__/TopBarLoginMutation.graphql";
+import {
+ TopBarLogoutMutationResponse,
+} from "./__generated__/TopBarLogoutMutation.graphql";
 import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
 
 import * as cookie from "js-cookie";
@@ -38,14 +44,14 @@ class TopBarRelay extends React.Component<IProps> {
     }
   }
 
-  public render(): React.Element {
-    let login: React.Element = (
+  public render(): JSX.Element {
+    let login: JSX.Element = (
       <ToolbarIcon
         use="person"
         onClick={(): void => { this.googleAuth(); }}
       />
     );
-    if ("me" in this.props.data) {
+    if (this.props.data.me !== null) {
       login = (
         <>
           <ToolbarTitle>{this.props.data.me.email}</ToolbarTitle>
@@ -95,18 +101,20 @@ class TopBarRelay extends React.Component<IProps> {
       this.props.relay.environment,
       {
         mutation: graphql`
-          mutation TopBarLoginMutation($code: String!) {
-            login(code: $code) {
+          mutation TopBarLoginMutation($input: LoginInput) {
+            login(input: $input) {
               accessToken
             }
           }
         `,
-        onCompleted: (response: object, errors: object): void => {
+        onCompleted: (response: TopBarLoginMutationResponse, errors: Error[]): void => {
           cookie.set("accessToken", response.login.accessToken);
           window.open("/");
         },
         variables: {
-          code,
+          input: {
+            code,
+          },
         },
       },
     );
@@ -117,17 +125,21 @@ class TopBarRelay extends React.Component<IProps> {
       this.props.relay.environment,
       {
         mutation: graphql`
-          mutation TopBarLogoutMutation {
-            logout {
+          mutation TopBarLogoutMutation($input: LogoutInput) {
+            logout(input: $input) {
               accessToken
             }
           }
         `,
-        onCompleted: (response: object, errors: object): void => {
+        onCompleted: (response: TopBarLogoutMutationResponse, errors: Error[]): void => {
           cookie.set("accessToken", response.logout.accessToken);
           window.open("/");
         },
-        variables: {},
+        variables: {
+          input: {
+            dummy: "",
+          },
+        },
       },
     );
   }
@@ -142,7 +154,7 @@ export const TopBar: React.ComponentType = createFragmentContainer(
     ) {
       loginURL,
       me(accessToken: $accessToken) {
-        googleID,
+        id,
         email
       }
     }

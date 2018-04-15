@@ -1,12 +1,17 @@
-import * as enzyme from "enzyme";
-import * as adapter from "enzyme-adapter-react-16";
 // tslint:disable-next-line:no-import-side-effect
 import "jest-enzyme";
+// tslint:disable-next-line:ordered-imports
+import Enzyme from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 import * as React from "react";
+import {
+  RelayNetworkLayer,
+  urlMiddleware,
+} from "react-relay-network-modern";
 import { BrowserRouter } from "react-router-dom";
+import context from "react-test-context-provider";
 import {
   Environment,
-  Network,
   RecordSource,
   Store,
 } from "relay-runtime";
@@ -14,25 +19,31 @@ import {
 import { FourOhFour } from "../views/FourOhFour";
 import { Page } from "../views/Page";
 
-enzyme.configure({
-  adapter: new adapter(),
+Enzyme.configure({
+  adapter: new Adapter(),
 });
 
 const environment: Environment = new Environment({
-  network: new Network(),
+  network: new RelayNetworkLayer([
+    urlMiddleware({
+      url: "http://127.0.0.1:8080",
+    }),
+  ]),
   store: new Store(new RecordSource()),
 });
 
 test(
   "FourOhFour",
   async (): Promise<void> => {
-    // tslint:disable-next-line:no-any
-    const component: any = enzyme.render(
-      <BrowserRouter>
-        <FourOhFour />
-      </BrowserRouter>,
-    );
-    expect(component)
+    expect(
+      Enzyme.render(
+        Enzyme.mount(
+          <BrowserRouter>
+            <FourOhFour />
+          </BrowserRouter>,
+        ),
+      ),
+    )
       .toMatchSnapshot();
   },
 );
@@ -40,19 +51,21 @@ test(
 test(
   "PageUnloaded",
   async (): Promise<void> => {
-    // tslint:disable-next-line:no-any
-    const component: any = enzyme.render(
-      <Page data={undefined} />,
-      {
-        context: {
-          relay: {
-            environment,
-            variables: {},
-          },
-        },
-      },
-    );
-    expect(component)
+    expect(
+      Enzyme.render(
+        Enzyme.mount(
+          context(
+            {
+              relay: {
+                environment,
+                variables: {},
+              },
+            },
+            <Page data={undefined} />,
+          ),
+        ),
+      ),
+    )
       .toMatchSnapshot();
   },
 );
@@ -60,28 +73,32 @@ test(
 test(
   "PageLoggedOut",
   async (): Promise<void> => {
-    // tslint:disable-next-line:no-any
-    const component: any = enzyme.render(
-      <Page
-        data={{
-          __fragments: {
-            TopBarQuery: {},
-          },
-          __id: "0",
-          loginURL: "http://fake.com/",
-          me: undefined,
-        }}
-      />,
-      {
-        context: {
-          relay: {
-            environment,
-            variables: {},
-          },
-        },
-      },
-    );
-    expect(component)
+    expect(
+      Enzyme.render(
+        Enzyme.mount(
+          context(
+            {
+              relay: {
+                environment,
+                variables: {},
+              },
+            },
+            <Page
+              // @ts-ignore
+              data={{
+                __fragments: {
+                  TopBarQuery: {},
+                },
+                __id: "0",
+                loginURL: "http://fake.com/",
+                // tslint:disable-next-line:no-null-keyword
+                me: null,
+              }}
+            />,
+          ),
+        ),
+      ),
+    )
       .toMatchSnapshot();
   },
 );
@@ -89,32 +106,34 @@ test(
 test(
   "PageLoggedIn",
   async (): Promise<void> => {
-    // tslint:disable-next-line:no-any
-    const component: any = enzyme.render(
-      <Page
-        data={{
-          __fragments: {
-            TopBarQuery: {},
-          },
-          __id: "0",
-          loginURL: "http://fake.com/",
-          me: {
-            email: "TEST",
-            googleID: "TEST",
-            id: "TEST",
-          },
-        }}
-      />,
-      {
-        context: {
-          relay: {
-            environment,
-            variables: {},
-          },
-        },
-      },
-    );
-    expect(component)
+    expect(
+      Enzyme.render(
+        Enzyme.mount(
+          context(
+            {
+              relay: {
+                environment,
+                variables: {},
+              },
+            },
+            <Page
+              // @ts-ignore
+              data={{
+                __fragments: {
+                  TopBarQuery: {},
+                },
+                __id: "0",
+                loginURL: "http://fake.com/",
+                me: {
+                  email: "TEST",
+                  id: "TEST",
+                },
+              }}
+            />,
+          ),
+        ),
+      ),
+    )
       .toMatchSnapshot();
   },
 );

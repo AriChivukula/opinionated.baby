@@ -8,19 +8,19 @@ import { Content } from "./Content";
 import { TopBar } from "./TopBar";
 
 interface IProps {
-  data: TopBarQuery;
+  data: TopBarQuery | undefined;
 }
 
 export class Page extends React.Component<IProps> {
 
-  public render(): React.Element {
+  public render(): JSX.Element {
     const urlParts: UrlWithParsedQuery = parse(window.location.href, true);
-    if (!("me" in this.props.data) || "code" in urlParts.query) {
+    if (this.props.data === undefined || "code" in urlParts.query) {
       return <LinearProgress determinate={false} />;
     } else {
       return (
         <>
-          <TopBar data={this.props.data} />
+          <TopBar {...this.props} />
           <Content />
         </>
       );

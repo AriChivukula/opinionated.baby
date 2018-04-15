@@ -16,8 +16,8 @@ const maxWidth: number = 12;
 const minWidth: number = 3;
 
 // tslint:disable-next-line:variable-name
-export const Content: () => React.Element =
-  (): React.Element => (
+export const Content: () => JSX.Element =
+  (): JSX.Element => (
     <Grid>
       <GridCell span={maxWidth}>
         <Typography use="display2" tag="div">

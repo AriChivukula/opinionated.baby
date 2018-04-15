@@ -18,7 +18,7 @@ interface IProps {
 
 export class Root extends React.Component<IProps> {
 
-  public render(): React.Element {
+  public render(): JSX.Element {
     return (
       <QueryRenderer
         environment={this.props.environment}
@@ -31,7 +31,7 @@ export class Root extends React.Component<IProps> {
             ...TopBarQuery @arguments(accessToken: $accessToken)
           }
         `}
-        render={({error, props}: {error: Error | null | undefined; props: TopBarQuery}): React.Element => {
+        render={({error, props}: {error: Error | null | undefined; props: TopBarQuery}): JSX.Element => {
           if (error !== undefined) {
             console.log(error);
 
