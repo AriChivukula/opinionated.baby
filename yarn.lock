@@ -350,157 +350,13 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@types/aws-lambda@*":
-  version "8.10.1"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.1.tgz#424888a9ee89f6b5fc6dc23f31b00a715483dcaf"
-
-"@types/aws-serverless-express@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@types/aws-serverless-express/-/aws-serverless-express-3.0.1.tgz#ea29611d71370ecf3ca59a90d606af55da9abf01"
-  dependencies:
-    "@types/aws-lambda" "*"
-    "@types/express" "*"
-    "@types/node" "*"
-
-"@types/body-parser@*":
-  version "1.16.8"
-  resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.16.8.tgz#687ec34140624a3bec2b1a8ea9268478ae8f3be3"
-  dependencies:
-    "@types/express" "*"
-    "@types/node" "*"
-
-"@types/cheerio@*":
-  version "0.22.7"
-  resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.7.tgz#4a92eafedfb2b9f4437d3a4410006d81114c66ce"
-
-"@types/cors@^2.8.3":
-  version "2.8.3"
-  resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.3.tgz#eaf6e476da0d36bee6b061a24d57e343ddce86d6"
-  dependencies:
-    "@types/express" "*"
-
-"@types/electron@^1.6.10":
-  version "1.6.10"
-  resolved "https://registry.yarnpkg.com/@types/electron/-/electron-1.6.10.tgz#7e87888ed3888767cca68e92772c2c8ea46bc873"
-  dependencies:
-    electron "*"
-
-"@types/enzyme-adapter-react-16@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@types/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.0.2.tgz#15ae37c64d6221a6f4b3a4aacc357cf773859de4"
-  dependencies:
-    "@types/enzyme" "*"
-
-"@types/enzyme@*", "@types/enzyme@^3.1.9":
-  version "3.1.9"
-  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.1.9.tgz#fbd97f3beb7cad76fc9c6f04c97d77f4834522ef"
-  dependencies:
-    "@types/cheerio" "*"
-    "@types/react" "*"
-
-"@types/events@*":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
-
-"@types/express-graphql@^0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@types/express-graphql/-/express-graphql-0.6.1.tgz#9e8c5544a5099c3db82d29847b1efb2af4ad147c"
-  dependencies:
-    "@types/express" "*"
-    "@types/graphql" "*"
-
-"@types/express-serve-static-core@*":
-  version "4.11.1"
-  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.11.1.tgz#f6f7212382d59b19d696677bcaa48a37280f5d45"
-  dependencies:
-    "@types/events" "*"
-    "@types/node" "*"
-
-"@types/express@*", "@types/express@^4.11.1":
-  version "4.11.1"
-  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.11.1.tgz#f99663b3ab32d04cb11db612ef5dd7933f75465b"
-  dependencies:
-    "@types/body-parser" "*"
-    "@types/express-serve-static-core" "*"
-    "@types/serve-static" "*"
-
-"@types/graphql@*", "@types/graphql@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.13.0.tgz#78a33a7f429a06a64714817d9130d578e0f35ecb"
-
-"@types/history@*":
-  version "4.6.2"
-  resolved "https://registry.yarnpkg.com/@types/history/-/history-4.6.2.tgz#12cfaba693ba20f114ed5765467ff25fdf67ddb0"
-
-"@types/invariant@^2.2.29":
-  version "2.2.29"
-  resolved "https://registry.yarnpkg.com/@types/invariant/-/invariant-2.2.29.tgz#aa845204cd0a289f65d47e0de63a6a815e30cc66"
-
-"@types/jest@^22.2.3":
-  version "22.2.3"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.2.3.tgz#0157c0316dc3722c43a7b71de3fdf3acbccef10d"
-
-"@types/js-cookie@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.1.0.tgz#a8916246aa994db646c66d54c854916213300a51"
-
-"@types/mime@*":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.0.tgz#5a7306e367c539b9f6543499de8dd519fac37a8b"
-
-"@types/node@*", "@types/node@^9.6.5":
+"@types/node@*":
   version "9.6.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.5.tgz#ee700810fdf49ac1c399fc5980b7559b3e5a381d"
 
 "@types/node@^8.0.24":
   version "8.10.8"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.8.tgz#794cba23cc9f8d9715f6543fa8827433b5f5cd3b"
-
-"@types/react-dom@^16.0.5":
-  version "16.0.5"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.0.5.tgz#a757457662e3819409229e8f86795ff37b371f96"
-  dependencies:
-    "@types/node" "*"
-    "@types/react" "*"
-
-"@types/react-relay@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/@types/react-relay/-/react-relay-1.3.4.tgz#330e6038c43ae48fa1e49a10b9640e8e038c43a7"
-  dependencies:
-    "@types/react" "*"
-    "@types/relay-runtime" "*"
-
-"@types/react-router-dom@^4.2.6":
-  version "4.2.6"
-  resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.2.6.tgz#9f7eb3c0e6661a9607d878ff8675cc4ea95cd276"
-  dependencies:
-    "@types/history" "*"
-    "@types/react" "*"
-    "@types/react-router" "*"
-
-"@types/react-router@*":
-  version "4.0.23"
-  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.23.tgz#d0509dcbdb1c686aed8f3d5cb186f42e5fbe7c2a"
-  dependencies:
-    "@types/history" "*"
-    "@types/react" "*"
-
-"@types/react@*", "@types/react@^16.3.10":
-  version "16.3.10"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.10.tgz#2f25eef83f7c7f6c51cea4c02660f727c75d3b33"
-  dependencies:
-    csstype "^2.2.0"
-
-"@types/relay-runtime@*", "@types/relay-runtime@^1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@types/relay-runtime/-/relay-runtime-1.3.3.tgz#0e79d7f10e81b83272f0ebe8a8f61e3e28805928"
-
-"@types/serve-static@*":
-  version "1.13.1"
-  resolved "https://registry.yarnpkg.com/@types/serve-static/-/serve-static-1.13.1.tgz#1d2801fa635d274cd97d4ec07e26b21b44127492"
-  dependencies:
-    "@types/express-serve-static-core" "*"
-    "@types/mime" "*"
 
 Base64@~0.2.0:
   version "0.2.1"
@@ -2136,10 +1992,6 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   dependencies:
     cssom "0.3.x"
 
-csstype@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.2.0.tgz#1656ef97553ac53b77090844a2531c6660ebd902"
-
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
@@ -2458,14 +2310,6 @@ electron-download@^3.0.1:
     rc "^1.1.2"
     semver "^5.3.0"
     sumchecker "^1.2.0"
-
-electron@*:
-  version "1.8.4"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-1.8.4.tgz#cca8d0e6889f238f55b414ad224f03e03b226a38"
-  dependencies:
-    "@types/node" "^8.0.24"
-    electron-download "^3.0.1"
-    extract-zip "^1.0.3"
 
 electron@^2.0.0-beta.7:
   version "2.0.0-beta.7"
@@ -4005,7 +3849,7 @@ interpret@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-invariant@^2.2.1, invariant@^2.2.2, invariant@^2.2.4:
+invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   dependencies:
