@@ -1,27 +1,25 @@
 // @flow
 
-import sequelize from 'sequelize';
+import { Sequelize, STRING } from 'sequelize';
 
-const User = (pool: sequelize) => {
+const User = (pool: Sequelize) => {
   var User = pool.define(
     'User',
     {
       googleID: {
         allowNull: false,
         unique: true,
-        type: sequelize.STRING
+        type: STRING
       },
       email: {
         allowNull: false,
         unique: true,
-        type: sequelize.STRING
+        type: STRING
       },
     },
     {
     }
   );
-  User.associate = (models: Object) => {
-  };
   return User;
 };
 

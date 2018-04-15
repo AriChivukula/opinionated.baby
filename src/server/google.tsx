@@ -1,5 +1,3 @@
-// @flow
-
 import { OAuth2Client } from 'google-auth-library';
 import { google } from 'googleapis';
 

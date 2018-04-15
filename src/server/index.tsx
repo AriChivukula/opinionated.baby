@@ -1,10 +1,7 @@
-// @flow
-
-import '@babel/polyfill';
-import lambda from 'aws-serverless-express';
-import cors from 'cors';
-import express from 'express';
-import server from './server.js';
+import { createServer, proxy } from 'aws-serverless-express';
+import * as cors from 'cors';
+import * as express from 'express';
+import server from './server';
 
 const app = express();
 app.use(cors());
@@ -12,7 +9,7 @@ let lambdaHandle = undefined;
 
 if (process.env.LAMBDA_TASK_ROOT && process.env.AWS_EXECUTION_ENV) {
   app.use('/', server);
-  const serverless = lambda.createServer(
+  const serverless = createServer(
     app,
     null,
     [
@@ -25,8 +22,8 @@ if (process.env.LAMBDA_TASK_ROOT && process.env.AWS_EXECUTION_ENV) {
       'image/svg+xml'
     ]
   );
-  lambdaHandle = (event: Object, context: Object) =>
-    lambda.proxy(serverless, event, context);
+  lambdaHandle = (event: any, context: any) =>
+    proxy(serverless, event, context);
 } else {
   app.use('/', express.static('_bin/website'));
   app.use('/graphql', server);

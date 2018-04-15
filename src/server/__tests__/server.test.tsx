@@ -1,8 +1,5 @@
-// @flow
-
-import '@babel/polyfill';
-import { getLoginURL, genAccessTokenInfo } from '../google.js';
-import { User } from '../models/index.js';
+import { getLoginURL, genAccessTokenInfo } from '../google';
+import { User } from '../models/index';
 
 test(
   'getLoginURL',

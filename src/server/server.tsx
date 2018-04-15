@@ -1,16 +1,14 @@
-// @flow
-
-import fs from 'fs';
-import graphqlHTTP from 'express-graphql';
+import { readFileSync } from 'fs';
+import * as graphqlHTTP from 'express-graphql';
 import { buildSchema } from 'graphql';
-import invariant from 'invariant';
-import path from 'path';
+import * as invariant from 'invariant';
+import { join } from 'path';
 
-import { getOAuthClient, getLoginURL, genAccessTokenInfo } from './google.js';
+import { getOAuthClient, getLoginURL, genAccessTokenInfo } from './google';
 import { User } from './models/index.js';
 
 const schema = buildSchema(
-  fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'ascii')
+  readFileSync(join(__dirname, 'schema.graphql'), 'ascii')
 );
 
 type AccessToken = {
@@ -18,7 +16,7 @@ type AccessToken = {
 }
 
 const root = async (request, response): Promise<Object> => ({
-  me: async ({access_token}): Promise<?User> => {
+  me: async ({access_token}): Promise<User> => {
     try {
       const info = await genAccessTokenInfo(access_token);
       return await User.findOne(
@@ -49,7 +47,7 @@ const root = async (request, response): Promise<Object> => ({
   }
 });
 
-export default graphqlHTTP(async (request, response): Promise<Object> => ({
+export default graphqlHTTP(async (request, response): Promise<any> => ({
   schema: schema,
   rootValue: await root(request, response),
   graphiql: true
