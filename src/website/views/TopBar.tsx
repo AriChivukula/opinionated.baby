@@ -102,7 +102,7 @@ class TopBarRelay extends React.Component<IProps> {
           }
         `,
         onCompleted: (response: object, errors: object): void => {
-          cookie.set("access_token", response.login.accessToken);
+          cookie.set("accessToken", response.login.accessToken);
           window.open("/");
         },
         variables: {
@@ -124,7 +124,7 @@ class TopBarRelay extends React.Component<IProps> {
           }
         `,
         onCompleted: (response: object, errors: object): void => {
-          cookie.set("access_token", response.logout.accessToken);
+          cookie.set("accessToken", response.logout.accessToken);
           window.open("/");
         },
         variables: {},
@@ -138,10 +138,10 @@ export const TopBar: React.ComponentType = createFragmentContainer(
   TopBarRelay,
   graphql`
     fragment TopBarQuery on Query @argumentDefinitions(
-      access_token: {type: "String!"}
+      accessToken: {type: "String!"}
     ) {
       loginURL,
-      me(access_token: $access_token) {
+      me(accessToken: $accessToken) {
         googleID,
         email
       }

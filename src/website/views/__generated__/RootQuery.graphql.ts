@@ -2,7 +2,7 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type RootQueryVariables = {
-    readonly access_token: string;
+    readonly accessToken: string;
 };
 export type RootQueryResponse = {
 };
@@ -11,14 +11,14 @@ export type RootQueryResponse = {
 
 /*
 query RootQuery(
-  $access_token: String!
+  $accessToken: String!
 ) {
-  ...TopBarQuery_3NIOrk
+  ...TopBarQuery_3aAabH
 }
 
-fragment TopBarQuery_3NIOrk on Query {
+fragment TopBarQuery_3aAabH on Query {
   loginURL
-  me(access_token: $access_token) {
+  me(accessToken: $accessToken) {
     googleID
     email
     id
@@ -30,7 +30,7 @@ const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "access_token",
+    "name": "accessToken",
     "type": "String!",
     "defaultValue": null
   }
@@ -40,7 +40,7 @@ return {
   "operationKind": "query",
   "name": "RootQuery",
   "id": null,
-  "text": "query RootQuery(\n  $access_token: String!\n) {\n  ...TopBarQuery_3NIOrk\n}\n\nfragment TopBarQuery_3NIOrk on Query {\n  loginURL\n  me(access_token: $access_token) {\n    googleID\n    email\n    id\n  }\n}\n",
+  "text": "query RootQuery(\n  $accessToken: String!\n) {\n  ...TopBarQuery_3aAabH\n}\n\nfragment TopBarQuery_3aAabH on Query {\n  loginURL\n  me(accessToken: $accessToken) {\n    googleID\n    email\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -55,8 +55,8 @@ return {
         "args": [
           {
             "kind": "Variable",
-            "name": "access_token",
-            "variableName": "access_token",
+            "name": "accessToken",
+            "variableName": "accessToken",
             "type": null
           }
         ]
@@ -83,8 +83,8 @@ return {
         "args": [
           {
             "kind": "Variable",
-            "name": "access_token",
-            "variableName": "access_token",
+            "name": "accessToken",
+            "variableName": "accessToken",
             "type": "String!"
           }
         ],
@@ -118,5 +118,5 @@ return {
   }
 };
 })();
-(node as any).hash = 'bdaf27fa4849cc677b51cc36cd0a7d0a';
+(node as any).hash = '7d7a7a3f08acef41f613c755877019e1';
 export default node;

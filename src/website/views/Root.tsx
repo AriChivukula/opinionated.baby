@@ -23,12 +23,12 @@ export class Root extends React.Component<IProps> {
       <QueryRenderer
         environment={this.props.environment}
         variables={{
-          access_token: cookie.get("access_token") !== undefined
-            ? cookie.get("access_token") : "",
+          accessToken: cookie.get("accessToken") !== undefined
+            ? cookie.get("accessToken") : "",
         }}
         query={graphql`
-          query RootQuery($access_token: String!) {
-            ...TopBarQuery @arguments(access_token: $access_token)
+          query RootQuery($accessToken: String!) {
+            ...TopBarQuery @arguments(accessToken: $accessToken)
           }
         `}
         render={({error, props}: {error: Error | null | undefined; props: TopBarQuery}): JSX.Element => {
