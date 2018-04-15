@@ -4,20 +4,13 @@ node_js:
 cache:
   yarn: true
   directories:
-  - ~/.flow-typed
-  - flow-typed
   - node_modules
-  - node_modules_prod
-before_script:
-- yarn gulp flow-typed
 script:
 - yarn test
 - yarn build
-before_cache:
-- yarn install --prod --modules-folder node_modules_prod
 after_success:
 - rm -rf node_modules
-- mv node_modules_prod node_modules
+- yarn install --prod
 - mv _bin/website/index.remote.js _bin/website/index.js
 - rm _bin/website/index.local.js
 - if [[ -z "$TRAVIS_TAG" ]] ; then cp src/website/static/robots.txt _bin/website/robots.txt ; fi
