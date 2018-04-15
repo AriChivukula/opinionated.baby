@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "inlineSourceMap": true,
+    "jsx": "React",
+    "strict": true,
+    "target": "ES6"
+  },
+  "include": [
+    "src/**/*.tsx"
+  ]
+}
