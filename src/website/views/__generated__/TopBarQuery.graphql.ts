@@ -45,7 +45,7 @@ const node: ConcreteFragment = {
           "type": "String!"
         }
       ],
-      "concreteType": "User",
+      "concreteType": "Login",
       "plural": false,
       "selections": [
         {

@@ -1,6 +1,6 @@
 import { createConnection, EntityManager, getManager } from "typeorm";
 
-import { User } from "../entity/user";
+import { Login } from "../entity/login";
 import { genAccessTokenInfo, getLoginURL } from "../google";
 
 test(
@@ -22,11 +22,11 @@ test(
 );
 
 test(
-  "User",
+  "Login",
   async (): Promise<void> => {
     await createConnection();
     const entityManager: EntityManager = getManager();
-    const user: User | undefined = await entityManager.findOneById(User, 1);
+    const user: Login | undefined = await entityManager.findOneById(Login, 1);
     expect(user)
       .not
       .toBeNull();

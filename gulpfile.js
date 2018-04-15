@@ -13,70 +13,111 @@ var uglify = require("gulp-uglify");
 var project = ts.createProject("tsconfig.json");
 
 gulp.task(
-  "delete-all-artifacts",
+  "delete-artifacts",
   shell.task("rm -rf _stage"),
 );
 
 gulp.task(
-  "delete-node-modules",
+  "delete-modules",
   shell.task("rm -rf node_modules"),
 );
 
 gulp.task(
-  "delete-yarn-lock",
+  "delete-yarn",
   shell.task("rm -rf yarn*"),
 );
 
 gulp.task(
-  "yarn-install",
+  "modules",
   shell.task("yarn install"),
+);
+
+gulp.task(
+  "relay",
+  shell.task("relay-compiler --src src/ --schema src/server/schema.graphql --language typescript"),
 );
 
 gulp.task(
   "prep",
   gulp.series(
     gulp.parallel(
-      "delete-all-artifacts",
-      "delete-node-modules",
-      "delete-yarn-lock"
+      "delete-artifacts",
+      "delete-modules",
+      "delete-yarn"
     ),
-    "yarn-install"
+    "modules",
+    "relay",
   ),
 );
 
 gulp.task(
-  "compile-relay",
-  shell.task("relay-compiler --src src/ --schema src/server/schema.graphql --language typescript"),
-);
-
-gulp.task(
-  "typescript-lint",
-  shell.task("tslint -p . **/*.tsx"),
-);
-
-gulp.task(
-  "sass-lint",
+  "stage0-sass-lint",
   shell.task("sass-lint src/**/*.scss"),
 );
 
 gulp.task(
-  "compile-typescript",
+  "stage0-typescript-lint",
+  shell.task("tslint -p . **/*.tsx"),
+);
+
+gulp.task(
+  "stage0-copy",
+  () => gulp.src([
+    "src/**/*.html",
+    "src/**/*.jpg",
+    "src/**/*.png",
+    "src/**/*.snap",
+    "src/**/*.txt",
+  ])
+    .pipe(gulp.dest("_stage0")),
+);
+
+gulp.task(
+  "stage0-sass",
+  () => gulp.src("src/**/*.scss")
+    .pipe(sass({
+      includePaths: "node_modules",
+      outputStyle: "compressed",
+    }))
+    .pipe(gulp.dest("_stage0")),
+);
+
+gulp.task(
+  "stage0-typescript",
   () => gulp.src(["src/**/*.tsx"])
     .pipe(project())
     .js
-    .pipe(gulp.dest("_stage0_typescript")),
+    .pipe(gulp.dest("_stage0")),
 );
 
 gulp.task(
-  "recompile-relay",
-  shell.task("relay-compiler --src _stage0_typescript/ --schema src/server/schema.graphql"),
+  "stage0-relay",
+  shell.task("relay-compiler --src _stage0/ --schema src/server/schema.graphql"),
 );
 
 gulp.task(
-  "compile-babel",
+  "stage0",
+  gulp.series(
+    gulp.parallel(
+      "stage0-sass-lint",
+      "stage0-typescript-lint",
+    ),
+    gulp.parallel(
+      "stage0-copy",
+      "stage0-sass",
+      "stage0-typescript",
+    ),
+    "stage0-relay",
+  ),
+);
+
+gulp.task(
+  "stage1-babel",
   () => gulp
-    .src("_stage0_typescript/**/*.js")
-    .pipe(sourcemaps.init({ loadMaps: true }))
+    .src("_stage0/**/*.js")
+    .pipe(sourcemaps.init({
+      loadMaps: true,
+    }))
     .pipe(babel({
       plugins: [[
         "relay",
@@ -87,26 +128,42 @@ gulp.task(
       presets: ["@babel/preset-env"],
     }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest("_stage1_babel")),
+    .pipe(gulp.dest("_stage1")),
 );
 
 gulp.task(
-  "run-test",
-  shell.task("jest --collectCoverage _stage1_babel/"),
+  "stage1-copy",
+  () => gulp.src([
+    "src/**/*.graphql",
+    "_stage0/**/*.css",
+    "_stage0/**/*.html",
+    "_stage0/**/*.jpg",
+    "_stage0/**/*.png",
+    "_stage0/**/*.snap",
+    "_stage0/**/*.txt",
+  ])
+    .pipe(gulp.dest("_stage1")),
+);
+
+gulp.task(
+  "stage1",
+  gulp.parallel(
+    "stage1-babel",
+    "stage1-copy",
+  ),
+);
+
+gulp.task(
+  "jest",
+  shell.task("jest --collectCoverage _stage1/"),
 );
 
 gulp.task(
   "test",
   gulp.series(
-    "compile-relay",
-    gulp.parallel(
-      "typescript-lint",
-      "sass-lint"
-    ),
-    "compile-typescript",
-    "recompile-relay",
-    "compile-babel",
-    "run-test",
+    "stage0",
+    "stage1",
+    "jest",
   ),
 );
 
@@ -283,7 +340,6 @@ gulp.task(
 gulp.task(
   "build",
   gulp.series(
-    "compile-relay",
     gulp.parallel(
       "build-website",
       "build-server"
@@ -345,47 +401,35 @@ gulp.task(
 );
 
 gulp.task(
-  "compile-snap",
-  () => gulp.src("src/**/*.js")
-    .pipe(babel())
-    .pipe(gulp.dest("_snap")),
+  "jest-snap",
+  shell.task("jest -u _stage1/website"),
 );
 
 gulp.task(
-  "run-snap",
-  shell.task("jest -u _snap/website"),
-);
-
-gulp.task(
-  "update-snap",
-  shell.task("cp -R _snap/website/__tests__/__snapshots__/ src/website/__tests__/__snapshots__/"),
+  "copy-snap",
+  shell.task("cp -R _stage1/website/__tests__/__snapshots__/ src/website/__tests__/__snapshots__/"),
 );
 
 gulp.task(
   "snap",
   gulp.series(
-    "compile-snap",
-    "run-snap",
-    "update-snap"
+    "stage0",
+    "stage1",
+    "jest-snap",
+    "copy-snap",
   ),
 );
 
 gulp.task(
-  "compile-sql",
-  () => gulp.src("src/**/*.js")
-    .pipe(babel())
-    .pipe(gulp.dest("_sql")),
-);
-
-gulp.task(
-  "run-sql",
-  shell.task("node_modules/.bin/sequelize db:migrate"),
+  "sql-sync",
+  shell.task("typeorm schema:sync"),
 );
 
 gulp.task(
   "sql",
   gulp.series(
-    "compile-sql",
-    "run-sql"
+    "stage0",
+    "stage1",
+    "sql-sync",
   ),
 );

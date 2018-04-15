@@ -1,10 +1,10 @@
-type User {
+type Login {
   id: ID
   email: String
 }
 
 type Query {
-  me(accessToken: String!): User
+  me(accessToken: String!): Login
   loginURL: String!
 }
 
