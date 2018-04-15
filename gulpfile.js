@@ -1,12 +1,10 @@
 // @flow
 
 var gulp = require('gulp');
-var babel = require('gulp-babel');
 var browserify = require('gulp-browserify');
 var purgeSourcemaps = require('gulp-purge-sourcemaps');
 var rename = require('gulp-rename');
 var rollup = require('gulp-better-rollup');
-var rollupBabel = require('rollup-plugin-babel');
 var sass = require('gulp-sass');
 var shell = require('gulp-shell');
 var sourcemaps = require('gulp-sourcemaps');
@@ -15,11 +13,6 @@ var uglify = require('gulp-uglify');
 gulp.task(
   'delete-all-artifacts',
   shell.task('rm -rf _*')
-);
-
-gulp.task(
-  'delete-flow-typed',
-  shell.task('rm -rf flow-typed')
 );
 
 gulp.task(
@@ -38,29 +31,14 @@ gulp.task(
 );
 
 gulp.task(
-  'yarn-upgrade',
-  shell.task('yarn upgrade --latest')
-);
-
-gulp.task(
-  'flow-typed',
-  shell.task('yarn flow-typed install --overwrite')
-);
-
-gulp.task(
   'prep',
   gulp.series(
     gulp.parallel(
       'delete-all-artifacts',
-      'delete-flow-typed',
       'delete-node-modules',
       'delete-yarn-lock'
     ),
-    'yarn-install',
-    gulp.parallel(
-      'yarn-upgrade',
-      'flow-typed',
-    ),
+    'yarn-install'
   )
 );
 
