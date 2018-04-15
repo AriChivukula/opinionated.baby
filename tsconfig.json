@@ -4,6 +4,7 @@
     "experimentalDecorators": true,
     "inlineSourceMap": true,
     "jsx": "React",
+    "moduleResolution": "Node",
     "strict": true,
     "target": "ES6"
   },

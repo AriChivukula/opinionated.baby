@@ -1,3 +1,5 @@
+import { getManager } from 'typeorm';
+
 import { getLoginURL, genAccessTokenInfo } from '../google';
 import { User } from '../entity/user';
 
@@ -19,9 +21,8 @@ test(
 test(
   'User',
   async () => {
-    const result = await User.findOrCreate(
-      {where: {googleID: 'TEST', email: 'TEST'}}
-    );
-    expect(result[0]).not.toBeNull();
+    const entityManager = getManager();
+    const user = await entityManager.findOneById(User, 1);
+    expect(user).not.toBeNull();
   }
 );

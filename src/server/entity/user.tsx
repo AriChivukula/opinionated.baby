@@ -1,16 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class User {
 
-    @PrimaryGeneratedColumn()
-    id: number = 0;
-
-    @Column()
-    @Unique()
+    @PrimaryColumn()
     googleID: string ='';
 
-    @Column()
-    @Unique()
+    @Column({unique: true})
     email: string ='';
 }
