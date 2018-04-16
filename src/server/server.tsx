@@ -14,6 +14,11 @@ import {
   IAccessTokenInfo,
 } from "./google";
 
+createConnection()
+  .catch((err: Error): void => { console.log(err); })
+  .then((): void => { console.log("DB Connected"); })
+  .catch((err: Error): void => { console.log(err); });
+
 const schema: GraphQLSchema = buildSchema(
   readFileSync(join(__dirname, "schema.graphql"), "ascii"),
 );
@@ -54,21 +59,9 @@ const root: (request: Request, response: Response) => Promise<object> =
   });
 
 export const server: graphqlHTTP.Middleware = graphqlHTTP(
-  async (request: Request, response: Response): Promise<graphqlHTTP.OptionsData> => {
-    await createConnection({
-      database: process.env.DB_NAME,
-      host: process.env.DB_HOST,
-      name: "default",
-      password: process.env.DB_PASSWORD,
-      port: parseInt(process.env.DB_PORT as string, 10),
-      type: "postgres",
-      username: process.env.DB_USERNAME,
-    });
-
-    return {
-      graphiql: true,
-      rootValue: await root(request, response),
-      schema,
-    };
-  },
+  async (request: Request, response: Response): Promise<graphqlHTTP.OptionsData> => ({
+    graphiql: true,
+    rootValue: await root(request, response),
+    schema,
+  }),
 );
