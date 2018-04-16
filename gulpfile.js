@@ -32,11 +32,6 @@ gulp.task(
 );
 
 gulp.task(
-  "relay",
-  shell.task("relay-compiler --src src/ --schema src/server/schema.graphql --language typescript"),
-);
-
-gulp.task(
   "prep",
   gulp.series(
     gulp.parallel(
@@ -45,11 +40,15 @@ gulp.task(
       "delete-yarn"
     ),
     "modules",
-    "relay",
   ),
 );
 
 /* BUILD */
+
+gulp.task(
+  "src-relay",
+  shell.task("relay-compiler --src src/ --schema src/server/schema.graphql --language typescript"),
+);
 
 gulp.task(
   "stage0-typescript",
@@ -72,6 +71,7 @@ gulp.task(
 gulp.task(
   "stage0",
   gulp.series(
+    "src-relay",
     gulp.parallel(
       "stage0-typescript",
       "stage0-typescript-lint",

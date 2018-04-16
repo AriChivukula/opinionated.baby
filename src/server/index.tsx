@@ -28,10 +28,7 @@ if (process.env.ENV === "LAMBDA") {
       "image/svg+xml",
     ],
   );
-  lambdaHandler =
-    (event: object, context: object): void => {
-      proxy(serverless, event, context);
-    };
+  lambdaHandler = (event: object, context: object): void => proxy(serverless, event, context);
 } else {
   app.use("/", express.static("_stage2/website/static"));
   app.use("/graphql", server);
