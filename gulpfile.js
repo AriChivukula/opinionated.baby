@@ -152,183 +152,145 @@ gulp.task(
 );
 
 gulp.task(
-  "copy-html",
-  () => gulp.src("src/website/static/index.html")
-    .pipe(gulp.dest("_bin/website")),
-);
-
-gulp.task(
-  "compile-sass",
-  () => gulp.src("src/website/static/index.scss")
-    .pipe(sass({includePaths: "node_modules", outputStyle: "compressed"}))
-    .pipe(gulp.dest("_bin/website")),
-);
-
-gulp.task(
-  "copy-images",
-  () => gulp.src([
-    "src/website/static/images/*.jpg",
-    "src/website/static/images/*.png"
-  ])
-    .pipe(gulp.dest("_bin/website/images")),
-);
-
-gulp.task(
-  "compile-local-website",
-  () => gulp.src("src/website/index.js")
+  "stage2-application-local",
+  () => gulp.src("_stage1/application/index.js")
+    .pipe(sourcemaps.init({
+      loadMaps: true,
+    }))
+    .pipe(rollup(
+      {},
+      {
+        format: "cjs",
+      },
+    ))
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(rename("index.local.js"))
-    .pipe(sourcemaps.init())
+    .pipe(gulp.dest("_stage2/application")),
+);
+
+gulp.task(
+  "stage2-application-remote",
+  () => gulp.src("_stage2/application/index.local.js")
+    .pipe(rename("index.remote.js"))
+    .pipe(sourcemaps.init({
+      loadMaps: true,
+    }))
+    .pipe(purgeSourcemaps())
+    .pipe(uglify())
+    .pipe(gulp.dest("_stage2/application")),
+);
+
+gulp.task(
+  "stage2-application",
+  gulp.series(
+    "stage2-application-local",
+    "stage2-application-remote",
+  ),
+);
+
+gulp.task(
+  "stage2-server-local",
+  () => gulp.src("_stage1/server/index.js")
+    .pipe(sourcemaps.init({
+      loadMaps: true,
+    }))
+    .pipe(rollup(
+      {},
+      {
+        format: "cjs",
+      },
+    ))
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(rename("index.local.js"))
+    .pipe(gulp.dest("_stage2/server")),
+);
+
+gulp.task(
+  "stage2-server-remote",
+  () => gulp.src("_stage2/server/index.local.js")
+    .pipe(rename("index.remote.js"))
+    .pipe(sourcemaps.init({
+      loadMaps: true,
+    }))
+    .pipe(purgeSourcemaps())
+    .pipe(uglify())
+    .pipe(gulp.dest("_stage2/server")),
+);
+
+gulp.task(
+  "stage2-server",
+  gulp.series(
+    "stage2-server-local",
+    "stage2-server-remote",
+  ),
+);
+
+gulp.task(
+  "stage2-static",
+  () => gulp.src([
+    "_stage1/**/*.css",
+    "_stage1/**/*.graphql",
+    "_stage1/**/*.html",
+    "_stage1/**/*.jpg",
+    "_stage1/**/*.png",
+    "_stage1/**/*.txt",
+  ])
+    .pipe(gulp.dest("_stage2")),
+);
+
+gulp.task(
+  "stage2-website-local",
+  () => gulp.src("_stage1/website/index.js")
+    .pipe(rename("index.local.js"))
+    .pipe(sourcemaps.init({
+      loadMaps: true,
+    }))
     .pipe(browserify({
       ignore: ["electron"],
-      transform: ["babelify"]
     }))
     .pipe(uglify())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest("_bin/website")),
+    .pipe(gulp.dest("_stage2/website")),
 );
 
 gulp.task(
-  "compile-remote-website",
-  () => gulp.src("_bin/website/index.local.js")
+  "stage2-website-remote",
+  () => gulp.src("_stage2/website/index.local.js")
     .pipe(rename("index.remote.js"))
-    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(sourcemaps.init({
+      loadMaps: true,
+    }))
     .pipe(purgeSourcemaps())
     .pipe(uglify())
-    .pipe(gulp.dest("_bin/website")),
+    .pipe(gulp.dest("_stage2/website")),
 );
 
 gulp.task(
-  "build-website",
-  gulp.parallel(
-    "copy-html",
-    "compile-sass",
-    "copy-images",
-    gulp.series(
-      "compile-local-website",
-      "compile-remote-website"
-    )
+  "stage2-website",
+  gulp.series(
+    "stage2-website-local",
+    "stage2-website-remote",
   ),
 );
 
 gulp.task(
-  "copy-graphql",
-  () => gulp.src("src/server/schema.graphql")
-    .pipe(gulp.dest("_bin/server")),
-);
-
-gulp.task(
-  "compile-local-server",
-  () => gulp.src("src/server/index.js")
-    .pipe(sourcemaps.init())
-    .pipe(rollup(
-      {
-        plugins: [
-          rollupBabel({
-            babelrc: false,
-            exclude: "node_modules/**",
-            "presets": [
-              [
-                "@babel/preset-env",
-                { "modules": false }
-              ],
-              "@babel/preset-flow",
-              "@babel/preset-react"
-            ]
-          }),
-        ]
-      },
-      { format: "cjs" }
-    ))
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
-    .pipe(rename("index.local.js"))
-    .pipe(gulp.dest("_bin/server")),
-);
-
-gulp.task(
-  "compile-remote-server",
-  () => gulp.src("_bin/server/index.local.js")
-    .pipe(rename("index.remote.js"))
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(purgeSourcemaps())
-    .pipe(uglify())
-    .pipe(gulp.dest("_bin/server")),
-);
-
-gulp.task(
-  "build-server",
+  "stage2",
   gulp.parallel(
-    "copy-graphql",
-    gulp.series(
-      "compile-local-server",
-      "compile-remote-server"
-    )
-  ),
-);
-
-gulp.task(
-  "copy-application-static",
-  () => gulp.src("_bin/website/**")
-    .pipe(gulp.dest("_bin/application/static")),
-);
-
-gulp.task(
-  "compile-local-application",
-  () => gulp.src("src/application/index.js")
-    .pipe(sourcemaps.init())
-    .pipe(rollup(
-      {
-        plugins: [
-          rollupBabel({
-            babelrc: false,
-            exclude: "node_modules/**",
-            "presets": [
-              [
-                "@babel/preset-env",
-                { "modules": false }
-              ],
-              "@babel/preset-flow"
-            ]
-          }),
-        ]
-      },
-      { format: "cjs" }
-    ))
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
-    .pipe(rename("index.local.js"))
-    .pipe(gulp.dest("_bin/application")),
-);
-
-gulp.task(
-  "compile-remote-application",
-  () => gulp.src("_bin/application/index.local.js")
-    .pipe(rename("index.remote.js"))
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(purgeSourcemaps())
-    .pipe(uglify())
-    .pipe(gulp.dest("_bin/application")),
-);
-
-gulp.task(
-  "build-application",
-  gulp.parallel(
-    "copy-application-static",
-    gulp.series(
-      "compile-local-application",
-      "compile-remote-application"
-    )
+    "stage2-application",
+    "stage2-server",
+    "stage2-static",
+    "stage2-website",
   ),
 );
 
 gulp.task(
   "build",
   gulp.series(
-    gulp.parallel(
-      "build-website",
-      "build-server"
-    ),
-    "build-application"
+    "stage0",
+    "stage1",
+    "stage2",
   ),
 );
 
