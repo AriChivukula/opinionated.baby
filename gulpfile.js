@@ -5,6 +5,7 @@ var sass = require("gulp-sass");
 var shell = require("gulp-shell");
 var ts = require("gulp-typescript");
 var source = require("vinyl-source-stream");
+var uglify = require('gulp-uglify');
 
 var project = ts.createProject("tsconfig.json");
 
@@ -189,11 +190,40 @@ gulp.task(
 );
 
 gulp.task(
+  "stage3-static",
+  () => gulp.src([
+    "_stage1/**/*.css",
+    "_stage1/**/*.graphql",
+    "_stage1/**/*.html",
+    "_stage1/**/*.jpg",
+    "_stage1/**/*.png",
+    "_stage1/**/*.txt",
+  ])
+    .pipe(gulp.dest("_stage3")),
+);
+
+gulp.task(
+  "stage3-uglify",
+  () => gulp.src("_stage2/**/*.js")
+    .pipe(uglify())
+    .pipe(gulp.dest("_stage3")),
+);
+
+gulp.task(
+  "stage3",
+  gulp.parallel(
+    "stage3-static",
+    "stage3-uglify",
+  ),
+);
+
+gulp.task(
   "build",
   gulp.series(
     "stage0",
     "stage1",
     "stage2",
+    "stage3",
   ),
 );
 
