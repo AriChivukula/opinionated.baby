@@ -14,7 +14,7 @@
       }
     },
     "roots": [
-      "<rootDir>/_stage1/"
+      "<rootDir>/_build_2/"
     ],
     "verbose": true
   },

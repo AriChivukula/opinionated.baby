@@ -30,7 +30,7 @@ if (process.env.ENV === "LAMBDA") {
   );
   lambdaHandler = (event: object, context: object): void => proxy(serverless, event, context);
 } else {
-  app.use("/", express.static("_stage2/website/static"));
+  app.use("/", express.static("_build_3/website"));
   app.use("/graphql", server);
   app.listen(process.env.PORT);
 }
