@@ -1,5 +1,5 @@
 export const isElectron: () => boolean =
-  (): boolean => "process.type" in window;
+  (): boolean => "process" in window;
 
 export const goto: (url: string) => void =
   (url: string): void => {

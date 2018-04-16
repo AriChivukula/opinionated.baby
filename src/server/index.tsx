@@ -30,7 +30,6 @@ if ("LAMBDA_TASK_ROOT" in process.env && "AWS_EXECUTION_ENV" in process.env) {
   );
   lambdaHandler =
     (event: object, context: object): void => {
-      // @ts-ignore
       proxy(serverless, event, context);
     };
 } else {

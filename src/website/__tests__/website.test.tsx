@@ -31,6 +31,13 @@ const environment: Environment = new Environment({
   store: new Store(new RecordSource()),
 });
 
+const ctx: object = {
+  relay: {
+    environment,
+    variables: {},
+  },
+};
+
 test(
   "FourOhFour",
   async (): Promise<void> => {
@@ -53,15 +60,7 @@ test(
     expect(
       Enzyme.render(
         Enzyme.mount(
-          context(
-            {
-              relay: {
-                environment,
-                variables: {},
-              },
-            },
-            <Page data={null} />,
-          ),
+          context(ctx, <Page data={null} />),
         ),
       ),
     )
@@ -72,28 +71,21 @@ test(
 test(
   "PageLoggedOut",
   async (): Promise<void> => {
+    // tslint:disable-next-line:no-any
+    const props: any = {
+      data: {
+        __fragments: {
+          TopBarQuery: {},
+        },
+        __id: "0",
+        loginURL: "http://fake.com/",
+        me: null,
+      },
+    };
     expect(
       Enzyme.render(
         Enzyme.mount(
-          context(
-            {
-              relay: {
-                environment,
-                variables: {},
-              },
-            },
-            <Page
-              // @ts-ignore
-              data={{
-                __fragments: {
-                  TopBarQuery: {},
-                },
-                __id: "0",
-                loginURL: "http://fake.com/",
-                me: null,
-              }}
-            />,
-          ),
+          context(ctx, <Page {...props} />),
         ),
       ),
     )
@@ -104,31 +96,24 @@ test(
 test(
   "PageLoggedIn",
   async (): Promise<void> => {
+    // tslint:disable-next-line:no-any
+    const props: any = {
+      data: {
+        __fragments: {
+          TopBarQuery: {},
+        },
+        __id: "0",
+        loginURL: "http://fake.com/",
+        me: {
+          email: "TEST",
+          id: "TEST",
+        },
+      },
+    };
     expect(
       Enzyme.render(
         Enzyme.mount(
-          context(
-            {
-              relay: {
-                environment,
-                variables: {},
-              },
-            },
-            <Page
-              // @ts-ignore
-              data={{
-                __fragments: {
-                  TopBarQuery: {},
-                },
-                __id: "0",
-                loginURL: "http://fake.com/",
-                me: {
-                  email: "TEST",
-                  id: "TEST",
-                },
-              }}
-            />,
-          ),
+          context(ctx, <Page {...props} />),
         ),
       ),
     )
