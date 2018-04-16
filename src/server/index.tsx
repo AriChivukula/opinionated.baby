@@ -1,6 +1,6 @@
 import "@babel/polyfill";
 
-import { createServer, proxy } from "aws-serverless-express";
+import lambda from "aws-serverless-express";
 import cors from "cors";
 import express from "express";
 import { server } from "./server";
@@ -15,7 +15,7 @@ let lambdaHandler: (event: object, context: object) => void =
 
 if (process.env.ENV === "LAMBDA") {
   app.use("/", server);
-  const serverless: object = createServer(
+  const serverless: object = lambda.createServer(
     app,
     null,
     [
@@ -28,7 +28,7 @@ if (process.env.ENV === "LAMBDA") {
       "image/svg+xml",
     ],
   );
-  lambdaHandler = (event: object, context: object): void => proxy(serverless, event, context);
+  lambdaHandler = (event: object, context: object): void => lambda.proxy(serverless, event, context);
 } else {
   app.use("/", express.static("_build_3/website"));
   app.use("/graphql", server);
