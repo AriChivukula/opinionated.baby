@@ -1,47 +1,36 @@
-/**
- * @flow
- * @relayHash bf26b5c5d33e6c5eb5bb76fd1a251b5f
- */
+/* tslint:disable */
 
-/* eslint-disable */
+import { ConcreteRequest } from "relay-runtime";
+export type RootQueryVariables = {
+    readonly accessToken?: string | null;
+};
+export type RootQueryResponse = {
+};
 
-'use strict';
-
-/*::
-import type { ConcreteRequest } from 'relay-runtime';
-type TopBarQuery$ref = any;
-export type RootQueryVariables = {|
-  access_token: string,
-|};
-export type RootQueryResponse = {|
-  +$fragmentRefs: TopBarQuery$ref,
-|};
-*/
 
 
 /*
 query RootQuery(
-  $access_token: String!
+  $accessToken: String
 ) {
-  ...TopBarQuery_3NIOrk
+  ...TopBarQuery_3aAabH
 }
 
-fragment TopBarQuery_3NIOrk on Query {
+fragment TopBarQuery_3aAabH on Query {
   loginURL
-  me(access_token: $access_token) {
-    googleID
-    email
+  me(accessToken: $accessToken) {
     id
+    email
   }
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "access_token",
-    "type": "String!",
+    "name": "accessToken",
+    "type": "String",
     "defaultValue": null
   }
 ];
@@ -50,7 +39,7 @@ return {
   "operationKind": "query",
   "name": "RootQuery",
   "id": null,
-  "text": "query RootQuery(\n  $access_token: String!\n) {\n  ...TopBarQuery_3NIOrk\n}\n\nfragment TopBarQuery_3NIOrk on Query {\n  loginURL\n  me(access_token: $access_token) {\n    googleID\n    email\n    id\n  }\n}\n",
+  "text": "query RootQuery(\n  $accessToken: String\n) {\n  ...TopBarQuery_3aAabH\n}\n\nfragment TopBarQuery_3aAabH on Query {\n  loginURL\n  me(accessToken: $accessToken) {\n    id\n    email\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -65,8 +54,8 @@ return {
         "args": [
           {
             "kind": "Variable",
-            "name": "access_token",
-            "variableName": "access_token",
+            "name": "accessToken",
+            "variableName": "accessToken",
             "type": null
           }
         ]
@@ -93,9 +82,9 @@ return {
         "args": [
           {
             "kind": "Variable",
-            "name": "access_token",
-            "variableName": "access_token",
-            "type": "String!"
+            "name": "accessToken",
+            "variableName": "accessToken",
+            "type": "String"
           }
         ],
         "concreteType": "User",
@@ -104,7 +93,7 @@ return {
           {
             "kind": "ScalarField",
             "alias": null,
-            "name": "googleID",
+            "name": "id",
             "args": null,
             "storageKey": null
           },
@@ -114,13 +103,6 @@ return {
             "name": "email",
             "args": null,
             "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "id",
-            "args": null,
-            "storageKey": null
           }
         ]
       }
@@ -128,5 +110,5 @@ return {
   }
 };
 })();
-(node/*: any*/).hash = 'bdaf27fa4849cc677b51cc36cd0a7d0a';
-module.exports = node;
+(node as any).hash = '44a030f0348e92fe41033d53da62cd4b';
+export default node;

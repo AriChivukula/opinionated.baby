@@ -1,0 +1,14 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "jsx": "React",
+    "moduleResolution": "Node",
+    "target": "ES6",
+    "strictNullChecks": true
+  },
+  "include": [
+    "src/**/*.tsx"
+  ]
+}

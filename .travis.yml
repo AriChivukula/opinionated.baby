@@ -4,25 +4,17 @@ node_js:
 cache:
   yarn: true
   directories:
-  - ~/.flow-typed
-  - flow-typed
   - node_modules
-  - node_modules_prod
-before_script:
-- yarn gulp flow-typed
 script:
-- yarn test
 - yarn build
-before_cache:
-- yarn install --prod --modules-folder node_modules_prod
+- yarn test
 after_success:
 - rm -rf node_modules
-- mv node_modules_prod node_modules
-- mv _bin/website/index.remote.js _bin/website/index.js
-- rm _bin/website/index.local.js
-- if [[ -z "$TRAVIS_TAG" ]] ; then cp src/website/static/robots.txt _bin/website/robots.txt ; fi
-- mv _bin/server/index.remote.js index.js
-- mv _bin/server/schema.graphql schema.graphql
+- yarn install --prod
+- cp _stage3/website/index.js _stage3/website/static/index.js
+- if [[ "$TRAVIS_TAG" ]] ; then rm _stage3/website/static/robots.txt ; fi
+- cp _stage3/server/index.js index.js
+- cp _stage3/server/schema.graphql schema.graphql
 - zip -q -r dist.zip node_modules index.js schema.graphql
 deploy:
   - provider: s3
@@ -30,7 +22,7 @@ deploy:
     secret_access_key: $SECRET_ACCESS_KEY
     bucket: $BUCKET_BETA
     region: $REGION
-    local_dir: _bin/website
+    local_dir: _stage3/website/static
     acl: public_read
     skip_cleanup: true
     on:
@@ -68,7 +60,7 @@ deploy:
     secret_access_key: $SECRET_ACCESS_KEY
     bucket: $BUCKET
     region: $REGION
-    local_dir: _bin/website
+    local_dir: _stage3/website/static
     acl: public_read
     skip_cleanup: true
     on:

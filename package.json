@@ -8,22 +8,14 @@
     "github": "@arichiv"
   },
   "jest": {
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/_test/application/index.js",
-      "/_test/server/index.js",
-      "/_test/server/models/migrations/",
-      "/_test/website/views/__generated__/",
-      "/_test/website/index.js"
-    ],
     "coverageThreshold": {
       "global": {
-        "branches": 50,
-        "functions": 50,
-        "lines": 75,
-        "statements": 75
+        "lines": 50
       }
     },
+    "roots": [
+      "<rootDir>/_stage1/"
+    ],
     "verbose": true
   },
   "private": true,
@@ -36,59 +28,54 @@
     "google-auth-library": "^1.4.0",
     "googleapis": "^28.1.0",
     "graphql": "^0.13.1",
-    "invariant": "^2.2.4",
     "pg": "^7.4.1",
-    "sequelize": "^4.37.6"
+    "typeorm": "^0.1.20"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.44",
-    "@babel/plugin-proposal-class-properties": "7.0.0-beta.44",
-    "@babel/plugin-transform-react-jsx": "7.0.0-beta.44",
-    "@babel/preset-env": "7.0.0-beta.44",
-    "@babel/preset-flow": "7.0.0-beta.44",
-    "@babel/preset-react": "7.0.0-beta.44",
-    "babel-core": "^7.0.0-bridge.0",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "@types/jest": "^22.2.3",
+    "@types/react": "^16.3.10",
     "babel-plugin-relay": "^1.5.0",
-    "babelify": "github:ylemkimon/babelify",
+    "browserify": "^16.2.0",
     "electron": "^2.0.0-beta.7",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "flow-bin": "^0.69.0",
-    "flow-typed": "^2.4.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0-beta.2",
-    "gulp-better-rollup": "^3.1.0",
-    "gulp-browserify": "^0.5.1",
     "gulp-cli": "^2.0.1",
-    "gulp-purge-sourcemaps": "^1.0.0",
-    "gulp-rename": "^1.2.2",
     "gulp-sass": "^4.0.1",
     "gulp-shell": "^0.6.5",
-    "gulp-sourcemaps": "^2.6.4",
+    "gulp-typescript": "^4.0.2",
     "gulp-uglify": "^3.0.0",
     "jest": "^22.4.3",
     "jest-enzyme": "^6.0.0",
     "js-cookie": "^2.2.0",
     "material-components-web": "^0.34.1",
-    "nullthrows": "^1.0.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-relay": "^1.5.0",
     "react-relay-network-modern": "^2.1.1",
     "react-router-dom": "^4.2.2",
     "react-test-context-provider": "^2.2.0",
-    "react-test-renderer": "^16.3.1",
-    "relay-compiler": "^1.5.0",
+    "reflect-metadata": "^0.1.12",
+    "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/relay-compiler-1.5.0-plugin.5.tgz",
+    "relay-compiler-language-typescript": "^0.9.0",
     "relay-runtime": "^1.5.0",
     "rmwc": "^1.5.2",
-    "rollup-plugin-babel": "^4.0.0-beta.3",
     "sass-lint": "^1.12.1",
-    "sequelize-cli": "^4.0.0"
+    "ts-jest": "^22.4.3",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "resolutions": {
+    "**/relay-runtime": "1.5.0"
   },
   "scripts": {
     "prep": "gulp prep",
-    "test": "gulp test",
     "build": "gulp build",
+    "test": "gulp test",
     "serve": "gulp serve",
     "launch": "gulp launch",
     "snap": "gulp snap",

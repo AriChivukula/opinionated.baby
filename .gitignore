@@ -1,10 +1,6 @@
 .DS_Store
-_bin
-_test
-_snap
-_sql
+_stage*
 coverage
-flow-typed
 node_modules
 yarn-error.log
 secrets

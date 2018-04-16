@@ -1,394 +1,310 @@
-// @flow
-
-var gulp = require('gulp');
-var babel = require('gulp-babel');
-var browserify = require('gulp-browserify');
-var purgeSourcemaps = require('gulp-purge-sourcemaps');
-var rename = require('gulp-rename');
-var rollup = require('gulp-better-rollup');
-var rollupBabel = require('rollup-plugin-babel');
-var sass = require('gulp-sass');
-var shell = require('gulp-shell');
-var sourcemaps = require('gulp-sourcemaps');
+var gulp = require("gulp");
+var babel = require("gulp-babel");
+var browserify = require("browserify");
+var sass = require("gulp-sass");
+var shell = require("gulp-shell");
+var ts = require("gulp-typescript");
+var source = require("vinyl-source-stream");
 var uglify = require('gulp-uglify');
 
+var project = ts.createProject("tsconfig.json");
+
+/* PREP */
+
 gulp.task(
-  'delete-all-artifacts',
-  shell.task('rm -rf _*')
+  "delete-artifacts",
+  shell.task("rm -rf _stage*"),
 );
 
 gulp.task(
-  'delete-flow-typed',
-  shell.task('rm -rf flow-typed')
+  "delete-modules",
+  shell.task("rm -rf node_modules"),
 );
 
 gulp.task(
-  'delete-node-modules',
-  shell.task('rm -rf node_modules')
+  "delete-yarn",
+  shell.task("rm -rf yarn*"),
 );
 
 gulp.task(
-  'delete-yarn-lock',
-  shell.task('rm -rf yarn*')
+  "modules",
+  shell.task("yarn install"),
 );
 
 gulp.task(
-  'yarn-install',
-  shell.task('yarn install')
+  "relay",
+  shell.task("relay-compiler --src src/ --schema src/server/schema.graphql --language typescript"),
 );
 
 gulp.task(
-  'yarn-upgrade',
-  shell.task('yarn upgrade --latest')
-);
-
-gulp.task(
-  'flow-typed',
-  shell.task('yarn flow-typed install --overwrite')
-);
-
-gulp.task(
-  'prep',
+  "prep",
   gulp.series(
     gulp.parallel(
-      'delete-all-artifacts',
-      'delete-flow-typed',
-      'delete-node-modules',
-      'delete-yarn-lock'
+      "delete-artifacts",
+      "delete-modules",
+      "delete-yarn"
     ),
-    'yarn-install',
-    gulp.parallel(
-      'yarn-upgrade',
-      'flow-typed',
-    ),
-  )
+    "modules",
+    "relay",
+  ),
+);
+
+/* BUILD */
+
+gulp.task(
+  "stage0-typescript",
+  () => gulp.src(["src/**/*.tsx"])
+    .pipe(project())
+    .js
+    .pipe(gulp.dest("_stage0")),
 );
 
 gulp.task(
-  'compile-relay',
-  shell.task('relay-compiler --src src/website --schema src/server/schema.graphql')
+  "stage0-typescript-lint",
+  shell.task("tslint -p . **/*.tsx"),
 );
 
 gulp.task(
-  'flow-lint',
-  shell.task('flow')
+  "stage0-relay",
+  shell.task("relay-compiler --src _stage0/ --schema src/server/schema.graphql"),
 );
 
 gulp.task(
-  'sass-lint',
-  shell.task('sass-lint src/**/*.scss')
-);
-
-gulp.task(
-  'compile-test',
-  () => gulp.src('src/**/*.js')
-    .pipe(sourcemaps.init())
-    .pipe(babel())
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('_test')),
-);
-
-gulp.task(
-  'copy-test',
-  () => gulp.src(['src/**/*.snap', 'src/**/*.graphql'])
-    .pipe(gulp.dest('_test')),
-);
-
-gulp.task(
-  'run-test',
-  shell.task('jest --collectCoverage _test/')
-);
-
-gulp.task(
-  'test',
+  "stage0",
   gulp.series(
-    'compile-relay',
     gulp.parallel(
-      'flow-lint',
-      'sass-lint',
-      'compile-test',
-      'copy-test'
+      "stage0-typescript",
+      "stage0-typescript-lint",
     ),
-    'run-test'
-  )
+    "stage0-relay",
+  ),
 );
 
 gulp.task(
-  'copy-html',
-  () => gulp.src('src/website/static/index.html')
-    .pipe(gulp.dest('_bin/website'))
-);
-
-gulp.task(
-  'compile-sass',
-  () => gulp.src('src/website/static/index.scss')
-    .pipe(sass({includePaths: 'node_modules', outputStyle: 'compressed'}))
-    .pipe(gulp.dest('_bin/website'))
-);
-
-gulp.task(
-  'copy-images',
-  () => gulp.src([
-    'src/website/static/images/*.jpg',
-    'src/website/static/images/*.png'
-  ])
-    .pipe(gulp.dest('_bin/website/images'))
-);
-
-gulp.task(
-  'compile-local-website',
-  () => gulp.src('src/website/index.js')
-    .pipe(rename('index.local.js'))
-    .pipe(sourcemaps.init())
-    .pipe(browserify({
-      ignore: ['electron'],
-      transform: ['babelify']
+  "stage1-babel",
+  () => gulp
+    .src("_stage0/**/*.js")
+    .pipe(babel({
+      plugins: ["relay"],
+      presets: ["@babel/preset-env"],
     }))
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('_bin/website'))
+    .pipe(gulp.dest("_stage1")),
 );
 
 gulp.task(
-  'compile-remote-website',
-  () => gulp.src('_bin/website/index.local.js')
-    .pipe(rename('index.remote.js'))
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(purgeSourcemaps())
-    .pipe(uglify())
-    .pipe(gulp.dest('_bin/website'))
+  "stage1-sass",
+  () => gulp.src("src/**/*.scss")
+    .pipe(sass({
+      includePaths: "node_modules",
+      outputStyle: "compressed",
+    }))
+    .pipe(gulp.dest("_stage1")),
 );
 
 gulp.task(
-  'build-website',
+  "stage1-sass-lint",
+  shell.task("sass-lint src/**/*.scss"),
+);
+
+gulp.task(
+  "stage1-static",
+  () => gulp.src([
+    "src/**/*.graphql",
+    "src/**/*.html",
+    "src/**/*.jpg",
+    "src/**/*.png",
+    "src/**/*.snap",
+    "src/**/*.txt",
+  ])
+    .pipe(gulp.dest("_stage1")),
+);
+
+gulp.task(
+  "stage1",
   gulp.parallel(
-    'copy-html',
-    'compile-sass',
-    'copy-images',
-    gulp.series(
-      'compile-local-website',
-      'compile-remote-website'
-    )
-  )
+    "stage1-babel",
+    "stage1-sass",
+    "stage1-sass-lint",
+    "stage1-static",
+  ),
 );
 
 gulp.task(
-  'copy-graphql',
-  () => gulp.src('src/server/schema.graphql')
-    .pipe(gulp.dest('_bin/server'))
+  "stage2-application",
+  () => browserify({
+    bundleExternal: false,
+    entries: "_stage1/application/index.js",
+    detectGlobals: false,
+    node: true,
+  })
+    .bundle()
+    .pipe(source("index.js"))
+    .pipe(gulp.dest("_stage2/application")),
 );
 
 gulp.task(
-  'compile-local-server',
-  () => gulp.src('src/server/index.js')
-    .pipe(sourcemaps.init())
-    .pipe(rollup(
-      {
-        plugins: [
-          rollupBabel({
-            babelrc: false,
-            exclude: 'node_modules/**',
-            "presets": [
-              [
-                "@babel/preset-env",
-                { "modules": false }
-              ],
-              "@babel/preset-flow",
-              "@babel/preset-react"
-            ]
-          }),
-        ]
-      },
-      { format: 'cjs' }
-    ))
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
-    .pipe(rename('index.local.js'))
-    .pipe(gulp.dest('_bin/server'))
+  "stage2-server",
+  () => browserify({
+    bundleExternal: false,
+    entries: "_stage1/server/index.js",
+    detectGlobals: false,
+    node: true,
+  })
+    .bundle()
+    .pipe(source("index.js"))
+    .pipe(gulp.dest("_stage2/server")),
 );
 
 gulp.task(
-  'compile-remote-server',
-  () => gulp.src('_bin/server/index.local.js')
-    .pipe(rename('index.remote.js'))
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(purgeSourcemaps())
-    .pipe(uglify())
-    .pipe(gulp.dest('_bin/server'))
+  "stage2-static",
+  () => gulp.src([
+    "_stage1/**/*.css",
+    "_stage1/**/*.graphql",
+    "_stage1/**/*.html",
+    "_stage1/**/*.jpg",
+    "_stage1/**/*.png",
+    "_stage1/**/*.txt",
+  ])
+    .pipe(gulp.dest("_stage2")),
 );
 
 gulp.task(
-  'build-server',
+  "stage2-website",
+  () => browserify({
+    entries: "_stage1/website/index.js",
+    ignore: ["electron"],
+  })
+    .bundle()
+    .pipe(source("index.js"))
+    .pipe(gulp.dest("_stage2/website")),
+);
+
+gulp.task(
+  "stage2",
   gulp.parallel(
-    'copy-graphql',
-    gulp.series(
-      'compile-local-server',
-      'compile-remote-server'
-    )
-  )
+    "stage2-application",
+    "stage2-server",
+    "stage2-static",
+    "stage2-website",
+  ),
 );
 
 gulp.task(
-  'copy-application-static',
-  () => gulp.src('_bin/website/**')
-    .pipe(gulp.dest('_bin/application/static'))
+  "stage3-static",
+  () => gulp.src([
+    "_stage1/**/*.css",
+    "_stage1/**/*.graphql",
+    "_stage1/**/*.html",
+    "_stage1/**/*.jpg",
+    "_stage1/**/*.png",
+    "_stage1/**/*.txt",
+  ])
+    .pipe(gulp.dest("_stage3")),
 );
 
 gulp.task(
-  'compile-local-application',
-  () => gulp.src('src/application/index.js')
-    .pipe(sourcemaps.init())
-    .pipe(rollup(
-      {
-        plugins: [
-          rollupBabel({
-            babelrc: false,
-            exclude: 'node_modules/**',
-            "presets": [
-              [
-                "@babel/preset-env",
-                { "modules": false }
-              ],
-              "@babel/preset-flow"
-            ]
-          }),
-        ]
-      },
-      { format: 'cjs' }
-    ))
+  "stage3-uglify",
+  () => gulp.src("_stage2/**/*.js")
     .pipe(uglify())
-    .pipe(sourcemaps.write())
-    .pipe(rename('index.local.js'))
-    .pipe(gulp.dest('_bin/application'))
+    .pipe(gulp.dest("_stage3")),
 );
 
 gulp.task(
-  'compile-remote-application',
-  () => gulp.src('_bin/application/index.local.js')
-    .pipe(rename('index.remote.js'))
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(purgeSourcemaps())
-    .pipe(uglify())
-    .pipe(gulp.dest('_bin/application'))
-);
-
-gulp.task(
-  'build-application',
+  "stage3",
   gulp.parallel(
-    'copy-application-static',
-    gulp.series(
-      'compile-local-application',
-      'compile-remote-application'
-    )
-  )
+    "stage3-static",
+    "stage3-uglify",
+  ),
 );
 
 gulp.task(
-  'build',
+  "build",
   gulp.series(
-    'compile-relay',
-    gulp.parallel(
-      'build-website',
-      'build-server'
-    ),
-    'build-application'
-  )
+    "stage0",
+    "stage1",
+    "stage2",
+    "stage3",
+  ),
+);
+
+/* TEST */
+
+gulp.task(
+  "test",
+  shell.task("jest --collectCoverage"),
+);
+
+/* SERVE */
+
+gulp.task(
+  "website-static",
+  shell.task("cp _stage2/website/index.js _stage2/website/static/index.js"),
 );
 
 gulp.task(
-  'move-website',
-  shell.task('cp _bin/website/index.local.js _bin/website/index.js')
+  "website-host",
+  shell.task("DEBUG=* node _stage2/server/index.js"),
 );
 
 gulp.task(
-  'move-server',
-  shell.task('cp _bin/server/index.local.js _bin/server/index.js')
-);
-
-gulp.task(
-  'localhost',
-  shell.task('DEBUG=* node _bin/server/index.js')
-);
-
-gulp.task(
-  'serve',
+  "serve",
   gulp.series(
-    gulp.parallel(
-      'move-website',
-      'move-server'
-    ),
-    'localhost'
-  )
+    "website-static",
+    "website-host",
+  ),
+);
+
+/* LAUNCH */
+
+gulp.task(
+  "application-static",
+  shell.task("cp -R _stage2/website/static/ _stage2/application/static/"),
 );
 
 gulp.task(
-  'move-application',
-  shell.task('cp _bin/application/index.local.js _bin/application/index.js')
+  "application-run",
+  shell.task("ELECTRON_ENABLE_LOGGING=1 DEBUG=* electron _stage2/application/index.js"),
 );
 
 gulp.task(
-  'move-application-static',
-  shell.task('cp _bin/application/static/index.local.js _bin/application/static/index.js')
-);
-
-gulp.task(
-  'localrun',
-  shell.task('ELECTRON_ENABLE_LOGGING=1 DEBUG=* electron _bin/application/index.js')
-);
-
-gulp.task(
-  'launch',
+  "launch",
   gulp.series(
-    gulp.parallel(
-      'move-application',
-      'move-application-static'
-    ),
-    'localrun'
-  )
+    "website-static",
+    "application-static",
+    "application-run",
+  ),
+);
+
+/* SNAP */
+
+gulp.task(
+  "jest-snap",
+  shell.task("jest -u _stage1/website"),
 );
 
 gulp.task(
-  'compile-snap',
-  () => gulp.src('src/**/*.js')
-    .pipe(babel())
-    .pipe(gulp.dest('_snap'))
+  "copy-snap",
+  shell.task("cp -R _stage1/website/__tests__/__snapshots__/ src/website/__tests__/__snapshots__/"),
 );
 
 gulp.task(
-  'run-snap',
-  shell.task('jest -u _snap/website')
-);
-
-gulp.task(
-  'update-snap',
-  shell.task('cp -R _snap/website/__tests__/__snapshots__/ src/website/__tests__/__snapshots__/')
-);
-
-gulp.task(
-  'snap',
+  "snap",
   gulp.series(
-    'compile-snap',
-    'run-snap',
-    'update-snap'
-  )
+    "jest-snap",
+    "copy-snap",
+  ),
+);
+
+/* SQL */
+
+gulp.task(
+  "sql-sync",
+  shell.task("typeorm schema:sync"),
 );
 
 gulp.task(
-  'compile-sql',
-  () => gulp.src('src/**/*.js')
-    .pipe(babel())
-    .pipe(gulp.dest('_sql'))
-);
-
-gulp.task(
-  'run-sql',
-  shell.task('node_modules/.bin/sequelize db:migrate')
-);
-
-gulp.task(
-  'sql',
+  "sql",
   gulp.series(
-    'compile-sql',
-    'run-sql'
-  )
+    "sql-sync",
+  ),
 );

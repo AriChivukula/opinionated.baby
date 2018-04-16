@@ -1,27 +1,17 @@
-/**
- * @flow
- */
+/* tslint:disable */
 
-/* eslint-disable */
-
-'use strict';
-
-/*::
-import type { ConcreteFragment } from 'relay-runtime';
-import type { FragmentReference } from 'relay-runtime';
-declare export opaque type TopBarQuery$ref: FragmentReference;
-export type TopBarQuery = {|
-  +loginURL: string,
-  +me: ?{|
-    +googleID: ?string,
-    +email: ?string,
-  |},
-  +$refType: TopBarQuery$ref,
-|};
-*/
+import { ConcreteFragment } from "relay-runtime";
+export type TopBarQuery = {
+    readonly loginURL: string;
+    readonly me: ({
+        readonly id: string;
+        readonly email: string;
+    }) | null;
+};
 
 
-const node/*: ConcreteFragment*/ = {
+
+const node: ConcreteFragment = {
   "kind": "Fragment",
   "name": "TopBarQuery",
   "type": "Query",
@@ -29,8 +19,8 @@ const node/*: ConcreteFragment*/ = {
   "argumentDefinitions": [
     {
       "kind": "LocalArgument",
-      "name": "access_token",
-      "type": "String!",
+      "name": "accessToken",
+      "type": "String",
       "defaultValue": null
     }
   ],
@@ -50,9 +40,9 @@ const node/*: ConcreteFragment*/ = {
       "args": [
         {
           "kind": "Variable",
-          "name": "access_token",
-          "variableName": "access_token",
-          "type": "String!"
+          "name": "accessToken",
+          "variableName": "accessToken",
+          "type": "String"
         }
       ],
       "concreteType": "User",
@@ -61,7 +51,7 @@ const node/*: ConcreteFragment*/ = {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "googleID",
+          "name": "id",
           "args": null,
           "storageKey": null
         },
@@ -76,5 +66,5 @@ const node/*: ConcreteFragment*/ = {
     }
   ]
 };
-(node/*: any*/).hash = 'fdabd14c4c12a57604d1dc7681ccbd1f';
-module.exports = node;
+(node as any).hash = 'ebd11aa72b2dd69d598095f531eabe9f';
+export default node;

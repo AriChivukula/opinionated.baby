@@ -1,41 +1,35 @@
-/**
- * @flow
- * @relayHash 1d727ef7fc9f8ce3726277e284043b1e
- */
+/* tslint:disable */
 
-/* eslint-disable */
+import { ConcreteRequest } from "relay-runtime";
+export type TopBarLoginMutationVariables = {
+    readonly input?: {
+        readonly code?: string;
+    } | null;
+};
+export type TopBarLoginMutationResponse = {
+    readonly login: {
+        readonly accessToken: string;
+    };
+};
 
-'use strict';
-
-/*::
-import type { ConcreteRequest } from 'relay-runtime';
-export type TopBarLoginMutationVariables = {|
-  code: string,
-|};
-export type TopBarLoginMutationResponse = {|
-  +login: {|
-    +accessToken: string,
-  |},
-|};
-*/
 
 
 /*
 mutation TopBarLoginMutation(
-  $code: String!
+  $input: LoginInput
 ) {
-  login(code: $code) {
+  login(input: $input) {
     accessToken
   }
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "kind": "LocalArgument",
-    "name": "code",
-    "type": "String!",
+    "name": "input",
+    "type": "LoginInput",
     "defaultValue": null
   }
 ],
@@ -48,9 +42,9 @@ v1 = [
     "args": [
       {
         "kind": "Variable",
-        "name": "code",
-        "variableName": "code",
-        "type": "String!"
+        "name": "input",
+        "variableName": "input",
+        "type": "LoginInput"
       }
     ],
     "concreteType": "AccessToken",
@@ -71,7 +65,7 @@ return {
   "operationKind": "mutation",
   "name": "TopBarLoginMutation",
   "id": null,
-  "text": "mutation TopBarLoginMutation(\n  $code: String!\n) {\n  login(code: $code) {\n    accessToken\n  }\n}\n",
+  "text": "mutation TopBarLoginMutation(\n  $input: LoginInput\n) {\n  login(input: $input) {\n    accessToken\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -89,5 +83,5 @@ return {
   }
 };
 })();
-(node/*: any*/).hash = 'c69f210d37b3032bf4b4b1ed7cbc2013';
-module.exports = node;
+(node as any).hash = '8918a1a244bb60edf36c16e7b311cbca';
+export default node;
