@@ -193,12 +193,12 @@ Array [
             <i
               class="material-icons  mdc-list-item__graphic "
             >
-              description
+              language
             </i>
             <span
               class=" mdc-list-item__text"
             >
-              JavaScript
+              TypeScript
               <span
                 class=" mdc-list-item__secondary-text"
               >
@@ -212,7 +212,7 @@ Array [
             <i
               class="material-icons  mdc-list-item__graphic "
             >
-              language
+              description
             </i>
             <span
               class=" mdc-list-item__text"
@@ -494,7 +494,9 @@ Array [
                 v3
               </span>
               <br />
-              Tilted Turtle
+              Tilted
+              <br />
+              Turtle
             </span>
           </div>
         </div>
@@ -522,7 +524,9 @@ Array [
                 v2
               </span>
               <br />
-              Assertive Actor
+              Assertive
+              <br />
+              Actor
             </span>
           </div>
         </div>
@@ -550,7 +554,9 @@ Array [
                 v1
               </span>
               <br />
-              Dogged Dapper
+              Dogged
+              <br />
+              Dapper
             </span>
           </div>
         </div>
@@ -578,7 +584,9 @@ Array [
                 v0
               </span>
               <br />
-              Cocksure Castle
+              Cocksure
+              <br />
+              Castle
             </span>
           </div>
         </div>
@@ -764,12 +772,12 @@ Array [
             <i
               class="material-icons  mdc-list-item__graphic "
             >
-              description
+              language
             </i>
             <span
               class=" mdc-list-item__text"
             >
-              JavaScript
+              TypeScript
               <span
                 class=" mdc-list-item__secondary-text"
               >
@@ -783,7 +791,7 @@ Array [
             <i
               class="material-icons  mdc-list-item__graphic "
             >
-              language
+              description
             </i>
             <span
               class=" mdc-list-item__text"
@@ -1065,7 +1073,9 @@ Array [
                 v3
               </span>
               <br />
-              Tilted Turtle
+              Tilted
+              <br />
+              Turtle
             </span>
           </div>
         </div>
@@ -1093,7 +1103,9 @@ Array [
                 v2
               </span>
               <br />
-              Assertive Actor
+              Assertive
+              <br />
+              Actor
             </span>
           </div>
         </div>
@@ -1121,7 +1133,9 @@ Array [
                 v1
               </span>
               <br />
-              Dogged Dapper
+              Dogged
+              <br />
+              Dapper
             </span>
           </div>
         </div>
@@ -1149,7 +1163,9 @@ Array [
                 v0
               </span>
               <br />
-              Cocksure Castle
+              Cocksure
+              <br />
+              Castle
             </span>
           </div>
         </div>
