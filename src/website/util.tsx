@@ -1,8 +1,8 @@
 export const isElectron: () => boolean =
   (): boolean => "process" in window;
 
-export const goto: (url: string) => void =
-  (url: string): void => {
+export const goto: (url: string, samePage?: boolean) => void =
+  (url: string, samePage: boolean = false): void => {
     if (isElectron()) {
       // tslint:disable-next-line:no-any
       (window as any)
@@ -10,6 +10,11 @@ export const goto: (url: string) => void =
         .shell
         .openExternal(url);
     } else {
-      window.open(url, "_blank");
+      if (samePage) {
+        // @ts-ignore
+        window.location = url;
+      } else {
+        window.open(url);
+      }
     }
   };

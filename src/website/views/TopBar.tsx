@@ -14,9 +14,6 @@ import {
   graphql,
 } from "react-relay";
 import {
-  Environment,
-} from "relay-runtime";
-import {
   Toolbar,
   ToolbarFixedAdjust,
   ToolbarIcon,
@@ -30,9 +27,6 @@ import { goto } from "../util";
 
 interface IProps {
   data: TopBarQuery;
-  relay: {
-    environment: Environment;
-  };
 }
 
 class TopBarRelay extends React.Component<IProps> {
@@ -92,13 +86,13 @@ class TopBarRelay extends React.Component<IProps> {
 
   private googleAuth(): void {
     if ("loginURL" in this.props.data) {
-      window.open(this.props.data.loginURL);
+      goto(this.props.data.loginURL, true);
     }
   }
 
   private login(code: string): void {
     commitMutation(
-      this.props.relay.environment,
+      this.context.relay.environment,
       {
         mutation: graphql`
           mutation TopBarLoginMutation($input: LoginInput) {
@@ -109,7 +103,7 @@ class TopBarRelay extends React.Component<IProps> {
         `,
         onCompleted: (response: TopBarLoginMutationResponse, errors: Error[]): void => {
           cookie.set("accessToken", response.login.accessToken);
-          window.open("/");
+          goto("/", true);
         },
         variables: {
           input: {
@@ -122,7 +116,7 @@ class TopBarRelay extends React.Component<IProps> {
 
   private logout(): void {
     commitMutation(
-      this.props.relay.environment,
+      this.context.relay.environment,
       {
         mutation: graphql`
           mutation TopBarLogoutMutation($input: LogoutInput) {
@@ -133,7 +127,7 @@ class TopBarRelay extends React.Component<IProps> {
         `,
         onCompleted: (response: TopBarLogoutMutationResponse, errors: Error[]): void => {
           cookie.set("accessToken", response.logout.accessToken);
-          window.open("/");
+          goto("/", true);
         },
         variables: {
           input: {
