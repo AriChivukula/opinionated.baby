@@ -295,46 +295,39 @@ gulp.task(
 );
 
 gulp.task(
-  "move-website",
-  shell.task("cp _stage2/website/index.local.js _stage2/website/index.js"),
+  "website-static",
+  shell.task("cp _stage2/website/index.local.js _stage2/website/static/index.js"),
 );
 
 gulp.task(
-  "move-server",
-  shell.task("cp _stage2/server/index.local.js _stage2/server/index.js"),
-);
-
-gulp.task(
-  "localhost",
-  shell.task("DEBUG=* node _stage2/server/index.js"),
+  "website-host",
+  shell.task("DEBUG=* node _stage2/server/index.local.js"),
 );
 
 gulp.task(
   "serve",
   gulp.series(
-    gulp.parallel(
-      "move-website",
-      "move-server"
-    ),
-    "localhost"
+    "website-static",
+    "website-host",
   ),
 );
 
 gulp.task(
-  "move-application",
-  shell.task("cp _stage2/application/index.local.js _stage2/application/index.js"),
+  "application-static",
+  shell.task("cp -R _stage2/website/static/ _stage2/application/static/"),
 );
 
 gulp.task(
-  "localrun",
-  shell.task("ELECTRON_ENABLE_LOGGING=1 DEBUG=* electron _bin/application/index.js"),
+  "application-run",
+  shell.task("ELECTRON_ENABLE_LOGGING=1 DEBUG=* electron _stage2/application/index.local.js"),
 );
 
 gulp.task(
   "launch",
   gulp.series(
-    "move-application",
-    "localrun",
+    "website-static",
+    "application-static",
+    "application-run",
   ),
 );
 
