@@ -296,17 +296,17 @@ gulp.task(
 
 gulp.task(
   "move-website",
-  shell.task("cp _bin/website/index.local.js _bin/website/index.js"),
+  shell.task("cp _stage2/website/index.local.js _stage2/website/index.js"),
 );
 
 gulp.task(
   "move-server",
-  shell.task("cp _bin/server/index.local.js _bin/server/index.js"),
+  shell.task("cp _stage2/server/index.local.js _stage2/server/index.js"),
 );
 
 gulp.task(
   "localhost",
-  shell.task("DEBUG=* node _bin/server/index.js"),
+  shell.task("DEBUG=* node _stage2/server/index.js"),
 );
 
 gulp.task(
@@ -322,12 +322,7 @@ gulp.task(
 
 gulp.task(
   "move-application",
-  shell.task("cp _bin/application/index.local.js _bin/application/index.js"),
-);
-
-gulp.task(
-  "move-application-static",
-  shell.task("cp _bin/application/static/index.local.js _bin/application/static/index.js"),
+  shell.task("cp _stage2/application/index.local.js _stage2/application/index.js"),
 );
 
 gulp.task(
@@ -338,11 +333,8 @@ gulp.task(
 gulp.task(
   "launch",
   gulp.series(
-    gulp.parallel(
-      "move-application",
-      "move-application-static"
-    ),
-    "localrun"
+    "move-application",
+    "localrun",
   ),
 );
 
