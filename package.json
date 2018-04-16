@@ -13,6 +13,9 @@
         "lines": 50
       }
     },
+    "roots": [
+      "<rootDir>/_stage1/"
+    ],
     "verbose": true
   },
   "private": true,

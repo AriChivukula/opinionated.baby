@@ -14,7 +14,7 @@ var project = ts.createProject("tsconfig.json");
 
 gulp.task(
   "delete-artifacts",
-  shell.task("rm -rf _stage"),
+  shell.task("rm -rf _stage*"),
 );
 
 gulp.task(
@@ -51,43 +51,16 @@ gulp.task(
 );
 
 gulp.task(
-  "stage0-sass-lint",
-  shell.task("sass-lint src/**/*.scss"),
-);
-
-gulp.task(
-  "stage0-typescript-lint",
-  shell.task("tslint -p . **/*.tsx"),
-);
-
-gulp.task(
-  "stage0-copy",
-  () => gulp.src([
-    "src/**/*.html",
-    "src/**/*.jpg",
-    "src/**/*.png",
-    "src/**/*.snap",
-    "src/**/*.txt",
-  ])
-    .pipe(gulp.dest("_stage0")),
-);
-
-gulp.task(
-  "stage0-sass",
-  () => gulp.src("src/**/*.scss")
-    .pipe(sass({
-      includePaths: "node_modules",
-      outputStyle: "compressed",
-    }))
-    .pipe(gulp.dest("_stage0")),
-);
-
-gulp.task(
   "stage0-typescript",
   () => gulp.src(["src/**/*.tsx"])
     .pipe(project())
     .js
     .pipe(gulp.dest("_stage0")),
+);
+
+gulp.task(
+  "stage0-typescript-lint",
+  shell.task("tslint -p . **/*.tsx"),
 );
 
 gulp.task(
@@ -99,13 +72,8 @@ gulp.task(
   "stage0",
   gulp.series(
     gulp.parallel(
-      "stage0-sass-lint",
-      "stage0-typescript-lint",
-    ),
-    gulp.parallel(
-      "stage0-copy",
-      "stage0-sass",
       "stage0-typescript",
+      "stage0-typescript-lint",
     ),
     "stage0-relay",
   ),
@@ -132,15 +100,29 @@ gulp.task(
 );
 
 gulp.task(
-  "stage1-copy",
+  "stage1-sass",
+  () => gulp.src("src/**/*.scss")
+    .pipe(sass({
+      includePaths: "node_modules",
+      outputStyle: "compressed",
+    }))
+    .pipe(gulp.dest("_stage1")),
+);
+
+gulp.task(
+  "stage1-sass-lint",
+  shell.task("sass-lint src/**/*.scss"),
+);
+
+gulp.task(
+  "stage1-static",
   () => gulp.src([
     "src/**/*.graphql",
-    "_stage0/**/*.css",
-    "_stage0/**/*.html",
-    "_stage0/**/*.jpg",
-    "_stage0/**/*.png",
-    "_stage0/**/*.snap",
-    "_stage0/**/*.txt",
+    "src/**/*.html",
+    "src/**/*.jpg",
+    "src/**/*.png",
+    "src/**/*.snap",
+    "src/**/*.txt",
   ])
     .pipe(gulp.dest("_stage1")),
 );
@@ -149,13 +131,15 @@ gulp.task(
   "stage1",
   gulp.parallel(
     "stage1-babel",
-    "stage1-copy",
+    "stage1-sass",
+    "stage1-sass-lint",
+    "stage1-static",
   ),
 );
 
 gulp.task(
   "jest",
-  shell.task("jest --collectCoverage _stage1/"),
+  shell.task("jest --collectCoverage"),
 );
 
 gulp.task(
