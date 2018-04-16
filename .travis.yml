@@ -49,6 +49,7 @@ deploy:
     - DB_PORT=$DB_PORT
     - DB_USERNAME=$DB_USERNAME
     - DEBUG=*
+    - ENV=LAMBDA
     - REDIRECT_URL=$REDIRECT_URL_BETA
     function_tags:
     - Name=$FUNCTION_NAME
@@ -88,6 +89,7 @@ deploy:
     - DB_PORT=$DB_PORT
     - DB_USERNAME=$DB_USERNAME
     - DEBUG=*
+    - ENV=LAMBDA
     - REDIRECT_URL=$REDIRECT_URL
     function_tags:
     - Name=$FUNCTION_NAME

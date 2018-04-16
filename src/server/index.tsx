@@ -13,7 +13,7 @@ let lambdaHandler: (event: object, context: object) => void =
     return;
   };
 
-if ("LAMBDA_TASK_ROOT" in process.env && "AWS_EXECUTION_ENV" in process.env) {
+if (process.env.ENV === "LAMBDA") {
   app.use("/", server);
   const serverless: object = createServer(
     app,
