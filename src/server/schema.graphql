@@ -4,7 +4,7 @@ type Login {
 }
 
 type Query {
-  me(accessToken: String!): Login
+  me(accessToken: String): Login
   loginURL: String!
 }
 

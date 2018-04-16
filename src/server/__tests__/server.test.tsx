@@ -29,6 +29,6 @@ test(
     const user: Login | undefined = await entityManager.findOneById(Login, 1);
     expect(user)
       .not
-      .toBeNull();
+      .toBeDefined();
   },
 );

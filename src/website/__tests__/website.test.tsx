@@ -60,7 +60,7 @@ test(
                 variables: {},
               },
             },
-            <Page data={undefined} />,
+            <Page data={null} />,
           ),
         ),
       ),
@@ -90,7 +90,6 @@ test(
                 },
                 __id: "0",
                 loginURL: "http://fake.com/",
-                // tslint:disable-next-line:no-null-keyword
                 me: null,
               }}
             />,

@@ -3,7 +3,7 @@ import { google } from "googleapis";
 
 export interface IAccessToken {
   tokens: {
-    access_token?: string | null | undefined;
+    access_token?: string | null;
   };
 }
 

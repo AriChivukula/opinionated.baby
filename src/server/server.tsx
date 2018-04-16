@@ -44,16 +44,23 @@ const root: (request: Request, response: Response) => Promise<object> =
     logout: async (): Promise<object> => ({
       accessToken: "",
     }),
-    me: async ({ accessToken }: { accessToken: string }): Promise<object | undefined> => {
+    me: async ({ accessToken }: { accessToken: string | null }): Promise<object | null> => {
+      if (accessToken === null) {
+        return null;
+      }
       try {
         const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
         const entityManager: EntityManager = getManager();
+        const login: Login | undefined = await entityManager.findOneById(Login, info.data.user_id);
+        if (login === undefined) {
+          return null;
+        }
 
-        return await entityManager.findOneById(Login, info.data.user_id);
+        return login;
       } catch (error) {
         console.log(error);
 
-        return undefined;
+        return null;
       }
     },
   });

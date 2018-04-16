@@ -8,6 +8,8 @@
     "no-implicit-dependencies": false,
     "no-import-side-effect": false,
     "no-inferrable-types": false,
-    "no-unsafe-any": false
+    "no-null-keyword": false,
+    "no-unsafe-any": false,
+    "variable-name": false
   }
 }

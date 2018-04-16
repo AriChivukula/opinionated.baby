@@ -15,7 +15,6 @@ import { goto } from "../util";
 const maxWidth: number = 12;
 const minWidth: number = 3;
 
-// tslint:disable-next-line:variable-name
 export const Content: () => JSX.Element =
   (): JSX.Element => (
     <Grid>

@@ -145,12 +145,11 @@ class TopBarRelay extends React.Component<IProps> {
   }
 }
 
-// tslint:disable-next-line:variable-name
 export const TopBar: React.ComponentType = createFragmentContainer(
   TopBarRelay,
   graphql`
     fragment TopBarQuery on Query @argumentDefinitions(
-      accessToken: {type: "String!"}
+      accessToken: {type: "String"}
     ) {
       loginURL,
       me(accessToken: $accessToken) {

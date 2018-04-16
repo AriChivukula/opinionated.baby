@@ -17,7 +17,7 @@ if ("LAMBDA_TASK_ROOT" in process.env && "AWS_EXECUTION_ENV" in process.env) {
   app.use("/", server);
   const serverless: object = createServer(
     app,
-    undefined,
+    null,
     [
       "application/octet-stream",
       "font/eot",

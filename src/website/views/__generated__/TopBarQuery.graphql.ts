@@ -20,7 +20,7 @@ const node: ConcreteFragment = {
     {
       "kind": "LocalArgument",
       "name": "accessToken",
-      "type": "String!",
+      "type": "String",
       "defaultValue": null
     }
   ],
@@ -42,7 +42,7 @@ const node: ConcreteFragment = {
           "kind": "Variable",
           "name": "accessToken",
           "variableName": "accessToken",
-          "type": "String!"
+          "type": "String"
         }
       ],
       "concreteType": "Login",
@@ -66,5 +66,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = '43ec45f98481f80830acf8c5c02525c6';
+(node as any).hash = 'ebd11aa72b2dd69d598095f531eabe9f';
 export default node;

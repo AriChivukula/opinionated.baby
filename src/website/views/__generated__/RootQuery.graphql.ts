@@ -2,7 +2,7 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type RootQueryVariables = {
-    readonly accessToken: string;
+    readonly accessToken?: string | null;
 };
 export type RootQueryResponse = {
 };
@@ -11,7 +11,7 @@ export type RootQueryResponse = {
 
 /*
 query RootQuery(
-  $accessToken: String!
+  $accessToken: String
 ) {
   ...TopBarQuery_3aAabH
 }
@@ -30,7 +30,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "accessToken",
-    "type": "String!",
+    "type": "String",
     "defaultValue": null
   }
 ];
@@ -39,7 +39,7 @@ return {
   "operationKind": "query",
   "name": "RootQuery",
   "id": null,
-  "text": "query RootQuery(\n  $accessToken: String!\n) {\n  ...TopBarQuery_3aAabH\n}\n\nfragment TopBarQuery_3aAabH on Query {\n  loginURL\n  me(accessToken: $accessToken) {\n    id\n    email\n  }\n}\n",
+  "text": "query RootQuery(\n  $accessToken: String\n) {\n  ...TopBarQuery_3aAabH\n}\n\nfragment TopBarQuery_3aAabH on Query {\n  loginURL\n  me(accessToken: $accessToken) {\n    id\n    email\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -84,7 +84,7 @@ return {
             "kind": "Variable",
             "name": "accessToken",
             "variableName": "accessToken",
-            "type": "String!"
+            "type": "String"
           }
         ],
         "concreteType": "Login",
@@ -110,5 +110,5 @@ return {
   }
 };
 })();
-(node as any).hash = '7d7a7a3f08acef41f613c755877019e1';
+(node as any).hash = '44a030f0348e92fe41033d53da62cd4b';
 export default node;
