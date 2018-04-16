@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as graphqlHTTP from "express-graphql";
+import graphqlHTTP from "express-graphql";
 import { readFileSync } from "fs";
 import { buildSchema, GraphQLSchema } from "graphql";
 import { join } from "path";
@@ -14,8 +14,6 @@ import {
   IAccessTokenInfo,
 } from "./google";
 
-const entityManager: EntityManager = getManager();
-
 const schema: GraphQLSchema = buildSchema(
   readFileSync(join(__dirname, "schema.graphql"), "ascii"),
 );
@@ -23,6 +21,7 @@ const schema: GraphQLSchema = buildSchema(
 const root: (request: Request, response: Response) => Promise<object> =
   async (request: Request, response: Response): Promise<object> => ({
     login: async (code: string): Promise<object> => {
+      const entityManager: EntityManager = getManager();
       const token: IAccessToken = await genAccessToken(code);
       const accessToken: string = token.tokens.access_token as string;
       const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
@@ -43,6 +42,7 @@ const root: (request: Request, response: Response) => Promise<object> =
     me: async ({ accessToken }: { accessToken: string }): Promise<object | undefined> => {
       try {
         const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
+        const entityManager: EntityManager = getManager();
 
         return await entityManager.findOneById(Login, info.data.user_id);
       } catch (error) {

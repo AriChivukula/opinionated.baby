@@ -1,10 +1,8 @@
 var gulp = require("gulp");
 var babel = require("gulp-babel");
 var browserify = require("browserify");
-var purge = require("gulp-purge-sourcemaps");
 var sass = require("gulp-sass");
 var shell = require("gulp-shell");
-var sourcemaps = require("gulp-sourcemaps");
 var ts = require("gulp-typescript");
 var source = require("vinyl-source-stream");
 
@@ -81,14 +79,10 @@ gulp.task(
   "stage1-babel",
   () => gulp
     .src("_stage0/**/*.js")
-    .pipe(sourcemaps.init({
-      loadMaps: true,
-    }))
     .pipe(babel({
       plugins: ["relay"],
       presets: ["@babel/preset-env"],
     }))
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest("_stage1")),
 );
 
@@ -149,9 +143,9 @@ gulp.task(
   () => browserify({
     bundleExternal: false,
     entries: "_stage1/application/index.js",
+    detectGlobals: false,
     node: true,
   })
-    .plugin("uglifyify")
     .bundle()
     .pipe(source("index.js"))
     .pipe(gulp.dest("_stage2/application")),
@@ -162,9 +156,9 @@ gulp.task(
   () => browserify({
     bundleExternal: false,
     entries: "_stage1/server/index.js",
+    detectGlobals: false,
     node: true,
   })
-    .plugin("uglifyify")
     .bundle()
     .pipe(source("index.js"))
     .pipe(gulp.dest("_stage2/server")),
@@ -189,7 +183,6 @@ gulp.task(
     entries: "_stage1/website/index.js",
     ignore: ["electron"],
   })
-    .plugin("uglifyify")
     .bundle()
     .pipe(source("index.js"))
     .pipe(gulp.dest("_stage2/website")),

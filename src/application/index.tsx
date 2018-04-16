@@ -1,3 +1,5 @@
+import "@babel/polyfill";
+
 import { app, BrowserWindow } from "electron";
 import { join } from "path";
 import { format } from "url";

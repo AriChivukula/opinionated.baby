@@ -1,6 +1,8 @@
+import "@babel/polyfill";
+
 import { createServer, proxy } from "aws-serverless-express";
-import * as cors from "cors";
-import * as express from "express";
+import cors from "cors";
+import express from "express";
 import { server } from "./server";
 
 const app: express.Express = express();
@@ -32,7 +34,7 @@ if ("LAMBDA_TASK_ROOT" in process.env && "AWS_EXECUTION_ENV" in process.env) {
       proxy(serverless, event, context);
     };
 } else {
-  app.use("/", express.static("_bin/website"));
+  app.use("/", express.static("_stage2/website/static"));
   app.use("/graphql", server);
   app.listen(process.env.PORT);
 }

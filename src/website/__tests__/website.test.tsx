@@ -1,6 +1,5 @@
-// tslint:disable-next-line:no-import-side-effect
 import "jest-enzyme";
-// tslint:disable-next-line:ordered-imports
+
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import * as React from "react";

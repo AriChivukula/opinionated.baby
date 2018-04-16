@@ -1,3 +1,5 @@
+import "@babel/polyfill";
+
 import { website } from "./website";
 
 let apiURL: string;
