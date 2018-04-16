@@ -15,8 +15,15 @@ export class Page extends React.Component<IProps> {
 
   public render(): JSX.Element {
     const urlParts: UrlWithParsedQuery = parse(window.location.href, true);
-    if (this.props.data === null || "code" in urlParts.query) {
+    if (this.props.data === null) {
       return <LinearProgress determinate={false} />;
+    } else if ("code" in urlParts.query) {
+      return (
+        <>
+          <LinearProgress determinate={false} />
+          <TopBar {...this.props} />
+        </>
+      );
     } else {
       return (
         <>

@@ -14,6 +14,9 @@ import {
   graphql,
 } from "react-relay";
 import {
+  Environment,
+} from "relay-runtime";
+import {
   Toolbar,
   ToolbarFixedAdjust,
   ToolbarIcon,
@@ -27,18 +30,20 @@ import { goto } from "../util";
 
 interface IProps {
   data: TopBarQuery;
+  relay: {
+    environment: Environment;
+  };
 }
 
 class TopBarRelay extends React.Component<IProps> {
 
-  public componentDidMount(): void {
+  public render(): JSX.Element {
     const urlParts: UrlWithParsedQuery = parse(window.location.href, true);
     if ("code" in urlParts.query) {
       this.login(urlParts.query.code as string);
-    }
-  }
 
-  public render(): JSX.Element {
+      return <div />;
+    }
     let login: JSX.Element = (
       <ToolbarIcon
         use="person"
@@ -92,7 +97,7 @@ class TopBarRelay extends React.Component<IProps> {
 
   private login(code: string): void {
     commitMutation(
-      this.context.relay.environment,
+      this.props.relay.environment,
       {
         mutation: graphql`
           mutation TopBarLoginMutation($input: LoginInput) {
@@ -116,7 +121,7 @@ class TopBarRelay extends React.Component<IProps> {
 
   private logout(): void {
     commitMutation(
-      this.context.relay.environment,
+      this.props.relay.environment,
       {
         mutation: graphql`
           mutation TopBarLogoutMutation($input: LogoutInput) {
