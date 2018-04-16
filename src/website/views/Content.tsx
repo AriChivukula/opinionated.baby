@@ -202,7 +202,9 @@ export const Content: () => JSX.Element =
                 v3
               </Typography>
               <br />
-              Tilted Turtle
+              Tilted
+              <br />
+              Turtle
             </Typography>
           </CardPrimaryAction>
         </Card>
@@ -222,7 +224,9 @@ export const Content: () => JSX.Element =
                 v2
               </Typography>
               <br />
-              Assertive Actor
+              Assertive
+              <br />
+              Actor
             </Typography>
           </CardPrimaryAction>
         </Card>
@@ -242,7 +246,9 @@ export const Content: () => JSX.Element =
                 v1
               </Typography>
               <br />
-              Dogged Dapper
+              Dogged
+              <br />
+              Dapper
             </Typography>
           </CardPrimaryAction>
         </Card>
@@ -262,7 +268,9 @@ export const Content: () => JSX.Element =
                 v0
               </Typography>
               <br />
-              Cocksure Castle
+              Cocksure
+              <br />
+              Castle
             </Typography>
           </CardPrimaryAction>
         </Card>
