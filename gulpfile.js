@@ -1,14 +1,12 @@
 var gulp = require("gulp");
 var babel = require("gulp-babel");
-var browserify = require("gulp-browserify");
-var purgeSourcemaps = require("gulp-purge-sourcemaps");
-var rename = require("gulp-rename");
-var rollup = require("gulp-better-rollup");
+var browserify = require("browserify");
+var purge = require("gulp-purge-sourcemaps");
 var sass = require("gulp-sass");
 var shell = require("gulp-shell");
 var sourcemaps = require("gulp-sourcemaps");
 var ts = require("gulp-typescript");
-var uglify = require("gulp-uglify");
+var source = require("vinyl-source-stream");
 
 var project = ts.createProject("tsconfig.json");
 
@@ -87,12 +85,7 @@ gulp.task(
       loadMaps: true,
     }))
     .pipe(babel({
-      plugins: [[
-        "relay",
-        {
-          "schema": "src/server/schema.graphql",
-        },
-      ]],
+      plugins: ["relay"],
       presets: ["@babel/preset-env"],
     }))
     .pipe(sourcemaps.write())
@@ -152,79 +145,29 @@ gulp.task(
 );
 
 gulp.task(
-  "stage2-application-local",
-  () => gulp.src("_stage1/application/index.js")
-    .pipe(sourcemaps.init({
-      loadMaps: true,
-    }))
-    .pipe(rollup(
-      {},
-      {
-        format: "cjs",
-      },
-    ))
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
-    .pipe(rename("index.local.js"))
-    .pipe(gulp.dest("_stage2/application")),
-);
-
-gulp.task(
-  "stage2-application-remote",
-  () => gulp.src("_stage2/application/index.local.js")
-    .pipe(rename("index.remote.js"))
-    .pipe(sourcemaps.init({
-      loadMaps: true,
-    }))
-    .pipe(purgeSourcemaps())
-    .pipe(uglify())
-    .pipe(gulp.dest("_stage2/application")),
-);
-
-gulp.task(
   "stage2-application",
-  gulp.series(
-    "stage2-application-local",
-    "stage2-application-remote",
-  ),
-);
-
-gulp.task(
-  "stage2-server-local",
-  () => gulp.src("_stage1/server/index.js")
-    .pipe(sourcemaps.init({
-      loadMaps: true,
-    }))
-    .pipe(rollup(
-      {},
-      {
-        format: "cjs",
-      },
-    ))
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
-    .pipe(rename("index.local.js"))
-    .pipe(gulp.dest("_stage2/server")),
-);
-
-gulp.task(
-  "stage2-server-remote",
-  () => gulp.src("_stage2/server/index.local.js")
-    .pipe(rename("index.remote.js"))
-    .pipe(sourcemaps.init({
-      loadMaps: true,
-    }))
-    .pipe(purgeSourcemaps())
-    .pipe(uglify())
-    .pipe(gulp.dest("_stage2/server")),
+  () => browserify({
+    bundleExternal: false,
+    entries: "_stage1/application/index.js",
+    node: true,
+  })
+    .plugin("uglifyify")
+    .bundle()
+    .pipe(source("index.js"))
+    .pipe(gulp.dest("_stage2/application")),
 );
 
 gulp.task(
   "stage2-server",
-  gulp.series(
-    "stage2-server-local",
-    "stage2-server-remote",
-  ),
+  () => browserify({
+    bundleExternal: false,
+    entries: "_stage1/server/index.js",
+    node: true,
+  })
+    .plugin("uglifyify")
+    .bundle()
+    .pipe(source("index.js"))
+    .pipe(gulp.dest("_stage2/server")),
 );
 
 gulp.task(
@@ -241,38 +184,15 @@ gulp.task(
 );
 
 gulp.task(
-  "stage2-website-local",
-  () => gulp.src("_stage1/website/index.js")
-    .pipe(rename("index.local.js"))
-    .pipe(sourcemaps.init({
-      loadMaps: true,
-    }))
-    .pipe(browserify({
-      ignore: ["electron"],
-    }))
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest("_stage2/website")),
-);
-
-gulp.task(
-  "stage2-website-remote",
-  () => gulp.src("_stage2/website/index.local.js")
-    .pipe(rename("index.remote.js"))
-    .pipe(sourcemaps.init({
-      loadMaps: true,
-    }))
-    .pipe(purgeSourcemaps())
-    .pipe(uglify())
-    .pipe(gulp.dest("_stage2/website")),
-);
-
-gulp.task(
   "stage2-website",
-  gulp.series(
-    "stage2-website-local",
-    "stage2-website-remote",
-  ),
+  () => browserify({
+    entries: "_stage1/website/index.js",
+    ignore: ["electron"],
+  })
+    .plugin("uglifyify")
+    .bundle()
+    .pipe(source("index.js"))
+    .pipe(gulp.dest("_stage2/website")),
 );
 
 gulp.task(
@@ -296,12 +216,12 @@ gulp.task(
 
 gulp.task(
   "website-static",
-  shell.task("cp _stage2/website/index.local.js _stage2/website/static/index.js"),
+  shell.task("cp _stage2/website/index.js _stage2/website/static/index.js"),
 );
 
 gulp.task(
   "website-host",
-  shell.task("DEBUG=* node _stage2/server/index.local.js"),
+  shell.task("DEBUG=* node _stage2/server/index.js"),
 );
 
 gulp.task(
@@ -319,7 +239,7 @@ gulp.task(
 
 gulp.task(
   "application-run",
-  shell.task("ELECTRON_ENABLE_LOGGING=1 DEBUG=* electron _stage2/application/index.local.js"),
+  shell.task("ELECTRON_ENABLE_LOGGING=1 DEBUG=* electron _stage2/application/index.js"),
 );
 
 gulp.task(

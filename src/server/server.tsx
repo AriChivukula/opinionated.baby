@@ -55,7 +55,15 @@ const root: (request: Request, response: Response) => Promise<object> =
 
 export const server: graphqlHTTP.Middleware = graphqlHTTP(
   async (request: Request, response: Response): Promise<graphqlHTTP.OptionsData> => {
-    await createConnection();
+    await createConnection({
+      database: process.env.DB_NAME,
+      host: process.env.DB_HOST,
+      name: "default",
+      password: process.env.DB_PASSWORD,
+      port: parseInt(process.env.DB_PORT as string, 10),
+      type: "postgres",
+      username: process.env.DB_USERNAME,
+    });
 
     return {
       graphiql: true,

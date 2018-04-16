@@ -11,9 +11,9 @@ script:
 after_success:
 - rm -rf node_modules
 - yarn install --prod
-- cp _stage2/website/index.remote.js _stage2/website/static/index.js
+- cp _stage2/website/index.js _stage2/website/static/index.js
 - if [[ "$TRAVIS_TAG" ]] ; then rm _stage2/website/static/robots.txt ; fi
-- cp _stage2/server/index.remote.js index.js
+- cp _stage2/server/index.js index.js
 - cp _bin/server/schema.graphql schema.graphql
 - zip -q -r dist.zip node_modules index.js schema.graphql
 deploy:
