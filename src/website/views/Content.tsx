@@ -75,13 +75,13 @@ export const Content: () => JSX.Element =
       <GridCell span={minWidth}>
         <List twoLine>
           <SimpleListItem
-            graphic="description"
-            text="JavaScript"
+            graphic="language"
+            text="TypeScript"
             secondaryText="Language"
-            onClick={(): void => { goto("https://developer.mozilla.org/en-US/docs/Web/JavaScript/"); }}
+            onClick={(): void => { goto("https://www.typescriptlang.org/"); }}
           />
           <SimpleListItem
-            graphic="language"
+            graphic="description"
             text="Babel"
             secondaryText="Transpiler"
             onClick={(): void => { goto("https://babeljs.io/"); }}
