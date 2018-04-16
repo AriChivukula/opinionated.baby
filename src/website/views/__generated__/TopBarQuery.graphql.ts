@@ -4,8 +4,8 @@ import { ConcreteFragment } from "relay-runtime";
 export type TopBarQuery = {
     readonly loginURL: string;
     readonly me: ({
-        readonly id: string | null;
-        readonly email: string | null;
+        readonly id: string;
+        readonly email: string;
     }) | null;
 };
 
@@ -45,7 +45,7 @@ const node: ConcreteFragment = {
           "type": "String"
         }
       ],
-      "concreteType": "Login",
+      "concreteType": "User",
       "plural": false,
       "selections": [
         {

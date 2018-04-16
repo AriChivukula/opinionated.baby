@@ -8,6 +8,8 @@ var source = require("vinyl-source-stream");
 
 var project = ts.createProject("tsconfig.json");
 
+/* PREP */
+
 gulp.task(
   "delete-artifacts",
   shell.task("rm -rf _stage*"),
@@ -45,6 +47,8 @@ gulp.task(
     "relay",
   ),
 );
+
+/* BUILD */
 
 gulp.task(
   "stage0-typescript",
@@ -125,20 +129,6 @@ gulp.task(
 );
 
 gulp.task(
-  "jest",
-  shell.task("jest --collectCoverage"),
-);
-
-gulp.task(
-  "test",
-  gulp.series(
-    "stage0",
-    "stage1",
-    "jest",
-  ),
-);
-
-gulp.task(
   "stage2-application",
   () => browserify({
     bundleExternal: false,
@@ -207,6 +197,15 @@ gulp.task(
   ),
 );
 
+/* TEST */
+
+gulp.task(
+  "test",
+  shell.task("jest --collectCoverage"),
+);
+
+/* SERVE */
+
 gulp.task(
   "website-static",
   shell.task("cp _stage2/website/index.js _stage2/website/static/index.js"),
@@ -224,6 +223,8 @@ gulp.task(
     "website-host",
   ),
 );
+
+/* LAUNCH */
 
 gulp.task(
   "application-static",
@@ -244,6 +245,8 @@ gulp.task(
   ),
 );
 
+/* SNAP */
+
 gulp.task(
   "jest-snap",
   shell.task("jest -u _stage1/website"),
@@ -257,12 +260,12 @@ gulp.task(
 gulp.task(
   "snap",
   gulp.series(
-    "stage0",
-    "stage1",
     "jest-snap",
     "copy-snap",
   ),
 );
+
+/* SQL */
 
 gulp.task(
   "sql-sync",
@@ -272,8 +275,6 @@ gulp.task(
 gulp.task(
   "sql",
   gulp.series(
-    "stage0",
-    "stage1",
     "sql-sync",
   ),
 );

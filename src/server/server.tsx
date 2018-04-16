@@ -5,7 +5,7 @@ import { buildSchema, GraphQLSchema } from "graphql";
 import { join } from "path";
 import { createConnection, EntityManager, getManager } from "typeorm";
 
-import { Login } from "./entity/login";
+import { User } from "./entity/User";
 import {
   genAccessToken,
   genAccessTokenInfo,
@@ -14,7 +14,15 @@ import {
   IAccessTokenInfo,
 } from "./google";
 
-createConnection()
+createConnection({
+   database: process.env.DB_NAME,
+   entities: [User],
+   host: process.env.DB_HOST,
+   password: process.env.DB_PASSWORD,
+   port: parseInt(process.env.DB_PORT as string, 10),
+   type: "postgres",
+   username: process.env.DB_USERNAME,
+})
   .catch((err: Error): void => { console.log(err); })
   .then((): void => { console.log("DB Connected"); })
   .catch((err: Error): void => { console.log(err); });
@@ -25,17 +33,17 @@ const schema: GraphQLSchema = buildSchema(
 
 const root: (request: Request, response: Response) => Promise<object> =
   async (request: Request, response: Response): Promise<object> => ({
-    login: async (code: string): Promise<object> => {
+    login: async ({ input }: { input: { code: string } }): Promise<object> => {
       const entityManager: EntityManager = getManager();
-      const token: IAccessToken = await genAccessToken(code);
+      const token: IAccessToken = await genAccessToken(input.code);
       const accessToken: string = token.tokens.access_token as string;
       const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
-      let user: Login | undefined = await entityManager.findOneById(Login, info.data.user_id);
-      if (user !== undefined) {
-        user = new Login();
-        user.id = info.data.user_id;
-        user.email = info.data.email;
-        await entityManager.save(user);
+      let loggedin: User | undefined = await entityManager.findOneById(User, info.data.user_id);
+      if (loggedin === undefined) {
+        loggedin = new User();
+        loggedin.id = info.data.user_id;
+        loggedin.email = info.data.email;
+        await entityManager.save(loggedin);
       }
 
       return { accessToken };
@@ -51,12 +59,12 @@ const root: (request: Request, response: Response) => Promise<object> =
       try {
         const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
         const entityManager: EntityManager = getManager();
-        const login: Login | undefined = await entityManager.findOneById(Login, info.data.user_id);
-        if (login === undefined) {
+        const loggedin: User | undefined = await entityManager.findOneById(User, info.data.user_id);
+        if (loggedin === undefined) {
           return null;
         }
 
-        return login;
+        return loggedin;
       } catch (error) {
         console.log(error);
 

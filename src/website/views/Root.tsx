@@ -23,8 +23,7 @@ export class Root extends React.Component<IProps> {
       <QueryRenderer
         environment={this.props.environment}
         variables={{
-          accessToken: cookie.get("accessToken") !== null
-            ? cookie.get("accessToken") : "",
+          accessToken: cookie.get("accessToken"),
         }}
         query={graphql`
           query RootQuery($accessToken: String) {

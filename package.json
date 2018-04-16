@@ -74,8 +74,8 @@
   },
   "scripts": {
     "prep": "gulp prep",
-    "test": "gulp test",
     "build": "gulp build",
+    "test": "gulp test",
     "serve": "gulp serve",
     "launch": "gulp launch",
     "snap": "gulp snap",

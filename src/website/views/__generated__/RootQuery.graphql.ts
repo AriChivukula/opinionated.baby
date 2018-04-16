@@ -87,7 +87,7 @@ return {
             "type": "String"
           }
         ],
-        "concreteType": "Login",
+        "concreteType": "User",
         "plural": false,
         "selections": [
           {
