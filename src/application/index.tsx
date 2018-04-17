@@ -1,17 +1,11 @@
 import "@babel/polyfill";
 
 import { app, BrowserWindow } from "electron";
-import { join } from "path";
-import { format } from "url";
 
 const createWindow: () => void =
   (): void => {
     const win: BrowserWindow = new BrowserWindow({width: 800, height: 600});
-    win.loadURL(format({
-      pathname: join(__dirname, "../website/index.html"),
-      protocol: "file:",
-      slashes: true,
-    }));
+    win.loadURL("http://127.0.0.1:8080/");
   };
 
 app.on("ready", createWindow);
