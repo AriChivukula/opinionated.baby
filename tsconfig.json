@@ -8,7 +8,7 @@
     "target": "ES6",
     "strictNullChecks": true
   },
-  "include": [
-    "src/**/*.tsx"
+  "exclude": [
+    "src/website/views/__generated__/*"
   ]
 }
