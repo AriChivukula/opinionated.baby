@@ -14,15 +14,18 @@ import {
   IAccessTokenInfo,
 } from "./google";
 
-createConnection({
-   database: process.env.DB_NAME,
-   entities: [User],
-   host: process.env.DB_HOST,
-   password: process.env.DB_PASSWORD,
-   port: parseInt(process.env.DB_PORT as string, 10),
-   type: "postgres",
-   username: process.env.DB_USERNAME,
-})
+export const dbConnection: () => Promise<void> = async (): Promise<void> => {
+  await createConnection({
+    database: process.env.DB_NAME,
+    entities: [User],
+    host: process.env.DB_HOST,
+    password: process.env.DB_PASSWORD,
+    port: parseInt(process.env.DB_PORT as string, 10),
+    type: "postgres",
+    username: process.env.DB_USERNAME,
+  });
+};
+dbConnection()
   .catch((err: Error): void => { console.log(err); })
   .then((): void => { console.log("DB Connected"); })
   .catch((err: Error): void => { console.log(err); });

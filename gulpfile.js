@@ -271,5 +271,5 @@ gulp.task(
 
 gulp.task(
   "sql",
-  shell.task("typeorm schema:sync"),
+  shell.task("ts-node ./node_modules/.bin/typeorm schema:sync"),
 );
