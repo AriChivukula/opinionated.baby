@@ -15,6 +15,112 @@ import { goto } from "../util";
 const maxWidth: number = 12;
 const minWidth: number = 3;
 
+interface ITools {
+  graphic: string;
+  link: string;
+  subtitle: string;
+  title: string;
+}
+
+const tools: ITools[] = [
+  {
+    graphic: "memory",
+    link: "https://aws.amazon.com/lambda/",
+    subtitle: "Server(less)",
+    title: "Lambda",
+  },
+  {
+    graphic: "share",
+    link: "https://www.postgresql.org/",
+    subtitle: "Database",
+    title: "PostgreSQL",
+  },
+  {
+    graphic: "storage",
+    link: "https://aws.amazon.com/s3/",
+    subtitle: "Storage",
+    title: "S3",
+  },
+  {
+    graphic: "bug_report",
+    link: "https://travis-ci.org/",
+    subtitle: "CI/CD",
+    title: "Travis CI",
+  },
+  {
+    graphic: "language",
+    link: "https://www.typescriptlang.org/",
+    subtitle: "Language",
+    title: "TypeScript",
+  },
+  {
+    graphic: "description",
+    link: "https://babeljs.io/",
+    subtitle: "Transpiler",
+    title: "Babel",
+  },
+  {
+    graphic: "cached",
+    link: "https://nodejs.org/en/",
+    subtitle: "Runtime",
+    title: "Node.js",
+  },
+  {
+    graphic: "desktop_mac",
+    link: "https://electronjs.org/",
+    subtitle: "Desktop",
+    title: "Electron",
+  },
+  {
+    graphic: "unarchive",
+    link: "https://yarnpkg.com/en/",
+    subtitle: "Dependency",
+    title: "yarn",
+  },
+  {
+    graphic: "build",
+    link: "https://gulpjs.com/",
+    subtitle: "Toolchain",
+    title: "Gulp",
+  },
+  {
+    graphic: "playlist_add_check",
+    link: "https://facebook.github.io/jest/",
+    subtitle: "Testing",
+    title: "Jest",
+  },
+  {
+    graphic: "graphic_eq",
+    link: "https://graphql.org/",
+    subtitle: "API",
+    title: "GraphQL",
+  },
+  {
+    graphic: "flip_to_front",
+    link: "https://reactjs.org/",
+    subtitle: "Interface",
+    title: "React",
+  },
+  {
+    graphic: "local_library",
+    link: "http://facebook.github.io/relay/",
+    subtitle: "Fetch",
+    title: "Relay",
+  },
+  {
+    graphic: "style",
+    link: "https://material.io/components/web/",
+    subtitle: "Theme",
+    title: "Material Design",
+  },
+  {
+    graphic: "line_style",
+    link: "https://sass-lang.com/",
+    subtitle: "Style",
+    title: "SASS",
+  },
+];
+
 interface IReleases {
   titleA: string;
   titleB: string;
@@ -57,118 +163,18 @@ export const Content: () => JSX.Element =
           Important choices I made for you
         </Typography>
       </GridCell>
-      <GridCell span={minWidth}>
-        <List twoLine>
-          <SimpleListItem
-            graphic="memory"
-            text="Lambda"
-            secondaryText="Server(less)"
-            onClick={(): void => { goto("https://aws.amazon.com/lambda/"); }}
-          />
-          <SimpleListItem
-            graphic="share"
-            text="PostgreSQL"
-            secondaryText="Database"
-            onClick={(): void => { goto("https://www.postgresql.org/"); }}
-          />
-          <SimpleListItem
-            graphic="storage"
-            text="S3"
-            secondaryText="Storage"
-            onClick={(): void => { goto("https://aws.amazon.com/s3/"); }}
-          />
-          <SimpleListItem
-            graphic="bug_report"
-            text="Travis CI"
-            secondaryText="CI/CD"
-            onClick={(): void => { goto("https://travis-ci.org/"); }}
-          />
-        </List>
-      </GridCell>
-      <GridCell span={minWidth}>
-        <List twoLine>
-          <SimpleListItem
-            graphic="language"
-            text="TypeScript"
-            secondaryText="Language"
-            onClick={(): void => { goto("https://www.typescriptlang.org/"); }}
-          />
-          <SimpleListItem
-            graphic="description"
-            text="Babel"
-            secondaryText="Transpiler"
-            onClick={(): void => { goto("https://babeljs.io/"); }}
-          />
-          <SimpleListItem
-            graphic="cached"
-            text="Node.js"
-            secondaryText="Runtime"
-            onClick={(): void => { goto("https://nodejs.org/en/"); }}
-          />
-          <SimpleListItem
-            graphic="desktop_mac"
-            text="Electron"
-            secondaryText="Desktop"
-            onClick={(): void => { goto("https://electronjs.org/"); }}
-          />
-        </List>
-      </GridCell>
-      <GridCell span={minWidth}>
-        <List twoLine>
-          <SimpleListItem
-            graphic="unarchive"
-            text="yarn"
-            secondaryText="Dependency"
-            onClick={(): void => { goto("https://yarnpkg.com/en/"); }}
-          />
-          <SimpleListItem
-            graphic="build"
-            text="Gulp"
-            secondaryText="Toolchain"
-            onClick={(): void => { goto("https://gulpjs.com/"); }}
-          />
-          <SimpleListItem
-            graphic="playlist_add_check"
-            text="Jest"
-            secondaryText="Testing"
-            onClick={(): void => { goto("https://facebook.github.io/jest/"); }}
-          />
-          <SimpleListItem
-            graphic="graphic_eq"
-            text="GraphQL"
-            secondaryText="API"
-            onClick={(): void => { goto("https://graphql.org/"); }}
-          />
-        </List>
-      </GridCell>
-      <GridCell span={minWidth}>
-        <List twoLine>
-          <SimpleListItem
-            graphic="flip_to_front"
-            text="React"
-            secondaryText="Interface"
-            onClick={(): void => { goto("https://reactjs.org/"); }}
-          />
-          <SimpleListItem
-            graphic="local_library"
-            text="Relay"
-            secondaryText="Fetch"
-            onClick={(): void => { goto("http://facebook.github.io/relay/"); }}
-          />
-          <SimpleListItem
-            graphic="style"
-            text="Material Design"
-            secondaryText="Theme"
-            onClick={(): void => { goto("https://material.io/components/web/"); }}
-          />
-          <SimpleListItem
-            graphic="line_style"
-            text="SASS"
-            secondaryText="Style"
-            onClick={(): void => { goto("https://sass-lang.com/"); }}
-          />
-        </List>
-      </GridCell>
+      {tools.map((item: ITools, index: number) => (
+        <GridCell span={minWidth} key={index}>
+          <List twoLine dense>
+            <SimpleListItem
+              graphic={item.graphic}
+              text={item.title}
+              secondaryText={item.subtitle}
+              onClick={(): void => { goto(item.link); }}
+            />
+          </List>
+        </GridCell>
+      ))}
       <GridCell span={maxWidth}>
         <Typography use="display2" tag="div">
           <span style={{textDecoration: "line-through"}}>
@@ -200,8 +206,7 @@ export const Content: () => JSX.Element =
           Release history
         </Typography>
       </GridCell>
-      {releases.map(
-        (item: IReleases, index: number) => (
+      {releases.map((item: IReleases, index: number) => (
         <GridCell span={minWidth} key={index}>
           <Card>
             <CardPrimaryAction
