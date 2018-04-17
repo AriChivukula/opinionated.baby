@@ -107,7 +107,11 @@ class TopBarRelay extends React.Component<IProps> {
           }
         `,
         onCompleted: (response: TopBarLoginMutationResponse, errors: Error[]): void => {
-          cookie.set("accessToken", response.login.accessToken);
+          cookie.set(
+            "accessToken",
+            response.login.accessToken,
+            { secure: process.env.ENV === "LAMBDA" },
+          );
           goto("/", true);
         },
         variables: {
@@ -131,7 +135,11 @@ class TopBarRelay extends React.Component<IProps> {
           }
         `,
         onCompleted: (response: TopBarLogoutMutationResponse, errors: Error[]): void => {
-          cookie.set("accessToken", response.logout.accessToken);
+          cookie.set(
+            "accessToken",
+            response.logout.accessToken,
+            { secure: process.env.ENV === "LAMBDA" },
+          );
           goto("/", true);
         },
         variables: {
