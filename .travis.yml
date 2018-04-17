@@ -11,9 +11,9 @@ script:
 after_success:
 - rm -rf node_modules
 - yarn install --prod
-- if [[ "$TRAVIS_TAG" ]] ; then rm _build_4/website/static/robots.txt ; fi
-- cp _build_4/server/index.js index.js
-- cp _build_4/server/schema.graphql schema.graphql
+- if [[ "$TRAVIS_TAG" ]] ; then rm _build_3/website/static/robots.txt ; fi
+- cp _build_3/server/index.js index.js
+- cp _build_3/server/schema.graphql schema.graphql
 - zip -q -r dist.zip node_modules index.js schema.graphql
 deploy:
   - provider: s3
@@ -21,7 +21,7 @@ deploy:
     secret_access_key: $SECRET_ACCESS_KEY
     bucket: $BUCKET_BETA
     region: $REGION
-    local_dir: _build_4/website
+    local_dir: _build_3/website
     acl: public_read
     skip_cleanup: true
     on:
@@ -60,7 +60,7 @@ deploy:
     secret_access_key: $SECRET_ACCESS_KEY
     bucket: $BUCKET
     region: $REGION
-    local_dir: _build_4/website
+    local_dir: _build_3/website
     acl: public_read
     skip_cleanup: true
     on:

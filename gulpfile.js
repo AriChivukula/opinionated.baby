@@ -1,10 +1,11 @@
 var gulp = require("gulp");
 var babel = require("gulp-babel");
 var browserify = require("browserify");
+var buffer = require("vinyl-buffer");
 var sass = require("gulp-sass");
 var shell = require("gulp-shell");
-var ts = require("gulp-typescript");
 var source = require("vinyl-source-stream");
+var ts = require("gulp-typescript");
 var uglify = require("gulp-uglify");
 
 var project = ts.createProject("tsconfig.json");
@@ -137,6 +138,8 @@ gulp.task(
   })
     .bundle()
     .pipe(source("index.js"))
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest("_build_3/application")),
 );
 
@@ -167,6 +170,8 @@ gulp.task(
   })
     .bundle()
     .pipe(source("index.js"))
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest("_build_3/website")),
 );
 
@@ -181,51 +186,18 @@ gulp.task(
 );
 
 gulp.task(
-  "build:4:static",
-  () => gulp.src("_build_3/**/*.@(css|graphql|html|jpg|png|snap|txt)")
-    .pipe(gulp.dest("_build_4")),
-);
-
-gulp.task(
-  "build:4:uglify",
-  () => gulp.src("_build_3/**/*.js")
-    .pipe(uglify())
-    .pipe(gulp.dest("_build_4")),
-);
-
-gulp.task(
-  "build:4",
-  gulp.parallel(
-    "build:4:static",
-    "build:4:uglify",
-  ),
-);
-
-gulp.task(
-  "build",
-  gulp.series(
-    "build:0",
-    "build:1",
-    "build:2",
-    "build:3",
-    "build:4",
-  ),
-);
-
-gulp.task(
   "build:full",
   gulp.series(
     "build:0",
     "build:1",
     "build:2",
     "build:3",
-    "build:4",
   ),
 );
 
 gulp.task(
   "build:incremental",
-  () => gulp.watch("src/**/*", gulp.series("build")),
+  () => gulp.watch("src/**/*", gulp.series("build:full")),
 );
 
 gulp.task(
