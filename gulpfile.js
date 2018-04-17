@@ -75,7 +75,7 @@ gulp.task(
 
 gulp.task(
   "build:1:typescript",
-  () => gulp.src(["src/**/*.tsx"])
+  () => gulp.src(["src/**/*.ts", "src/**/*.tsx"])
     .pipe(project())
     .js
     .pipe(gulp.dest("_build_1")),
