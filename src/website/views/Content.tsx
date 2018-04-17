@@ -15,6 +15,19 @@ import { goto } from "../util";
 const maxWidth: number = 12;
 const minWidth: number = 3;
 
+interface IReleases {
+  titleA: string;
+  titleB: string;
+  version: string;
+}
+
+const releases: IReleases[] = [
+  { titleA: "Tilted", titleB: "Turtle", version: "v3" },
+  { titleA: "Assertive", titleB: "Actor", version: "v2" },
+  { titleA: "Dogged", titleB: "Dapper", version: "v1" },
+  { titleA: "Cocksure", titleB: "Castle", version: "v0" },
+];
+
 export const Content: () => JSX.Element =
   (): JSX.Element => (
     <Grid>
@@ -187,93 +200,30 @@ export const Content: () => JSX.Element =
           Release history
         </Typography>
       </GridCell>
-      <GridCell span={minWidth}>
-        <Card>
-          <CardPrimaryAction
-            onClick={(): void => { goto("https://github.com/arichiv/opinionated.baby/releases/tag/v3/"); }}>
-            <CardMedia
-              square
-              style={{backgroundImage: "url(images/v3.jpg)"}}
-            />
-            <Typography
-              use="display1"
-              style={{padding: "1rem"}}>
-              <Typography theme="text-secondary-on-background">
-                v3
+      {releases.map(
+        (item: IReleases, index: number) => (
+        <GridCell span={minWidth} key={index}>
+          <Card>
+            <CardPrimaryAction
+              onClick={(): void => { goto(`https://github.com/arichiv/opinionated.baby/releases/tag/${item.version}/`); }}>
+              <CardMedia
+                square
+                style={{backgroundImage: `url(images/${item.version}.jpg)`}}
+              />
+              <Typography
+                use="display1"
+                style={{padding: "1rem"}}>
+                <Typography theme="text-secondary-on-background">
+                  {item.version}
+                </Typography>
+                <br />
+                {item.titleA}
+                <br />
+                {item.titleB}
               </Typography>
-              <br />
-              Tilted
-              <br />
-              Turtle
-            </Typography>
-          </CardPrimaryAction>
-        </Card>
-      </GridCell>
-      <GridCell span={minWidth}>
-        <Card>
-          <CardPrimaryAction
-            onClick={(): void => { goto("https://github.com/arichiv/opinionated.baby/releases/tag/v2/"); }}>
-            <CardMedia
-              square
-              style={{backgroundImage: "url(images/v2.jpg)"}}
-            />
-            <Typography
-              use="display1"
-              style={{padding: "1rem"}}>
-              <Typography theme="text-secondary-on-background">
-                v2
-              </Typography>
-              <br />
-              Assertive
-              <br />
-              Actor
-            </Typography>
-          </CardPrimaryAction>
-        </Card>
-      </GridCell>
-      <GridCell span={minWidth}>
-        <Card>
-          <CardPrimaryAction
-            onClick={(): void => { goto("https://github.com/arichiv/opinionated.baby/releases/tag/v1/"); }}>
-            <CardMedia
-              square
-              style={{backgroundImage: "url(images/v1.jpg)"}}
-            />
-            <Typography
-              use="display1"
-              style={{padding: "1rem"}}>
-              <Typography theme="text-secondary-on-background">
-                v1
-              </Typography>
-              <br />
-              Dogged
-              <br />
-              Dapper
-            </Typography>
-          </CardPrimaryAction>
-        </Card>
-      </GridCell>
-      <GridCell span={minWidth}>
-        <Card>
-          <CardPrimaryAction
-            onClick={(): void => { goto("https://github.com/arichiv/opinionated.baby/releases/tag/v0/"); }}>
-            <CardMedia
-              square
-              style={{backgroundImage: "url(images/v0.jpg)"}}
-            />
-            <Typography
-              use="display1"
-              style={{padding: "1rem"}}>
-              <Typography theme="text-secondary-on-background">
-                v0
-              </Typography>
-              <br />
-              Cocksure
-              <br />
-              Castle
-            </Typography>
-          </CardPrimaryAction>
-        </Card>
-      </GridCell>
+            </CardPrimaryAction>
+          </Card>
+        </GridCell>
+      ))}
     </Grid>
   );
