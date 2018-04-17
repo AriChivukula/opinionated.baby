@@ -7126,6 +7126,16 @@ rmwc@^1.5.2:
     material-components-web "0.34.1"
     prop-types "^15.6.1"
 
+rollup-stream@^1.24.1:
+  version "1.24.1"
+  resolved "https://registry.yarnpkg.com/rollup-stream/-/rollup-stream-1.24.1.tgz#9bc002afba51c517e6daa3e17f9559580a460f89"
+  dependencies:
+    rollup "^0.49.2"
+
+rollup@^0.49.2:
+  version "0.49.3"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.49.3.tgz#4cce32643dd8cf2154c69ff0e43470067db0adbf"
+
 rst-selector-parser@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/rst-selector-parser/-/rst-selector-parser-2.2.3.tgz#81b230ea2fcc6066c89e3472de794285d9b03d91"

@@ -2,6 +2,7 @@ var gulp = require("gulp");
 var babel = require("gulp-babel");
 var browserify = require("browserify");
 var buffer = require("vinyl-buffer");
+var rollup = require('rollup-stream');
 var sass = require("gulp-sass");
 var shell = require("gulp-shell");
 var source = require("vinyl-source-stream");
@@ -94,13 +95,10 @@ gulp.task(
 );
 
 gulp.task(
-  "build:2:babel",
-  () => gulp.src("_build_1/**/*.js")
-    .pipe(babel({
-      plugins: ["relay"],
-      presets: ["@babel/preset-env"],
-    }))
-    .pipe(gulp.dest("_build_2")),
+  "build:2:application",
+  () => gulp.src("_build_1/application/**/*.js")
+    .pipe(babel({ presets: ["@babel/preset-env"] }))
+    .pipe(gulp.dest("_build_2/application")),
 );
 
 gulp.task(
@@ -114,17 +112,38 @@ gulp.task(
 );
 
 gulp.task(
+  "build:2:server",
+  () => gulp.src("_build_1/server/**/*.js")
+    .pipe(babel({
+      presets: [["@babel/preset-env", { "modules": false }]],
+    }))
+    .pipe(gulp.dest("_build_2/server")),
+);
+
+gulp.task(
   "build:2:static",
-  () => gulp.src("src/**/*.@(css|graphql|html|jpg|png|snap|txt)")
+  () => gulp.src("src/**/*.@(graphql|html|jpg|png|snap|txt)")
     .pipe(gulp.dest("_build_2")),
+);
+
+gulp.task(
+  "build:2:website",
+  () => gulp.src("_build_1/website/**/*.js")
+    .pipe(babel({
+      plugins: ["relay"],
+      presets: ["@babel/preset-env"],
+    }))
+    .pipe(gulp.dest("_build_2/website")),
 );
 
 gulp.task(
   "build:2",
   gulp.parallel(
-    "build:2:babel",
+    "build:2:application",
     "build:2:sass",
+    "build:2:server",
     "build:2:static",
+    "build:2:website",
   ),
 );
 
@@ -145,20 +164,19 @@ gulp.task(
 
 gulp.task(
   "build:3:server",
-  () => browserify({
-    bundleExternal: false,
-    entries: "_build_2/server/index.js",
-    detectGlobals: false,
-    node: true,
+  () => rollup({
+    input: "_build_2/server/index.js",
+    format: "cjs",
   })
-    .bundle()
     .pipe(source("index.js"))
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest("_build_3/server")),
 );
 
 gulp.task(
   "build:3:static",
-  () => gulp.src("_build_2/**/*.@(css|graphql|html|jpg|png|snap|txt)")
+  () => gulp.src("_build_2/**/*.@(css|graphql|html|jpg|png|txt)")
     .pipe(gulp.dest("_build_3")),
 );
 

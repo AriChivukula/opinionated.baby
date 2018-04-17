@@ -63,6 +63,7 @@
     "relay-compiler-language-typescript": "^0.9.0",
     "relay-runtime": "^1.5.0",
     "rmwc": "^1.5.2",
+    "rollup-stream": "^1.24.1",
     "sass-lint": "^1.12.1",
     "ts-jest": "^22.4.3",
     "tslint": "^5.9.1",
