@@ -10,7 +10,7 @@
   "jest": {
     "coverageThreshold": {
       "global": {
-        "lines": 50
+        "statements": 50
       }
     },
     "roots": [
