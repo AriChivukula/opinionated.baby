@@ -3,10 +3,13 @@ import "@babel/polyfill";
 import lambda from "aws-serverless-express";
 import cors from "cors";
 import express from "express";
+import helmet from "helmet";
+
 import { server } from "./server";
 
 const app: express.Express = express();
 app.use(cors());
+app.use(helmet())
 
 let lambdaHandler: ((event: object, context: object) => void) | null = null;
 
