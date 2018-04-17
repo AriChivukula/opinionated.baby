@@ -169,8 +169,6 @@ gulp.task(
     format: "cjs",
   })
     .pipe(source("index.js"))
-    .pipe(buffer())
-    .pipe(uglify())
     .pipe(gulp.dest("_build_3/server")),
 );
 
