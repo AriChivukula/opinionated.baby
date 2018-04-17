@@ -9,7 +9,7 @@ import { server } from "./server";
 
 const app: express.Express = express();
 app.use(cors());
-app.use(helmet())
+app.use(helmet());
 
 let lambdaHandler: ((event: object, context: object) => void) | null = null;
 
