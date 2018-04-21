@@ -5,6 +5,7 @@
   "rules": {
     "completed-docs": false,
     "max-line-length": false,
+    "no-any": false,
     "no-console": false,
     "no-implicit-dependencies": false,
     "no-import-side-effect": false,

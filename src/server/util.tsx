@@ -1,8 +1,6 @@
-// tslint:disable-next-line:no-any
-export const prep: <T extends any>(genable: Promise<T>) => void =
-  // tslint:disable-next-line:no-any
-  <T extends any>(genable: Promise<T>): void => {
-    genable
+export const makeSync: <T extends any>(wasAsync: Promise<T>) => void =
+  <T extends any>(wasAsync: Promise<T>): void => {
+    wasAsync
       .catch((err: Error): void => {
         throw err;
       })
@@ -14,4 +12,15 @@ export const prep: <T extends any>(genable: Promise<T>) => void =
       });
 
     return;
+  };
+
+export const nullOnThrow: <T extends any>(mightThrow: Promise<T>) => Promise<T | null> =
+  async <T extends any>(mightThrow: Promise<T>): Promise<T | null> => {
+    try {
+      return mightThrow;
+    } catch (error) {
+      console.log(error);
+
+      return null;
+    }
   };
