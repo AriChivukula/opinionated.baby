@@ -13,9 +13,7 @@ import {
   createFragmentContainer,
   graphql,
 } from "react-relay";
-import {
-  Environment,
-} from "relay-runtime";
+import Relay from "relay-runtime";
 import {
   Toolbar,
   ToolbarFixedAdjust,
@@ -30,9 +28,7 @@ import { goto } from "../util";
 
 interface IProps {
   data: TopBarQuery;
-  relay: {
-    environment: Environment;
-  };
+  relay: Relay;
 }
 
 class TopBarRelay extends React.Component<IProps> {
