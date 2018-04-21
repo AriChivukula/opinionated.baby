@@ -11,7 +11,6 @@ import {
   genAccessToken,
   genAccessTokenInfo,
   getLoginURL,
-  IAccessToken,
   IAccessTokenInfo,
 } from "./google";
 import { prep } from "./util";
@@ -25,8 +24,7 @@ const schema: GraphQLSchema = buildSchema(
 const root: (request: Request, response: Response) => Promise<object> =
   async (request: Request, response: Response): Promise<object> => ({
     login: async ({ input }: { input: { code: string } }): Promise<object> => {
-      const token: IAccessToken = await genAccessToken(input.code);
-      const accessToken: string = token.tokens.access_token as string;
+      const accessToken: string = await genAccessToken(input.code);
       const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
       let loggedin: User | undefined = await getRepository(User)
         .findOne(info.data.user_id);

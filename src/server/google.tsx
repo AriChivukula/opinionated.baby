@@ -1,7 +1,7 @@
 import { OAuth2Client } from "google-auth-library";
 import { google } from "googleapis";
 
-export interface IAccessToken {
+interface IAccessToken {
   tokens: {
     access_token?: string | null;
   };
@@ -27,9 +27,12 @@ export const getLoginURL: () => string =
       scope: ["profile", "email"],
     });
 
-export const genAccessToken: (code: string) => Promise<IAccessToken> =
-  async (code: string): Promise<IAccessToken> => getOAuthClient()
-    .getToken(code);
+export const genAccessToken: (code: string) => Promise<string> =
+  async (code: string): Promise<string> => {
+    const accessToken: IAccessToken = await getOAuthClient()
+      .getToken(code);
+    return accessToken.tokens.access_token as string;
+  }
 
 export const genAccessTokenInfo: (accessToken: string) => Promise<IAccessTokenInfo> =
   async (accessToken: string): Promise<IAccessTokenInfo> => google
