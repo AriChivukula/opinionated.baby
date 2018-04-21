@@ -7,9 +7,7 @@ import { join } from "path";
 import { dbConnection, genUserForAccessToken } from "./db";
 import {
   genAccessToken,
-  genAccessTokenInfo,
   getLoginURL,
-  IAccessTokenInfo,
 } from "./google";
 import { prep } from "./util";
 
