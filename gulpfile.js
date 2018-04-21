@@ -49,7 +49,7 @@ gulp.task(
 
 gulp.task(
   "build:0:artifact",
-  shell.task("relay-compiler --quiet --src src/ --schema src/server/schema.graphql --language typescript"),
+  shell.task("relay-compiler --src src/ --schema src/server/schema.graphql --language typescript"),
 );
 
 gulp.task(
@@ -83,7 +83,7 @@ gulp.task(
 
 gulp.task(
   "build:1:relay",
-  shell.task("relay-compiler --quiet --src _build_1/ --schema src/server/schema.graphql"),
+  shell.task("relay-compiler --src _build_1/ --schema src/server/schema.graphql"),
 );
 
 gulp.task(
