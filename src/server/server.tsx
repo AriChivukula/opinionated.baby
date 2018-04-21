@@ -3,10 +3,8 @@ import graphqlHTTP from "express-graphql";
 import { readFileSync } from "fs";
 import { buildSchema, GraphQLSchema } from "graphql";
 import { join } from "path";
-import { getRepository } from "typeorm";
 
-import { dbConnection } from "./db";
-import { User } from "./entity/User";
+import { dbConnection, genUserForAccessToken } from "./db";
 import {
   genAccessToken,
   genAccessTokenInfo,
@@ -26,15 +24,7 @@ const root: (request: Request, response: Response) => Promise<object> =
     login: async ({ input }: { input: { code: string } }): Promise<object> => {
       const accessToken: string = await genAccessToken(input.code);
       const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
-      let loggedin: User | undefined = await getRepository(User)
-        .findOne(info.data.user_id);
-      if (loggedin === undefined) {
-        loggedin = new User();
-        loggedin.id = info.data.user_id;
-        loggedin.email = info.data.email;
-        await getRepository(User)
-          .save(loggedin);
-      }
+      await genUserForAccessToken(accessToken);
 
       return { accessToken };
     },
@@ -47,14 +37,7 @@ const root: (request: Request, response: Response) => Promise<object> =
         return null;
       }
       try {
-        const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
-        const loggedin: User | undefined = await getRepository(User)
-          .findOne(info.data.user_id);
-        if (loggedin === undefined) {
-          return null;
-        }
-
-        return loggedin;
+        return await genUserForAccessToken(accessToken);
       } catch (error) {
         console.log(error);
 

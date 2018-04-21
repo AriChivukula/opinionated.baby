@@ -31,8 +31,9 @@ export const genAccessToken: (code: string) => Promise<string> =
   async (code: string): Promise<string> => {
     const accessToken: IAccessToken = await getOAuthClient()
       .getToken(code);
+
     return accessToken.tokens.access_token as string;
-  }
+  };
 
 export const genAccessTokenInfo: (accessToken: string) => Promise<IAccessTokenInfo> =
   async (accessToken: string): Promise<IAccessTokenInfo> => google
