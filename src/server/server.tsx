@@ -9,9 +9,9 @@ import {
   genAccessToken,
   getLoginURL,
 } from "./google";
-import { prep } from "./util";
+import { makeSync, nullOnThrow } from "./util";
 
-prep(dbConnection());
+makeSync(dbConnection());
 
 const schema: GraphQLSchema = buildSchema(
   readFileSync(join(__dirname, "schema.graphql"), "ascii"),
@@ -33,13 +33,8 @@ const root: (request: Request, response: Response) => Promise<object> =
       if (accessToken === null) {
         return null;
       }
-      try {
-        return await genUserForAccessToken(accessToken);
-      } catch (error) {
-        console.log(error);
 
-        return null;
-      }
+      return nullOnThrow(genUserForAccessToken(accessToken));
     },
   });
 

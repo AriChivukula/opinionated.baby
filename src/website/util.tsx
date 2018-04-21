@@ -4,7 +4,6 @@ export const isElectron: () => boolean =
 export const goto: (url: string, samePage?: boolean) => void =
   (url: string, samePage: boolean = false): void => {
     if (isElectron()) {
-      // tslint:disable-next-line:no-any
       (window as any)
         .require("electron")
         .shell
