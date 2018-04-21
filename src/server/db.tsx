@@ -1,6 +1,10 @@
-import { createConnection } from "typeorm";
+import { createConnection, getRepository } from "typeorm";
 
 import { User } from "./entity/User";
+import {
+  genAccessTokenInfo,
+  IAccessTokenInfo,
+} from "./google";
 
 export const dbConnection: () => Promise<void> = async (): Promise<void> => {
   await createConnection({
@@ -13,3 +17,19 @@ export const dbConnection: () => Promise<void> = async (): Promise<void> => {
     username: process.env.DB_USERNAME,
   });
 };
+
+export const genUserForAccessToken: (accessToken: string) => Promise<User> =
+  async (accessToken: string): Promise<User> => {
+    const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
+    let user: User | undefined = await getRepository(User)
+      .findOne(info.data.user_id);
+    if (user === undefined) {
+      user = new User();
+      user.id = info.data.user_id;
+      user.email = info.data.email;
+      await getRepository(User)
+        .save(user);
+    }
+
+    return user;
+  };
