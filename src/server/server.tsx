@@ -5,6 +5,7 @@ import { buildSchema, GraphQLSchema } from "graphql";
 import { join } from "path";
 import { createConnection, getRepository } from "typeorm";
 
+import { dbConnection } from "./db";
 import { User } from "./entity/User";
 import {
   genAccessToken,
@@ -13,22 +14,9 @@ import {
   IAccessToken,
   IAccessTokenInfo,
 } from "./google";
+import { prep } from "./util";
 
-export const dbConnection: () => Promise<void> = async (): Promise<void> => {
-  await createConnection({
-    database: process.env.DB_NAME,
-    entities: [User],
-    host: process.env.DB_HOST,
-    password: process.env.DB_PASSWORD,
-    port: parseInt(process.env.DB_PORT as string, 10),
-    type: "postgres",
-    username: process.env.DB_USERNAME,
-  });
-};
-dbConnection()
-  .catch((err: Error): void => { console.log(err); })
-  .then((): void => { console.log("DB Connected"); })
-  .catch((err: Error): void => { console.log(err); });
+prep(dbConnection());
 
 const schema: GraphQLSchema = buildSchema(
   readFileSync(join(__dirname, "schema.graphql"), "ascii"),
