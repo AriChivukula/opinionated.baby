@@ -13,6 +13,7 @@
         "statements": 50
       }
     },
+    "forceExit": true,
     "roots": [
       "<rootDir>/_build_2/"
     ],
