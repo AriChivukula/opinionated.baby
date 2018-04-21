@@ -12,8 +12,9 @@ import {
 
 import { goto } from "../util";
 
-const maxWidth: number = 12;
-const minWidth: number = 3;
+const fullWidth: number = 12;
+const toolWidth: number = 3;
+const releaseWidth: number = 4;
 
 interface ITools {
   graphic: string;
@@ -128,6 +129,7 @@ interface IReleases {
 }
 
 const releases: IReleases[] = [
+  { titleA: "Staunch", titleB: "Sibling", version: "v4" },
   { titleA: "Tilted", titleB: "Turtle", version: "v3" },
   { titleA: "Assertive", titleB: "Actor", version: "v2" },
   { titleA: "Dogged", titleB: "Dapper", version: "v1" },
@@ -137,12 +139,12 @@ const releases: IReleases[] = [
 export const Content: () => JSX.Element =
   (): JSX.Element => (
     <Grid>
-      <GridCell span={maxWidth}>
+      <GridCell span={fullWidth}>
         <Typography use="display2" tag="div">
           A confidently immature starting point
         </Typography>
       </GridCell>
-      <GridCell span={maxWidth}>
+      <GridCell span={fullWidth}>
         <Typography use="subheading2" tag="div">
           The hardest part of building a new dynamic website is avoiding
           all the dragons. Starting a development environment can freeze us
@@ -158,14 +160,14 @@ export const Content: () => JSX.Element =
           and into the pleasure of production logic.
         </Typography>
       </GridCell>
-      <GridCell span={maxWidth}>
+      <GridCell span={fullWidth}>
         <Typography use="display2" tag="div">
           Important choices I made for you
         </Typography>
       </GridCell>
       {tools.map((item: ITools, index: number) => (
-        <GridCell span={minWidth} key={index}>
-          <List twoLine dense>
+        <GridCell span={toolWidth} key={index}>
+          <List twoLine>
             <SimpleListItem
               graphic={item.graphic}
               text={item.title}
@@ -175,7 +177,7 @@ export const Content: () => JSX.Element =
           </List>
         </GridCell>
       ))}
-      <GridCell span={maxWidth}>
+      <GridCell span={fullWidth}>
         <Typography use="display2" tag="div">
           <span style={{textDecoration: "line-through"}}>
             Self justification
@@ -184,7 +186,7 @@ export const Content: () => JSX.Element =
           Philosophy
         </Typography>
       </GridCell>
-      <GridCell span={maxWidth}>
+      <GridCell span={fullWidth}>
         <Typography use="subheading2" tag="div">
           This framework is one-size-fits-me. It's an open source
           version of a system I use when building complex websites.
@@ -201,13 +203,13 @@ export const Content: () => JSX.Element =
           .
         </Typography>
       </GridCell>
-      <GridCell span={maxWidth}>
+      <GridCell span={fullWidth}>
         <Typography use="display2" tag="div">
           Release history
         </Typography>
       </GridCell>
       {releases.map((item: IReleases, index: number) => (
-        <GridCell span={minWidth} key={index}>
+        <GridCell span={releaseWidth} key={index}>
           <Card>
             <CardPrimaryAction
               onClick={(): void => { goto(`https://github.com/arichiv/opinionated.baby/releases/tag/${item.version}/`); }}>

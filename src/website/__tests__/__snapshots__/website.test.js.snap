@@ -101,7 +101,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -128,7 +128,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -155,7 +155,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -182,7 +182,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -209,7 +209,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -236,7 +236,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -263,7 +263,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -290,7 +290,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -317,7 +317,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -344,7 +344,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -371,7 +371,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -398,7 +398,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -425,7 +425,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -452,7 +452,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -479,7 +479,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -506,7 +506,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -568,7 +568,37 @@ Array [
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class=" mdc-card"
+        >
+          <div
+            class=" mdc-card__primary-action"
+          >
+            <section
+              class=" mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v4.jpg)"
+            />
+            <span
+              class=" mdc-typography--display1"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background "
+              >
+                v4
+              </span>
+              <br />
+              Staunch
+              <br />
+              Sibling
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
       >
         <div
           class=" mdc-card"
@@ -598,7 +628,7 @@ Array [
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
       >
         <div
           class=" mdc-card"
@@ -628,7 +658,7 @@ Array [
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
       >
         <div
           class=" mdc-card"
@@ -658,7 +688,7 @@ Array [
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
       >
         <div
           class=" mdc-card"
@@ -776,7 +806,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -803,7 +833,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -830,7 +860,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -857,7 +887,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -884,7 +914,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -911,7 +941,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -938,7 +968,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -965,7 +995,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -992,7 +1022,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -1019,7 +1049,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -1046,7 +1076,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -1073,7 +1103,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -1100,7 +1130,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -1127,7 +1157,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -1154,7 +1184,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -1181,7 +1211,7 @@ Array [
         class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--dense mdc-list--two-line"
+          class=" mdc-list mdc-list--two-line"
         >
           <div
             class=" mdc-ripple-surface  mdc-list-item"
@@ -1243,7 +1273,37 @@ Array [
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class=" mdc-card"
+        >
+          <div
+            class=" mdc-card__primary-action"
+          >
+            <section
+              class=" mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v4.jpg)"
+            />
+            <span
+              class=" mdc-typography--display1"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background "
+              >
+                v4
+              </span>
+              <br />
+              Staunch
+              <br />
+              Sibling
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
       >
         <div
           class=" mdc-card"
@@ -1273,7 +1333,7 @@ Array [
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
       >
         <div
           class=" mdc-card"
@@ -1303,7 +1363,7 @@ Array [
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
       >
         <div
           class=" mdc-card"
@@ -1333,7 +1393,7 @@ Array [
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
       >
         <div
           class=" mdc-card"
