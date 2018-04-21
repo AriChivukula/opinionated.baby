@@ -1,4 +1,4 @@
-import { EntityManager, getManager } from "typeorm";
+import { getRepository } from "typeorm";
 
 import { User } from "../entity/User";
 import { genAccessTokenInfo, getLoginURL } from "../google";
@@ -26,8 +26,8 @@ test(
   "Login",
   async (): Promise<void> => {
     await dbConnection();
-    const entityManager: EntityManager = getManager();
-    const loggedin: User | undefined = await entityManager.findOneById(User, 1);
+    const loggedin: User | undefined = await getRepository(User)
+      .findOne(1);
     expect(loggedin)
       .not
       .toBeDefined();

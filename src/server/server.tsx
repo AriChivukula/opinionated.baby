@@ -3,7 +3,7 @@ import graphqlHTTP from "express-graphql";
 import { readFileSync } from "fs";
 import { buildSchema, GraphQLSchema } from "graphql";
 import { join } from "path";
-import { createConnection, EntityManager, getManager } from "typeorm";
+import { createConnection, getRepository } from "typeorm";
 
 import { User } from "./entity/User";
 import {
@@ -37,16 +37,17 @@ const schema: GraphQLSchema = buildSchema(
 const root: (request: Request, response: Response) => Promise<object> =
   async (request: Request, response: Response): Promise<object> => ({
     login: async ({ input }: { input: { code: string } }): Promise<object> => {
-      const entityManager: EntityManager = getManager();
       const token: IAccessToken = await genAccessToken(input.code);
       const accessToken: string = token.tokens.access_token as string;
       const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
-      let loggedin: User | undefined = await entityManager.findOneById(User, info.data.user_id);
+      let loggedin: User | undefined = await getRepository(User)
+        .findOne(info.data.user_id);
       if (loggedin === undefined) {
         loggedin = new User();
         loggedin.id = info.data.user_id;
         loggedin.email = info.data.email;
-        await entityManager.save(loggedin);
+        await getRepository(User)
+          .save(loggedin);
       }
 
       return { accessToken };
@@ -61,8 +62,8 @@ const root: (request: Request, response: Response) => Promise<object> =
       }
       try {
         const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
-        const entityManager: EntityManager = getManager();
-        const loggedin: User | undefined = await entityManager.findOneById(User, info.data.user_id);
+        const loggedin: User | undefined = await getRepository(User)
+          .findOne(info.data.user_id);
         if (loggedin === undefined) {
           return null;
         }
