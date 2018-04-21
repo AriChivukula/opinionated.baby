@@ -23,7 +23,6 @@ const root: (request: Request, response: Response) => Promise<object> =
   async (request: Request, response: Response): Promise<object> => ({
     login: async ({ input }: { input: { code: string } }): Promise<object> => {
       const accessToken: string = await genAccessToken(input.code);
-      const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
       await genUserForAccessToken(accessToken);
 
       return { accessToken };
