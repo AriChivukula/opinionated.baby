@@ -10,6 +10,7 @@ interface IAccessToken {
 export interface IAccessTokenInfo {
   data: {
     email: string;
+    email_verified: boolean;
     user_id: string;
   };
 }
