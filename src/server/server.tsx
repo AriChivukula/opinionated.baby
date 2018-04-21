@@ -3,7 +3,7 @@ import graphqlHTTP from "express-graphql";
 import { readFileSync } from "fs";
 import { buildSchema, GraphQLSchema } from "graphql";
 import { join } from "path";
-import { createConnection, getRepository } from "typeorm";
+import { getRepository } from "typeorm";
 
 import { dbConnection } from "./db";
 import { User } from "./entity/User";
