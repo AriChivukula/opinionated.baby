@@ -59,7 +59,7 @@ gulp.task(
 
 gulp.task(
   "build:0:lint:typescript",
-  shell.task("tslint -p . **/*.tsx **/*.ts"),
+  shell.task("tslint -p . src/**/*.tsx src/**/*.ts"),
 );
 
 gulp.task(

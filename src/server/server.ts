@@ -5,7 +5,7 @@ import { join } from "path";
 
 import { dbConnection } from "./db";
 import { root } from "./root";
-import { makeSync, nullOnThrow } from "./util";
+import { makeSync } from "./util";
 
 makeSync(dbConnection());
 
