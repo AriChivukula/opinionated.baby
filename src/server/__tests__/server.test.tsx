@@ -1,8 +1,14 @@
 import { getRepository } from "typeorm";
 
+import { dbConnection } from "../db";
 import { User } from "../entity/User";
 import { genAccessTokenInfo, getLoginURL } from "../google";
-import { dbConnection } from "../server";
+
+beforeAll(
+  async (): Promise<void> => {
+    await dbConnection();
+  },
+);
 
 test(
   "getLoginURL",
@@ -23,9 +29,8 @@ test(
 );
 
 test(
-  "Login",
+  "User",
   async (): Promise<void> => {
-    await dbConnection();
     const loggedin: User | undefined = await getRepository(User)
       .findOne(1);
     expect(loggedin)
