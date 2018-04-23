@@ -566,7 +566,7 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
-              style="background-image:url(images/v5.jpg)"
+              style="background-image:url(/images/v5.jpg)"
             />
             <span
               class=" mdc-typography--display1"
@@ -596,7 +596,7 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
-              style="background-image:url(images/v4.jpg)"
+              style="background-image:url(/images/v4.jpg)"
             />
             <span
               class=" mdc-typography--display1"
@@ -626,7 +626,7 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
-              style="background-image:url(images/v3.jpg)"
+              style="background-image:url(/images/v3.jpg)"
             />
             <span
               class=" mdc-typography--display1"
@@ -656,7 +656,7 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
-              style="background-image:url(images/v2.jpg)"
+              style="background-image:url(/images/v2.jpg)"
             />
             <span
               class=" mdc-typography--display1"
@@ -686,7 +686,7 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
-              style="background-image:url(images/v1.jpg)"
+              style="background-image:url(/images/v1.jpg)"
             />
             <span
               class=" mdc-typography--display1"
@@ -716,7 +716,7 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
-              style="background-image:url(images/v0.jpg)"
+              style="background-image:url(/images/v0.jpg)"
             />
             <span
               class=" mdc-typography--display1"
@@ -1301,7 +1301,7 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
-              style="background-image:url(images/v5.jpg)"
+              style="background-image:url(/images/v5.jpg)"
             />
             <span
               class=" mdc-typography--display1"
@@ -1331,7 +1331,7 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
-              style="background-image:url(images/v4.jpg)"
+              style="background-image:url(/images/v4.jpg)"
             />
             <span
               class=" mdc-typography--display1"
@@ -1361,7 +1361,7 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
-              style="background-image:url(images/v3.jpg)"
+              style="background-image:url(/images/v3.jpg)"
             />
             <span
               class=" mdc-typography--display1"
@@ -1391,7 +1391,7 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
-              style="background-image:url(images/v2.jpg)"
+              style="background-image:url(/images/v2.jpg)"
             />
             <span
               class=" mdc-typography--display1"
@@ -1421,7 +1421,7 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
-              style="background-image:url(images/v1.jpg)"
+              style="background-image:url(/images/v1.jpg)"
             />
             <span
               class=" mdc-typography--display1"
@@ -1451,7 +1451,7 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
-              style="background-image:url(images/v0.jpg)"
+              style="background-image:url(/images/v0.jpg)"
             />
             <span
               class=" mdc-typography--display1"
