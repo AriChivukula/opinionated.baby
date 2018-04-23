@@ -129,6 +129,7 @@ interface IReleases {
 }
 
 const releases: IReleases[] = [
+  { titleA: "Fierce", titleB: "Feline", version: "v5" },
   { titleA: "Staunch", titleB: "Sibling", version: "v4" },
   { titleA: "Tilted", titleB: "Turtle", version: "v3" },
   { titleA: "Assertive", titleB: "Actor", version: "v2" },
