@@ -1,6 +1,7 @@
 import "@babel/polyfill";
 
 import lambda from "aws-serverless-express";
+import { json, urlencoded } from "body-parser";
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
@@ -8,8 +9,7 @@ import helmet from "helmet";
 import { server } from "./server";
 
 const app: express.Express = express();
-app.use(cors());
-app.use(helmet());
+app.use(cors(), helmet(), json(), urlencoded());
 
 let lambdaHandler: ((event: object, context: object) => void) | null = null;
 
