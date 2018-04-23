@@ -1,6 +1,8 @@
+import * as cookie from "js-cookie";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
+  authMiddleware,
   RelayNetworkLayer,
   urlMiddleware,
 } from "react-relay-network-modern";
@@ -20,6 +22,10 @@ export const website: (apiURL: string) => void =
       network: new RelayNetworkLayer([
         urlMiddleware({
           url: apiURL,
+        }),
+        authMiddleware({
+          allowEmptyToken: true,
+          token: (): string => cookie.get("accessToken"),
         }),
       ]),
       store: new Store(new RecordSource()),

@@ -1,12 +1,14 @@
+import express from "express";
+
 import { genUserForAccessToken } from "./db";
 import {
   genAccessToken,
   getLoginURL,
 } from "./google";
-import { nullOnThrow } from "./util";
+import { genNullOnThrow } from "./util";
 
-export const root: () => Promise<object> =
-  async (): Promise<object> => ({
+export const root: (req: express.Request, res: express.Response) => Promise<object> =
+  async (req: express.Request, res: express.Response): Promise<object> => ({
     login: async ({ input }: { input: { code: string } }): Promise<object> => {
       const accessToken: string = await genAccessToken(input.code);
       await genUserForAccessToken(accessToken);
@@ -17,11 +19,5 @@ export const root: () => Promise<object> =
     logout: async (): Promise<object> => ({
       accessToken: "",
     }),
-    me: async ({ accessToken }: { accessToken: string | null }): Promise<object | null> => {
-      if (accessToken === null) {
-        return null;
-      }
-
-      return nullOnThrow(genUserForAccessToken(accessToken));
-    },
+    me: async (): Promise<object | null> => genNullOnThrow(genUserForAccessToken(req.token)),
   });

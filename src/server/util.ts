@@ -14,7 +14,7 @@ export const makeSync: <T extends any>(wasAsync: Promise<T>) => void =
     return;
   };
 
-export const nullOnThrow: <T extends any>(mightThrow: Promise<T>) => Promise<T | null> =
+export const genNullOnThrow: <T extends any>(mightThrow: Promise<T>) => Promise<T | null> =
   async <T extends any>(mightThrow: Promise<T>): Promise<T | null> => {
     try {
       return mightThrow;
