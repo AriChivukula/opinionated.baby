@@ -6,10 +6,21 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 
+import { setupDB } from "./db";
 import { server } from "./server";
+import { makeSync } from "./util";
 
 const app: express.Express = express();
 app.use(cors(), helmet(), json(), urlencoded());
+
+let didSetup: boolean = false;
+app.use((req: express.Request, res: express.Response, next: express.Next): void => {
+  if (!didSetup) {
+    makeSync(setupDB());
+    didSetup = true;
+  }
+  next();
+});
 
 let lambdaHandler: ((event: object, context: object) => void) | null = null;
 

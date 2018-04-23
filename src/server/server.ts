@@ -3,11 +3,7 @@ import { readFileSync } from "fs";
 import { buildSchema, GraphQLSchema } from "graphql";
 import { join } from "path";
 
-import { dbConnection } from "./db";
 import { root } from "./root";
-import { makeSync } from "./util";
-
-makeSync(dbConnection());
 
 const schema: GraphQLSchema = buildSchema(
   readFileSync(join(__dirname, "schema.graphql"), "ascii"),
