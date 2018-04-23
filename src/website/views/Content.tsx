@@ -216,7 +216,7 @@ export const Content: () => JSX.Element =
               onClick={(): void => { goto(`https://github.com/arichiv/opinionated.baby/releases/tag/${item.version}/`); }}>
               <CardMedia
                 square
-                style={{backgroundImage: `url(images/${item.version}.jpg)`}}
+                style={{backgroundImage: `url(/images/${item.version}.jpg)`}}
               />
               <Typography
                 use="display1"
