@@ -223,6 +223,21 @@ gulp.task(
   ),
 );
 
+/* WATCH */
+
+gulp.task(
+  "watch:incremental",
+  () => gulp.watch("src/**/*", gulp.series("build")),
+);
+
+gulp.task(
+  "watch",
+  gulp.series(
+    "build",
+    "watch:incremental",
+  ),
+);
+
 /* TEST */
 
 gulp.task(

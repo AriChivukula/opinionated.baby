@@ -82,6 +82,7 @@
   "scripts": {
     "prep": "gulp prep",
     "build": "gulp build",
+    "watch": "gulp watch",
     "test": "gulp test",
     "serve": "gulp serve",
     "launch": "gulp launch",
