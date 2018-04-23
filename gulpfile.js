@@ -1,7 +1,9 @@
 var gulp = require("gulp");
 var babel = require("gulp-babel");
 var bro = require("gulp-bro");
-var rollup = require('rollup-stream');
+var cached = require("gulp-cached");
+var remember = require("gulp-remember");
+var rollup = require("rollup-stream");
 var sass = require("gulp-sass");
 var shell = require("gulp-shell");
 var source = require("vinyl-source-stream");
@@ -75,6 +77,8 @@ gulp.task(
 gulp.task(
   "build:1:typescript",
   () => gulp.src(["src/**/*.ts", "src/**/*.tsx"])
+    .pipe(cached("build:1:typescript"))
+    .pipe(remember("build:1:typescript"))
     .pipe(project())
     .js
     .pipe(gulp.dest("_build_1")),
@@ -96,6 +100,8 @@ gulp.task(
 gulp.task(
   "build:2:application",
   () => gulp.src("_build_1/application/**/*.js")
+    .pipe(cached("build:2:application"))
+    .pipe(remember("build:2:application"))
     .pipe(babel({ presets: ["@babel/preset-env"] }))
     .pipe(gulp.dest("_build_2/application")),
 );
@@ -103,6 +109,8 @@ gulp.task(
 gulp.task(
   "build:2:sass",
   () => gulp.src("src/**/*.scss")
+    .pipe(cached("build:2:sass"))
+    .pipe(remember("build:2:sass"))
     .pipe(sass({
       includePaths: "node_modules",
       outputStyle: "compressed",
@@ -113,6 +121,8 @@ gulp.task(
 gulp.task(
   "build:2:server",
   () => gulp.src("_build_1/server/**/*.js")
+    .pipe(cached("build:2:server"))
+    .pipe(remember("build:2:server"))
     .pipe(babel({
       presets: [["@babel/preset-env", { "modules": false }]],
     }))
@@ -122,12 +132,16 @@ gulp.task(
 gulp.task(
   "build:2:static",
   () => gulp.src("src/**/*.@(graphql|html|jpg|png|snap|txt)")
+    .pipe(cached("build:2:static"))
+    .pipe(remember("build:2:static"))
     .pipe(gulp.dest("_build_2")),
 );
 
 gulp.task(
   "build:2:website",
   () => gulp.src("_build_1/website/**/*.js")
+    .pipe(cached("build:2:website"))
+    .pipe(remember("build:2:website"))
     .pipe(babel({
       plugins: ["relay"],
       presets: ["@babel/preset-env"],
