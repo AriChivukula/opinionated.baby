@@ -10,6 +10,5 @@
   },
   "exclude": [
     "src/website/views/__generated__/*"
-  ],
-  "inlineSourceMap": true
+  ]
 }

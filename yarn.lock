@@ -3984,6 +3984,12 @@ gulp-cli@^2.0.0, gulp-cli@^2.0.1:
     v8flags "^3.0.1"
     yargs "^7.1.0"
 
+gulp-purge-sourcemaps@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-purge-sourcemaps/-/gulp-purge-sourcemaps-1.0.0.tgz#7f2f43c680a04f058de595704c60428df0e61c7a"
+  dependencies:
+    through2 "^2.0.0"
+
 gulp-remember@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/gulp-remember/-/gulp-remember-1.0.1.tgz#cc3aab2a04a623614375571ca464d13e87502bfe"

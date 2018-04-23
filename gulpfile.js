@@ -2,6 +2,7 @@ var gulp = require("gulp");
 var babel = require("gulp-babel");
 var bro = require("gulp-bro");
 var cached = require("gulp-cached");
+var purge = require("gulp-purge-sourcemaps");
 var remember = require("gulp-remember");
 var rollup = require("rollup-stream");
 var sass = require("gulp-sass");
@@ -80,8 +81,10 @@ gulp.task(
   () => gulp.src(["src/**/*.ts", "src/**/*.tsx"])
     .pipe(cached("build:1:typescript"))
     .pipe(remember("build:1:typescript"))
+    .pipe(sourcemaps.init())
     .pipe(project())
     .js
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest("_build_1")),
 );
 
@@ -177,6 +180,8 @@ gulp.task(
       detectGlobals: false,
       node: true,
     }))
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(purge())
     .pipe(uglify())
     .pipe(gulp.dest("_build_3/application")),
 );
@@ -208,6 +213,8 @@ gulp.task(
     .pipe(bro({
       ignore: ["electron"],
     }))
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(purge())
     .pipe(uglify())
     .pipe(gulp.dest("_build_3/website")),
 );
