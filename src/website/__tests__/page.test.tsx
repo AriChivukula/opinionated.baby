@@ -8,7 +8,6 @@ import {
   RelayNetworkLayer,
   urlMiddleware,
 } from "react-relay-network-modern";
-import { BrowserRouter } from "react-router-dom";
 import context from "react-test-context-provider";
 import {
   Environment,
@@ -16,7 +15,6 @@ import {
   Store,
 } from "relay-runtime";
 
-import { FourOhFour } from "../views/FourOhFour";
 import { Page } from "../views/Page";
 
 Enzyme.configure({
@@ -38,22 +36,6 @@ const ctx: object = {
     variables: {},
   },
 };
-
-test(
-  "FourOhFour",
-  async (): Promise<void> => {
-    expect(
-      Enzyme.render(
-        Enzyme.mount(
-          <BrowserRouter>
-            <FourOhFour />
-          </BrowserRouter>,
-        ),
-      ),
-    )
-      .toMatchSnapshot();
-  },
-);
 
 test(
   "PageUnloaded",
