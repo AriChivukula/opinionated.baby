@@ -24,8 +24,9 @@ app.use((req: express.Request, res: express.Response, next: express.Next): void 
 
 let lambdaHandler: ((event: object, context: object) => void) | null = null;
 
+app.use("/graphql", server);
+
 if (process.env.ENV === "LAMBDA") {
-  app.use("/", server);
   const serverless: object = lambda.createServer(
     app,
     null,
@@ -42,7 +43,6 @@ if (process.env.ENV === "LAMBDA") {
   lambdaHandler = (event: object, context: object): void => lambda.proxy(serverless, event, context);
 } else {
   app.use("/", express.static("_build_3/website"));
-  app.use("/graphql", server);
   app.listen(process.env.PORT);
 }
 
