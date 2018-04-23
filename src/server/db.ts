@@ -6,7 +6,7 @@ import {
   IAccessTokenInfo,
 } from "./google";
 
-export const dbConnection: () => Promise<void> = async (): Promise<void> => {
+export const setupDB: () => Promise<void> = async (): Promise<void> => {
   await createConnection({
     database: process.env.DB_NAME,
     entities: [User],
