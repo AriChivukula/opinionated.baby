@@ -172,12 +172,17 @@ gulp.task(
     .pipe(gulp.dest("_build_3/application")),
 );
 
+let cache = null;
 gulp.task(
   "build:3:server",
   () => rollup({
+    cache: cache,
     input: "_build_2/server/index.js",
     format: "cjs",
   })
+    .on("bundle", (bundle) => {
+      cache = bundle;
+    })
     .pipe(source("index.js"))
     .pipe(gulp.dest("_build_3/server")),
 );
