@@ -1,17 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FourOhFour 1`] = `
-<a
-  href="/"
->
-  <div
-    class=" mdc-typography--display4"
-  >
-    FourOhFour
-  </div>
-</a>
-`;
-
 exports[`PageLoggedIn 1`] = `
 Array [
   <header
