@@ -2,13 +2,13 @@ export const makeSync: <T extends any>(wasAsync: Promise<T>) => void =
   <T extends any>(wasAsync: Promise<T>): void => {
     wasAsync
       .catch((err: Error): void => {
-        throw err;
+        console.log(err);
       })
       .then((): void => {
         return;
       })
       .catch((err: Error): void => {
-        throw err;
+        console.log(err);
       });
 
     return;
