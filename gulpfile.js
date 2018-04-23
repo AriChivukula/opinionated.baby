@@ -2,7 +2,6 @@ var gulp = require("gulp");
 var babel = require("gulp-babel");
 var bro = require("gulp-bro");
 var cached = require("gulp-cached");
-var purge = require("gulp-purge-sourcemaps");
 var remember = require("gulp-remember");
 var rollup = require("rollup-stream");
 var sass = require("gulp-sass");
@@ -10,7 +9,6 @@ var shell = require("gulp-shell");
 var source = require("vinyl-source-stream");
 var sourcemaps = require("gulp-sourcemaps");
 var ts = require("gulp-typescript");
-var uglify = require("gulp-uglify");
 
 var project = ts.createProject("tsconfig.json");
 
@@ -179,10 +177,8 @@ gulp.task(
       bundleExternal: false,
       detectGlobals: false,
       node: true,
+      transform: [["uglifyify", { global: true, sourceMap: false }]],
     }))
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(purge())
-    .pipe(uglify())
     .pipe(gulp.dest("_build_3/application")),
 );
 
@@ -212,10 +208,8 @@ gulp.task(
   () => gulp.src("_build_2/website/index.js")
     .pipe(bro({
       ignore: ["electron"],
+      transform: [["uglifyify", { global: true, sourceMap: false }]],
     }))
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(purge())
-    .pipe(uglify())
     .pipe(gulp.dest("_build_3/website")),
 );
 
