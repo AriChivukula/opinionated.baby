@@ -3677,8 +3677,8 @@ fs.realpath@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
 fsevents@^1.1.1, fsevents@^1.1.2:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.0.tgz#e11a5ff285471e4cc43ab9cd09bb7986c565dcdc"
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.2.tgz#4f598f0f69b273188ef4a62ca4e9e08ace314bbf"
   dependencies:
     nan "^2.9.2"
     node-pre-gyp "^0.9.0"
@@ -4336,6 +4336,10 @@ http-signature@~1.2.0:
 https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
+
+hyperform@^0.9.9:
+  version "0.9.11"
+  resolved "https://registry.yarnpkg.com/hyperform/-/hyperform-0.9.11.tgz#0f46acaa5801d214061da6521f544df37e46d795"
 
 iconv-lite@0.4.19:
   version "0.4.19"
@@ -5871,6 +5875,10 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
+mutation-observer@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/mutation-observer/-/mutation-observer-1.0.3.tgz#42e9222b101bca82e5ba9d5a7acf4a14c0f263d0"
+
 mutationobserver-shim@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/mutationobserver-shim/-/mutationobserver-shim-0.3.2.tgz#f4d5dae7a4971a2207914fb5a90ebd514b65acca"
@@ -7285,11 +7293,13 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     inherits "^2.0.1"
 
 rmwc@^1.5.4:
-  version "1.5.4"
-  resolved "https://registry.yarnpkg.com/rmwc/-/rmwc-1.5.4.tgz#360aa8cb37a90b13e6bb0e93670cc8b602881433"
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/rmwc/-/rmwc-1.5.6.tgz#0954fabaab00e0ca7632aacae68df5a468cd3d3b"
   dependencies:
     classnames "^2.2.5"
+    hyperform "^0.9.9"
     material-components-web "0.34.1"
+    mutation-observer "^1.0.3"
     prop-types "^15.6.1"
 
 rollup-stream@^1.24.1:
