@@ -19,5 +19,5 @@ export const root: (req: express.Request, res: express.Response) => Promise<obje
     logout: async (): Promise<object> => ({
       accessToken: "",
     }),
-    me: async (): Promise<object | null> => genNullOnThrow(genUserForAccessToken(req.token)),
+    me: async (): Promise<object | null> => genNullOnThrow(async () => genUserForAccessToken(req.token)),
   });
