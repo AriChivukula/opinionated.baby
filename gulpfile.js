@@ -7,6 +7,7 @@ var rollup = require("rollup-stream");
 var sass = require("gulp-sass");
 var shell = require("gulp-shell");
 var source = require("vinyl-source-stream");
+var sourcemaps = require("gulp-sourcemaps");
 var ts = require("gulp-typescript");
 var uglify = require("gulp-uglify");
 
@@ -102,7 +103,11 @@ gulp.task(
   () => gulp.src("_build_1/application/**/*.js")
     .pipe(cached("build:2:application"))
     .pipe(remember("build:2:application"))
-    .pipe(babel({ presets: ["@babel/preset-env"] }))
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(babel({
+      presets: ["@babel/preset-env"],
+    }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest("_build_2/application")),
 );
 
@@ -123,9 +128,11 @@ gulp.task(
   () => gulp.src("_build_1/server/**/*.js")
     .pipe(cached("build:2:server"))
     .pipe(remember("build:2:server"))
+    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(babel({
       presets: [["@babel/preset-env", { "modules": false }]],
     }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest("_build_2/server")),
 );
 
@@ -142,10 +149,12 @@ gulp.task(
   () => gulp.src("_build_1/website/**/*.js")
     .pipe(cached("build:2:website"))
     .pipe(remember("build:2:website"))
+    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(babel({
       plugins: ["relay"],
       presets: ["@babel/preset-env"],
     }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest("_build_2/website")),
 );
 
