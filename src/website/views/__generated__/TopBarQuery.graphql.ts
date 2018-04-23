@@ -16,14 +16,7 @@ const node: ConcreteFragment = {
   "name": "TopBarQuery",
   "type": "Query",
   "metadata": null,
-  "argumentDefinitions": [
-    {
-      "kind": "LocalArgument",
-      "name": "accessToken",
-      "type": "String",
-      "defaultValue": null
-    }
-  ],
+  "argumentDefinitions": [],
   "selections": [
     {
       "kind": "ScalarField",
@@ -37,14 +30,7 @@ const node: ConcreteFragment = {
       "alias": null,
       "name": "me",
       "storageKey": null,
-      "args": [
-        {
-          "kind": "Variable",
-          "name": "accessToken",
-          "variableName": "accessToken",
-          "type": "String"
-        }
-      ],
+      "args": null,
       "concreteType": "User",
       "plural": false,
       "selections": [
@@ -66,5 +52,5 @@ const node: ConcreteFragment = {
     }
   ]
 };
-(node as any).hash = 'ebd11aa72b2dd69d598095f531eabe9f';
+(node as any).hash = 'd59614096cce9b011824e5cf640fe227';
 export default node;

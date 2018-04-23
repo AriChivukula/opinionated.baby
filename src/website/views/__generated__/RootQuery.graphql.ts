@@ -2,7 +2,6 @@
 
 import { ConcreteRequest } from "relay-runtime";
 export type RootQueryVariables = {
-    readonly accessToken?: string | null;
 };
 export type RootQueryResponse = {
 };
@@ -10,62 +9,44 @@ export type RootQueryResponse = {
 
 
 /*
-query RootQuery(
-  $accessToken: String
-) {
-  ...TopBarQuery_3aAabH
+query RootQuery {
+  ...TopBarQuery
 }
 
-fragment TopBarQuery_3aAabH on Query {
+fragment TopBarQuery on Query {
   loginURL
-  me(accessToken: $accessToken) {
+  me {
     id
     email
   }
 }
 */
 
-const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "kind": "LocalArgument",
-    "name": "accessToken",
-    "type": "String",
-    "defaultValue": null
-  }
-];
-return {
+const node: ConcreteRequest = {
   "kind": "Request",
   "operationKind": "query",
   "name": "RootQuery",
   "id": null,
-  "text": "query RootQuery(\n  $accessToken: String\n) {\n  ...TopBarQuery_3aAabH\n}\n\nfragment TopBarQuery_3aAabH on Query {\n  loginURL\n  me(accessToken: $accessToken) {\n    id\n    email\n  }\n}\n",
+  "text": "query RootQuery {\n  ...TopBarQuery\n}\n\nfragment TopBarQuery on Query {\n  loginURL\n  me {\n    id\n    email\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "RootQuery",
     "type": "Query",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "FragmentSpread",
         "name": "TopBarQuery",
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "accessToken",
-            "variableName": "accessToken",
-            "type": null
-          }
-        ]
+        "args": null
       }
     ]
   },
   "operation": {
     "kind": "Operation",
     "name": "RootQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "ScalarField",
@@ -79,14 +60,7 @@ return {
         "alias": null,
         "name": "me",
         "storageKey": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "accessToken",
-            "variableName": "accessToken",
-            "type": "String"
-          }
-        ],
+        "args": null,
         "concreteType": "User",
         "plural": false,
         "selections": [
@@ -109,6 +83,5 @@ return {
     ]
   }
 };
-})();
-(node as any).hash = '44a030f0348e92fe41033d53da62cd4b';
+(node as any).hash = '6b0f054e2959b028055190aabaf4b64d';
 export default node;

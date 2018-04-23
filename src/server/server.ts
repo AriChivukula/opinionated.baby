@@ -1,3 +1,4 @@
+import express from "express";
 import graphqlHTTP from "express-graphql";
 import { readFileSync } from "fs";
 import { buildSchema, GraphQLSchema } from "graphql";
@@ -10,9 +11,9 @@ const schema: GraphQLSchema = buildSchema(
 );
 
 export const server: graphqlHTTP.Middleware = graphqlHTTP(
-  async (): Promise<graphqlHTTP.OptionsData> => ({
+  async (req: express.Request, res: express.Response): Promise<graphqlHTTP.OptionsData> => ({
     graphiql: true,
-    rootValue: await root(),
+    rootValue: await root(req, res),
     schema,
   }),
 );

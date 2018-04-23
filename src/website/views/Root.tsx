@@ -19,20 +19,13 @@ interface IProps {
 export class Root extends React.Component<IProps> {
 
   public render(): JSX.Element {
-    let accessToken: string | null = cookie.get("accessToken");
-    if (accessToken === "") {
-      accessToken = null;
-    }
-
     return (
       <QueryRenderer
         environment={this.props.environment}
-        variables={{
-          accessToken: accessToken,
-        }}
+        variables={{}}
         query={graphql`
-          query RootQuery($accessToken: String) {
-            ...TopBarQuery @arguments(accessToken: $accessToken)
+          query RootQuery {
+            ...TopBarQuery
           }
         `}
         render={({error, props}: {error: Error | null; props: TopBarQuery}): JSX.Element => {

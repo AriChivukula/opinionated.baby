@@ -3292,6 +3292,10 @@ expect@^22.4.3:
     jest-message-util "^22.4.3"
     jest-regex-util "^22.4.3"
 
+express-bearer-token@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/express-bearer-token/-/express-bearer-token-2.1.1.tgz#c66ae99867fea56ef25760b9feda179f783e708d"
+
 express-graphql@^0.6.12:
   version "0.6.12"
   resolved "https://registry.yarnpkg.com/express-graphql/-/express-graphql-0.6.12.tgz#dfcb2058ca72ed5190b140830ad8cdbf76a9128a"

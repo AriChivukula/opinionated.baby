@@ -4,6 +4,7 @@ import lambda from "aws-serverless-express";
 import { json, urlencoded } from "body-parser";
 import cors from "cors";
 import express from "express";
+import bearer from "express-bearer-token";
 import helmet from "helmet";
 
 import { setupDB } from "./db";
@@ -11,10 +12,10 @@ import { server } from "./server";
 import { makeSync } from "./util";
 
 const app: express.Express = express();
-app.use(cors(), helmet(), json(), urlencoded());
+app.use(cors(), helmet(), bearer(), json(), urlencoded());
 
 let didSetup: boolean = false;
-app.use((req: express.Request, res: express.Response, next: express.Next): void => {
+app.use((req: express.Request, res: express.Response, next: () => void): void => {
   if (!didSetup) {
     makeSync(setupDB());
     didSetup = true;
