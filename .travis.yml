@@ -6,7 +6,7 @@ cache:
   directories:
   - node_modules
 script:
-- yarn gulp build:full
+- yarn build
 - yarn test
 after_success:
 - rm -rf node_modules

@@ -1,7 +1,6 @@
 var gulp = require("gulp");
 var babel = require("gulp-babel");
-var browserify = require("browserify");
-var buffer = require("vinyl-buffer");
+var bro = require("gulp-bro");
 var rollup = require('rollup-stream');
 var sass = require("gulp-sass");
 var shell = require("gulp-shell");
@@ -149,15 +148,12 @@ gulp.task(
 
 gulp.task(
   "build:3:application",
-  () => browserify({
-    bundleExternal: false,
-    entries: "_build_2/application/index.js",
-    detectGlobals: false,
-    node: true,
-  })
-    .bundle()
-    .pipe(source("index.js"))
-    .pipe(buffer())
+  () => gulp.src("_build_2/application/index.js")
+    .pipe(bro({
+      bundleExternal: false,
+      detectGlobals: false,
+      node: true,
+    }))
     .pipe(uglify())
     .pipe(gulp.dest("_build_3/application")),
 );
@@ -180,13 +176,10 @@ gulp.task(
 
 gulp.task(
   "build:3:website",
-  () => browserify({
-    entries: "_build_2/website/index.js",
-    ignore: ["electron"],
-  })
-    .bundle()
-    .pipe(source("index.js"))
-    .pipe(buffer())
+  () => gulp.src("_build_2/website/index.js")
+    .pipe(bro({
+      ignore: ["electron"],
+    }))
     .pipe(uglify())
     .pipe(gulp.dest("_build_3/website")),
 );
@@ -202,25 +195,12 @@ gulp.task(
 );
 
 gulp.task(
-  "build:full",
+  "build",
   gulp.series(
     "build:0",
     "build:1",
     "build:2",
     "build:3",
-  ),
-);
-
-gulp.task(
-  "build:incremental",
-  () => gulp.watch("src/**/*", gulp.series("build:full")),
-);
-
-gulp.task(
-  "build",
-  gulp.series(
-    "build:full",
-    "build:incremental",
   ),
 );
 
