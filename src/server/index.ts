@@ -23,28 +23,26 @@ app.use((req: express.Request, res: express.Response, next: () => void): void =>
   next();
 });
 
-let lambdaHandler: ((event: object, context: object) => void) | null = null;
-
 app.use("/graphql", server);
 
-if (process.env.ENV === "LAMBDA") {
-  const serverless: object = lambda.createServer(
-    app,
-    null,
-    [
-      "application/octet-stream",
-      "font/eot",
-      "font/opentype",
-      "font/otf",
-      "image/jpeg",
-      "image/png",
-      "image/svg+xml",
-    ],
-  );
-  lambdaHandler = (event: object, context: object): void => lambda.proxy(serverless, event, context);
-} else {
+if (process.env.ENV !== "LAMBDA") {
   app.use("/", express.static("_build_3/website"));
   app.listen(process.env.PORT);
 }
 
-export const handler: ((event: object, context: object) => void) | null = lambdaHandler;
+const serverless: object = lambda.createServer(
+  app,
+  null,
+  [
+    "application/octet-stream",
+    "font/eot",
+    "font/opentype",
+    "font/otf",
+    "image/jpeg",
+    "image/png",
+    "image/svg+xml",
+  ],
+);
+export function handler(event: object, context: object): void {
+  return lambda.proxy(serverless, event, context);
+}

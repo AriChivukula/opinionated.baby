@@ -16,35 +16,34 @@ import {
 import { FourOhFour } from "./views/FourOhFour";
 import { Root } from "./views/Root";
 
-export const website: (apiURL: string) => void =
-  (apiURL: string): void => {
-    const environment: Environment = new Environment({
-      network: new RelayNetworkLayer([
-        urlMiddleware({
-          url: apiURL,
-        }),
-        authMiddleware({
-          allowEmptyToken: true,
-          token: (): string => cookie.get("accessToken"),
-        }),
-      ]),
-      store: new Store(new RecordSource()),
-    });
-    ReactDOM.render(
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={(): JSX.Element => <Root environment={environment} />}
-          />
-          <Route
-            path="/index.html"
-            render={(): JSX.Element => <Root environment={environment} />}
-          />
-          <Route component={FourOhFour} />
-        </Switch>
-      </BrowserRouter>,
-      document.getElementById("root"),
-    );
-  };
+export function website(apiURL: string): void {
+  const environment: Environment = new Environment({
+    network: new RelayNetworkLayer([
+      urlMiddleware({
+        url: apiURL,
+      }),
+      authMiddleware({
+        allowEmptyToken: true,
+        token: (): string => cookie.get("accessToken"),
+      }),
+    ]),
+    store: new Store(new RecordSource()),
+  });
+  ReactDOM.render(
+    <BrowserRouter>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={(): JSX.Element => <Root environment={environment} />}
+        />
+        <Route
+          path="/index.html"
+          render={(): JSX.Element => <Root environment={environment} />}
+        />
+        <Route component={FourOhFour} />
+      </Switch>
+    </BrowserRouter>,
+    document.getElementById("root"),
+  );
+}
