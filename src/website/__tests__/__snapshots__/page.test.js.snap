@@ -318,7 +318,7 @@ Array [
             <span
               class=" mdc-list-item__text"
             >
-              yarn
+              npm
               <span
                 class=" mdc-list-item__secondary-text"
               >
@@ -1083,7 +1083,7 @@ Array [
             <span
               class=" mdc-list-item__text"
             >
-              yarn
+              npm
               <span
                 class=" mdc-list-item__secondary-text"
               >

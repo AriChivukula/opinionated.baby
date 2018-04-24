@@ -9,7 +9,7 @@ script:
 - npm run test
 after_success:
 - rm -rf node_modules
-- npm install --prod
+- npm install --production
 - if [[ "$TRAVIS_TAG" ]] ; then rm _build_3/website/static/robots.txt ; fi
 - cp _build_3/server/index.js index.js
 - cp _build_3/server/schema.graphql schema.graphql
