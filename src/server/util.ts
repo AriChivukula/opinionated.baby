@@ -1,26 +1,24 @@
-export const makeSync: <T extends any>(wasAsync: Promise<T>) => void =
-  <T extends any>(wasAsync: Promise<T>): void => {
-    wasAsync
-      .catch((err: Error): void => {
-        console.log(err);
-      })
-      .then((): void => {
-        return;
-      })
-      .catch((err: Error): void => {
-        console.log(err);
-      });
+export function makeSync<T>(wasAsync: Promise<T>): void {
+  wasAsync
+    .catch((err: Error): void => {
+      console.log(err);
+    })
+    .then((): void => {
+      return;
+    })
+    .catch((err: Error): void => {
+      console.log(err);
+    });
 
-    return;
-  };
+  return;
+}
 
-export const genNullOnThrow: <T extends any>(mightThrow: () => Promise<T>) => Promise<T | null> =
-  async <T extends any>(mightThrow: () => Promise<T>): Promise<T | null> => {
-    try {
-      return await mightThrow();
-    } catch (error) {
-      console.log(error);
+export async function genNullOnThrow<T>(mightThrow: () => Promise<T>): Promise<T | null> {
+  try {
+    return await mightThrow();
+  } catch (error) {
+    console.log(error);
 
-      return null;
-    }
-  };
+    return null;
+  }
+}

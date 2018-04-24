@@ -138,8 +138,8 @@ const releases: IReleases[] = [
   { titleA: "Cocksure", titleB: "Castle", version: "v0" },
 ];
 
-export const Content: () => JSX.Element =
-  (): JSX.Element => (
+export function Content(): JSX.Element {
+  return (
     <Grid>
       <GridCell span={fullWidth}>
         <Typography use="display2" tag="div">
@@ -236,3 +236,4 @@ export const Content: () => JSX.Element =
       ))}
     </Grid>
   );
+}

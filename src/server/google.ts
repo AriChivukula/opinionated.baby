@@ -15,28 +15,30 @@ export interface IAccessTokenInfo {
   };
 }
 
-const getOAuthClient: () => OAuth2Client =
-  (): OAuth2Client => new OAuth2Client(
+function getOAuthClient(): OAuth2Client {
+  return new OAuth2Client(
     process.env.CLIENT_ID,
     process.env.CLIENT_SECRET,
     process.env.REDIRECT_URL,
   );
+}
 
-export const getLoginURL: () => string =
-  (): string => getOAuthClient()
+export function getLoginURL(): string {
+  return getOAuthClient()
     .generateAuthUrl({
       scope: ["profile", "email"],
     });
+}
 
-export const genAccessToken: (code: string) => Promise<string> =
-  async (code: string): Promise<string> => {
-    const accessToken: IAccessToken = await getOAuthClient()
-      .getToken(code);
+export async function genAccessToken(code: string): Promise<string> {
+  const accessToken: IAccessToken = await getOAuthClient()
+    .getToken(code);
 
-    return accessToken.tokens.access_token as string;
-  };
+  return accessToken.tokens.access_token as string;
+}
 
-export const genAccessTokenInfo: (accessToken: string) => Promise<IAccessTokenInfo> =
-  async (accessToken: string): Promise<IAccessTokenInfo> => google
+export async function genAccessTokenInfo(accessToken: string): Promise<IAccessTokenInfo> {
+  return google
     .oauth2("v2")
     .tokeninfo({access_token: accessToken});
+}
