@@ -62,13 +62,13 @@
     "mutationobserver-shim": "^0.3.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-relay": "^1.5.0",
+    "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/react-relay-1.5.0-plugin.5.tgz",
     "react-relay-network-modern": "^2.1.2",
     "react-router-dom": "^4.2.2",
     "react-test-context-provider": "^2.2.0",
     "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/relay-compiler-1.5.0-plugin.5.tgz",
     "relay-compiler-language-typescript": "^0.9.0",
-    "relay-runtime": "^1.5.0",
+    "relay-runtime": "https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/relay-runtime-1.5.0-plugin.5.tgz",
     "rmwc": "^1.5.4",
     "rollup-stream": "^1.24.1",
     "sass-lint": "^1.12.1",
@@ -77,9 +77,6 @@
     "typescript": "^2.8.3",
     "uglifyify": "^4.0.5",
     "vinyl-source-stream": "^2.0.0"
-  },
-  "resolutions": {
-    "**/relay-runtime": "1.5.0"
   },
   "scripts": {
     "prep": "gulp prep",
