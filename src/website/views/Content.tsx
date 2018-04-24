@@ -74,9 +74,9 @@ const tools: ITools[] = [
   },
   {
     graphic: "unarchive",
-    link: "https://yarnpkg.com/en/",
+    link: "https://www.npmjs.com/",
     subtitle: "Dependency",
-    title: "yarn",
+    title: "npm",
   },
   {
     graphic: "build",

@@ -25,13 +25,13 @@ gulp.task(
 );
 
 gulp.task(
-  "prep:delete:yarn",
-  shell.task("rm -rf yarn*"),
+  "prep:delete:npm",
+  shell.task("rm -rf package-lock.json"),
 );
 
 gulp.task(
   "prep:install",
-  shell.task("yarn install"),
+  shell.task("npm install"),
 );
 
 gulp.task(
@@ -40,7 +40,7 @@ gulp.task(
     gulp.parallel(
       "prep:delete:artifacts",
       "prep:delete:modules",
-      "prep:delete:yarn"
+      "prep:delete:npm"
     ),
     "prep:install",
   ),
