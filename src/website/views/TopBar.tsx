@@ -64,7 +64,7 @@ class TopBarRelay extends React.Component<IProps> {
           <ToolbarRow>
             <ToolbarSection alignStart>
               <ToolbarTitle onClick={(): void => { goto("https://github.com/arichiv/opinionated.baby/"); }}>
-                Opinionated Baby
+                {document.title}
               </ToolbarTitle>
             </ToolbarSection>
             <ToolbarSection alignEnd>
