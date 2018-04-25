@@ -1,11 +1,11 @@
 import { getRepository } from "typeorm";
 
-import { setupDB } from "../db";
+import { genSetupDB } from "../db";
 import { User } from "../entity/User";
 
 beforeAll(
   async (): Promise<void> => {
-    await setupDB();
+    await genSetupDB();
   },
 );
 

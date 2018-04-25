@@ -7,8 +7,8 @@ import express from "express";
 import bearer from "express-bearer-token";
 import helmet from "helmet";
 
-import { setupDB } from "./db";
-import { server } from "./server";
+import { genSetupDB } from "./db";
+import { graphQL } from "./server";
 import { makeSync } from "./util";
 
 const app: express.Express = express();
@@ -17,13 +17,13 @@ app.use(cors(), helmet(), bearer(), json(), urlencoded());
 let didSetup: boolean = false;
 app.use((req: express.Request, res: express.Response, next: () => void): void => {
   if (!didSetup) {
-    makeSync(setupDB());
+    makeSync(genSetupDB());
     didSetup = true;
   }
   next();
 });
 
-app.use("/graphql", server);
+app.use("/graphql", graphQL);
 
 if (process.env.ENV !== "LAMBDA") {
   app.use("/", express.static("_build_3/website"));

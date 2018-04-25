@@ -7,7 +7,7 @@ import {
 } from "./google";
 import { genNullOnThrow } from "./util";
 
-export async function root(req: express.Request, res: express.Response): Promise<object> {
+export async function genRoot(req: express.Request, res: express.Response): Promise<object> {
   return {
     login: async ({ input }: { input: { code: string } }): Promise<object> => {
       const accessToken: string = await genAccessToken(input.code);

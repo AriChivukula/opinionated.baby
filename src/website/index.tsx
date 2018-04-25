@@ -1,6 +1,6 @@
 import "@babel/polyfill";
 
-import { website } from "./website";
+import { render } from "./website";
 
 let apiURL: string;
 
@@ -13,5 +13,5 @@ if (window.location.hostname === "opinionated.baby") {
 }
 
 window.onload = (): void => {
-  website(apiURL);
+  render(apiURL);
 };
