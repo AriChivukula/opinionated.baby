@@ -13,9 +13,7 @@ Array [
       >
         <div
           class=" mdc-toolbar__title"
-        >
-          Opinionated Baby
-        </div>
+        />
       </section>
       <section
         class=" mdc-toolbar__section mdc-toolbar__section--align-end"
@@ -783,9 +781,7 @@ Array [
       >
         <div
           class=" mdc-toolbar__title"
-        >
-          Opinionated Baby
-        </div>
+        />
       </section>
       <section
         class=" mdc-toolbar__section mdc-toolbar__section--align-end"
