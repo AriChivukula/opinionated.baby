@@ -4,16 +4,16 @@ import { readFileSync } from "fs";
 import { buildSchema, GraphQLSchema } from "graphql";
 import { join } from "path";
 
-import { root } from "./root";
+import { genRoot } from "./root";
 
 const schema: GraphQLSchema = buildSchema(
   readFileSync(join(__dirname, "schema.graphql"), "ascii"),
 );
 
-export const server: graphqlHTTP.Middleware = graphqlHTTP(
+export const graphQL: graphqlHTTP.Middleware = graphqlHTTP(
   async (req: express.Request, res: express.Response): Promise<graphqlHTTP.OptionsData> => ({
     graphiql: true,
-    rootValue: await root(req, res),
+    rootValue: await genRoot(req, res),
     schema,
   }),
 );

@@ -16,7 +16,7 @@ import {
 import { FourOhFour } from "./views/FourOhFour";
 import { Root } from "./views/Root";
 
-export function website(apiURL: string): void {
+export function render(apiURL: string): void {
   const environment: Environment = new Environment({
     network: new RelayNetworkLayer([
       urlMiddleware({
