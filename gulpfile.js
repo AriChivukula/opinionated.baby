@@ -3,6 +3,7 @@ var babel = require("gulp-babel");
 var bro = require("gulp-bro");
 var cached = require("gulp-cached");
 var remember = require("gulp-remember");
+var replace = require("gulp-string-replace");
 var rollup = require("rollup-stream");
 var sass = require("gulp-sass");
 var shell = require("gulp-shell");
@@ -10,6 +11,7 @@ var source = require("vinyl-source-stream");
 var sourcemaps = require("gulp-sourcemaps");
 var ts = require("gulp-typescript");
 
+var pkg = require("./package.json");
 var project = ts.createProject("tsconfig.json");
 
 /* PREP */
@@ -113,6 +115,15 @@ gulp.task(
 );
 
 gulp.task(
+  "build:2:html",
+  () => gulp.src("src/**/*.html")
+    .pipe(cached("build:2:html"))
+    .pipe(remember("build:2:html"))
+    .pipe(replace("ENV_TITLE", pkg.title))
+    .pipe(gulp.dest("_build_2")),
+);
+
+gulp.task(
   "build:2:sass",
   () => gulp.src("src/**/*.scss")
     .pipe(cached("build:2:sass"))
@@ -139,7 +150,7 @@ gulp.task(
 
 gulp.task(
   "build:2:static",
-  () => gulp.src("src/**/*.@(graphql|html|jpg|png|snap|txt)")
+  () => gulp.src("src/**/*.@(graphql|jpg|png|snap|txt)")
     .pipe(cached("build:2:static"))
     .pipe(remember("build:2:static"))
     .pipe(gulp.dest("_build_2")),
@@ -163,6 +174,7 @@ gulp.task(
   "build:2",
   gulp.parallel(
     "build:2:application",
+    "build:2:html",
     "build:2:sass",
     "build:2:server",
     "build:2:static",

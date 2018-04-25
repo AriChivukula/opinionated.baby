@@ -1,5 +1,6 @@
 {
   "name": "opinionated.baby",
+  "title": "Opinionated Baby",
   "version": "6.0.0",
   "description": "A confidently immature starting point",
   "author": {
@@ -55,6 +56,7 @@
     "gulp-sass": "^4.0.1",
     "gulp-shell": "^0.6.5",
     "gulp-sourcemaps": "^2.6.4",
+    "gulp-string-replace": "^1.0.0",
     "gulp-typescript": "^4.0.2",
     "jest": "^22.4.3",
     "jest-enzyme": "^6.0.0",
