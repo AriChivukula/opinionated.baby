@@ -51,6 +51,11 @@ gulp.task(
 /* BUILD */
 
 gulp.task(
+  "build:0:codegen",
+  shell.task("ts-node node_modules/.bin/typescriptase gen/**/*.ts"),
+);
+
+gulp.task(
   "build:0:artifact",
   shell.task("relay-compiler --src src/ --schema src/server/schema.graphql --language typescript"),
 );
@@ -68,6 +73,7 @@ gulp.task(
 gulp.task(
   "build:0",
   gulp.series(
+    "build:0:codegen",
     "build:0:artifact",
     gulp.parallel(
       "build:0:lint:sass",

@@ -1,3 +1,12 @@
+/**
+ * DO NOT MANUALLY EDIT; this file is fully generated.
+ *
+ * SOURCE<<gen/server/index.ts::module>>
+ * BESPOKE<<DEPRECATE>>
+ * SIGNED<<JO2Uxo5FJqRw/ghAVr2Q8TPCn5dyd5QgFw+3mJpFayLxQ/oLehCDhofx/zzgZLYqyB8y0MKaqrTsJxNe/ns80w==>>
+ */
+
+/* BESPOKE START <<DEPRECATE>> */
 import "@babel/polyfill";
 
 import lambda from "aws-serverless-express";
@@ -46,3 +55,4 @@ const serverless: object = lambda.createServer(
 export function handler(event: object, context: object): void {
   return lambda.proxy(serverless, event, context);
 }
+/* BESPOKE END <<DEPRECATE>> */
