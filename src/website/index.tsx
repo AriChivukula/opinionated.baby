@@ -1,3 +1,12 @@
+/**
+ * DO NOT MANUALLY EDIT; this file is fully generated.
+ *
+ * SOURCE<<gen/website/index.ts::module>>
+ * BESPOKE<<DEPRECATE>>
+ * SIGNED<<JO2Uxo5FJqRw/ghAVr2Q8TPCn5dyd5QgFw+3mJpFayLxQ/oLehCDhofx/zzgZLYqyB8y0MKaqrTsJxNe/ns80w==>>
+ */
+
+/* BESPOKE START <<DEPRECATE>> */
 import "@babel/polyfill";
 
 import { render } from "./website";
@@ -15,3 +24,4 @@ if (window.location.hostname === "opinionated.baby") {
 window.onload = (): void => {
   render(apiURL);
 };
+/* BESPOKE END <<DEPRECATE>> */
