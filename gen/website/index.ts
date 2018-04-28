@@ -1,9 +1,17 @@
-import { Bespoke, Module, Renderable } from "typescriptase";
+import { Bespoke, Import, Module, Renderable } from "typescriptase";
 
 export const module: Renderable = Module.new({
   content: [
     Bespoke.new({name: "DEPRECATE"}),
   ],
   destination: "src/website/index.tsx",
-  imports: [],
-})
+  imports: [
+    Import.new({
+      module: "@babel/polyfill",
+    }),
+    Import.new({
+      module: "./website",
+      names: ["render"],
+    }),
+  ],
+});

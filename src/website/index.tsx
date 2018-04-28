@@ -1,16 +1,16 @@
 /**
- * DO NOT MANUALLY EDIT; this file is fully generated.
- *
- * SOURCE<<gen/website/index.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<JO2Uxo5FJqRw/ghAVr2Q8TPCn5dyd5QgFw+3mJpFayLxQ/oLehCDhofx/zzgZLYqyB8y0MKaqrTsJxNe/ns80w==>>
- */
+  * This file is partially generated; only edit bespoke sections.
+  *
+  * SOURCE<<gen/website/index.ts::module>>
+  * BESPOKE<<DEPRECATE>>
+  * SIGNED<<zA4ZnncSA/pBEq5+FqErx8OfbjD9i36SAqXMmnXns6fQPbPz57HziS2LvJ+A6F0PYrf82MieNQsk61myghzyyQ==>>
+  */
 
-/* BESPOKE START <<DEPRECATE>> */
 import "@babel/polyfill";
 
 import { render } from "./website";
 
+/* BESPOKE START <<DEPRECATE>> */
 let apiURL: string;
 
 if (window.location.hostname === "opinionated.baby") {
