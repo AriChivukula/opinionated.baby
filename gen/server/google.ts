@@ -6,14 +6,14 @@ export const module: Renderable = Module.new({
       exported: false,
       name: "IAccessToken",
       types: {
-        tokens: "{ access_token?: string | null; }",
+        tokens: "{ access_token?: string | null }",
       },
     }),
     Interface.new({
       exported: false,
       name: "IAccessTokenInfo",
       types: {
-        data: "{ email: string; user_id: string; verified_email: boolean; }",
+        data: "{ email: string; user_id: string; verified_email: boolean }",
       },
     }),
     Function.new({
