@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/index.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<qSVAEky0b7LqfVcX31v3nIP5ZMlV4y8IjXa29JkHN4mtZ3U9FY8KI9BcQOi/+nWiuXerx9xZojPsXRL2X8H+mA==>>
+ * SIGNED<<WWJK3iSsk0uEgTRZU8yOrPoaRUnXz4H2wFBP0JiVRQrpyB/IwnQqCUMJHZzERoR81Pc9xSHdmF13hPXsnef27w==>>
  */
 
 import "@babel/polyfill";
@@ -12,9 +12,9 @@ import {
   render,
 } from "./website";
 
-/* BESPOKE START <<DEPRECATE>> */
 let apiURL: string;
 
+/* BESPOKE START <<DEPRECATE>> */
 if (window.location.hostname === "opinionated.baby") {
   apiURL = "https://api.opinionated.baby/graphql/opinionatedbaby/";
 } else if (window.location.hostname === "beta.opinionated.baby") {
