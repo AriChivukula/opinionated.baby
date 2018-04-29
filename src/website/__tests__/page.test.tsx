@@ -1,22 +1,24 @@
+/**
+ * This file is partially generated; only edit bespoke sections.
+ *
+ * SOURCE<<gen/website/__tests__/page.test.ts::module>>
+ * BESPOKE<<DEPRECATE>>
+ * SIGNED<<S3CIgMLQtEbyL1Zp0T7wHXsOySCd0Avm1FdXP+RhkpJokWJJRz1eP/89V6+Bo/VW+zZS+ZGPpYmnK5pxCCwNkA==>>
+ */
+
 import "jest-enzyme";
 import "mutationobserver-shim";
 
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import * as React from "react";
-import {
-  RelayNetworkLayer,
-  urlMiddleware,
-} from "react-relay-network-modern";
+import { RelayNetworkLayer, urlMiddleware } from "react-relay-network-modern";
 import context from "react-test-context-provider";
-import {
-  Environment,
-  RecordSource,
-  Store,
-} from "relay-runtime";
+import { Environment, RecordSource, Store } from "relay-runtime";
 
 import { Page } from "../views/Page";
 
+/* BESPOKE START <<DEPRECATE>> */
 Enzyme.configure({
   adapter: new Adapter(),
 });
@@ -103,3 +105,4 @@ test(
       .toMatchSnapshot();
   },
 );
+/* BESPOKE END <<DEPRECATE>> */

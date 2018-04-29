@@ -4,14 +4,11 @@ export const module: Renderable = Module.new({
   content: [
     Bespoke.new({name: "DEPRECATE"}),
   ],
-  destination: "src/application/index.ts",
+  destination: "src/server/entity/User.ts",
   imports: [
     Import.new({
-      module: "@babel/polyfill",
-    }),
-    Import.new({
-      module: "electron",
-      names: ["app", "BrowserWindow"],
+      module: "typeorm",
+      names: ["Column", "Entity", "PrimaryColumn"],
     }),
   ],
 });

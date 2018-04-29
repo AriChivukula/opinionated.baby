@@ -1,12 +1,11 @@
 /**
- * DO NOT MANUALLY EDIT; this file is fully generated.
+ * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<JO2Uxo5FJqRw/ghAVr2Q8TPCn5dyd5QgFw+3mJpFayLxQ/oLehCDhofx/zzgZLYqyB8y0MKaqrTsJxNe/ns80w==>>
+ * SIGNED<<BMayoJHo6kr37WUCKIES8b9jG6pVdqXISZUq0z7jvVHy3eg72LoMK40MpTJOdT7srVopdlY/17wG3JcmaPTXnQ==>>
  */
 
-/* BESPOKE START <<DEPRECATE>> */
 import "@babel/polyfill";
 
 import lambda from "aws-serverless-express";
@@ -20,6 +19,7 @@ import { genSetupDB } from "./db";
 import { graphQL } from "./server";
 import { makeSync } from "./util";
 
+/* BESPOKE START <<DEPRECATE>> */
 const app: express.Express = express();
 app.use(cors(), helmet(), bearer(), json(), urlencoded());
 

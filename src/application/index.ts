@@ -1,16 +1,16 @@
 /**
- * DO NOT MANUALLY EDIT; this file is fully generated.
+ * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/application/index.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<JO2Uxo5FJqRw/ghAVr2Q8TPCn5dyd5QgFw+3mJpFayLxQ/oLehCDhofx/zzgZLYqyB8y0MKaqrTsJxNe/ns80w==>>
+ * SIGNED<<X5wik9iu7i14RHhfc1dT1JUgQ/SOSYhn9DXbe+SLZGWwapwO4Bs034IyLdu4sm8ZydpVrAExOzQbHvrYlCo/Lg==>>
  */
 
-/* BESPOKE START <<DEPRECATE>> */
 import "@babel/polyfill";
 
 import { app, BrowserWindow } from "electron";
 
+/* BESPOKE START <<DEPRECATE>> */
 app.on(
   "ready",
   (): void => {

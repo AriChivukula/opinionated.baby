@@ -1,17 +1,20 @@
-import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
+/**
+ * This file is partially generated; only edit bespoke sections.
+ *
+ * SOURCE<<gen/website/views/Root.ts::module>>
+ * BESPOKE<<DEPRECATE>>
+ * SIGNED<<9i+Eq0DCxHGG6EpSLg/GeSu6nPcjmJyCL3cHnv0oXdH+5IKumj5JB8IokDEzU9gDBemIlmsO58ozCSVUZVizlA==>>
+ */
 
 import * as cookie from "js-cookie";
 import * as React from "react";
-import {
-  graphql,
-  QueryRenderer,
-} from "react-relay";
-import {
-  Environment,
-} from "relay-runtime";
+import { graphql, QueryRenderer } from "react-relay";
+import { Environment } from "relay-runtime";
 
+import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
 import { Page } from "./Page";
 
+/* BESPOKE START <<DEPRECATE>> */
 interface IProps {
   environment: Environment;
 }
@@ -41,3 +44,4 @@ export class Root extends React.Component<IProps> {
     );
   }
 }
+/* BESPOKE END <<DEPRECATE>> */

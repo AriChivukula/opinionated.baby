@@ -4,14 +4,19 @@ export const module: Renderable = Module.new({
   content: [
     Bespoke.new({name: "DEPRECATE"}),
   ],
-  destination: "src/application/index.ts",
+  destination: "src/website/views/FourOhFour.tsx",
   imports: [
     Import.new({
-      module: "@babel/polyfill",
+      module: "react",
+      nameAll: "React",
     }),
     Import.new({
-      module: "electron",
-      names: ["app", "BrowserWindow"],
+      module: "react-router-dom",
+      names: ["Link"],
+    }),
+    Import.new({
+      module: "rmwc",
+      names: ["Typography"],
     }),
   ],
 });

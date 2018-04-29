@@ -1,17 +1,17 @@
+/**
+ * This file is partially generated; only edit bespoke sections.
+ *
+ * SOURCE<<gen/website/views/Content.ts::module>>
+ * BESPOKE<<DEPRECATE>>
+ * SIGNED<<huoc7QQ5xKjrap2RtPv6bmErL0DjAypsNCgVOd8jAfASlD35otOS44abBolgRK5y+i+Vpddic87iQ1UnKvorCQ==>>
+ */
+
 import * as React from "react";
-import {
-  Card,
-  CardMedia,
-  CardPrimaryAction,
-  Grid,
-  GridCell,
-  List,
-  SimpleListItem,
-  Typography,
-} from "rmwc";
+import { Card, CardMedia, CardPrimaryAction, Grid, GridCell, List, SimpleListItem, Typography } from "rmwc";
 
 import { goto } from "../util";
 
+/* BESPOKE START <<DEPRECATE>> */
 const fullWidth: number = 12;
 const toolWidth: number = 3;
 const releaseWidth: number = 4;
@@ -237,3 +237,4 @@ export function Content(): JSX.Element {
     </Grid>
   );
 }
+/* BESPOKE END <<DEPRECATE>> */

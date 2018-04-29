@@ -1,31 +1,24 @@
-import {
-  TopBarLoginMutationResponse,
- } from "./__generated__/TopBarLoginMutation.graphql";
-import {
- TopBarLogoutMutationResponse,
-} from "./__generated__/TopBarLogoutMutation.graphql";
-import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
+/**
+ * This file is partially generated; only edit bespoke sections.
+ *
+ * SOURCE<<gen/website/views/TopBar.ts::module>>
+ * BESPOKE<<DEPRECATE>>
+ * SIGNED<<iDvvIj5fj8xWh82oPP4EoqQqzWYfpLQ+jDYYCyNQK1UyMRY9pRmJ1xOH926yiCIg4GjJeGnkBqstnCC7T43k4Q==>>
+ */
 
 import * as cookie from "js-cookie";
 import * as React from "react";
-import {
-  commitMutation,
-  createFragmentContainer,
-  graphql,
-} from "react-relay";
+import { commitMutation, createFragmentContainer, graphql } from "react-relay";
 import Relay from "relay-runtime";
-import {
-  Toolbar,
-  ToolbarFixedAdjust,
-  ToolbarIcon,
-  ToolbarRow,
-  ToolbarSection,
-  ToolbarTitle,
-} from "rmwc";
+import { Toolbar, ToolbarFixedAdjust, ToolbarIcon, ToolbarRow, ToolbarSection, ToolbarTitle } from "rmwc";
 import { parse, UrlWithParsedQuery } from "url";
 
 import { goto } from "../util";
+import { TopBarLoginMutationResponse } from "./__generated__/TopBarLoginMutation.graphql";
+import { TopBarLogoutMutationResponse } from "./__generated__/TopBarLogoutMutation.graphql";
+import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
 
+/* BESPOKE START <<DEPRECATE>> */
 interface IProps {
   data: TopBarQuery;
   relay: Relay;
@@ -160,3 +153,4 @@ export const TopBar: React.ComponentType = createFragmentContainer(
     }
   `,
 );
+/* BESPOKE END <<DEPRECATE>> */

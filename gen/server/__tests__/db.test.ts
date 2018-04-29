@@ -4,14 +4,19 @@ export const module: Renderable = Module.new({
   content: [
     Bespoke.new({name: "DEPRECATE"}),
   ],
-  destination: "src/application/index.ts",
+  destination: "src/server/__tests__/db.test.ts",
   imports: [
     Import.new({
-      module: "@babel/polyfill",
+      module: "typeorm",
+      names: ["getRepository"],
     }),
     Import.new({
-      module: "electron",
-      names: ["app", "BrowserWindow"],
+      module: "../db",
+      names: ["genSetupDB"],
+    }),
+    Import.new({
+      module: "../entity/User",
+      names: ["User"],
     }),
   ],
 });

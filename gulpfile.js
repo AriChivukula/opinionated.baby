@@ -48,12 +48,14 @@ gulp.task(
   ),
 );
 
-/* BUILD */
+/* CODEGEN */
 
 gulp.task(
-  "build:0:codegen",
-  shell.task("ts-node node_modules/.bin/typescriptase gen/**/*.ts"),
+  "codegen",
+  shell.task("ts-node node_modules/.bin/typescriptase gen/**/*.ts gen/**/**/*.ts"),
 );
+
+/* BUILD */
 
 gulp.task(
   "build:0:artifact",
@@ -73,7 +75,6 @@ gulp.task(
 gulp.task(
   "build:0",
   gulp.series(
-    "build:0:codegen",
     "build:0:artifact",
     gulp.parallel(
       "build:0:lint:sass",

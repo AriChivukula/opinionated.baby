@@ -4,14 +4,15 @@ export const module: Renderable = Module.new({
   content: [
     Bespoke.new({name: "DEPRECATE"}),
   ],
-  destination: "src/application/index.ts",
+  destination: "src/server/google.ts",
   imports: [
     Import.new({
-      module: "@babel/polyfill",
+      module: "google-auth-library",
+      names: ["OAuth2Client"],
     }),
     Import.new({
-      module: "electron",
-      names: ["app", "BrowserWindow"],
+      module: "googleapis",
+      names: ["google"],
     }),
   ],
 });

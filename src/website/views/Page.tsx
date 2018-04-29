@@ -1,12 +1,20 @@
-import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
+/**
+ * This file is partially generated; only edit bespoke sections.
+ *
+ * SOURCE<<gen/website/views/Page.ts::module>>
+ * BESPOKE<<DEPRECATE>>
+ * SIGNED<<cXgB0+aonYXubOMPO3Gee8fpOMeBeTg6Zuz96Aqv6xg9QvmdGmpY+MlLKlrDfTix6F86ZGLaxqFF9D/ENmU/Ug==>>
+ */
 
 import * as React from "react";
 import { LinearProgress } from "rmwc";
 import { parse, UrlWithParsedQuery } from "url";
 
+import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
 import { Content } from "./Content";
 import { TopBar } from "./TopBar";
 
+/* BESPOKE START <<DEPRECATE>> */
 interface IProps {
   data: TopBarQuery | null;
 }
@@ -34,3 +42,4 @@ export class Page extends React.Component<IProps> {
     }
   }
 }
+/* BESPOKE END <<DEPRECATE>> */
