@@ -1,5 +1,14 @@
+/**
+ * This file is partially generated; only edit bespoke sections.
+ *
+ * SOURCE<<gen/server/__tests__/google.test.ts::module>>
+ * BESPOKE<<DEPRECATE>>
+ * SIGNED<<p+hnFDTBgoj/JsbjhNDrBrvCo3vgkezcoL4i3cysi3YLGv09pfca85YUDqbzvboDv4fZtRIhJySE7KMsqohPyg==>>
+ */
+
 import { genAccessTokenInfo, getLoginURL } from "../google";
 
+/* BESPOKE START <<DEPRECATE>> */
 test(
   "getLoginURL",
   async (): Promise<void> => {
@@ -17,3 +26,4 @@ test(
       .toThrow(Error);
   },
 );
+/* BESPOKE END <<DEPRECATE>> */

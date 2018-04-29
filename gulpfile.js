@@ -52,7 +52,7 @@ gulp.task(
 
 gulp.task(
   "codegen",
-  shell.task("ts-node node_modules/.bin/typescriptase gen/**/*.ts"),
+  shell.task("ts-node node_modules/.bin/typescriptase gen/**/*.ts gen/**/**/*.ts"),
 );
 
 /* BUILD */
