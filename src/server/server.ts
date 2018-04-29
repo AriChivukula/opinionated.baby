@@ -1,3 +1,11 @@
+/**
+ * This file is partially generated; only edit bespoke sections.
+ *
+ * SOURCE<<gen/server/server.ts::module>>
+ * BESPOKE<<DEPRECATE>>
+ * SIGNED<<sQA3RiC28JG8fT9nak7RiR2xu13mbXgfxnsTlVBV2BHisxj95I/Y7chAYFa9qvpoVwC0Xbdhdms+aZcxYxLEDg==>>
+ */
+
 import express from "express";
 import graphqlHTTP from "express-graphql";
 import { readFileSync } from "fs";
@@ -6,6 +14,7 @@ import { join } from "path";
 
 import { genRoot } from "./root";
 
+/* BESPOKE START <<DEPRECATE>> */
 const schema: GraphQLSchema = buildSchema(
   readFileSync(join(__dirname, "schema.graphql"), "ascii"),
 );
@@ -17,3 +26,4 @@ export const graphQL: graphqlHTTP.Middleware = graphqlHTTP(
     schema,
   }),
 );
+/* BESPOKE END <<DEPRECATE>> */
