@@ -85,6 +85,7 @@
   },
   "scripts": {
     "prep": "gulp prep",
+    "codegen": "gulp codegen",
     "build": "gulp build",
     "watch": "gulp watch",
     "test": "gulp test",

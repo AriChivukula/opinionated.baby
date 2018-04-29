@@ -1,10 +1,10 @@
 /**
-  * This file is partially generated; only edit bespoke sections.
-  *
-  * SOURCE<<gen/server/index.ts::module>>
-  * BESPOKE<<DEPRECATE>>
-  * SIGNED<<BMayoJHo6kr37WUCKIES8b9jG6pVdqXISZUq0z7jvVHy3eg72LoMK40MpTJOdT7srVopdlY/17wG3JcmaPTXnQ==>>
-  */
+ * This file is partially generated; only edit bespoke sections.
+ *
+ * SOURCE<<gen/server/index.ts::module>>
+ * BESPOKE<<DEPRECATE>>
+ * SIGNED<<BMayoJHo6kr37WUCKIES8b9jG6pVdqXISZUq0z7jvVHy3eg72LoMK40MpTJOdT7srVopdlY/17wG3JcmaPTXnQ==>>
+ */
 
 import "@babel/polyfill";
 
