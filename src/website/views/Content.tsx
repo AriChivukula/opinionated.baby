@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views/Content.ts::module>>
  * BESPOKE<<DEPRECATE, Content>>
- * SIGNED<<MzOFDk6OktTKyWlMTayNw1LP7rfWLdKi21qFlXa67+K+TAKk56fAo48RSe7aMZceenhyvzQjEXi4lsOPdTBAdA==>>
+ * SIGNED<<9+uVa2Q39Nt3fGLRTVls84QHLVim8Mtyoj/xbXimSOdiaZSLJOtzAJh12IWPhREktgv9xmaJzsFUisIV0ioT0g==>>
  */
 
 import * as React from "react";
@@ -22,13 +22,6 @@ import {
   goto,
 } from "../util";
 
-const fullWidth: number = 12;
-
-const toolWidth: number = 3;
-
-const releaseWidth: number = 4;
-
-/* BESPOKE START <<DEPRECATE>> */
 interface ITools {
   graphic: string;
   link: string;
@@ -36,6 +29,19 @@ interface ITools {
   title: string;
 }
 
+interface IReleases {
+  titleA: string;
+  titleB: string;
+  version: string;
+}
+
+const fullWidth: number = 12;
+
+const toolWidth: number = 3;
+
+const releaseWidth: number = 4;
+
+/* BESPOKE START <<DEPRECATE>> */
 const tools: ITools[] = [
   {
     graphic: "memory",
@@ -134,12 +140,6 @@ const tools: ITools[] = [
     title: "SASS",
   },
 ];
-
-interface IReleases {
-  titleA: string;
-  titleB: string;
-  version: string;
-}
 
 const releases: IReleases[] = [
   { titleA: "Radical", titleB: "Robot", version: "v6" },

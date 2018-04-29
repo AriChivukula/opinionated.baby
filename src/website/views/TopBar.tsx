@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views/TopBar.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<SUpGS9VnCn6g4YW8ji7Gb/pDmCdYKs/MfoZKP1MRWF6CLfZlHnVAm35v8BSwYDVP/byf2Lpk6KyenWfFHVVp6A==>>
+ * SIGNED<<ZZzr7Ev0kw/DYawnPd7CKriJY9owONHRxBLMR2k8qmHX5KFE7U0Qliw+xSshMiIvRpiA+ZHMjKsz7D9v0MYOGw==>>
  */
 
 import * as cookie from "js-cookie";
@@ -40,12 +40,12 @@ import {
   TopBarQuery,
 } from "./__generated__/TopBarQuery.graphql";
 
-/* BESPOKE START <<DEPRECATE>> */
 interface IProps {
   data: TopBarQuery;
   relay: Relay;
 }
 
+/* BESPOKE START <<DEPRECATE>> */
 class TopBarRelay extends React.Component<IProps> {
 
   public render(): JSX.Element {

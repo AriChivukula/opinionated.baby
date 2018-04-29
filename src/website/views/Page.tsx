@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views/Page.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<cQebROA0hAMZnu6swqZ6m5JxzImJbd/sHrki0QyDZpX2zwWB7ckxpXDo2MTvHzpoz7aZvIL1LS33s72jw6citQ==>>
+ * SIGNED<<vF39XuM+9DpQXaYjXEH7jYlzTRbXIEPo+IXL6Tmcrnqhk1Vl/oTSFH7i1U2BwqDdBDtXbLrTpK5l0UJXNZoBSw==>>
  */
 
 import * as React from "react";
@@ -25,11 +25,11 @@ import {
   TopBar,
 } from "./TopBar";
 
-/* BESPOKE START <<DEPRECATE>> */
 interface IProps {
   data: TopBarQuery | null;
 }
 
+/* BESPOKE START <<DEPRECATE>> */
 export class Page extends React.Component<IProps> {
 
   public render(): JSX.Element {
