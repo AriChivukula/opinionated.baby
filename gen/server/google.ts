@@ -1,8 +1,21 @@
-import { Bespoke, Function, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Function, Import, Interface, Module, Renderable } from "typescriptase";
 
 export const module: Renderable = Module.new({
   content: [
-    Bespoke.new({name: "DEPRECATE"}),
+    Interface.new({
+      exported: false,
+      name: "IAccessToken",
+      types: {
+        tokens: "{ access_token?: string | null; }",
+      },
+    }),
+    Interface.new({
+      exported: false,
+      name: "IAccessTokenInfo",
+      types: {
+        data: "{ email: string; user_id: string; verified_email: boolean; }",
+      },
+    }),
     Function.new({
       async: false,
       content: [
