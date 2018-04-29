@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/entity/User.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<XmSGsmYuTiyCEz+QL++6ZiQh8hbTSahj/b9nKBvPtFRpuwX604WGQEqqbilL7RXCgjAoGe4fw8zCnX7N2UPZhg==>>
+ * SIGNED<<Ttj0lvoumIqh+GdRomCpef9u3zpQv7Ouxi0OcJfIKqOo/Q3cZ6Xs04sjPWL+50s0WfG4PzffVfz6AQUyLpaK8g==>>
  */
 
 import {
@@ -11,7 +11,6 @@ import {
   Entity,
   PrimaryColumn,
 } from "typeorm";
-
 
 /* BESPOKE START <<DEPRECATE>> */
 @Entity()

@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/__tests__/page.test.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<pbBahEMbajjtLwjZVEF2u0h0UNR9+XKzt1ckMZg7WQhDY/yPQej4mRfJCnYAZnBMTCypoA6j560/dYay0d26og==>>
+ * SIGNED<<SU7+KqlRj0BUwN/wkzw5gqf1aPKNUAcEtLb4mfwEN07obe1OPqdML8J3qiVvXvy0uraGKe0jP5iqwswi2Lsiiw==>>
  */
 
 import "jest-enzyme";
@@ -26,7 +26,6 @@ import {
 import {
   Page,
 } from "../views/Page";
-
 
 /* BESPOKE START <<DEPRECATE>> */
 Enzyme.configure({

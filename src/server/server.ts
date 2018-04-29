@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/server.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<T6P8z1UIdQrqr30a1+4m8+2noBHTZXE2xKOVDfN8NbEcDuP9jjudySfLnz9cAsSgjefkXtn0pjSVDRaL439+Cg==>>
+ * SIGNED<<KumfNurZbkDyfjVq8Y/k8xkKDwubKIJPylUMbp++JwXWUKQbS7HZhDbEhM/M6j9X6dpRAqzpO4YDleWR4tr25w==>>
  */
 
 import express from "express";
@@ -22,7 +22,6 @@ import {
 import {
   genRoot,
 } from "./root";
-
 
 /* BESPOKE START <<DEPRECATE>> */
 const schema: GraphQLSchema = buildSchema(

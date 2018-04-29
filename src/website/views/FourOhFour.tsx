@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views/FourOhFour.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<aezSdSF3T6zS+nAcZHg9EpbPWnweOUm45zmVWPwB7vSvXy0eG3vIHSqsjmZWTjIIa7dGSvkX7Btv/nhyHdpi5Q==>>
+ * SIGNED<<WvENcd1oaqo+5wfFnSwFK5lWPMLgaUgzg8lPmgjpKCHSILf0/m519hwz36Rm/o4JOFBxZXaMQshb3o+DlAQz7Q==>>
  */
 
 import * as React from "react";
@@ -13,7 +13,6 @@ import {
 import {
   Typography,
 } from "rmwc";
-
 
 /* BESPOKE START <<DEPRECATE>> */
 export function FourOhFour(): JSX.Element {

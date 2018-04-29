@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<nsNn0OOUeQ1mB+CN/05h8Ns1bzfsCHkWOLoGxOHo2W+ziuEvSz89EFXRTKw73futmdGHq/pvzhE7itOPG6ikLA==>>
+ * SIGNED<<INlaJYCwayMolW446cwd+pjcRuvteVu1clcPEdgFs2hDDkgl4js/p/22AX6xhE66Wrw3vLNkfwdwQK5VL4WyNQ==>>
  */
 
 import "@babel/polyfill";
@@ -27,7 +27,6 @@ import {
 import {
   makeSync,
 } from "./util";
-
 
 /* BESPOKE START <<DEPRECATE>> */
 const app: express.Express = express();

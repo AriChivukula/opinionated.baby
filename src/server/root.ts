@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/root.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<bO0xMycHoNNP78ArpCzminiuM47kJ3DQSBfhSNKq10188mjO6No0xp4T7Zykun1hbxq+hCI4U7l/XOVSH2n+kw==>>
+ * SIGNED<<PF+hN3FTKBYKoMawD5Np41hAxAg/RomoboXqXx2eMACG64lnCn1bwkzRuwh9LwVho45jBxbNQgdvKjaCOihpCg==>>
  */
 
 import express from "express";
@@ -18,7 +18,6 @@ import {
 import {
   genNullOnThrow,
 } from "./util";
-
 
 /* BESPOKE START <<DEPRECATE>> */
 export async function genRoot(req: express.Request, res: express.Response): Promise<object> {

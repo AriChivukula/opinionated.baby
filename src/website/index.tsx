@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/index.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<vRLqOoFkKhjrOOKRykwXxNoa/tgWOfZugPTrJCzxK9n9L1bUgJ+6TLF1xjAykhndxXuLyPObF9oCijDb2gZc/Q==>>
+ * SIGNED<<qSVAEky0b7LqfVcX31v3nIP5ZMlV4y8IjXa29JkHN4mtZ3U9FY8KI9BcQOi/+nWiuXerx9xZojPsXRL2X8H+mA==>>
  */
 
 import "@babel/polyfill";
@@ -11,7 +11,6 @@ import "@babel/polyfill";
 import {
   render,
 } from "./website";
-
 
 /* BESPOKE START <<DEPRECATE>> */
 let apiURL: string;

@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views/TopBar.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<jtnQyfRqpPVQhsGOwZ+X8BZL5vB27ReVoxFjYvL29NjrV0E1+D0NymjAzn4EFj1wN4DLJMHBP+10UNmO3EDbUA==>>
+ * SIGNED<<SUpGS9VnCn6g4YW8ji7Gb/pDmCdYKs/MfoZKP1MRWF6CLfZlHnVAm35v8BSwYDVP/byf2Lpk6KyenWfFHVVp6A==>>
  */
 
 import * as cookie from "js-cookie";
@@ -39,7 +39,6 @@ import {
 import {
   TopBarQuery,
 } from "./__generated__/TopBarQuery.graphql";
-
 
 /* BESPOKE START <<DEPRECATE>> */
 interface IProps {

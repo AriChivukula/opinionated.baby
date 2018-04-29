@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views/Content.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<p+WL+A8b39H35sSHwCorAkkfGbbgFyXxqqIDNWJbP7I41kLCVFXH3Yvpv+z3UImlWhma/gvCnOesf8q4qQRntQ==>>
+ * SIGNED<<44cSS7XXp3dNcaxW9Hu4+MnC7D5gUztjOmpxtkgSeQzLrGsZA0rYZu0edBZRh5SUitOlTVaZ2593ptKdZwvP5Q==>>
  */
 
 import * as React from "react";
@@ -21,7 +21,6 @@ import {
 import {
   goto,
 } from "../util";
-
 
 /* BESPOKE START <<DEPRECATE>> */
 const fullWidth: number = 12;

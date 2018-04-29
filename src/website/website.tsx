@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/website.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<1RKUwclDdMfXAD2DdhOxfgDAVpa0EDZ0yS+bL/UJnr0j/P37ZZ7XVMuC9fGsBtcLOLVYKjRgEwqLANROqJ+V/g==>>
+ * SIGNED<<xAIZwbHA5+B3yisr9Xh3f7VOLlspjE+tf/CowHECtW6/PoqeuP+IrfG5hqcrDNPL8OoVHe3pVZTHv7R5cygfZQ==>>
  */
 
 import * as cookie from "js-cookie";
@@ -31,7 +31,6 @@ import {
 import {
   Root,
 } from "./views/Root";
-
 
 /* BESPOKE START <<DEPRECATE>> */
 export function render(apiURL: string): void {
