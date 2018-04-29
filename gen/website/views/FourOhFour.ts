@@ -1,8 +1,19 @@
-import { Bespoke, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Function, Import, Module, Renderable } from "typescriptase";
 
 export const module: Renderable = Module.new({
   content: [
-    Bespoke.new({name: "DEPRECATE"}),
+    Function.new({
+      async: false,
+      content: [
+        Bespoke.new({
+          name: "FourOhFour",
+        }),
+      ],
+      exported: true,
+      inputs: {},
+      name: "FourOhFour",
+      output: "JSX.Element",
+    }),
   ],
   destination: "src/website/views/FourOhFour.tsx",
   imports: [
