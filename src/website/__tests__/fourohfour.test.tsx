@@ -3,8 +3,11 @@
  *
  * SOURCE<<gen/website/__tests__/fourohfour.test.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<MtfyJVUIoLuv2yDjJpMZKjnw1O3ZI9R7gFjZg8qxpgpPplxkqaJtFzcjx7g7TztRV6QDrNDlnyMszgQ8yD7pjw==>>
+ * SIGNED<<+PZcAC52Ew5ylQxTx8fiIs7j7tZtTqUoCVw+/R4bAAGYLTYV0zYqgAGpa4c82Pb73AWRL26+3cp+AosnFogSKA==>>
  */
+
+import "jest-enzyme";
+import "mutationobserver-shim";
 
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";

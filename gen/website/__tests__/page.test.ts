@@ -7,6 +7,12 @@ export const module: Renderable = Module.new({
   destination: "src/website/__tests__/page.test.tsx",
   imports: [
     Import.new({
+      module: "jest-enzyme",
+    }),
+    Import.new({
+      module: "mutationobserver-shim",
+    }),
+    Import.new({
       module: "enzyme",
       nameDefault: "Enzyme",
     }),
