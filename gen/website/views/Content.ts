@@ -1,7 +1,26 @@
-import { Bespoke, EVariableKind, Function, Import, Module, Renderable, Variable } from "typescriptase";
+import { Bespoke, EVariableKind, Function, Import, Interface, Module, Renderable, Variable } from "typescriptase";
 
 export const module: Renderable = Module.new({
   content: [
+    Interface.new({
+      exported: false,
+      name: "ITools",
+      types: {
+        graphic: "string",
+        link: "string",
+        subtitle: "string",
+        title: "string",
+      }
+    }),
+    Interface.new({
+      exported: false,
+      name: "IReleases",
+      types: {
+        titleA: "string",
+        titleB: "string",
+        version: "string",
+      }
+    }),
     Variable.new({
       assignment: "12",
       kind: EVariableKind.IMMUTABLE,

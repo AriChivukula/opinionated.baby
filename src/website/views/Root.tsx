@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views/Root.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<IXwHnJRIyIUIHFwJHEtDB9dPoi/BcjO+v/VRqOgPUihRjfMdtUbURintymWh+5oXE+k93DZ8b906P6bDB6vj4A==>>
+ * SIGNED<<NHzNcPYTKckYKzuGo3UOVm8568uv3OUmqB1aY1sX4NZAcgiaXG/151yyYFxPyxhTRUjZnNpudNYOpfzWVIbRag==>>
  */
 
 import * as cookie from "js-cookie";
@@ -23,11 +23,11 @@ import {
   Page,
 } from "./Page";
 
-/* BESPOKE START <<DEPRECATE>> */
 interface IProps {
   environment: Environment;
 }
 
+/* BESPOKE START <<DEPRECATE>> */
 export class Root extends React.Component<IProps> {
 
   public render(): JSX.Element {

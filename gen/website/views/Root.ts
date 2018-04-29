@@ -1,7 +1,14 @@
-import { Bespoke, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Import, Interface, Module, Renderable } from "typescriptase";
 
 export const module: Renderable = Module.new({
   content: [
+    Interface.new({
+      exported: false,
+      name: "IProps",
+      types: {
+        environment: "Environment",
+      }
+    }),
     Bespoke.new({name: "DEPRECATE"}),
   ],
   destination: "src/website/views/Root.tsx",

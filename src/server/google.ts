@@ -2,8 +2,8 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/server/google.ts::module>>
- * BESPOKE<<DEPRECATE, getOAuthClient, getLoginURL, genAccessToken, genAccessTokenInfo>>
- * SIGNED<<k/g80BS37rsBsqyooapUURdMYUr6kMG9rP0zPiQIdPq8EYerHrjvpwLRgfT+4S4Kd5cbHBrcK/r+dow4g1gcSQ==>>
+ * BESPOKE<<getOAuthClient, getLoginURL, genAccessToken, genAccessTokenInfo>>
+ * SIGNED<<t6neUBR5bMXy/1euzgCilSaiJNZ9Tb1nV/eSyyg5QfnIaXGAutNqdTU0KjjInVTFW0o5DOXoC9lPsSoXDbWZIQ==>>
  */
 
 import {
@@ -13,21 +13,13 @@ import {
   google,
 } from "googleapis";
 
-/* BESPOKE START <<DEPRECATE>> */
 interface IAccessToken {
-  tokens: {
-    access_token?: string | null;
-  };
+  tokens: { access_token?: string | null };
 }
 
-export interface IAccessTokenInfo {
-  data: {
-    email: string;
-    user_id: string;
-    verified_email: boolean;
-  };
+interface IAccessTokenInfo {
+  data: { email: string; user_id: string; verified_email: boolean };
 }
-/* BESPOKE END <<DEPRECATE>> */
 
 function getOAuthClient(
 ): OAuth2Client {
