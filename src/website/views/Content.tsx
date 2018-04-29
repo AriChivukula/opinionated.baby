@@ -2,20 +2,33 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/website/views/Content.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<huoc7QQ5xKjrap2RtPv6bmErL0DjAypsNCgVOd8jAfASlD35otOS44abBolgRK5y+i+Vpddic87iQ1UnKvorCQ==>>
+ * BESPOKE<<DEPRECATE, Content>>
+ * SIGNED<<MzOFDk6OktTKyWlMTayNw1LP7rfWLdKi21qFlXa67+K+TAKk56fAo48RSe7aMZceenhyvzQjEXi4lsOPdTBAdA==>>
  */
 
 import * as React from "react";
-import { Card, CardMedia, CardPrimaryAction, Grid, GridCell, List, SimpleListItem, Typography } from "rmwc";
+import {
+  Card,
+  CardMedia,
+  CardPrimaryAction,
+  Grid,
+  GridCell,
+  List,
+  SimpleListItem,
+  Typography,
+} from "rmwc";
 
-import { goto } from "../util";
+import {
+  goto,
+} from "../util";
 
-/* BESPOKE START <<DEPRECATE>> */
 const fullWidth: number = 12;
+
 const toolWidth: number = 3;
+
 const releaseWidth: number = 4;
 
+/* BESPOKE START <<DEPRECATE>> */
 interface ITools {
   graphic: string;
   link: string;
@@ -137,8 +150,11 @@ const releases: IReleases[] = [
   { titleA: "Dogged", titleB: "Dapper", version: "v1" },
   { titleA: "Cocksure", titleB: "Castle", version: "v0" },
 ];
+/* BESPOKE END <<DEPRECATE>> */
 
-export function Content(): JSX.Element {
+export function Content(
+): JSX.Element {
+  /* BESPOKE START <<Content>> */
   return (
     <Grid>
       <GridCell span={fullWidth}>
@@ -236,5 +252,5 @@ export function Content(): JSX.Element {
       ))}
     </Grid>
   );
+  /* BESPOKE END <<Content>> */
 }
-/* BESPOKE END <<DEPRECATE>> */

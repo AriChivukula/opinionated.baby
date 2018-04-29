@@ -3,16 +3,25 @@
  *
  * SOURCE<<gen/server/server.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<sQA3RiC28JG8fT9nak7RiR2xu13mbXgfxnsTlVBV2BHisxj95I/Y7chAYFa9qvpoVwC0Xbdhdms+aZcxYxLEDg==>>
+ * SIGNED<<KumfNurZbkDyfjVq8Y/k8xkKDwubKIJPylUMbp++JwXWUKQbS7HZhDbEhM/M6j9X6dpRAqzpO4YDleWR4tr25w==>>
  */
 
 import express from "express";
 import graphqlHTTP from "express-graphql";
-import { readFileSync } from "fs";
-import { buildSchema, GraphQLSchema } from "graphql";
-import { join } from "path";
+import {
+  readFileSync,
+} from "fs";
+import {
+  buildSchema,
+  GraphQLSchema,
+} from "graphql";
+import {
+  join,
+} from "path";
 
-import { genRoot } from "./root";
+import {
+  genRoot,
+} from "./root";
 
 /* BESPOKE START <<DEPRECATE>> */
 const schema: GraphQLSchema = buildSchema(

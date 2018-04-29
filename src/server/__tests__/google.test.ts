@@ -3,10 +3,13 @@
  *
  * SOURCE<<gen/server/__tests__/google.test.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<p+hnFDTBgoj/JsbjhNDrBrvCo3vgkezcoL4i3cysi3YLGv09pfca85YUDqbzvboDv4fZtRIhJySE7KMsqohPyg==>>
+ * SIGNED<<Dr+DlQ+ZSjZqEstWIlKkKPjLbgFuI9TKu34TvBcnaRMAPuzTWYQKRjPgiVmAQ4iizIqNBDTpGbshiZmVhF6SWQ==>>
  */
 
-import { genAccessTokenInfo, getLoginURL } from "../google";
+import {
+  genAccessTokenInfo,
+  getLoginURL,
+} from "../google";
 
 /* BESPOKE START <<DEPRECATE>> */
 test(

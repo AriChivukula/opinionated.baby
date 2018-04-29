@@ -2,16 +2,22 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/website/util.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<JO2Uxo5FJqRw/ghAVr2Q8TPCn5dyd5QgFw+3mJpFayLxQ/oLehCDhofx/zzgZLYqyB8y0MKaqrTsJxNe/ns80w==>>
+ * BESPOKE<<isElectron, goto>>
+ * SIGNED<<xBxv0B3J3LIX6ge7SArkKEWvb6zXpMpNIt4+sh+jmU/rNDbC5zDKoJedvc0pR6XZYNGaXVeBBjjYRoAlqMc/9A==>>
  */
 
-/* BESPOKE START <<DEPRECATE>> */
-export function isElectron(): boolean {
+export function isElectron(
+): boolean {
+  /* BESPOKE START <<isElectron>> */
   return "process" in window;
+  /* BESPOKE END <<isElectron>> */
 }
 
-export function goto(url: string, samePage: boolean = false): void {
+export function goto(
+  url: string,
+  samePage: boolean = false,
+): void {
+  /* BESPOKE START <<goto>> */
   if (isElectron()) {
     (window as any)
       .require("electron")
@@ -25,5 +31,5 @@ export function goto(url: string, samePage: boolean = false): void {
       window.open(url);
     }
   }
+  /* BESPOKE END <<goto>> */
 }
-/* BESPOKE END <<DEPRECATE>> */

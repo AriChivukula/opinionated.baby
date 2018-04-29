@@ -3,12 +3,15 @@
  *
  * SOURCE<<gen/application/index.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<X5wik9iu7i14RHhfc1dT1JUgQ/SOSYhn9DXbe+SLZGWwapwO4Bs034IyLdu4sm8ZydpVrAExOzQbHvrYlCo/Lg==>>
+ * SIGNED<<4daoNMwtz3BC9HjR2W0Hb46N/H35VygcDVojt95aJ8lVuJDF4n1OeD2QZZsIlpiyFOjq7ZDFeCvtEG7MAx8faw==>>
  */
 
 import "@babel/polyfill";
 
-import { app, BrowserWindow } from "electron";
+import {
+  app,
+  BrowserWindow,
+} from "electron";
 
 /* BESPOKE START <<DEPRECATE>> */
 app.on(

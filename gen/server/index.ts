@@ -1,8 +1,35 @@
-import { Bespoke, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, EVariableKind, Function, Import, Module, Renderable, Variable } from "typescriptase";
 
 export const module: Renderable = Module.new({
   content: [
+    Variable.new({
+      assignment: "express()",
+      kind: EVariableKind.IMMUTABLE,
+      name: "app",
+      type: "express.Express",
+    }),
+    Variable.new({
+      assignment: "false",
+      kind: EVariableKind.MUTABLE,
+      name: "didSetup",
+      "type": "boolean",
+    }),
     Bespoke.new({name: "DEPRECATE"}),
+    Function.new({
+      async: false,
+      content: [
+        Bespoke.new({
+          name: "handler",
+        }),
+      ],
+      exported: true,
+      inputs: {
+        event: "object",
+        context: "object",
+      },
+      name: "handler",
+      output: "void",
+    }),
   ],
   destination: "src/server/index.ts",
   imports: [

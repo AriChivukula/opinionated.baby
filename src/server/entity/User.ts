@@ -3,10 +3,14 @@
  *
  * SOURCE<<gen/server/entity/User.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<xqJxUkJEL4YA4Jbhm5AEWMNzGRRecwobhdjwfUmdYYizuqNIffqxPDVK1CbU6mPpsgzuR+W1YENjxFX4WgpWFw==>>
+ * SIGNED<<Ttj0lvoumIqh+GdRomCpef9u3zpQv7Ouxi0OcJfIKqOo/Q3cZ6Xs04sjPWL+50s0WfG4PzffVfz6AQUyLpaK8g==>>
  */
 
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  PrimaryColumn,
+} from "typeorm";
 
 /* BESPOKE START <<DEPRECATE>> */
 @Entity()

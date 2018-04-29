@@ -1,8 +1,21 @@
-import { Bespoke, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Function, Import, Module, Renderable } from "typescriptase";
 
 export const module: Renderable = Module.new({
   content: [
-    Bespoke.new({name: "DEPRECATE"}),
+    Function.new({
+      async: false,
+      content: [
+        Bespoke.new({
+          name: "render",
+        }),
+      ],
+      exported: true,
+      inputs: {
+        apiURL: "string",
+      },
+      name: "render",
+      output: "void",
+    }),
   ],
   destination: "src/website/website.tsx",
   imports: [
