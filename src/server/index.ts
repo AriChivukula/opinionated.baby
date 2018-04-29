@@ -2,8 +2,8 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/server/index.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<INlaJYCwayMolW446cwd+pjcRuvteVu1clcPEdgFs2hDDkgl4js/p/22AX6xhE66Wrw3vLNkfwdwQK5VL4WyNQ==>>
+ * BESPOKE<<DEPRECATE, handler>>
+ * SIGNED<<Fitd2UkbzqinjIZO+jrn6VJPKUL4I7dWz+Ua2uceSURzEG+4Mw+AmrG3J/KnweuV5BJrbr/7F1xUlVUPgjTAfQ==>>
  */
 
 import "@babel/polyfill";
@@ -28,11 +28,13 @@ import {
   makeSync,
 } from "./util";
 
-/* BESPOKE START <<DEPRECATE>> */
 const app: express.Express = express();
-app.use(cors(), helmet(), bearer(), json(), urlencoded());
 
 let didSetup: boolean = false;
+
+/* BESPOKE START <<DEPRECATE>> */
+app.use(cors(), helmet(), bearer(), json(), urlencoded());
+
 app.use((req: express.Request, res: express.Response, next: () => void): void => {
   if (!didSetup) {
     makeSync(genSetupDB());
@@ -47,21 +49,29 @@ if (process.env.ENV !== "LAMBDA") {
   app.use("/", express.static("_build_3/website"));
   app.listen(process.env.PORT);
 }
-
-const serverless: object = lambda.createServer(
-  app,
-  null,
-  [
-    "application/octet-stream",
-    "font/eot",
-    "font/opentype",
-    "font/otf",
-    "image/jpeg",
-    "image/png",
-    "image/svg+xml",
-  ],
-);
-export function handler(event: object, context: object): void {
-  return lambda.proxy(serverless, event, context);
-}
 /* BESPOKE END <<DEPRECATE>> */
+
+export function handler(
+  event: object,
+  context: object,
+): void {
+  /* BESPOKE START <<handler>> */
+  lambda.proxy(
+    lambda.createServer(
+      app,
+      null,
+      [
+        "application/octet-stream",
+        "font/eot",
+        "font/opentype",
+        "font/otf",
+        "image/jpeg",
+        "image/png",
+        "image/svg+xml",
+      ],
+    ),
+    event,
+    context,
+  );
+  /* BESPOKE END <<handler>> */
+}

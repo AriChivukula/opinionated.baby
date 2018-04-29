@@ -2,12 +2,14 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/server/util.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<JO2Uxo5FJqRw/ghAVr2Q8TPCn5dyd5QgFw+3mJpFayLxQ/oLehCDhofx/zzgZLYqyB8y0MKaqrTsJxNe/ns80w==>>
+ * BESPOKE<<makeSync<T>, genNullOnThrow<T>>>
+ * SIGNED<<cZLfMT7w3H1s5pqYnaUvqVjJPa2t27O1Q7OeVwXQrdhFt4ELz6V2GnHOFzqfZxnRNvVBCWtbiY8bGB5sihrEKg==>>
  */
 
-/* BESPOKE START <<DEPRECATE>> */
-export function makeSync<T>(wasAsync: Promise<T>): void {
+export function makeSync<T>(
+  wasAsync: Promise<T>,
+): void {
+  /* BESPOKE START <<makeSync<T>>> */
   wasAsync
     .catch((err: Error): void => {
       console.log(err);
@@ -20,9 +22,13 @@ export function makeSync<T>(wasAsync: Promise<T>): void {
     });
 
   return;
+  /* BESPOKE END <<makeSync<T>>> */
 }
 
-export async function genNullOnThrow<T>(mightThrow: () => Promise<T>): Promise<T | null> {
+export async function genNullOnThrow<T>(
+  mightThrow: () => Promise<T>,
+): Promise<T | null> {
+  /* BESPOKE START <<genNullOnThrow<T>>> */
   try {
     return await mightThrow();
   } catch (error) {
@@ -30,5 +36,5 @@ export async function genNullOnThrow<T>(mightThrow: () => Promise<T>): Promise<T
 
     return null;
   }
+  /* BESPOKE END <<genNullOnThrow<T>>> */
 }
-/* BESPOKE END <<DEPRECATE>> */

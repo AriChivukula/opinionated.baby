@@ -2,8 +2,8 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/server/db.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<WmyeCBxQXTSOQJDPjWKjeTJ550LcoQO7I57AZOJch3yNwPbzNUBz15W3IHmzEJcOUSeZp0FM4m51xHO5XBoPaQ==>>
+ * BESPOKE<<genSetupDB, genUserForAccessToken>>
+ * SIGNED<<Y84cuycv+XtGSB0uosxzy3VIR+SgwFtq42TvVzHX2l8Nb3kw+v3lccifi4LkSq5XG0P3iexTzxA2nZNQVhhLcQ==>>
  */
 
 import {
@@ -19,8 +19,9 @@ import {
   IAccessTokenInfo,
 } from "./google";
 
-/* BESPOKE START <<DEPRECATE>> */
-export async function genSetupDB(): Promise<void> {
+export async function genSetupDB(
+): Promise<void> {
+  /* BESPOKE START <<genSetupDB>> */
   await createConnection({
     database: process.env.DB_NAME,
     entities: [User],
@@ -30,9 +31,13 @@ export async function genSetupDB(): Promise<void> {
     type: "postgres",
     username: process.env.DB_USERNAME,
   });
+  /* BESPOKE END <<genSetupDB>> */
 }
 
-export async function genUserForAccessToken(accessToken: string): Promise<User> {
+export async function genUserForAccessToken(
+  accessToken: string,
+): Promise<User> {
+  /* BESPOKE START <<genUserForAccessToken>> */
   const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
   let user: User | undefined = await getRepository(User)
     .findOne(info.data.user_id);
@@ -45,5 +50,5 @@ export async function genUserForAccessToken(accessToken: string): Promise<User> 
   }
 
   return user;
+  /* BESPOKE END <<genUserForAccessToken>> */
 }
-/* BESPOKE END <<DEPRECATE>> */

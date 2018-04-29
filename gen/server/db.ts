@@ -1,8 +1,33 @@
-import { Bespoke, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Function, Import, Module, Renderable } from "typescriptase";
 
 export const module: Renderable = Module.new({
   content: [
-    Bespoke.new({name: "DEPRECATE"}),
+    Function.new({
+      async: true,
+      content: [
+        Bespoke.new({
+          name: "genSetupDB",
+        }),
+      ],
+      exported: true,
+      inputs: {},
+      name: "genSetupDB",
+      output: "Promise<void>",
+    }),
+    Function.new({
+      async: true,
+      content: [
+        Bespoke.new({
+          name: "genUserForAccessToken",
+        }),
+      ],
+      exported: true,
+      inputs: {
+        accessToken: "string",
+      },
+      name: "genUserForAccessToken",
+      output: "Promise<User>",
+    }),
   ],
   destination: "src/server/db.ts",
   imports: [
