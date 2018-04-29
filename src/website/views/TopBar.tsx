@@ -3,20 +3,43 @@
  *
  * SOURCE<<gen/website/views/TopBar.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<iDvvIj5fj8xWh82oPP4EoqQqzWYfpLQ+jDYYCyNQK1UyMRY9pRmJ1xOH926yiCIg4GjJeGnkBqstnCC7T43k4Q==>>
+ * SIGNED<<jtnQyfRqpPVQhsGOwZ+X8BZL5vB27ReVoxFjYvL29NjrV0E1+D0NymjAzn4EFj1wN4DLJMHBP+10UNmO3EDbUA==>>
  */
 
 import * as cookie from "js-cookie";
 import * as React from "react";
-import { commitMutation, createFragmentContainer, graphql } from "react-relay";
+import {
+  commitMutation,
+  createFragmentContainer,
+  graphql,
+} from "react-relay";
 import Relay from "relay-runtime";
-import { Toolbar, ToolbarFixedAdjust, ToolbarIcon, ToolbarRow, ToolbarSection, ToolbarTitle } from "rmwc";
-import { parse, UrlWithParsedQuery } from "url";
+import {
+  Toolbar,
+  ToolbarFixedAdjust,
+  ToolbarIcon,
+  ToolbarRow,
+  ToolbarSection,
+  ToolbarTitle,
+} from "rmwc";
+import {
+  parse,
+  UrlWithParsedQuery,
+} from "url";
 
-import { goto } from "../util";
-import { TopBarLoginMutationResponse } from "./__generated__/TopBarLoginMutation.graphql";
-import { TopBarLogoutMutationResponse } from "./__generated__/TopBarLogoutMutation.graphql";
-import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
+import {
+  goto,
+} from "../util";
+import {
+  TopBarLoginMutationResponse,
+} from "./__generated__/TopBarLoginMutation.graphql";
+import {
+  TopBarLogoutMutationResponse,
+} from "./__generated__/TopBarLogoutMutation.graphql";
+import {
+  TopBarQuery,
+} from "./__generated__/TopBarQuery.graphql";
+
 
 /* BESPOKE START <<DEPRECATE>> */
 interface IProps {

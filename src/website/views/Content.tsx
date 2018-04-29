@@ -3,13 +3,25 @@
  *
  * SOURCE<<gen/website/views/Content.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<huoc7QQ5xKjrap2RtPv6bmErL0DjAypsNCgVOd8jAfASlD35otOS44abBolgRK5y+i+Vpddic87iQ1UnKvorCQ==>>
+ * SIGNED<<p+WL+A8b39H35sSHwCorAkkfGbbgFyXxqqIDNWJbP7I41kLCVFXH3Yvpv+z3UImlWhma/gvCnOesf8q4qQRntQ==>>
  */
 
 import * as React from "react";
-import { Card, CardMedia, CardPrimaryAction, Grid, GridCell, List, SimpleListItem, Typography } from "rmwc";
+import {
+  Card,
+  CardMedia,
+  CardPrimaryAction,
+  Grid,
+  GridCell,
+  List,
+  SimpleListItem,
+  Typography,
+} from "rmwc";
 
-import { goto } from "../util";
+import {
+  goto,
+} from "../util";
+
 
 /* BESPOKE START <<DEPRECATE>> */
 const fullWidth: number = 12;

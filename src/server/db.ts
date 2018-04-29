@@ -3,13 +3,22 @@
  *
  * SOURCE<<gen/server/db.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<4ucXEIouHXEWhrsn2uGCeH8GeowODJGD84XtUYLhWg8AcdcnvvOwwbLrQJy9fbnyx0A0ZMQB2zo1A98h893l2A==>>
+ * SIGNED<<KFrEo9Nd4miFm0iKZk7J7/Yg91z519RQmfc8zKf2kAd5/BmCJT4Ee6wcaiuxTt+OWrbnz6AIeNr8gsWVx2Mi1Q==>>
  */
 
-import { createConnection, getRepository } from "typeorm";
+import {
+  createConnection,
+  getRepository,
+} from "typeorm";
 
-import { User } from "./entity/User";
-import { genAccessTokenInfo, IAccessTokenInfo } from "./google";
+import {
+  User,
+} from "./entity/User";
+import {
+  genAccessTokenInfo,
+  IAccessTokenInfo,
+} from "./google";
+
 
 /* BESPOKE START <<DEPRECATE>> */
 export async function genSetupDB(): Promise<void> {

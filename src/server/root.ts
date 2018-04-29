@@ -3,14 +3,22 @@
  *
  * SOURCE<<gen/server/root.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<rNFni3I32652MatDBgAhx5ZRlih3suWbwP2+aOQ6kLTC/QhHAsdJKaggfC5WS8PqMAy0Ajul1U6rxBf5pdW//g==>>
+ * SIGNED<<bO0xMycHoNNP78ArpCzminiuM47kJ3DQSBfhSNKq10188mjO6No0xp4T7Zykun1hbxq+hCI4U7l/XOVSH2n+kw==>>
  */
 
 import express from "express";
 
-import { genUserForAccessToken } from "./db";
-import { genAccessToken, getLoginURL } from "./google";
-import { genNullOnThrow } from "./util";
+import {
+  genUserForAccessToken,
+} from "./db";
+import {
+  genAccessToken,
+  getLoginURL,
+} from "./google";
+import {
+  genNullOnThrow,
+} from "./util";
+
 
 /* BESPOKE START <<DEPRECATE>> */
 export async function genRoot(req: express.Request, res: express.Response): Promise<object> {

@@ -3,13 +3,20 @@
  *
  * SOURCE<<gen/server/__tests__/db.test.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<GN34SU740JCURqCRWoLW8beZiSezAqJJx9pKabqO4Sjzmh/00R7gT1W9coIggroJNS0V5/oK+pw1wConHjlPQw==>>
+ * SIGNED<<Zk5KT6prFZzbTaRhmJfx+jEDmC/fLrYQHGZDRU4BsNRBrcKEwzRrCm9l/GpNffPUyrfsuB5ijXe1stmJcJygQw==>>
  */
 
-import { getRepository } from "typeorm";
+import {
+  getRepository,
+} from "typeorm";
 
-import { genSetupDB } from "../db";
-import { User } from "../entity/User";
+import {
+  genSetupDB,
+} from "../db";
+import {
+  User,
+} from "../entity/User";
+
 
 /* BESPOKE START <<DEPRECATE>> */
 beforeAll(

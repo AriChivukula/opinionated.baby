@@ -3,16 +3,26 @@
  *
  * SOURCE<<gen/website/views/Root.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<9i+Eq0DCxHGG6EpSLg/GeSu6nPcjmJyCL3cHnv0oXdH+5IKumj5JB8IokDEzU9gDBemIlmsO58ozCSVUZVizlA==>>
+ * SIGNED<<b3FI0oehS+euQawD6YZt+A68kU1Sx1I1VY55XMcNfununakV8yJrLi53QaTidMSXt1U76XClLS/Ymyx1PXlPvg==>>
  */
 
 import * as cookie from "js-cookie";
 import * as React from "react";
-import { graphql, QueryRenderer } from "react-relay";
-import { Environment } from "relay-runtime";
+import {
+  graphql,
+  QueryRenderer,
+} from "react-relay";
+import {
+  Environment,
+} from "relay-runtime";
 
-import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
-import { Page } from "./Page";
+import {
+  TopBarQuery,
+} from "./__generated__/TopBarQuery.graphql";
+import {
+  Page,
+} from "./Page";
+
 
 /* BESPOKE START <<DEPRECATE>> */
 interface IProps {

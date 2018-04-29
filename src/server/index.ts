@@ -3,21 +3,31 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<BMayoJHo6kr37WUCKIES8b9jG6pVdqXISZUq0z7jvVHy3eg72LoMK40MpTJOdT7srVopdlY/17wG3JcmaPTXnQ==>>
+ * SIGNED<<nsNn0OOUeQ1mB+CN/05h8Ns1bzfsCHkWOLoGxOHo2W+ziuEvSz89EFXRTKw73futmdGHq/pvzhE7itOPG6ikLA==>>
  */
 
 import "@babel/polyfill";
 
 import lambda from "aws-serverless-express";
-import { json, urlencoded } from "body-parser";
+import {
+  json,
+  urlencoded,
+} from "body-parser";
 import cors from "cors";
 import express from "express";
 import bearer from "express-bearer-token";
 import helmet from "helmet";
 
-import { genSetupDB } from "./db";
-import { graphQL } from "./server";
-import { makeSync } from "./util";
+import {
+  genSetupDB,
+} from "./db";
+import {
+  graphQL,
+} from "./server";
+import {
+  makeSync,
+} from "./util";
+
 
 /* BESPOKE START <<DEPRECATE>> */
 const app: express.Express = express();

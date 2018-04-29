@@ -3,11 +3,16 @@
  *
  * SOURCE<<gen/server/google.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<l/QVWVs3dx4VF4mzFKc6/3wi/dF2ICjuWRJKGXc8OxJyVMuasmY/oJCoOjlc98WPTdCMWkyM5tGDCvfnf+6mtg==>>
+ * SIGNED<<34EvTO3H8QF7I2ZlYcLf8PiU63BE7+f+m9/hDXmYf1XxgATEBLrKXhxuGaoddPJovc/yZ62qZ45yo+gmy1EMsA==>>
  */
 
-import { OAuth2Client } from "google-auth-library";
-import { google } from "googleapis";
+import {
+  OAuth2Client,
+} from "google-auth-library";
+import {
+  google,
+} from "googleapis";
+
 
 /* BESPOKE START <<DEPRECATE>> */
 interface IAccessToken {

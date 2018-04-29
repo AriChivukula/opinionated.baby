@@ -3,12 +3,15 @@
  *
  * SOURCE<<gen/website/index.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<zA4ZnncSA/pBEq5+FqErx8OfbjD9i36SAqXMmnXns6fQPbPz57HziS2LvJ+A6F0PYrf82MieNQsk61myghzyyQ==>>
+ * SIGNED<<vRLqOoFkKhjrOOKRykwXxNoa/tgWOfZugPTrJCzxK9n9L1bUgJ+6TLF1xjAykhndxXuLyPObF9oCijDb2gZc/Q==>>
  */
 
 import "@babel/polyfill";
 
-import { render } from "./website";
+import {
+  render,
+} from "./website";
+
 
 /* BESPOKE START <<DEPRECATE>> */
 let apiURL: string;

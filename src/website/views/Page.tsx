@@ -3,16 +3,28 @@
  *
  * SOURCE<<gen/website/views/Page.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<cXgB0+aonYXubOMPO3Gee8fpOMeBeTg6Zuz96Aqv6xg9QvmdGmpY+MlLKlrDfTix6F86ZGLaxqFF9D/ENmU/Ug==>>
+ * SIGNED<<Uxwp3mVlZV+d+i2D4cOqOYgpaD+CNonFPp5Zw/QZdFmpYQVRRJd++xZrsOiD8mK1n22WZxRbnVuVN5UOhneN7Q==>>
  */
 
 import * as React from "react";
-import { LinearProgress } from "rmwc";
-import { parse, UrlWithParsedQuery } from "url";
+import {
+  LinearProgress,
+} from "rmwc";
+import {
+  parse,
+  UrlWithParsedQuery,
+} from "url";
 
-import { TopBarQuery } from "./__generated__/TopBarQuery.graphql";
-import { Content } from "./Content";
-import { TopBar } from "./TopBar";
+import {
+  TopBarQuery,
+} from "./__generated__/TopBarQuery.graphql";
+import {
+  Content,
+} from "./Content";
+import {
+  TopBar,
+} from "./TopBar";
+
 
 /* BESPOKE START <<DEPRECATE>> */
 interface IProps {

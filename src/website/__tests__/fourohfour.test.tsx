@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/__tests__/fourohfour.test.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<+PZcAC52Ew5ylQxTx8fiIs7j7tZtTqUoCVw+/R4bAAGYLTYV0zYqgAGpa4c82Pb73AWRL26+3cp+AosnFogSKA==>>
+ * SIGNED<</zYVSQmAsQsoJhj2L2faY4pCyMx7kovNbWy7P8xvhgE+cBQB7LUMILtPYv4tszpqLNk9HtAVjcxxsstWoIIP/Q==>>
  */
 
 import "jest-enzyme";
@@ -12,9 +12,14 @@ import "mutationobserver-shim";
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import * as React from "react";
-import { BrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter,
+} from "react-router-dom";
 
-import { FourOhFour } from "../views/FourOhFour";
+import {
+  FourOhFour,
+} from "../views/FourOhFour";
+
 
 /* BESPOKE START <<DEPRECATE>> */
 Enzyme.configure({
