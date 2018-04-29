@@ -1,11 +1,17 @@
+/**
+ * This file is partially generated; only edit bespoke sections.
+ *
+ * SOURCE<<gen/server/db.ts::module>>
+ * BESPOKE<<DEPRECATE>>
+ * SIGNED<<4ucXEIouHXEWhrsn2uGCeH8GeowODJGD84XtUYLhWg8AcdcnvvOwwbLrQJy9fbnyx0A0ZMQB2zo1A98h893l2A==>>
+ */
+
 import { createConnection, getRepository } from "typeorm";
 
 import { User } from "./entity/User";
-import {
-  genAccessTokenInfo,
-  IAccessTokenInfo,
-} from "./google";
+import { genAccessTokenInfo, IAccessTokenInfo } from "./google";
 
+/* BESPOKE START <<DEPRECATE>> */
 export async function genSetupDB(): Promise<void> {
   await createConnection({
     database: process.env.DB_NAME,
@@ -32,3 +38,4 @@ export async function genUserForAccessToken(accessToken: string): Promise<User> 
 
   return user;
 }
+/* BESPOKE END <<DEPRECATE>> */

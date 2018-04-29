@@ -1,6 +1,15 @@
+/**
+ * This file is partially generated; only edit bespoke sections.
+ *
+ * SOURCE<<gen/server/google.ts::module>>
+ * BESPOKE<<DEPRECATE>>
+ * SIGNED<<l/QVWVs3dx4VF4mzFKc6/3wi/dF2ICjuWRJKGXc8OxJyVMuasmY/oJCoOjlc98WPTdCMWkyM5tGDCvfnf+6mtg==>>
+ */
+
 import { OAuth2Client } from "google-auth-library";
 import { google } from "googleapis";
 
+/* BESPOKE START <<DEPRECATE>> */
 interface IAccessToken {
   tokens: {
     access_token?: string | null;
@@ -42,3 +51,4 @@ export async function genAccessTokenInfo(accessToken: string): Promise<IAccessTo
     .oauth2("v2")
     .tokeninfo({access_token: accessToken});
 }
+/* BESPOKE END <<DEPRECATE>> */
