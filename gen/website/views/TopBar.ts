@@ -24,7 +24,7 @@ export const module: Module = Module.new({
     }),
     Import.new({
       name: "url",
-      with: ["parse", "UrlWithParsedQuery"],
+      with: ["Url"],
     }),
     Import.new({
       name: "../util",

@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views/TopBar.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<UVVeY/65eSG0Yc8QBomfl9xPZgMHXyNuISto4b8MsyzG7wjatI8jVwRQhNEfQTgpfBGykqQForuIgoWUzHXPyQ==>>
+ * SIGNED<<3tTByrVNX+2oI8XZKNhcsHRe557Gj3xd2U9M7MmuGHySHXXmbl66nQR9XckPAqvktrpszUrXNeNY6xs/mCyKLw==>>
  */
 
 import * as cookie from "js-cookie";
@@ -23,8 +23,7 @@ import {
   ToolbarTitle,
 } from "rmwc";
 import {
-  parse,
-  UrlWithParsedQuery,
+  Url,
 } from "url";
 
 import {
@@ -49,9 +48,9 @@ interface IProps {
 class TopBarRelay extends React.Component<IProps> {
 
   public render(): JSX.Element {
-    const urlParts: UrlWithParsedQuery = parse(window.location.href, true);
-    if ("code" in urlParts.query) {
-      this.login(urlParts.query.code as string);
+    const urlParts: URL = new URL(window.location.href);
+    if (urlParts.searchParams.has("code")) {
+      this.login(urlParts.searchParams.get("code") as string);
 
       return <div />;
     }

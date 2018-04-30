@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/google.ts::module>>
  * BESPOKE<<getOAuthClient, getLoginURL, genAccessToken, genAccessTokenInfo>>
- * SIGNED<<b2tIBTIdShqLBBj8w7hjGg32saWaw2rNTWSLuSpvnO4iQv+sPZ70SlbTi0UsmNzsNZAi4chMITJziuRQdByTgw==>>
+ * SIGNED<<emw8wED+gw2Dyn+JUpCS7DTl4v9tWEdLZ7KB20T0YDtfB1Lyfew3dnAAosqDPP8Aq+87B+ZVYkfULuqReM9t8w==>>
  */
 
 import {
@@ -13,11 +13,11 @@ import {
   google,
 } from "googleapis";
 
-interface IAccessToken {
+export interface IAccessToken {
   tokens: { access_token?: string | null };
 }
 
-interface IAccessTokenInfo {
+export interface IAccessTokenInfo {
   data: { email: string; user_id: string; verified_email: boolean };
 }
 

@@ -11,14 +11,14 @@ export const module: Module = Module.new({
       with: ["google"],
     }),
     Interface.new({
-      exported: false,
+      exported: true,
       name: "IAccessToken",
       types: {
         tokens: "{ access_token?: string | null }",
       },
     }),
     Interface.new({
-      exported: false,
+      exported: true,
       name: "IAccessTokenInfo",
       types: {
         data: "{ email: string; user_id: string; verified_email: boolean }",

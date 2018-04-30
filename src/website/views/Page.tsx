@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views/Page.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<L5hDmnYU+O9E8+oixjGQzg1aagrkNa87Vzpqut9qDsFqwcRdr8kN4TgLhZ8v49ypDbJuAwXtyVQ5jzl34OWtFw==>>
+ * SIGNED<<lRan6LFuH7s0t8DN80qmVDUX13HFntwRJCjNxXvFFW/x15HIRk2kZsfS0Ri4b4cRKvPy6ZvmTVUg2d2KcThH2w==>>
  */
 
 import * as React from "react";
@@ -11,8 +11,7 @@ import {
   LinearProgress,
 } from "rmwc";
 import {
-  parse,
-  UrlWithParsedQuery,
+  Url,
 } from "url";
 
 import {
@@ -33,10 +32,10 @@ interface IProps {
 export class Page extends React.Component<IProps> {
 
   public render(): JSX.Element {
-    const urlParts: UrlWithParsedQuery = parse(window.location.href, true);
+    const urlParts: URL = new URL(window.location.href);
     if (this.props.data === null) {
       return <LinearProgress determinate={false} />;
-    } else if ("code" in urlParts.query) {
+    } else if (urlParts.searchParams.has("code")) {
       return (
         <>
           <LinearProgress determinate={false} />

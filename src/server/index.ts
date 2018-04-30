@@ -33,7 +33,7 @@ const app: express.Express = express();
 let didSetup: boolean = false;
 
 /* BESPOKE START <<DEPRECATE>> */
-app.use(cors(), helmet(), bearer(), json(), urlencoded());
+app.use(cors(), helmet(), bearer(), json(), urlencoded({ extended: true }));
 
 app.use((req: express.Request, res: express.Response, next: () => void): void => {
   if (!didSetup) {
