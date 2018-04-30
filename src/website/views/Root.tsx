@@ -2,8 +2,8 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/website/views/Root.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<4OFb4EepJZXpmQgnthzGVAvEz6RaKbR2M717gBQzGgcdL8IVTh6Cqdzv8WT5sSAjK6LCP/kXD/bIbMIoHplRfw==>>
+ * BESPOKE<<Root::render>>
+ * SIGNED<<U7P7NqfHihftKeK+Hnu02M9XqOcroIDkwtkndoG9q9ToV88R/VtrTDzfltRRmFfgnosGa48uQNppAbXcIpiinQ==>>
  */
 
 import * as cookie from "js-cookie";
@@ -27,10 +27,11 @@ interface IProps {
   environment: Environment;
 }
 
-/* BESPOKE START <<DEPRECATE>> */
 export class Root extends React.Component<IProps> {
 
-  public render(): JSX.Element {
+  public render(
+  ): JSX.Element {
+    /* BESPOKE START <<Root::render>> */
     return (
       <QueryRenderer
         environment={this.props.environment}
@@ -51,6 +52,6 @@ export class Root extends React.Component<IProps> {
         }}
       />
     );
+    /* BESPOKE END <<Root::render>> */
   }
 }
-/* BESPOKE END <<DEPRECATE>> */

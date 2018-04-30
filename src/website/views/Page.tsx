@@ -2,8 +2,8 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/website/views/Page.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<lRan6LFuH7s0t8DN80qmVDUX13HFntwRJCjNxXvFFW/x15HIRk2kZsfS0Ri4b4cRKvPy6ZvmTVUg2d2KcThH2w==>>
+ * BESPOKE<<Page::render>>
+ * SIGNED<<uu8jXVvXcS44SULo+5CNSff7x6gnT8ZQI9WNbrAgYOE/yIIAx1K6AaPWwdsB9jWRxnHW9jVV/rfUAjBe8qZTFw==>>
  */
 
 import * as React from "react";
@@ -28,10 +28,11 @@ interface IProps {
   data: TopBarQuery | null;
 }
 
-/* BESPOKE START <<DEPRECATE>> */
 export class Page extends React.Component<IProps> {
 
-  public render(): JSX.Element {
+  public render(
+  ): JSX.Element {
+    /* BESPOKE START <<Page::render>> */
     const urlParts: URL = new URL(window.location.href);
     if (this.props.data === null) {
       return <LinearProgress determinate={false} />;
@@ -50,6 +51,6 @@ export class Page extends React.Component<IProps> {
         </>
       );
     }
+    /* BESPOKE END <<Page::render>> */
   }
 }
-/* BESPOKE END <<DEPRECATE>> */

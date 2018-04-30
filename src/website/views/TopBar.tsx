@@ -2,8 +2,8 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/website/views/TopBar.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<3tTByrVNX+2oI8XZKNhcsHRe557Gj3xd2U9M7MmuGHySHXXmbl66nQR9XckPAqvktrpszUrXNeNY6xs/mCyKLw==>>
+ * BESPOKE<<TopBar::render, TopBar::googleAuth, TopBar::login, TopBar::logout, DEPRECATE>>
+ * SIGNED<<UI4DS8SIuh/j/gZnS/dgsMnUJqwdPg+8jeFgeRzt2PDP1J+orv7vXGHPqE56vKnmjjSaOIQ0/HfbIujRnjYX1g==>>
  */
 
 import * as cookie from "js-cookie";
@@ -44,10 +44,11 @@ interface IProps {
   relay: Relay;
 }
 
-/* BESPOKE START <<DEPRECATE>> */
 class TopBarRelay extends React.Component<IProps> {
 
-  public render(): JSX.Element {
+  public render(
+  ): JSX.Element {
+    /* BESPOKE START <<TopBar::render>> */
     const urlParts: URL = new URL(window.location.href);
     if (urlParts.searchParams.has("code")) {
       this.login(urlParts.searchParams.get("code") as string);
@@ -97,15 +98,22 @@ class TopBarRelay extends React.Component<IProps> {
         <ToolbarFixedAdjust />
       </>
     );
+    /* BESPOKE END <<TopBar::render>> */
   }
 
-  private googleAuth(): void {
+  private googleAuth(
+  ): void {
+    /* BESPOKE START <<TopBar::googleAuth>> */
     if ("loginURL" in this.props.data) {
       goto(this.props.data.loginURL, true);
     }
+    /* BESPOKE END <<TopBar::googleAuth>> */
   }
 
-  private login(code: string): void {
+  private login(
+    code: string,
+  ): void {
+    /* BESPOKE START <<TopBar::login>> */
     commitMutation(
       this.props.relay.environment,
       {
@@ -131,9 +139,12 @@ class TopBarRelay extends React.Component<IProps> {
         },
       },
     );
+    /* BESPOKE END <<TopBar::login>> */
   }
 
-  private logout(): void {
+  private logout(
+  ): void {
+    /* BESPOKE START <<TopBar::logout>> */
     commitMutation(
       this.props.relay.environment,
       {
@@ -159,9 +170,11 @@ class TopBarRelay extends React.Component<IProps> {
         },
       },
     );
+    /* BESPOKE END <<TopBar::logout>> */
   }
 }
 
+/* BESPOKE START <<DEPRECATE>> */
 export const TopBar: React.ComponentType = createFragmentContainer(
   TopBarRelay,
   graphql`
