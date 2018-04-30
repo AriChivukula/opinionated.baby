@@ -1,7 +1,31 @@
-import { Bespoke, Import, Interface, Module, Renderable } from "typescriptase";
+import { Bespoke, Import, Interface, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
+    Import.new({
+      name: "js-cookie",
+      withAllAs: "cookie",
+    }),
+    Import.new({
+      name: "react",
+      withAllAs: "React",
+    }),
+    Import.new({
+      name: "react-relay",
+      with: ["graphql", "QueryRenderer"],
+    }),
+    Import.new({
+      name: "relay-runtime",
+      with: ["Environment"],
+    }),
+    Import.new({
+      name: "./Page",
+      with: ["Page"],
+    }),
+    Import.new({
+      name: "./__generated__/TopBarQuery.graphql",
+      with: ["TopBarQuery"],
+    }),
     Interface.new({
       exported: false,
       name: "IProps",
@@ -9,33 +33,9 @@ export const module: Renderable = Module.new({
         environment: "Environment",
       }
     }),
-    Bespoke.new({name: "DEPRECATE"}),
+    Bespoke.new({
+      name: "DEPRECATE",
+    }),
   ],
   destination: "src/website/views/Root.tsx",
-  imports: [
-    Import.new({
-      module: "js-cookie",
-      nameAll: "cookie",
-    }),
-    Import.new({
-      module: "react",
-      nameAll: "React",
-    }),
-    Import.new({
-      module: "react-relay",
-      names: ["graphql", "QueryRenderer"],
-    }),
-    Import.new({
-      module: "relay-runtime",
-      names: ["Environment"],
-    }),
-    Import.new({
-      module: "./Page",
-      names: ["Page"],
-    }),
-    Import.new({
-      module: "./__generated__/TopBarQuery.graphql",
-      names: ["TopBarQuery"],
-    }),
-  ],
 });

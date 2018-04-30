@@ -1,14 +1,14 @@
-import { Bespoke, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Import, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
-    Bespoke.new({name: "DEPRECATE"}),
-  ],
-  destination: "src/server/entity/User.ts",
-  imports: [
     Import.new({
-      module: "typeorm",
-      names: ["Column", "Entity", "PrimaryColumn"],
+      name: "typeorm",
+      with: ["Column", "Entity", "PrimaryColumn"],
+    }),
+    Bespoke.new({
+      name: "DEPRECATE",
     }),
   ],
+  destination: "src/server/entity/User.ts",
 });

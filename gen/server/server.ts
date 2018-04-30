@@ -1,34 +1,34 @@
-import { Bespoke, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Import, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
-    Bespoke.new({name: "DEPRECATE"}),
+    Import.new({
+      name: "express",
+      withDefaultAs: "express",
+    }),
+    Import.new({
+      name: "express-graphql",
+      withDefaultAs: "graphqlHTTP",
+    }),
+    Import.new({
+      name: "fs",
+      with: ["readFileSync"],
+    }),
+    Import.new({
+      name: "graphql",
+      with: ["buildSchema", "GraphQLSchema"],
+    }),
+    Import.new({
+      name: "path",
+      with: ["join"],
+    }),
+    Import.new({
+      name: "./root",
+      with: ["genRoot"],
+    }),
+    Bespoke.new({
+      name: "DEPRECATE",
+    }),
   ],
   destination: "src/server/server.ts",
-  imports: [
-    Import.new({
-      module: "express",
-      nameDefault: "express",
-    }),
-    Import.new({
-      module: "express-graphql",
-      nameDefault: "graphqlHTTP",
-    }),
-    Import.new({
-      module: "fs",
-      names: ["readFileSync"],
-    }),
-    Import.new({
-      module: "graphql",
-      names: ["buildSchema", "GraphQLSchema"],
-    }),
-    Import.new({
-      module: "path",
-      names: ["join"],
-    }),
-    Import.new({
-      module: "./root",
-      names: ["genRoot"],
-    }),
-  ],
 });

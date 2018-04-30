@@ -1,7 +1,39 @@
-import { Bespoke, Function, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Function, Import, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
+    Import.new({
+      name: "js-cookie",
+      withAllAs: "cookie",
+    }),
+    Import.new({
+      name: "react",
+      withAllAs: "React",
+    }),
+    Import.new({
+      name: "react-dom",
+      withAllAs: "ReactDOM",
+    }),
+    Import.new({
+      name: "react-relay-network-modern",
+      with: ["authMiddleware", "RelayNetworkLayer", "urlMiddleware"],
+    }),
+    Import.new({
+      name: "react-router-dom",
+      with: ["BrowserRouter", "Route", "Switch"],
+    }),
+    Import.new({
+      name: "relay-runtime",
+      with: ["Environment", "RecordSource", "Store"],
+    }),
+    Import.new({
+      name: "./views/FourOhFour",
+      with: ["FourOhFour"],
+    }),
+    Import.new({
+      name: "./views/Root",
+      with: ["Root"],
+    }),
     Function.new({
       async: false,
       content: [
@@ -18,38 +50,4 @@ export const module: Renderable = Module.new({
     }),
   ],
   destination: "src/website/website.tsx",
-  imports: [
-    Import.new({
-      module: "js-cookie",
-      nameAll: "cookie",
-    }),
-    Import.new({
-      module: "react",
-      nameAll: "React",
-    }),
-    Import.new({
-      module: "react-dom",
-      nameAll: "ReactDOM",
-    }),
-    Import.new({
-      module: "react-relay-network-modern",
-      names: ["authMiddleware", "RelayNetworkLayer", "urlMiddleware"],
-    }),
-    Import.new({
-      module: "react-router-dom",
-      names: ["BrowserRouter", "Route", "Switch"],
-    }),
-    Import.new({
-      module: "relay-runtime",
-      names: ["Environment", "RecordSource", "Store"],
-    }),
-    Import.new({
-      module: "./views/FourOhFour",
-      names: ["FourOhFour"],
-    }),
-    Import.new({
-      module: "./views/Root",
-      names: ["Root"],
-    }),
-  ],
 });

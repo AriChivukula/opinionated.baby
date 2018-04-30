@@ -1,7 +1,47 @@
-import { Bespoke, Import, Interface, Module, Renderable } from "typescriptase";
+import { Bespoke, Import, Interface, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
+    Import.new({
+      name: "js-cookie",
+      withAllAs: "cookie",
+    }),
+    Import.new({
+      name: "react",
+      withAllAs: "React",
+    }),
+    Import.new({
+      name: "react-relay",
+      with: ["commitMutation", "createFragmentContainer", "graphql"],
+    }),
+    Import.new({
+      name: "relay-runtime",
+      withDefaultAs: "Relay",
+    }),
+    Import.new({
+      name: "rmwc",
+      with: ["Toolbar", "ToolbarFixedAdjust", "ToolbarIcon", "ToolbarRow", "ToolbarSection", "ToolbarTitle"],
+    }),
+    Import.new({
+      name: "url",
+      with: ["parse", "UrlWithParsedQuery"],
+    }),
+    Import.new({
+      name: "../util",
+      with: ["goto"],
+    }),
+    Import.new({
+      name: "./__generated__/TopBarLoginMutation.graphql",
+      with: ["TopBarLoginMutationResponse"],
+    }),
+    Import.new({
+      name: "./__generated__/TopBarLogoutMutation.graphql",
+      with: ["TopBarLogoutMutationResponse"],
+    }),
+    Import.new({
+      name: "./__generated__/TopBarQuery.graphql",
+      with: ["TopBarQuery"],
+    }),
     Interface.new({
       exported: false,
       name: "IProps",
@@ -10,49 +50,9 @@ export const module: Renderable = Module.new({
         relay: "Relay",
       }
     }),
-    Bespoke.new({name: "DEPRECATE"}),
+    Bespoke.new({
+      name: "DEPRECATE",
+    }),
   ],
   destination: "src/website/views/TopBar.tsx",
-  imports: [
-    Import.new({
-      module: "js-cookie",
-      nameAll: "cookie",
-    }),
-    Import.new({
-      module: "react",
-      nameAll: "React",
-    }),
-    Import.new({
-      module: "react-relay",
-      names: ["commitMutation", "createFragmentContainer", "graphql"],
-    }),
-    Import.new({
-      module: "relay-runtime",
-      nameDefault: "Relay",
-    }),
-    Import.new({
-      module: "rmwc",
-      names: ["Toolbar", "ToolbarFixedAdjust", "ToolbarIcon", "ToolbarRow", "ToolbarSection", "ToolbarTitle"],
-    }),
-    Import.new({
-      module: "url",
-      names: ["parse", "UrlWithParsedQuery"],
-    }),
-    Import.new({
-      module: "../util",
-      names: ["goto"],
-    }),
-    Import.new({
-      module: "./__generated__/TopBarLoginMutation.graphql",
-      names: ["TopBarLoginMutationResponse"],
-    }),
-    Import.new({
-      module: "./__generated__/TopBarLogoutMutation.graphql",
-      names: ["TopBarLogoutMutationResponse"],
-    }),
-    Import.new({
-      module: "./__generated__/TopBarQuery.graphql",
-      names: ["TopBarQuery"],
-    }),
-  ],
 });
