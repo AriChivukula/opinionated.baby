@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/google.ts::module>>
  * BESPOKE<<getOAuthClient, getLoginURL, genAccessToken, genAccessTokenInfo>>
- * SIGNED<<t6neUBR5bMXy/1euzgCilSaiJNZ9Tb1nV/eSyyg5QfnIaXGAutNqdTU0KjjInVTFW0o5DOXoC9lPsSoXDbWZIQ==>>
+ * SIGNED<<b2tIBTIdShqLBBj8w7hjGg32saWaw2rNTWSLuSpvnO4iQv+sPZ70SlbTi0UsmNzsNZAi4chMITJziuRQdByTgw==>>
  */
 
 import {

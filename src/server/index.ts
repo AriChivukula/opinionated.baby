@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<DEPRECATE, handler>>
- * SIGNED<<Fitd2UkbzqinjIZO+jrn6VJPKUL4I7dWz+Ua2uceSURzEG+4Mw+AmrG3J/KnweuV5BJrbr/7F1xUlVUPgjTAfQ==>>
+ * SIGNED<<A06yWPGzwRvEyHuRPpPXfJjactQUCMcJfEqglhYxee1abFhUfeZgd67aXDL8KxHjiOP1M0S8kgRaHEg0fhoLYQ==>>
  */
 
 import "@babel/polyfill";

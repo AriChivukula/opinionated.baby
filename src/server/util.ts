@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/util.ts::module>>
  * BESPOKE<<makeSync<T>, genNullOnThrow<T>>>
- * SIGNED<<cZLfMT7w3H1s5pqYnaUvqVjJPa2t27O1Q7OeVwXQrdhFt4ELz6V2GnHOFzqfZxnRNvVBCWtbiY8bGB5sihrEKg==>>
+ * SIGNED<<2m34PnVVRoF9SFCHuaToEY4UQOiX8F+wA1aSsvAVttE67YwlTGsB8uP7m69x2hKn9S0oQPCfzlKN9/PhHi0L/Q==>>
  */
 
 export function makeSync<T>(

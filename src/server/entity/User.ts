@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/entity/User.ts::module>>
  * BESPOKE<<DEPRECATE>>
- * SIGNED<<Ttj0lvoumIqh+GdRomCpef9u3zpQv7Ouxi0OcJfIKqOo/Q3cZ6Xs04sjPWL+50s0WfG4PzffVfz6AQUyLpaK8g==>>
+ * SIGNED<<EacOA83AsYRQBenEw51EBvtp8nhonnlzgydS0yFleT1k5q8rje/7WSJMbPLuH9ONSR5CBhsa/lycJlqVfM6hYg==>>
  */
 
 import {
