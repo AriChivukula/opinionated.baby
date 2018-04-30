@@ -1,17 +1,17 @@
-import { Bespoke, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Import, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
-    Bespoke.new({name: "DEPRECATE"}),
+    Import.new({
+      name: "@babel/polyfill",
+    }),
+    Import.new({
+      name: "electron",
+      with: ["app", "BrowserWindow"],
+    }),
+    Bespoke.new({
+      name: "DEPRECATE",
+    }),
   ],
   destination: "src/application/index.ts",
-  imports: [
-    Import.new({
-      module: "@babel/polyfill",
-    }),
-    Import.new({
-      module: "electron",
-      names: ["app", "BrowserWindow"],
-    }),
-  ],
 });

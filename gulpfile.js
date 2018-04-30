@@ -52,7 +52,7 @@ gulp.task(
 
 gulp.task(
   "codegen",
-  shell.task("ts-node node_modules/.bin/typescriptase gen/**/*.ts gen/**/**/*.ts"),
+  shell.task("ts-node node_modules/.bin/typescriptase --files gen/**/*.ts gen/**/**/*.ts"),
 );
 
 /* BUILD */
@@ -69,7 +69,7 @@ gulp.task(
 
 gulp.task(
   "build:0:lint:typescript",
-  shell.task("tslint -p . src/**/*.tsx src/**/*.ts"),
+  shell.task("tslint -p . gen/**/*.ts src/**/*.ts src/**/*.tsx"),
 );
 
 gulp.task(

@@ -1,6 +1,6 @@
-import { Bespoke, Function, Module, Renderable } from "typescriptase";
+import { Bespoke, Function, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
     Function.new({
       async: false,
@@ -31,5 +31,4 @@ export const module: Renderable = Module.new({
     }),
   ],
   destination: "src/website/util.tsx",
-  imports: [],
 });

@@ -12,6 +12,7 @@
     "no-inferrable-types": false,
     "no-null-keyword": false,
     "no-unsafe-any": false,
+    "object-literal-sort-keys": false,
     "only-arrow-functions": [true, "allow-named-functions"],
     "variable-name": false
   }

@@ -1,44 +1,44 @@
-import { Bespoke, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Import, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
-    Bespoke.new({name: "DEPRECATE"}),
+    Import.new({
+      name: "jest-enzyme",
+    }),
+    Import.new({
+      name: "mutationobserver-shim",
+    }),
+    Import.new({
+      name: "enzyme",
+      withDefaultAs: "Enzyme",
+    }),
+    Import.new({
+      name: "enzyme-adapter-react-16",
+      withDefaultAs: "Adapter",
+    }),
+    Import.new({
+      name: "react",
+      withAllAs: "React",
+    }),
+    Import.new({
+      name: "react-relay-network-modern",
+      with: ["RelayNetworkLayer", "urlMiddleware"],
+    }),
+    Import.new({
+      name: "react-test-context-provider",
+      withDefaultAs: "context",
+    }),
+    Import.new({
+      name: "relay-runtime",
+      with: ["Environment", "RecordSource", "Store"],
+    }),
+    Import.new({
+      name: "../views/Page",
+      with: ["Page"],
+    }),
+    Bespoke.new({
+      name: "DEPRECATE",
+    }),
   ],
   destination: "src/website/__tests__/page.test.tsx",
-  imports: [
-    Import.new({
-      module: "jest-enzyme",
-    }),
-    Import.new({
-      module: "mutationobserver-shim",
-    }),
-    Import.new({
-      module: "enzyme",
-      nameDefault: "Enzyme",
-    }),
-    Import.new({
-      module: "enzyme-adapter-react-16",
-      nameDefault: "Adapter",
-    }),
-    Import.new({
-      module: "react",
-      nameAll: "React",
-    }),
-    Import.new({
-      module: "react-relay-network-modern",
-      names: ["RelayNetworkLayer", "urlMiddleware"],
-    }),
-    Import.new({
-      module: "react-test-context-provider",
-      nameDefault: "context",
-    }),
-    Import.new({
-      module: "relay-runtime",
-      names: ["Environment", "RecordSource", "Store"],
-    }),
-    Import.new({
-      module: "../views/Page",
-      names: ["Page"],
-    }),
-  ],
 });

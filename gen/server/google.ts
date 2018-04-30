@@ -1,7 +1,15 @@
-import { Bespoke, Function, Import, Interface, Module, Renderable } from "typescriptase";
+import { Bespoke, Function, Import, Interface, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
+    Import.new({
+      name: "google-auth-library",
+      with: ["OAuth2Client"],
+    }),
+    Import.new({
+      name: "googleapis",
+      with: ["google"],
+    }),
     Interface.new({
       exported: false,
       name: "IAccessToken",
@@ -70,14 +78,4 @@ export const module: Renderable = Module.new({
     }),
   ],
   destination: "src/server/google.ts",
-  imports: [
-    Import.new({
-      module: "google-auth-library",
-      names: ["OAuth2Client"],
-    }),
-    Import.new({
-      module: "googleapis",
-      names: ["google"],
-    }),
-  ],
 });

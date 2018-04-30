@@ -1,7 +1,19 @@
-import { Bespoke, EVariableKind, Function, Import, Interface, Module, Renderable, Variable } from "typescriptase";
+import { Bespoke, Function, Import, Interface, Module, Variable } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
+    Import.new({
+      name: "react",
+      withAllAs: "React",
+    }),
+    Import.new({
+      name: "rmwc",
+      with: ["Card", "CardMedia", "CardPrimaryAction", "Grid", "GridCell", "List", "SimpleListItem", "Typography"],
+    }),
+    Import.new({
+      name: "../util",
+      with: ["goto"],
+    }),
     Interface.new({
       exported: false,
       name: "ITools",
@@ -23,23 +35,28 @@ export const module: Renderable = Module.new({
     }),
     Variable.new({
       assignment: "12",
-      kind: EVariableKind.IMMUTABLE,
+      exported: false,
+      mutable: false,
       name: "fullWidth",
       type: "number",
     }),
     Variable.new({
       assignment: "3",
-      kind: EVariableKind.IMMUTABLE,
+      exported: false,
+      mutable: false,
       name: "toolWidth",
       type: "number",
     }),
     Variable.new({
       assignment: "4",
-      kind: EVariableKind.IMMUTABLE,
+      exported: false,
+      mutable: false,
       name: "releaseWidth",
       type: "number",
     }),
-    Bespoke.new({ name: "DEPRECATE" }),
+    Bespoke.new({
+      name: "DEPRECATE"
+    }),
     Function.new({
       async: false,
       content: [
@@ -54,18 +71,4 @@ export const module: Renderable = Module.new({
     }),
   ],
   destination: "src/website/views/Content.tsx",
-  imports: [
-    Import.new({
-      module: "react",
-      nameAll: "React",
-    }),
-    Import.new({
-      module: "rmwc",
-      names: ["Card", "CardMedia", "CardPrimaryAction", "Grid", "GridCell", "List", "SimpleListItem", "Typography"],
-    }),
-    Import.new({
-      module: "../util",
-      names: ["goto"],
-    }),
-  ],
 });

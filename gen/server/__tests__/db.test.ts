@@ -1,22 +1,22 @@
-import { Bespoke, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Import, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
-    Bespoke.new({name: "DEPRECATE"}),
+    Import.new({
+      name: "typeorm",
+      with: ["getRepository"],
+    }),
+    Import.new({
+      name: "../db",
+      with: ["genSetupDB"],
+    }),
+    Import.new({
+      name: "../entity/User",
+      with: ["User"],
+    }),
+    Bespoke.new({
+      name: "DEPRECATE",
+    }),
   ],
   destination: "src/server/__tests__/db.test.ts",
-  imports: [
-    Import.new({
-      module: "typeorm",
-      names: ["getRepository"],
-    }),
-    Import.new({
-      module: "../db",
-      names: ["genSetupDB"],
-    }),
-    Import.new({
-      module: "../entity/User",
-      names: ["User"],
-    }),
-  ],
 });

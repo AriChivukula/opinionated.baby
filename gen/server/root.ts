@@ -1,7 +1,23 @@
-import { Bespoke, Function, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Function, Import, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
+    Import.new({
+      name: "express",
+      withDefaultAs: "express",
+    }),
+    Import.new({
+      name: "./db",
+      with: ["genUserForAccessToken"],
+    }),
+    Import.new({
+      name: "./google",
+      with: ["genAccessToken", "getLoginURL"],
+    }),
+    Import.new({
+      name: "./util",
+      with: ["genNullOnThrow"],
+    }),
     Function.new({
       async: true,
       content: [
@@ -19,22 +35,4 @@ export const module: Renderable = Module.new({
     }),
   ],
   destination: "src/server/root.ts",
-  imports: [
-    Import.new({
-      module: "express",
-      nameDefault: "express",
-    }),
-    Import.new({
-      module: "./db",
-      names: ["genUserForAccessToken"],
-    }),
-    Import.new({
-      module: "./google",
-      names: ["genAccessToken", "getLoginURL"],
-    }),
-    Import.new({
-      module: "./util",
-      names: ["genNullOnThrow"],
-    }),
-  ],
 });

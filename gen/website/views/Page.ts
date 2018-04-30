@@ -1,7 +1,31 @@
-import { Bespoke, Import, Interface, Module, Renderable } from "typescriptase";
+import { Bespoke, Import, Interface, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
+    Import.new({
+      name: "react",
+      withAllAs: "React",
+    }),
+    Import.new({
+      name: "rmwc",
+      with: ["LinearProgress"],
+    }),
+    Import.new({
+      name: "url",
+      with: ["parse", "UrlWithParsedQuery"],
+    }),
+    Import.new({
+      name: "./Content",
+      with: ["Content"],
+    }),
+    Import.new({
+      name: "./TopBar",
+      with: ["TopBar"],
+    }),
+    Import.new({
+      name: "./__generated__/TopBarQuery.graphql",
+      with: ["TopBarQuery"],
+    }),
     Interface.new({
       exported: false,
       name: "IProps",
@@ -9,33 +33,9 @@ export const module: Renderable = Module.new({
         data: "TopBarQuery | null",
       }
     }),
-    Bespoke.new({name: "DEPRECATE"}),
+    Bespoke.new({
+      name: "DEPRECATE",
+    }),
   ],
   destination: "src/website/views/Page.tsx",
-  imports: [
-    Import.new({
-      module: "react",
-      nameAll: "React",
-    }),
-    Import.new({
-      module: "rmwc",
-      names: ["LinearProgress"],
-    }),
-    Import.new({
-      module: "url",
-      names: ["parse", "UrlWithParsedQuery"],
-    }),
-    Import.new({
-      module: "./Content",
-      names: ["Content"],
-    }),
-    Import.new({
-      module: "./TopBar",
-      names: ["TopBar"],
-    }),
-    Import.new({
-      module: "./__generated__/TopBarQuery.graphql",
-      names: ["TopBarQuery"],
-    }),
-  ],
 });

@@ -1,7 +1,19 @@
-import { Bespoke, Function, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Function, Import, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
+    Import.new({
+      name: "react",
+      withAllAs: "React",
+    }),
+    Import.new({
+      name: "react-router-dom",
+      with: ["Link"],
+    }),
+    Import.new({
+      name: "rmwc",
+      with: ["Typography"],
+    }),
     Function.new({
       async: false,
       content: [
@@ -16,18 +28,4 @@ export const module: Renderable = Module.new({
     }),
   ],
   destination: "src/website/views/FourOhFour.tsx",
-  imports: [
-    Import.new({
-      module: "react",
-      nameAll: "React",
-    }),
-    Import.new({
-      module: "react-router-dom",
-      names: ["Link"],
-    }),
-    Import.new({
-      module: "rmwc",
-      names: ["Typography"],
-    }),
-  ],
 });

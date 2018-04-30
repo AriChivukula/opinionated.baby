@@ -1,22 +1,23 @@
-import { Bespoke, EVariableKind, Import, Module, Renderable, Variable } from "typescriptase";
+import { Bespoke, Import, Module, Variable } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
+    Import.new({
+      name: "@babel/polyfill",
+    }),
+    Import.new({
+      name: "./website",
+      with: ["render"],
+    }),
     Variable.new({
-      kind: EVariableKind.MUTABLE,
+      exported: false,
+      mutable: true,
       name: "apiURL",
       type: "string",
     }),
-    Bespoke.new({name: "DEPRECATE"}),
+    Bespoke.new({
+      name: "DEPRECATE",
+    }),
   ],
   destination: "src/website/index.tsx",
-  imports: [
-    Import.new({
-      module: "@babel/polyfill",
-    }),
-    Import.new({
-      module: "./website",
-      names: ["render"],
-    }),
-  ],
 });

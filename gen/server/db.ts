@@ -1,7 +1,19 @@
-import { Bespoke, Function, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Function, Import, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
+    Import.new({
+      name: "typeorm",
+      with: ["createConnection", "getRepository"],
+    }),
+    Import.new({
+      name: "./entity/User",
+      with: ["User"],
+    }),
+    Import.new({
+      name: "./google",
+      with: ["genAccessTokenInfo", "IAccessTokenInfo"],
+    }),
     Function.new({
       async: true,
       content: [
@@ -30,18 +42,4 @@ export const module: Renderable = Module.new({
     }),
   ],
   destination: "src/server/db.ts",
-  imports: [
-    Import.new({
-      module: "typeorm",
-      names: ["createConnection", "getRepository"],
-    }),
-    Import.new({
-      module: "./entity/User",
-      names: ["User"],
-    }),
-    Import.new({
-      module: "./google",
-      names: ["genAccessTokenInfo", "IAccessTokenInfo"],
-    }),
-  ],
 });

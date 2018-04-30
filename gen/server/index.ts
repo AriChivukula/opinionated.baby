@@ -1,20 +1,63 @@
-import { Bespoke, EVariableKind, Function, Import, Module, Renderable, Variable } from "typescriptase";
+import { Bespoke, Function, Import, Module, Variable } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
+    Import.new({
+      name: "@babel/polyfill",
+    }),
+    Import.new({
+      name: "aws-serverless-express",
+      withDefaultAs: "lambda",
+    }),
+    Import.new({
+      name: "body-parser",
+      with: ["json", "urlencoded"],
+    }),
+    Import.new({
+      name: "cors",
+      withDefaultAs: "cors",
+    }),
+    Import.new({
+      name: "express",
+      withDefaultAs: "express",
+    }),
+    Import.new({
+      name: "express-bearer-token",
+      withDefaultAs: "bearer",
+    }),
+    Import.new({
+      name: "helmet",
+      withDefaultAs: "helmet",
+    }),
+    Import.new({
+      name: "./db",
+      with: ["genSetupDB"],
+    }),
+    Import.new({
+      name: "./server",
+      with: ["graphQL"],
+    }),
+    Import.new({
+      name: "./util",
+      with: ["makeSync"],
+    }),
     Variable.new({
       assignment: "express()",
-      kind: EVariableKind.IMMUTABLE,
+      exported: false,
+      mutable: false,
       name: "app",
       type: "express.Express",
     }),
     Variable.new({
       assignment: "false",
-      kind: EVariableKind.MUTABLE,
+      exported: false,
+      mutable: true,
       name: "didSetup",
-      "type": "boolean",
+      type: "boolean",
     }),
-    Bespoke.new({name: "DEPRECATE"}),
+    Bespoke.new({
+      name: "DEPRECATE",
+    }),
     Function.new({
       async: false,
       content: [
@@ -32,45 +75,4 @@ export const module: Renderable = Module.new({
     }),
   ],
   destination: "src/server/index.ts",
-  imports: [
-    Import.new({
-      module: "@babel/polyfill",
-    }),
-    Import.new({
-      module: "aws-serverless-express",
-      nameDefault: "lambda",
-    }),
-    Import.new({
-      module: "body-parser",
-      names: ["json", "urlencoded"],
-    }),
-    Import.new({
-      module: "cors",
-      nameDefault: "cors",
-    }),
-    Import.new({
-      module: "express",
-      nameDefault: "express",
-    }),
-    Import.new({
-      module: "express-bearer-token",
-      nameDefault: "bearer",
-    }),
-    Import.new({
-      module: "helmet",
-      nameDefault: "helmet",
-    }),
-    Import.new({
-      module: "./db",
-      names: ["genSetupDB"],
-    }),
-    Import.new({
-      module: "./server",
-      names: ["graphQL"],
-    }),
-    Import.new({
-      module: "./util",
-      names: ["makeSync"],
-    }),
-  ],
 });

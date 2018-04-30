@@ -1,14 +1,14 @@
-import { Bespoke, Import, Module, Renderable } from "typescriptase";
+import { Bespoke, Import, Module } from "typescriptase";
 
-export const module: Renderable = Module.new({
+export const module: Module = Module.new({
   content: [
-    Bespoke.new({name: "DEPRECATE"}),
-  ],
-  destination: "src/server/__tests__/google.test.ts",
-  imports: [
     Import.new({
-      module: "../google",
-      names: ["genAccessTokenInfo", "getLoginURL"],
+      name: "../google",
+      with: ["genAccessTokenInfo", "getLoginURL"],
+    }),
+    Bespoke.new({
+      name: "DEPRECATE",
     }),
   ],
+  destination: "src/server/__tests__/google.test.ts",
 });
