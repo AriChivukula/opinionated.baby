@@ -1,4 +1,4 @@
-import { Bespoke, Import, Interface, Module } from "typescriptase";
+import { Bespoke, Class, EMethodKind, Import, Interface, Method, Module } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
@@ -24,7 +24,7 @@ export const module: Module = Module.new({
     }),
     Import.new({
       name: "url",
-      with: ["parse", "UrlWithParsedQuery"],
+      with: ["Url"],
     }),
     Import.new({
       name: "../util",
@@ -49,6 +49,68 @@ export const module: Module = Module.new({
         data: "TopBarQuery",
         relay: "Relay",
       }
+    }),
+    Class.new({
+      abstract: false,
+      content: [
+        Method.new({
+          async: false,
+          content: [
+            Bespoke.new({
+              name: "TopBar::render",
+            }),
+          ],
+          inputs: {},
+          kind: EMethodKind.PUBLIC,
+          name: "render",
+          output: "JSX.Element",
+          static: false,
+        }),
+        Method.new({
+          async: false,
+          content: [
+            Bespoke.new({
+              name: "TopBar::googleAuth",
+            }),
+          ],
+          inputs: {},
+          kind: EMethodKind.PRIVATE,
+          name: "googleAuth",
+          output: "void",
+          static: false,
+        }),
+        Method.new({
+          async: false,
+          content: [
+            Bespoke.new({
+              name: "TopBar::login",
+            }),
+          ],
+          inputs: {
+            code: "string",
+          },
+          kind: EMethodKind.PRIVATE,
+          name: "login",
+          output: "void",
+          static: false,
+        }),
+        Method.new({
+          async: false,
+          content: [
+            Bespoke.new({
+              name: "TopBar::logout",
+            }),
+          ],
+          inputs: {},
+          kind: EMethodKind.PRIVATE,
+          name: "logout",
+          output: "void",
+          static: false,
+        }),
+      ],
+      exported: false,
+      extends: "React.Component<IProps>",
+      name: "TopBarRelay",
     }),
     Bespoke.new({
       name: "DEPRECATE",

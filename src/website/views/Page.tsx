@@ -2,8 +2,8 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/website/views/Page.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<vF39XuM+9DpQXaYjXEH7jYlzTRbXIEPo+IXL6Tmcrnqhk1Vl/oTSFH7i1U2BwqDdBDtXbLrTpK5l0UJXNZoBSw==>>
+ * BESPOKE<<Page::render>>
+ * SIGNED<<uu8jXVvXcS44SULo+5CNSff7x6gnT8ZQI9WNbrAgYOE/yIIAx1K6AaPWwdsB9jWRxnHW9jVV/rfUAjBe8qZTFw==>>
  */
 
 import * as React from "react";
@@ -11,8 +11,7 @@ import {
   LinearProgress,
 } from "rmwc";
 import {
-  parse,
-  UrlWithParsedQuery,
+  Url,
 } from "url";
 
 import {
@@ -29,14 +28,15 @@ interface IProps {
   data: TopBarQuery | null;
 }
 
-/* BESPOKE START <<DEPRECATE>> */
 export class Page extends React.Component<IProps> {
 
-  public render(): JSX.Element {
-    const urlParts: UrlWithParsedQuery = parse(window.location.href, true);
+  public render(
+  ): JSX.Element {
+    /* BESPOKE START <<Page::render>> */
+    const urlParts: URL = new URL(window.location.href);
     if (this.props.data === null) {
       return <LinearProgress determinate={false} />;
-    } else if ("code" in urlParts.query) {
+    } else if (urlParts.searchParams.has("code")) {
       return (
         <>
           <LinearProgress determinate={false} />
@@ -51,6 +51,6 @@ export class Page extends React.Component<IProps> {
         </>
       );
     }
+    /* BESPOKE END <<Page::render>> */
   }
 }
-/* BESPOKE END <<DEPRECATE>> */

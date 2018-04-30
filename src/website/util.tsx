@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/util.ts::module>>
  * BESPOKE<<isElectron, goto>>
- * SIGNED<<xBxv0B3J3LIX6ge7SArkKEWvb6zXpMpNIt4+sh+jmU/rNDbC5zDKoJedvc0pR6XZYNGaXVeBBjjYRoAlqMc/9A==>>
+ * SIGNED<<Qlh1wB567St9Hxl0DcpiAIhlOW72voU/iN+BYp107o+AUPG+DM574WKZ69NeO3KLsx0Io9tPRalf0h4rfT3RyQ==>>
  */
 
 export function isElectron(

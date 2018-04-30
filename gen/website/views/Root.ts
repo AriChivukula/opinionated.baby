@@ -1,4 +1,4 @@
-import { Bespoke, Import, Interface, Module } from "typescriptase";
+import { Bespoke, Class, EMethodKind, Import, Interface, Method, Module } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
@@ -33,8 +33,26 @@ export const module: Module = Module.new({
         environment: "Environment",
       }
     }),
-    Bespoke.new({
-      name: "DEPRECATE",
+    Class.new({
+      abstract: false,
+      content: [
+        Method.new({
+          async: false,
+          content: [
+            Bespoke.new({
+              name: "Root::render",
+            }),
+          ],
+          inputs: {},
+          kind: EMethodKind.PUBLIC,
+          name: "render",
+          output: "JSX.Element",
+          static: false,
+        }),
+      ],
+      exported: true,
+      extends: "React.Component<IProps>",
+      name: "Root",
     }),
   ],
   destination: "src/website/views/Root.tsx",
