@@ -128,7 +128,6 @@ class TopBarRelay extends React.Component<IProps> {
           cookie.set(
             "accessToken",
             response.login.accessToken,
-            { secure: process.env.ENV === "LAMBDA" },
           );
           goto("/", true);
         },
@@ -159,7 +158,6 @@ class TopBarRelay extends React.Component<IProps> {
           cookie.set(
             "accessToken",
             response.logout.accessToken,
-            { secure: process.env.ENV === "LAMBDA" },
           );
           goto("/", true);
         },
