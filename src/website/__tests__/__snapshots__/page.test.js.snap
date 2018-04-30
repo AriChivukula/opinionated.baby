@@ -230,16 +230,16 @@ Array [
             <i
               class="material-icons  mdc-list-item__graphic "
             >
-              description
+              widgets
             </i>
             <span
               class=" mdc-list-item__text"
             >
-              Babel
+              Typescriptase
               <span
                 class=" mdc-list-item__secondary-text"
               >
-                Transpiler
+                Code Generation
               </span>
             </span>
           </div>
@@ -993,16 +993,16 @@ Array [
             <i
               class="material-icons  mdc-list-item__graphic "
             >
-              description
+              widgets
             </i>
             <span
               class=" mdc-list-item__text"
             >
-              Babel
+              Typescriptase
               <span
                 class=" mdc-list-item__secondary-text"
               >
-                Transpiler
+                Code Generation
               </span>
             </span>
           </div>

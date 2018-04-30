@@ -74,10 +74,10 @@ const tools: ITools[] = [
     title: "TypeScript",
   },
   {
-    graphic: "description",
-    link: "https://babeljs.io/",
-    subtitle: "Transpiler",
-    title: "Babel",
+    graphic: "widgets",
+    link: "https://github.com/arichiv/typescriptase",
+    subtitle: "Code Generation",
+    title: "Typescriptase",
   },
   {
     graphic: "cached",
