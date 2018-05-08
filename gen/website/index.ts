@@ -1,4 +1,4 @@
-import { Bespoke, Import, Module, Variable, Type } from "typescriptase";
+import { Bespoke, Import, Module, Type, Variable } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
