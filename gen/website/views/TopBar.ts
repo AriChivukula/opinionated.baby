@@ -1,4 +1,4 @@
-import { Bespoke, Class, EMethodKind, Import, Interface, Method, Module } from "typescriptase";
+import { Bespoke, Class, Import, Interface, Method, Module } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
