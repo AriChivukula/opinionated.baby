@@ -1,4 +1,4 @@
-import { Bespoke, Function, Import, Interface, Module, Variable } from "typescriptase";
+import { Bespoke, Function, Import, Interface, Module, Variable, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
@@ -14,60 +14,35 @@ export const module: Module = Module.new({
       name: "../util",
       with: ["goto"],
     }),
-    Interface.new({
-      exported: false,
+    Interface.newInternal({
       name: "ITools",
-      types: {
-        graphic: "string",
-        link: "string",
-        subtitle: "string",
-        title: "string",
-      }
+      types: [
+        Type.Named.newRequired({ name: "graphic", type: "string" }),
+        Type.Named.newRequired({ name: "link", type: "string" }),
+        Type.Named.newRequired({ name: "subtitle", type: "string" }),
+        Type.Named.newRequired({ name: "title", type: "string" }),
+      ],
     }),
-    Interface.new({
-      exported: false,
+    Interface.newInternal({
       name: "IReleases",
-      types: {
-        titleA: "string",
-        titleB: "string",
-        version: "string",
-      }
-    }),
-    Variable.new({
-      assignment: "12",
-      exported: false,
-      mutable: false,
-      name: "fullWidth",
-      type: "number",
-    }),
-    Variable.new({
-      assignment: "3",
-      exported: false,
-      mutable: false,
-      name: "toolWidth",
-      type: "number",
-    }),
-    Variable.new({
-      assignment: "4",
-      exported: false,
-      mutable: false,
-      name: "releaseWidth",
-      type: "number",
+      types: [
+        Type.Named.newRequired({ name: "titleA", type: "string" }),
+        Type.Named.newRequired({ name: "titleB", type: "string" }),
+        Type.Named.newRequired({ name: "version", type: "string" }),
+      ],
     }),
     Bespoke.new({
       name: "DEPRECATE"
     }),
-    Function.new({
-      async: false,
+    Function.newSyncExported({
       content: [
         Bespoke.new({
           name: "Content",
         }),
       ],
-      exported: true,
-      inputs: {},
+      inTypes: [],
       name: "Content",
-      output: "JSX.Element",
+      outType: Type.Anonymous.new({ type: "JSX.Element" }),
     }),
   ],
   destination: "src/website/views/Content.tsx",

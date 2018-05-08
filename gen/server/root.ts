@@ -1,4 +1,4 @@
-import { Bespoke, Function, Import, Module } from "typescriptase";
+import { Bespoke, Function, Import, Module, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
@@ -18,20 +18,18 @@ export const module: Module = Module.new({
       name: "./util",
       with: ["genNullOnThrow"],
     }),
-    Function.new({
-      async: true,
+    Function.newAsyncExported({
       content: [
         Bespoke.new({
           name: "genRoot",
         }),
       ],
-      exported: true,
-      inputs: {
-        req: "express.Request",
-        res: "express.Response",
-      },
+      inTypes: [
+        Type.Argument.new({ name: "req", type: "express.Request" }),
+        Type.Argument.new({ name: "res", type: "express.Response" }),
+      ],
       name: "genRoot",
-      output: "Promise<object>",
+      outType: Type.Anonymous.new({ type: "Promise<object>" }),
     }),
   ],
   destination: "src/server/root.ts",

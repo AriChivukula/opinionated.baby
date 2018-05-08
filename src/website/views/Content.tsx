@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views/Content.ts::module>>
  * BESPOKE<<DEPRECATE, Content>>
- * SIGNED<<tI8EKwfI70RRYFDiNXMH2G3tN2fJIAOWqoaOYSmbpB8afdpy/gmsIEBRHfzJjotvdMjKXSn2moXWCjlmw+JbdQ==>>
+ * SIGNED<<bbeo+Vr7WwvvxBj2wFNWvRto1hzvufjJZR4ijRCtNKGATIEOr/YFThChol29xSTf9Hj5GXY2f+OWHE3PJt3d2Q==>>
  */
 
 import * as React from "react";
@@ -34,12 +34,6 @@ interface IReleases {
   titleB: string;
   version: string;
 }
-
-const fullWidth: number = 12;
-
-const toolWidth: number = 3;
-
-const releaseWidth: number = 4;
 
 /* BESPOKE START <<DEPRECATE>> */
 const tools: ITools[] = [
@@ -158,12 +152,12 @@ export function Content(
   /* BESPOKE START <<Content>> */
   return (
     <Grid>
-      <GridCell span={fullWidth}>
+      <GridCell span={12}>
         <Typography use="display2" tag="div">
           A confidently immature starting point
         </Typography>
       </GridCell>
-      <GridCell span={fullWidth}>
+      <GridCell span={12}>
         <Typography use="subheading2" tag="div">
           The hardest part of building a new dynamic website is avoiding
           all the dragons. Starting a development environment can freeze us
@@ -179,13 +173,13 @@ export function Content(
           and into the pleasure of production logic.
         </Typography>
       </GridCell>
-      <GridCell span={fullWidth}>
+      <GridCell span={12}>
         <Typography use="display2" tag="div">
           Important choices I made for you
         </Typography>
       </GridCell>
       {tools.map((item: ITools, index: number) => (
-        <GridCell span={toolWidth} key={index}>
+        <GridCell span={3} key={index}>
           <List twoLine>
             <SimpleListItem
               graphic={item.graphic}
@@ -196,7 +190,7 @@ export function Content(
           </List>
         </GridCell>
       ))}
-      <GridCell span={fullWidth}>
+      <GridCell span={12}>
         <Typography use="display2" tag="div">
           <span style={{textDecoration: "line-through"}}>
             Self justification
@@ -205,7 +199,7 @@ export function Content(
           Philosophy
         </Typography>
       </GridCell>
-      <GridCell span={fullWidth}>
+      <GridCell span={12}>
         <Typography use="subheading2" tag="div">
           This framework is one-size-fits-me. It's an open source
           version of a system I use when building complex websites.
@@ -222,13 +216,13 @@ export function Content(
           .
         </Typography>
       </GridCell>
-      <GridCell span={fullWidth}>
+      <GridCell span={12}>
         <Typography use="display2" tag="div">
           Release history
         </Typography>
       </GridCell>
       {releases.map((item: IReleases, index: number) => (
-        <GridCell span={releaseWidth} key={index}>
+        <GridCell span={4} key={index}>
           <Card>
             <CardPrimaryAction
               onClick={(): void => { goto(`https://github.com/arichiv/opinionated.baby/releases/tag/${item.version}/`); }}>

@@ -1,4 +1,4 @@
-import { Bespoke, Function, Import, Interface, Module } from "typescriptase";
+import { Bespoke, Function, Import, Interface, Module, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
@@ -10,71 +10,61 @@ export const module: Module = Module.new({
       name: "googleapis",
       with: ["google"],
     }),
-    Interface.new({
-      exported: true,
+    Interface.newExported({
       name: "IAccessToken",
-      types: {
-        tokens: "{ access_token?: string | null }",
-      },
+      types: [
+        Type.Named.newRequired({ name: "tokens", type: "{ access_token?: string | null }" }),
+      ],
     }),
-    Interface.new({
-      exported: true,
+    Interface.newExported({
       name: "IAccessTokenInfo",
-      types: {
-        data: "{ email: string; user_id: string; verified_email: boolean }",
-      },
+      types: [
+        Type.Named.newRequired({ name: "data", type: "{ email: string; user_id: string; verified_email: boolean }" }),
+      ],
     }),
-    Function.new({
-      async: false,
+    Function.newSyncInternal({
       content: [
         Bespoke.new({
           name: "getOAuthClient",
         }),
       ],
-      exported: false,
-      inputs: {},
+      inTypes: [],
       name: "getOAuthClient",
-      output: "OAuth2Client",
+      outType: Type.Anonymous.new({ type: "OAuth2Client" }),
     }),
-    Function.new({
-      async: false,
+    Function.newSyncExported({
       content: [
         Bespoke.new({
           name: "getLoginURL",
         }),
       ],
-      exported: true,
-      inputs: {},
+      inTypes: [],
       name: "getLoginURL",
-      output: "string",
+      outType: Type.Anonymous.new({ type: "string" }),
     }),
-    Function.new({
-      async: true,
+    Function.newAsyncExported({
       content: [
         Bespoke.new({
           name: "genAccessToken",
         }),
       ],
-      exported: true,
-      inputs: {
-        code: "string",
-      },
+      inTypes: [
+        Type.Argument.new({ name: "code", type: "string" }),
+      ],
       name: "genAccessToken",
-      output: "Promise<string>",
+      outType: Type.Anonymous.new({ type: "Promise<string>" }),
     }),
-    Function.new({
-      async: true,
+    Function.newAsyncExported({
       content: [
         Bespoke.new({
           name: "genAccessTokenInfo",
         }),
       ],
-      exported: true,
-      inputs: {
-        accessToken: "string",
-      },
+      inTypes: [
+        Type.Argument.new({ name: "accessToken", type: "string" }),
+      ],
       name: "genAccessTokenInfo",
-      output: "Promise<IAccessTokenInfo>",
+      outType: Type.Anonymous.new({ type: "Promise<IAccessTokenInfo>" }),
     }),
   ],
   destination: "src/server/google.ts",
