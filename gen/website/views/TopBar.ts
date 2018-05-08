@@ -1,4 +1,4 @@
-import { Bespoke, Class, Import, Interface, Method, Module } from "typescriptase";
+import { Bespoke, Class, Import, Interface, Method, Module, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
@@ -42,73 +42,58 @@ export const module: Module = Module.new({
       name: "./__generated__/TopBarQuery.graphql",
       with: ["TopBarQuery"],
     }),
-    Interface.new({
-      exported: false,
+    Interface.newInternal({
       name: "IProps",
-      types: {
-        data: "TopBarQuery",
-        relay: "Relay",
-      }
+      types: [
+        Type.Named.newRequired({ name: "data", type: "TopBarQuery" }),
+        Type.Named.newRequired({ name: "relay", type: "Relay" }),
+      ],
     }),
-    Class.new({
-      abstract: false,
+    Class.newConcreteInternal({
       content: [
-        Method.new({
-          async: false,
+        Method.Instance.Public.newSync({
           content: [
             Bespoke.new({
               name: "TopBar::render",
             }),
           ],
-          inputs: {},
-          kind: EMethodKind.PUBLIC,
+          inTypes: [],
           name: "render",
-          output: "JSX.Element",
-          static: false,
+          outType: Type.Anonymous.new({ type: "JSX.Element" }),
         }),
-        Method.new({
-          async: false,
+        Method.Instance.Private.newSync({
           content: [
             Bespoke.new({
               name: "TopBar::googleAuth",
             }),
           ],
-          inputs: {},
-          kind: EMethodKind.PRIVATE,
+          inTypes: [],
           name: "googleAuth",
-          output: "void",
-          static: false,
+          outType: Type.Anonymous.new({ type: "void" }),
         }),
-        Method.new({
-          async: false,
+        Method.Instance.Private.newSync({
           content: [
             Bespoke.new({
               name: "TopBar::login",
             }),
           ],
-          inputs: {
-            code: "string",
-          },
-          kind: EMethodKind.PRIVATE,
+          inTypes: [
+            Type.Argument.new({ name: "code", type: "string" }),
+          ],
           name: "login",
-          output: "void",
-          static: false,
+          outType: Type.Anonymous.new({ type: "void" }),
         }),
-        Method.new({
-          async: false,
+        Method.Instance.Private.newSync({
           content: [
             Bespoke.new({
               name: "TopBar::logout",
             }),
           ],
-          inputs: {},
-          kind: EMethodKind.PRIVATE,
+          inTypes: [],
           name: "logout",
-          output: "void",
-          static: false,
+          outType: Type.Anonymous.new({ type: "void" }),
         }),
       ],
-      exported: false,
       extends: "React.Component<IProps>",
       name: "TopBarRelay",
     }),

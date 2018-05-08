@@ -1,33 +1,29 @@
-import { Bespoke, Function, Module } from "typescriptase";
+import { Bespoke, Function, Module, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
-    Function.new({
-      async: false,
+    Function.newSyncExported({
       content: [
         Bespoke.new({
           name: "isElectron",
         }),
       ],
-      exported: true,
-      inputs: {},
+      inTypes: [],
       name: "isElectron",
-      output: "boolean",
+      outType: Type.Anonymous.new({ type: "boolean"}),
     }),
-    Function.new({
-      async: false,
+    Function.newSyncExported({
       content: [
         Bespoke.new({
           name: "goto",
         }),
       ],
-      exported: true,
-      inputs: {
-        url: "string",
-        samePage: "boolean = false",
-      },
+      inTypes: [
+        Type.Argument.new({ name: "url", type: "string" }),
+        Type.Argument.new({ default: "false", name: "samePage", type: "boolean" }),
+      ],
       name: "goto",
-      output: "void",
+      outType: Type.Anonymous.new({ type: "void" }),
     }),
   ],
   destination: "src/website/util.tsx",

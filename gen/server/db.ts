@@ -1,4 +1,4 @@
-import { Bespoke, Function, Import, Module } from "typescriptase";
+import { Bespoke, Function, Import, Module, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
@@ -14,31 +14,27 @@ export const module: Module = Module.new({
       name: "./google",
       with: ["genAccessTokenInfo", "IAccessTokenInfo"],
     }),
-    Function.new({
-      async: true,
+    Function.newAsyncExported({
       content: [
         Bespoke.new({
           name: "genSetupDB",
         }),
       ],
-      exported: true,
-      inputs: {},
+      inTypes: [],
       name: "genSetupDB",
-      output: "Promise<void>",
+      outType: Type.Anonymous.new({ type: "Promise<void>" }),
     }),
-    Function.new({
-      async: true,
+    Function.newAsyncExported({
       content: [
         Bespoke.new({
           name: "genUserForAccessToken",
         }),
       ],
-      exported: true,
-      inputs: {
-        accessToken: "string",
-      },
+      inTypes: [
+        Type.Argument.new({ name: "accessToken", type: "string" }),
+      ],
       name: "genUserForAccessToken",
-      output: "Promise<User>",
+      outType: Type.Anonymous.new({ type: "Promise<User>" }),
     }),
   ],
   destination: "src/server/db.ts",

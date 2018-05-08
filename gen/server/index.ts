@@ -1,4 +1,4 @@
-import { Bespoke, Function, Import, Module, Variable } from "typescriptase";
+import { Bespoke, Function, Import, Module, Variable, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
@@ -41,37 +41,29 @@ export const module: Module = Module.new({
       name: "./util",
       with: ["makeSync"],
     }),
-    Variable.new({
+    Variable.newImmutable({
       assignment: "express()",
-      exported: false,
-      mutable: false,
-      name: "app",
-      type: "express.Express",
+      type: Type.Named.newRequired({ name: "app", type: "express.Express" }),
     }),
-    Variable.new({
+    Variable.newMutable({
       assignment: "false",
-      exported: false,
-      mutable: true,
-      name: "didSetup",
-      type: "boolean",
+      type: Type.Named.newRequired({ name: "didSetup", type: "boolean" }),
     }),
     Bespoke.new({
       name: "DEPRECATE",
     }),
-    Function.new({
-      async: false,
+    Function.newSyncExported({
       content: [
         Bespoke.new({
           name: "handler",
         }),
       ],
-      exported: true,
-      inputs: {
-        event: "object",
-        context: "object",
-      },
+      inTypes: [
+        Type.Argument.new({ name: "event", type: "object" }),
+        Type.Argument.new({ name: "context", type: "object" }),
+      ],
       name: "handler",
-      output: "void",
+      outType: Type.Anonymous.new({ type: "void" }),
     }),
   ],
   destination: "src/server/index.ts",

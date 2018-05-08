@@ -1,4 +1,4 @@
-import { Bespoke, Class, Import, Interface, Method, Module } from "typescriptase";
+import { Bespoke, Class, Import, Interface, Method, Module, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
@@ -26,31 +26,25 @@ export const module: Module = Module.new({
       name: "./__generated__/TopBarQuery.graphql",
       with: ["TopBarQuery"],
     }),
-    Interface.new({
-      exported: false,
+    Interface.newInternal({
       name: "IProps",
-      types: {
-        data: "TopBarQuery | null",
-      }
+      types: [
+        Type.Named.newRequired({ name: "data", type: "TopBarQuery | null" }),
+      ],
     }),
-    Class.new({
-      abstract: false,
+    Class.newConcreteExported({
       content: [
-        Method.new({
-          async: false,
+        Method.Instance.Public.newSync({
           content: [
             Bespoke.new({
               name: "Page::render",
             }),
           ],
-          inputs: {},
-          kind: EMethodKind.PUBLIC,
+          inTypes: [],
           name: "render",
-          output: "JSX.Element",
-          static: false,
+          outType: Type.Anonymous.new({ type: "JSX.Element" }),
         }),
       ],
-      exported: true,
       extends: "React.Component<IProps>",
       name: "Page",
     }),

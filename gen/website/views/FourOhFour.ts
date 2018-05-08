@@ -1,4 +1,4 @@
-import { Bespoke, Function, Import, Module } from "typescriptase";
+import { Bespoke, Function, Import, Module, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
@@ -14,17 +14,15 @@ export const module: Module = Module.new({
       name: "rmwc",
       with: ["Typography"],
     }),
-    Function.new({
-      async: false,
+    Function.newSyncExported({
       content: [
         Bespoke.new({
           name: "FourOhFour",
         }),
       ],
-      exported: true,
-      inputs: {},
+      inTypes: [],
       name: "FourOhFour",
-      output: "JSX.Element",
+      outType: Type.Anonymous.new({ type: "JSX.Element" }),
     }),
   ],
   destination: "src/website/views/FourOhFour.tsx",

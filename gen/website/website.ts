@@ -1,4 +1,4 @@
-import { Bespoke, Function, Import, Module } from "typescriptase";
+import { Bespoke, Function, Import, Module, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
@@ -34,19 +34,17 @@ export const module: Module = Module.new({
       name: "./views/Root",
       with: ["Root"],
     }),
-    Function.new({
-      async: false,
+    Function.newSyncExported({
       content: [
         Bespoke.new({
           name: "render",
         }),
       ],
-      exported: true,
-      inputs: {
-        apiURL: "string",
-      },
+      inTypes: [
+        Type.Argument.new({ name: "apiURL", type: "string" }),
+      ],
       name: "render",
-      output: "void",
+      outType: Type.Anonymous.new({ type: "void" }),
     }),
   ],
   destination: "src/website/website.tsx",

@@ -1,34 +1,32 @@
-import { Bespoke, Function, Module } from "typescriptase";
+import { Bespoke, Function, Module, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
-    Function.new({
-      async: false,
+    Function.newSyncExported({
       content: [
         Bespoke.new({
           name: "makeSync<T>",
         }),
       ],
-      exported: true,
-      inputs: {
-        wasAsync: "Promise<T>",
-      },
-      name: "makeSync<T>",
-      output: "void",
+      inTypes: [
+        Type.Argument.new({ name: "wasAsync", type: "Promise<T>" }),
+      ],
+      name: "makeSync",
+      outType: Type.Anonymous.new({ type: "void" }),
+      templates: ["T"],
     }),
-    Function.new({
-      async: true,
+    Function.newAsyncExported({
       content: [
         Bespoke.new({
           name: "genNullOnThrow<T>",
         }),
       ],
-      exported: true,
-      inputs: {
-        mightThrow: "() => Promise<T>",
-      },
-      name: "genNullOnThrow<T>",
-      output: "Promise<T | null>",
+      inTypes: [
+        Type.Argument.new({ name: "mightThrow", type: "() => Promise<T>" }),
+      ],
+      name: "genNullOnThrow",
+      outType: Type.Anonymous.new({ type: "Promise<T | null>" }),
+      templates: ["T"],
     }),
   ],
   destination: "src/server/util.ts",

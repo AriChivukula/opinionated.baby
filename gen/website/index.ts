@@ -1,4 +1,4 @@
-import { Bespoke, Import, Module, Variable } from "typescriptase";
+import { Bespoke, Import, Module, Variable, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
@@ -9,11 +9,8 @@ export const module: Module = Module.new({
       name: "./website",
       with: ["render"],
     }),
-    Variable.new({
-      exported: false,
-      mutable: true,
-      name: "apiURL",
-      type: "string",
+    Variable.newMutable({
+      type: Type.Named.newRequired({ name: "apiURL", type: "string" }),
     }),
     Bespoke.new({
       name: "DEPRECATE",
