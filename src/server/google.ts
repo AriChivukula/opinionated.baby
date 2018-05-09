@@ -14,11 +14,17 @@ import {
 } from "googleapis";
 
 export interface IAccessToken {
-  tokens: { access_token?: string | null };
+  tokens: {
+    access_token?: string | null;
+  };
 }
 
 export interface IAccessTokenInfo {
-  data: { email: string; user_id: string; verified_email: boolean };
+  data: {
+    email?: string | undefined;
+    user_id?: string | undefined;
+    verified_email?: boolean | undefined;
+  };
 }
 
 function getOAuthClient(

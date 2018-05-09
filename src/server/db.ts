@@ -43,7 +43,13 @@ export async function genUserForAccessToken(
     .findOne(info.data.user_id);
   if (user === undefined) {
     user = new User();
+    if (info.data.user_id === undefined) {
+      throw new Error("Missing user id");
+    }
     user.id = info.data.user_id;
+    if (info.data.email === undefined) {
+      throw new Error("Missing email");
+    }
     user.email = info.data.email;
     await getRepository(User)
       .save(user);

@@ -1,13 +1,16 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/views/Root.ts::module>>
- * BESPOKE<<Root::render>>
- * SIGNED<<U7P7NqfHihftKeK+Hnu02M9XqOcroIDkwtkndoG9q9ToV88R/VtrTDzfltRRmFfgnosGa48uQNppAbXcIpiinQ==>>
+ * SOURCE<<gen/website/views.ts::RootReact>>
+ * BESPOKE<<imports, render, implementation>>
+ * SIGNED<<uTge6si6pljgTiSHKtmwABtajsUWeYmyw7IID5T6MCH6dHRUFcwTyF4Y0MSche66/EjlOrNFIDd3vGm87Xl7kQ==>>
  */
 
-import * as cookie from "js-cookie";
 import * as React from "react";
+
+/* BESPOKE START <<imports>> */
+import * as cookie from "js-cookie";
+
 import {
   graphql,
   QueryRenderer,
@@ -22,16 +25,17 @@ import {
 import {
   Page,
 } from "./Page";
+/* BESPOKE END <<imports>> */
 
-interface IProps {
+export interface IRootProps {
   environment: Environment;
 }
 
-export class Root extends React.Component<IProps> {
+export class Root extends React.Component<IRootProps> {
 
-  public render(
-  ): JSX.Element {
-    /* BESPOKE START <<Root::render>> */
+  public async render(
+  ): Promise<JSX.Element> {
+    /* BESPOKE START <<render>> */
     return (
       <QueryRenderer
         environment={this.props.environment}
@@ -52,6 +56,9 @@ export class Root extends React.Component<IProps> {
         }}
       />
     );
-    /* BESPOKE END <<Root::render>> */
+    /* BESPOKE END <<render>> */
   }
+
+  /* BESPOKE START <<implementation>> */
+  /* BESPOKE END <<implementation>> */
 }

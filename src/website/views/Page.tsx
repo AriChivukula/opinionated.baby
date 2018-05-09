@@ -1,12 +1,14 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/views/Page.ts::module>>
- * BESPOKE<<Page::render>>
- * SIGNED<<uu8jXVvXcS44SULo+5CNSff7x6gnT8ZQI9WNbrAgYOE/yIIAx1K6AaPWwdsB9jWRxnHW9jVV/rfUAjBe8qZTFw==>>
+ * SOURCE<<gen/website/views.ts::PageReact>>
+ * BESPOKE<<imports, render, implementation>>
+ * SIGNED<<Zvb5KXBxIFox/KxU9YqlEmbLmHNhcFyB9MdzgGwP9vxHPuQi6Er6jVbL28KH5FRAuiuVvK/KtXgd+r8jOppiVg==>>
  */
 
 import * as React from "react";
+
+/* BESPOKE START <<imports>> */
 import {
   LinearProgress,
 } from "rmwc";
@@ -23,16 +25,17 @@ import {
 import {
   TopBar,
 } from "./TopBar";
+/* BESPOKE END <<imports>> */
 
-interface IProps {
+export interface IPageProps {
   data: TopBarQuery | null;
 }
 
-export class Page extends React.Component<IProps> {
+export class Page extends React.Component<IPageProps> {
 
-  public render(
-  ): JSX.Element {
-    /* BESPOKE START <<Page::render>> */
+  public async render(
+  ): Promise<JSX.Element> {
+    /* BESPOKE START <<render>> */
     const urlParts: URL = new URL(window.location.href);
     if (this.props.data === null) {
       return <LinearProgress determinate={false} />;
@@ -51,6 +54,9 @@ export class Page extends React.Component<IProps> {
         </>
       );
     }
-    /* BESPOKE END <<Page::render>> */
+    /* BESPOKE END <<render>> */
   }
+
+  /* BESPOKE START <<implementation>> */
+  /* BESPOKE END <<implementation>> */
 }
