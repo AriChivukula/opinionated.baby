@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::RootReact>>
  * BESPOKE<<imports, render, implementation>>
- * SIGNED<<uTge6si6pljgTiSHKtmwABtajsUWeYmyw7IID5T6MCH6dHRUFcwTyF4Y0MSche66/EjlOrNFIDd3vGm87Xl7kQ==>>
+ * SIGNED<<gMIF8UpVVL82bKe3h5hks3leg9xgncZlMpe7iI1YBko4QmdbaN/NWzhDJ+XChPhVDRLOzy0Dk87YdKXuRkLG5w==>>
  */
 
 import * as React from "react";
@@ -33,8 +33,8 @@ export interface IRootProps {
 
 export class Root extends React.Component<IRootProps> {
 
-  public async render(
-  ): Promise<JSX.Element> {
+  public render(
+  ): JSX.Element {
     /* BESPOKE START <<render>> */
     return (
       <QueryRenderer

@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::ContentReact>>
  * BESPOKE<<imports, render>>
- * SIGNED<<CozWi90tr5moOWH2Pctf8KqFZCzMaAbxMZCSVo1nL8np76dMdsL8ysu0VAQysTGV5sFlxxQoApZC/UVeUf6fhA==>>
+ * SIGNED<<Z9wKEURmQUdo66Mh4JAEAKIEfbLkZEyeOqtShcQW4VF/gAT192ep6VAop5kNZO7TJdzBEovWcYSXfzD/xZu04g==>>
  */
 
 import * as React from "react";
@@ -148,8 +148,8 @@ const releases: IReleases[] = [
 ];
 /* BESPOKE END <<imports>> */
 
-export async function Content(
-): Promise<JSX.Element> {
+export function Content(
+): JSX.Element {
   /* BESPOKE START <<render>> */
   return (
     <Grid>

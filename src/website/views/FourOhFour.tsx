@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::FourOhFourReact>>
  * BESPOKE<<imports, render>>
- * SIGNED<<AxbaFWc8b0iRT5UjUMQt2/a8mwRNQxOELQy3qLDQPesiDEasnJSv0hqbfVASTqmwhtQB13oHnGri1pE7xOSl1Q==>>
+ * SIGNED<<Wo7FHIquVd9YzijkRCSetdV1nHxCGfKK0xB9HLsvhpEvvvuxPK5GgxZgCRWIXjdl3lh+Y6pDlF5rnF6SVC7bCQ==>>
  */
 
 import * as React from "react";
@@ -17,8 +17,8 @@ import {
 } from "rmwc";
 /* BESPOKE END <<imports>> */
 
-export async function FourOhFour(
-): Promise<JSX.Element> {
+export function FourOhFour(
+): JSX.Element {
   /* BESPOKE START <<render>> */
   return (
     <Link to="/">

@@ -19,7 +19,7 @@ export const module: Module = Module.new({
     Interface.newExported({
       name: "IAccessTokenInfo",
       types: [
-        Type.Required.new({ name: "data", type: "{ email: string; user_id: string; verified_email: boolean }" }),
+        Type.Required.new({ name: "data", type: "{ email?: string | undefined; user_id?: string | undefined; verified_email?: boolean | undefined }" }),
       ],
     }),
     Function.newSyncInternal({
