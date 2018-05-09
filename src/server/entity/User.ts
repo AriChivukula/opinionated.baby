@@ -1,7 +1,7 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/server/entity/User.ts::module>>
+ * SOURCE<<gen/server/entities.ts::userEntity>>
  * BESPOKE<<DEPRECATE>>
  * SIGNED<<EacOA83AsYRQBenEw51EBvtp8nhonnlzgydS0yFleT1k5q8rje/7WSJMbPLuH9ONSR5CBhsa/lycJlqVfM6hYg==>>
  */

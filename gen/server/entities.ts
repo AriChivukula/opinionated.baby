@@ -1,6 +1,6 @@
 import { Bespoke, Import, Module } from "typescriptase";
 
-export const module: Module = Module.new({
+export const userEntity: Module = Module.new({
   content: [
     Import.new({
       name: "typeorm",
