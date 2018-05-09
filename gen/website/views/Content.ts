@@ -17,18 +17,18 @@ export const module: Module = Module.new({
     Interface.newInternal({
       name: "ITools",
       types: [
-        Type.Named.newRequired({ name: "graphic", type: "string" }),
-        Type.Named.newRequired({ name: "link", type: "string" }),
-        Type.Named.newRequired({ name: "subtitle", type: "string" }),
-        Type.Named.newRequired({ name: "title", type: "string" }),
+        Type.Required.new({ name: "graphic", type: "string" }),
+        Type.Required.new({ name: "link", type: "string" }),
+        Type.Required.new({ name: "subtitle", type: "string" }),
+        Type.Required.new({ name: "title", type: "string" }),
       ],
     }),
     Interface.newInternal({
       name: "IReleases",
       types: [
-        Type.Named.newRequired({ name: "titleA", type: "string" }),
-        Type.Named.newRequired({ name: "titleB", type: "string" }),
-        Type.Named.newRequired({ name: "version", type: "string" }),
+        Type.Required.new({ name: "titleA", type: "string" }),
+        Type.Required.new({ name: "titleB", type: "string" }),
+        Type.Required.new({ name: "version", type: "string" }),
       ],
     }),
     Bespoke.new({

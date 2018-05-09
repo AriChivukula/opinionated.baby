@@ -10,7 +10,7 @@ export const module: Module = Module.new({
       with: ["render"],
     }),
     Variable.newMutable({
-      type: Type.Named.newRequired({ name: "apiURL", type: "string" }),
+      type: Type.Required.new({ name: "apiURL", type: "string" }),
     }),
     Bespoke.new({
       name: "DEPRECATE",

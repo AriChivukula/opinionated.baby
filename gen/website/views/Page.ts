@@ -29,7 +29,7 @@ export const module: Module = Module.new({
     Interface.newInternal({
       name: "IProps",
       types: [
-        Type.Named.newRequired({ name: "data", type: "TopBarQuery | null" }),
+        Type.Required.new({ name: "data", type: "TopBarQuery | null" }),
       ],
     }),
     Class.newConcreteExported({

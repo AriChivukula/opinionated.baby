@@ -29,7 +29,7 @@ export const module: Module = Module.new({
     Interface.newInternal({
       name: "IProps",
       types: [
-        Type.Named.newRequired({ name: "environment", type: "Environment" }),
+        Type.Required.new({ name: "environment", type: "Environment" }),
       ],
     }),
     Class.newConcreteExported({

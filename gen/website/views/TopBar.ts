@@ -45,8 +45,8 @@ export const module: Module = Module.new({
     Interface.newInternal({
       name: "IProps",
       types: [
-        Type.Named.newRequired({ name: "data", type: "TopBarQuery" }),
-        Type.Named.newRequired({ name: "relay", type: "Relay" }),
+        Type.Required.new({ name: "data", type: "TopBarQuery" }),
+        Type.Required.new({ name: "relay", type: "Relay" }),
       ],
     }),
     Class.newConcreteInternal({
