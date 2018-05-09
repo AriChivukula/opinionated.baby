@@ -1,11 +1,12 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/__tests__/page.test.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<1coSer+HN5xgcHE7WXYVaPGZgi+faYbbH66flAKUeA0A7t99AFtHh0KiHWGPAxIEcSAUN1QMpWeLAlkX5uNpGw==>>
+ * SOURCE<<gen/website/tests.ts::pageTest>>
+ * BESPOKE<<imports, beforeAll, afterAll, beforeEach, afterEach, PageUnloaded, PageLoggedOut, PageLoggedIn>>
+ * SIGNED<<OI26QrNJ9x2cMUgvduPXW+aaHL3bYw7qqe9gz6zkPNORzuy38/u8HGboBxR55BHKwYz3zj52HesnO13QCVAA1Q==>>
  */
 
+/* BESPOKE START <<imports>> */
 import "jest-enzyme";
 import "mutationobserver-shim";
 
@@ -27,7 +28,6 @@ import {
   Page,
 } from "../views/Page";
 
-/* BESPOKE START <<DEPRECATE>> */
 Enzyme.configure({
   adapter: new Adapter(),
 });
@@ -47,10 +47,40 @@ const ctx: object = {
     variables: {},
   },
 };
+/* BESPOKE END <<imports>> */
+
+beforeAll(
+  async (): Promise<void> => {
+    /* BESPOKE START <<beforeAll>> */
+    /* BESPOKE END <<beforeAll>> */
+  },
+);
+
+afterAll(
+  async (): Promise<void> => {
+    /* BESPOKE START <<afterAll>> */
+    /* BESPOKE END <<afterAll>> */
+  },
+);
+
+beforeEach(
+  async (): Promise<void> => {
+    /* BESPOKE START <<beforeEach>> */
+    /* BESPOKE END <<beforeEach>> */
+  },
+);
+
+afterEach(
+  async (): Promise<void> => {
+    /* BESPOKE START <<afterEach>> */
+    /* BESPOKE END <<afterEach>> */
+  },
+);
 
 test(
   "PageUnloaded",
   async (): Promise<void> => {
+    /* BESPOKE START <<PageUnloaded>> */
     expect(
       Enzyme.render(
         Enzyme.mount(
@@ -59,12 +89,14 @@ test(
       ),
     )
       .toMatchSnapshot();
+    /* BESPOKE END <<PageUnloaded>> */
   },
 );
 
 test(
   "PageLoggedOut",
   async (): Promise<void> => {
+    /* BESPOKE START <<PageLoggedOut>> */
     // tslint:disable-next-line:no-any
     const props: any = {
       data: {
@@ -84,12 +116,14 @@ test(
       ),
     )
       .toMatchSnapshot();
+    /* BESPOKE END <<PageLoggedOut>> */
   },
 );
 
 test(
   "PageLoggedIn",
   async (): Promise<void> => {
+    /* BESPOKE START <<PageLoggedIn>> */
     // tslint:disable-next-line:no-any
     const props: any = {
       data: {
@@ -112,6 +146,6 @@ test(
       ),
     )
       .toMatchSnapshot();
+    /* BESPOKE END <<PageLoggedIn>> */
   },
 );
-/* BESPOKE END <<DEPRECATE>> */

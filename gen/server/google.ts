@@ -13,13 +13,13 @@ export const module: Module = Module.new({
     Interface.newExported({
       name: "IAccessToken",
       types: [
-        Type.Named.newRequired({ name: "tokens", type: "{ access_token?: string | null }" }),
+        Type.Required.new({ name: "tokens", type: "{ access_token?: string | null }" }),
       ],
     }),
     Interface.newExported({
       name: "IAccessTokenInfo",
       types: [
-        Type.Named.newRequired({ name: "data", type: "{ email: string; user_id: string; verified_email: boolean }" }),
+        Type.Required.new({ name: "data", type: "{ email?: string | undefined; user_id?: string | undefined; verified_email?: boolean | undefined }" }),
       ],
     }),
     Function.newSyncInternal({

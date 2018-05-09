@@ -43,11 +43,11 @@ export const module: Module = Module.new({
     }),
     Variable.newImmutable({
       assignment: "express()",
-      type: Type.Named.newRequired({ name: "app", type: "express.Express" }),
+      type: Type.Required.new({ name: "app", type: "express.Express" }),
     }),
     Variable.newMutable({
       assignment: "false",
-      type: Type.Named.newRequired({ name: "didSetup", type: "boolean" }),
+      type: Type.Required.new({ name: "didSetup", type: "boolean" }),
     }),
     Bespoke.new({
       name: "DEPRECATE",

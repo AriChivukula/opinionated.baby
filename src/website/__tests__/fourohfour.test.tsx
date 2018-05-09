@@ -1,11 +1,12 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/__tests__/fourohfour.test.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<MEuNYAQw3fIKRU4Qrv1XhG3D65ZTbfR29exZpC9WpnfhQug7+fUHn9g2LnWvvhn1FWSJd1xb2OJ/QXVxcUN1hw==>>
+ * SOURCE<<gen/website/tests.ts::fourohfourTest>>
+ * BESPOKE<<imports, beforeAll, afterAll, beforeEach, afterEach, FourOhFour>>
+ * SIGNED<<qymphyWDfNzM6mC+vb8XMrJeOj9fjVXyEfiiIm7EkJZusWz6a6SyqlpjsohYgJBjbOnLCaIX5KnezAHepNsQdw==>>
  */
 
+/* BESPOKE START <<imports>> */
 import "jest-enzyme";
 import "mutationobserver-shim";
 
@@ -20,14 +21,43 @@ import {
   FourOhFour,
 } from "../views/FourOhFour";
 
-/* BESPOKE START <<DEPRECATE>> */
 Enzyme.configure({
   adapter: new Adapter(),
 });
+/* BESPOKE END <<imports>> */
+
+beforeAll(
+  async (): Promise<void> => {
+    /* BESPOKE START <<beforeAll>> */
+    /* BESPOKE END <<beforeAll>> */
+  },
+);
+
+afterAll(
+  async (): Promise<void> => {
+    /* BESPOKE START <<afterAll>> */
+    /* BESPOKE END <<afterAll>> */
+  },
+);
+
+beforeEach(
+  async (): Promise<void> => {
+    /* BESPOKE START <<beforeEach>> */
+    /* BESPOKE END <<beforeEach>> */
+  },
+);
+
+afterEach(
+  async (): Promise<void> => {
+    /* BESPOKE START <<afterEach>> */
+    /* BESPOKE END <<afterEach>> */
+  },
+);
 
 test(
   "FourOhFour",
   async (): Promise<void> => {
+    /* BESPOKE START <<FourOhFour>> */
     expect(
       Enzyme.render(
         Enzyme.mount(
@@ -38,6 +68,6 @@ test(
       ),
     )
       .toMatchSnapshot();
+    /* BESPOKE END <<FourOhFour>> */
   },
 );
-/* BESPOKE END <<DEPRECATE>> */

@@ -1,12 +1,14 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/views/Content.ts::module>>
- * BESPOKE<<DEPRECATE, Content>>
- * SIGNED<<bbeo+Vr7WwvvxBj2wFNWvRto1hzvufjJZR4ijRCtNKGATIEOr/YFThChol29xSTf9Hj5GXY2f+OWHE3PJt3d2Q==>>
+ * SOURCE<<gen/website/views.ts::ContentReact>>
+ * BESPOKE<<imports, render>>
+ * SIGNED<<Z9wKEURmQUdo66Mh4JAEAKIEfbLkZEyeOqtShcQW4VF/gAT192ep6VAop5kNZO7TJdzBEovWcYSXfzD/xZu04g==>>
  */
 
 import * as React from "react";
+
+/* BESPOKE START <<imports>> */
 import {
   Card,
   CardMedia,
@@ -35,7 +37,6 @@ interface IReleases {
   version: string;
 }
 
-/* BESPOKE START <<DEPRECATE>> */
 const tools: ITools[] = [
   {
     graphic: "memory",
@@ -145,11 +146,11 @@ const releases: IReleases[] = [
   { titleA: "Dogged", titleB: "Dapper", version: "v1" },
   { titleA: "Cocksure", titleB: "Castle", version: "v0" },
 ];
-/* BESPOKE END <<DEPRECATE>> */
+/* BESPOKE END <<imports>> */
 
 export function Content(
 ): JSX.Element {
-  /* BESPOKE START <<Content>> */
+  /* BESPOKE START <<render>> */
   return (
     <Grid>
       <GridCell span={12}>
@@ -247,5 +248,5 @@ export function Content(
       ))}
     </Grid>
   );
-  /* BESPOKE END <<Content>> */
+  /* BESPOKE END <<render>> */
 }
