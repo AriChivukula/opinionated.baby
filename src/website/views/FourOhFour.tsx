@@ -22,7 +22,7 @@ export function FourOhFour(
   /* BESPOKE START <<render>> */
   return (
     <Link to="/">
-      <Typography use="headline1" tag="div">
+      <Typography use="headline2" tag="div">
         FourOhFour
       </Typography>
     </Link>
