@@ -73,12 +73,18 @@ gulp.task(
 );
 
 gulp.task(
+  "build:0:lint:verify",
+  shell.task("ts-node node_modules/.bin/typescriptase --expectNoChanges --files gen/**/*.ts"),
+);
+
+gulp.task(
   "build:0",
   gulp.series(
     "build:0:artifact",
     gulp.parallel(
       "build:0:lint:sass",
       "build:0:lint:typescript",
+      "build:0:lint:verify",
     ),
   ),
 );
