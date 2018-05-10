@@ -75,22 +75,22 @@ const tools: ITools[] = [
     title: "TypeScript",
   },
   {
-    graphic: "widgets",
+    graphic: "extension",
     link: "https://github.com/arichiv/typescriptase",
     subtitle: "Code Generation",
     title: "Typescriptase",
+  },
+  {
+    graphic: "widgets",
+    link: "https://babeljs.io/",
+    subtitle: "Compiler",
+    title: "Babel",
   },
   {
     graphic: "cached",
     link: "https://nodejs.org/en/",
     subtitle: "Runtime",
     title: "Node.js",
-  },
-  {
-    graphic: "desktop_mac",
-    link: "https://electronjs.org/",
-    subtitle: "Desktop",
-    title: "Electron",
   },
   {
     graphic: "unarchive",
