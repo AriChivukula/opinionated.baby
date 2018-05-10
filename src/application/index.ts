@@ -2,8 +2,8 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/application/index.ts::module>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<K5MLm+2sIWXxasvnUQ+DRCabL2V0D8Q+3r0dGF+x8kaBMso4U9fivXdqtvjBJcBo1EK6AaYatJ2GKxMKqpiNGw==>>
+ * BESPOKE<<main>>
+ * SIGNED<<Q4kKbsCCVfghhxOaEjGqVw6kl6Q23/bJEey3PpbbQhBZpsS6/zarvn8Ojj3Z1HIagNUliJkvOa4+E/t8O89D4A==>>
  */
 
 import "@babel/polyfill";
@@ -13,7 +13,7 @@ import {
   BrowserWindow,
 } from "electron";
 
-/* BESPOKE START <<DEPRECATE>> */
+/* BESPOKE START <<main>> */
 app.on(
   "ready",
   (): void => {
@@ -21,4 +21,4 @@ app.on(
     win.loadURL("http://127.0.0.1:8080/");
   },
 );
-/* BESPOKE END <<DEPRECATE>> */
+/* BESPOKE END <<main>> */

@@ -2,7 +2,7 @@ import { Bespoke, Function, Module, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
-    Function.newSyncExported({
+    Function.Sync.newExported({
       content: [
         Bespoke.new({
           name: "makeSync<T>",
@@ -15,7 +15,7 @@ export const module: Module = Module.new({
       outType: Type.Anonymous.new({ type: "void" }),
       templates: ["T"],
     }),
-    Function.newAsyncExported({
+    Function.Async.newExported({
       content: [
         Bespoke.new({
           name: "genNullOnThrow<T>",

@@ -10,7 +10,7 @@ export const module: Module = Module.new({
       with: ["app", "BrowserWindow"],
     }),
     Bespoke.new({
-      name: "DEPRECATE",
+      name: "main",
     }),
   ],
   destination: "src/application/index.ts",

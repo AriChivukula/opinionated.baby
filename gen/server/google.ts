@@ -22,7 +22,7 @@ export const module: Module = Module.new({
         Type.Required.new({ name: "data", type: "{ email?: string | undefined; user_id?: string | undefined; verified_email?: boolean | undefined }" }),
       ],
     }),
-    Function.newSyncInternal({
+    Function.Sync.newInternal({
       content: [
         Bespoke.new({
           name: "getOAuthClient",
@@ -32,7 +32,7 @@ export const module: Module = Module.new({
       name: "getOAuthClient",
       outType: Type.Anonymous.new({ type: "OAuth2Client" }),
     }),
-    Function.newSyncExported({
+    Function.Sync.newExported({
       content: [
         Bespoke.new({
           name: "getLoginURL",
@@ -42,7 +42,7 @@ export const module: Module = Module.new({
       name: "getLoginURL",
       outType: Type.Anonymous.new({ type: "string" }),
     }),
-    Function.newAsyncExported({
+    Function.Async.newExported({
       content: [
         Bespoke.new({
           name: "genAccessToken",
@@ -54,7 +54,7 @@ export const module: Module = Module.new({
       name: "genAccessToken",
       outType: Type.Anonymous.new({ type: "Promise<string>" }),
     }),
-    Function.newAsyncExported({
+    Function.Async.newExported({
       content: [
         Bespoke.new({
           name: "genAccessTokenInfo",

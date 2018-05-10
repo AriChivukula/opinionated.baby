@@ -27,7 +27,7 @@ export const module: Module = Module.new({
       with: ["genRoot"],
     }),
     Bespoke.new({
-      name: "DEPRECATE",
+      name: "servers",
     }),
   ],
   destination: "src/server/server.ts",

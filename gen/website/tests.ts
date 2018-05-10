@@ -3,18 +3,18 @@ import {
   Module,
 } from "typescriptase";
 
-export const fourohfourTest: Module = Jest(
-  "src/website/__tests__/fourohfour.test.tsx",
-  [
+export const fourohfourTest: Module = Jest({
+  destination: "src/website/__tests__/fourohfour.test.tsx",
+  tests: [
     "FourOhFour",
   ],
-);
+});
 
-export const pageTest: Module = Jest(
-  "src/website/__tests__/page.test.tsx",
-  [
+export const pageTest: Module = Jest({
+  destination: "src/website/__tests__/page.test.tsx",
+  tests: [
     "PageUnloaded",
     "PageLoggedOut",
     "PageLoggedIn",
   ],
-);
+});

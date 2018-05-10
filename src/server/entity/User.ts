@@ -2,8 +2,8 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/server/entities.ts::userEntity>>
- * BESPOKE<<DEPRECATE>>
- * SIGNED<<EacOA83AsYRQBenEw51EBvtp8nhonnlzgydS0yFleT1k5q8rje/7WSJMbPLuH9ONSR5CBhsa/lycJlqVfM6hYg==>>
+ * BESPOKE<<User>>
+ * SIGNED<<uK9H/1PYv7vFEkOP+G9BqKjW72/bSiYO810yCVEf7Zw5nr+p4w8VsGqx++4Vhq/RyNQDSOaNOl7CGAVJTKIO2w==>>
  */
 
 import {
@@ -12,7 +12,7 @@ import {
   PrimaryColumn,
 } from "typeorm";
 
-/* BESPOKE START <<DEPRECATE>> */
+/* BESPOKE START <<User>> */
 @Entity()
 export class User {
 
@@ -22,4 +22,4 @@ export class User {
   @PrimaryColumn("text")
   public id: string;
 }
-/* BESPOKE END <<DEPRECATE>> */
+/* BESPOKE END <<User>> */

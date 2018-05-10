@@ -14,7 +14,7 @@ export const module: Module = Module.new({
       name: "./google",
       with: ["genAccessTokenInfo", "IAccessTokenInfo"],
     }),
-    Function.newAsyncExported({
+    Function.Async.newExported({
       content: [
         Bespoke.new({
           name: "genSetupDB",
@@ -24,7 +24,7 @@ export const module: Module = Module.new({
       name: "genSetupDB",
       outType: Type.Anonymous.new({ type: "Promise<void>" }),
     }),
-    Function.newAsyncExported({
+    Function.Async.newExported({
       content: [
         Bespoke.new({
           name: "genUserForAccessToken",

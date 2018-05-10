@@ -2,8 +2,8 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/server/index.ts::module>>
- * BESPOKE<<DEPRECATE, handler>>
- * SIGNED<<A06yWPGzwRvEyHuRPpPXfJjactQUCMcJfEqglhYxee1abFhUfeZgd67aXDL8KxHjiOP1M0S8kgRaHEg0fhoLYQ==>>
+ * BESPOKE<<main, handler>>
+ * SIGNED<<GagzrK4vqxx5QKRscwtlLUClCQUokSSMm8IiEZmF07N06+u7mF3TRhmTp9fonIAQHWFs/MLtE6L5xOZCpq6hCQ==>>
  */
 
 import "@babel/polyfill";
@@ -32,7 +32,7 @@ const app: express.Express = express();
 
 let didSetup: boolean = false;
 
-/* BESPOKE START <<DEPRECATE>> */
+/* BESPOKE START <<main>> */
 app.use(cors(), helmet(), bearer(), json(), urlencoded({ extended: true }));
 
 app.use((req: express.Request, res: express.Response, next: () => void): void => {
@@ -49,7 +49,7 @@ if (process.env.ENV === "DEV") {
   app.use("/", express.static("_build_3/website"));
   app.listen(process.env.PORT);
 }
-/* BESPOKE END <<DEPRECATE>> */
+/* BESPOKE END <<main>> */
 
 export function handler(
   event: object,
