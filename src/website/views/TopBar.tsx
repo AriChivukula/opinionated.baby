@@ -1,18 +1,21 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/views/TopBar.ts::module>>
- * BESPOKE<<TopBar::render, TopBar::googleAuth, TopBar::login, TopBar::logout, DEPRECATE>>
- * SIGNED<<UI4DS8SIuh/j/gZnS/dgsMnUJqwdPg+8jeFgeRzt2PDP1J+orv7vXGHPqE56vKnmjjSaOIQ0/HfbIujRnjYX1g==>>
+ * SOURCE<<gen/website/views.ts::TopBarReact>>
+ * BESPOKE<<imports, render, implementation, relay>>
+ * SIGNED<<QQer5ODQObjA0TbryjxagM3ZuPBSSxR7x/XHirXry6P2CyIO7brHD6H7S5aCUXVvTMwQFsWQBEZlswbp2R7U5w==>>
  */
 
-import * as cookie from "js-cookie";
 import * as React from "react";
 import {
   commitMutation,
   createFragmentContainer,
   graphql,
 } from "react-relay";
+
+/* BESPOKE START <<imports>> */
+import * as cookie from "js-cookie";
+
 import Relay from "relay-runtime";
 import {
   Toolbar,
@@ -38,13 +41,14 @@ import {
 import {
   TopBarQuery,
 } from "./__generated__/TopBarQuery.graphql";
+/* BESPOKE END <<imports>> */
 
-interface IProps {
+export interface ITopBarProps {
   data: TopBarQuery;
   relay: Relay;
 }
 
-class TopBarRelay extends React.Component<IProps> {
+class TopBarImpl extends React.Component<ITopBarProps> {
 
   public render(
   ): JSX.Element {
@@ -107,7 +111,6 @@ class TopBarRelay extends React.Component<IProps> {
     if ("loginURL" in this.props.data) {
       goto(this.props.data.loginURL, true);
     }
-    /* BESPOKE END <<TopBar::googleAuth>> */
   }
 
   private login(
@@ -174,7 +177,8 @@ class TopBarRelay extends React.Component<IProps> {
 
 /* BESPOKE START <<DEPRECATE>> */
 export const TopBar: React.ComponentType = createFragmentContainer(
-  TopBarRelay,
+  TopBarImpl,
+  /* BESPOKE START <<relay>> */
   graphql`
     fragment TopBarQuery on Query {
       loginURL,
@@ -184,5 +188,5 @@ export const TopBar: React.ComponentType = createFragmentContainer(
       }
     }
   `,
+  /* BESPOKE END <<relay>> */
 );
-/* BESPOKE END <<DEPRECATE>> */

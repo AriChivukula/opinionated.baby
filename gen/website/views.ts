@@ -36,3 +36,20 @@ export const RootReact: Module = React({
     }),
   ],
 });
+
+export const TopBarReact: Module = React({
+  destination: "src/website/views/TopBar.tsx",
+  name: "TopBar",
+  props: [
+    Type.Required.new({
+      name: "data",
+      type: "TopBarQuery",
+    }),
+    Type.Required.new({
+      name: "relay",
+      type: "Relay",
+    }),
+  ],
+  relayMutation: true,
+  relayType: ERelayType.FRAGMENT,
+});
