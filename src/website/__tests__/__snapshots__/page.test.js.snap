@@ -564,6 +564,36 @@ Array [
           >
             <section
               class=" mdc-card__media mdc-card__media--square"
+              style="background-image:url(/images/v8.jpg)"
+            />
+            <span
+              class=" mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background "
+              >
+                v8
+              </span>
+              <br />
+              Wild
+              <br />
+              Warrior
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class=" mdc-card"
+        >
+          <div
+            class=" mdc-card__primary-action"
+          >
+            <section
+              class=" mdc-card__media mdc-card__media--square"
               style="background-image:url(/images/v7.jpg)"
             />
             <span
@@ -1344,6 +1374,36 @@ Array [
           class=" mdc-typography--headline2"
         >
           Release history
+        </div>
+      </div>
+      <div
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class=" mdc-card"
+        >
+          <div
+            class=" mdc-card__primary-action"
+          >
+            <section
+              class=" mdc-card__media mdc-card__media--square"
+              style="background-image:url(/images/v8.jpg)"
+            />
+            <span
+              class=" mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background "
+              >
+                v8
+              </span>
+              <br />
+              Wild
+              <br />
+              Warrior
+            </span>
+          </div>
         </div>
       </div>
       <div
