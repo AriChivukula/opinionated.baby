@@ -81,12 +81,6 @@ const tools: ITools[] = [
     title: "Typescriptase",
   },
   {
-    graphic: "widgets",
-    link: "https://babeljs.io/",
-    subtitle: "Compiler",
-    title: "Babel",
-  },
-  {
     graphic: "cached",
     link: "https://nodejs.org/en/",
     subtitle: "Runtime",
@@ -115,6 +109,12 @@ const tools: ITools[] = [
     link: "https://graphql.org/",
     subtitle: "API",
     title: "GraphQL",
+  },
+  {
+    graphic: "widgets",
+    link: "http://typeorm.io/",
+    subtitle: "Model",
+    title: "TypeORM",
   },
   {
     graphic: "flip_to_front",

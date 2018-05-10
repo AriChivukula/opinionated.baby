@@ -257,33 +257,6 @@ Array [
             <i
               class="material-icons  mdc-list-item__graphic "
             >
-              widgets
-            </i>
-            <span
-              class=" mdc-list-item__text"
-            >
-              Babel
-              <span
-                class=" mdc-list-item__secondary-text"
-              >
-                Compiler
-              </span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
-      >
-        <div
-          class=" mdc-list mdc-list--two-line"
-        >
-          <div
-            class=" mdc-ripple-surface  mdc-list-item"
-          >
-            <i
-              class="material-icons  mdc-list-item__graphic "
-            >
               cached
             </i>
             <span
@@ -402,6 +375,33 @@ Array [
                 class=" mdc-list-item__secondary-text"
               >
                 API
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class=" mdc-list mdc-list--two-line"
+        >
+          <div
+            class=" mdc-ripple-surface  mdc-list-item"
+          >
+            <i
+              class="material-icons  mdc-list-item__graphic "
+            >
+              widgets
+            </i>
+            <span
+              class=" mdc-list-item__text"
+            >
+              TypeORM
+              <span
+                class=" mdc-list-item__secondary-text"
+              >
+                Model
               </span>
             </span>
           </div>
@@ -1080,33 +1080,6 @@ Array [
             <i
               class="material-icons  mdc-list-item__graphic "
             >
-              widgets
-            </i>
-            <span
-              class=" mdc-list-item__text"
-            >
-              Babel
-              <span
-                class=" mdc-list-item__secondary-text"
-              >
-                Compiler
-              </span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
-      >
-        <div
-          class=" mdc-list mdc-list--two-line"
-        >
-          <div
-            class=" mdc-ripple-surface  mdc-list-item"
-          >
-            <i
-              class="material-icons  mdc-list-item__graphic "
-            >
               cached
             </i>
             <span
@@ -1225,6 +1198,33 @@ Array [
                 class=" mdc-list-item__secondary-text"
               >
                 API
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class=" mdc-list mdc-list--two-line"
+        >
+          <div
+            class=" mdc-ripple-surface  mdc-list-item"
+          >
+            <i
+              class="material-icons  mdc-list-item__graphic "
+            >
+              widgets
+            </i>
+            <span
+              class=" mdc-list-item__text"
+            >
+              TypeORM
+              <span
+                class=" mdc-list-item__secondary-text"
+              >
+                Model
               </span>
             </span>
           </div>

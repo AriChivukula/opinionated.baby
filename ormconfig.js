@@ -1,7 +1,7 @@
 module.exports = {
   "database": process.env.DB_NAME,
   "entities": [
-    "src/server/entity/User.ts"
+    "src/server/entity/*.ts"
   ],
   "host": process.env.DB_HOST,
   "password": process.env.DB_PASSWORD,
