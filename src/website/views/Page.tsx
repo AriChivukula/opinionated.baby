@@ -11,7 +11,7 @@ import * as React from "react";
 /* BESPOKE START <<imports>> */
 import {
   LinearProgress,
-} from "rmwc";
+} from "rmwc/LinearProgress";
 import {
   Url,
 } from "url";
@@ -42,8 +42,8 @@ export class Page extends React.Component<IPageProps> {
     } else if (urlParts.searchParams.has("code")) {
       return (
         <>
-          <LinearProgress determinate={false} />
           <TopBar {...this.props} />
+          <LinearProgress determinate={false} />
         </>
       );
     } else {

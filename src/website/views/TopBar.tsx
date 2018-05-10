@@ -24,7 +24,7 @@ import {
   ToolbarRow,
   ToolbarSection,
   ToolbarTitle,
-} from "rmwc";
+} from "rmwc/Toolbar";
 import {
   Url,
 } from "url";

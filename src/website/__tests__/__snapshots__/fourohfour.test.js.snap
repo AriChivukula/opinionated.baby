@@ -5,7 +5,7 @@ exports[`FourOhFour 1`] = `
   href="/"
 >
   <div
-    class=" mdc-typography--display4"
+    class=" mdc-typography--headline2"
   >
     FourOhFour
   </div>
