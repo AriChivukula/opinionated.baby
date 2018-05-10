@@ -52,7 +52,7 @@ class TopBarImpl extends React.Component<ITopBarProps> {
 
   public render(
   ): JSX.Element {
-    /* BESPOKE START <<TopBar::render>> */
+    /* BESPOKE START <<render>> */
     const urlParts: URL = new URL(window.location.href);
     if (urlParts.searchParams.has("code")) {
       this.login(urlParts.searchParams.get("code") as string);
@@ -102,12 +102,12 @@ class TopBarImpl extends React.Component<ITopBarProps> {
         <ToolbarFixedAdjust />
       </>
     );
-    /* BESPOKE END <<TopBar::render>> */
+    /* BESPOKE END <<render>> */
   }
 
+  /* BESPOKE START <<implementation>> */
   private googleAuth(
   ): void {
-    /* BESPOKE START <<TopBar::googleAuth>> */
     if ("loginURL" in this.props.data) {
       goto(this.props.data.loginURL, true);
     }
@@ -116,7 +116,6 @@ class TopBarImpl extends React.Component<ITopBarProps> {
   private login(
     code: string,
   ): void {
-    /* BESPOKE START <<TopBar::login>> */
     commitMutation(
       this.props.relay.environment,
       {
@@ -141,12 +140,10 @@ class TopBarImpl extends React.Component<ITopBarProps> {
         },
       },
     );
-    /* BESPOKE END <<TopBar::login>> */
   }
 
   private logout(
   ): void {
-    /* BESPOKE START <<TopBar::logout>> */
     commitMutation(
       this.props.relay.environment,
       {
@@ -171,11 +168,10 @@ class TopBarImpl extends React.Component<ITopBarProps> {
         },
       },
     );
-    /* BESPOKE END <<TopBar::logout>> */
   }
+  /* BESPOKE END <<implementation>> */
 }
 
-/* BESPOKE START <<DEPRECATE>> */
 export const TopBar: React.ComponentType = createFragmentContainer(
   TopBarImpl,
   /* BESPOKE START <<relay>> */
