@@ -14,7 +14,7 @@ import {
 } from "react-router-dom";
 import {
   Typography,
-} from "rmwc";
+} from "rmwc/Typography";
 /* BESPOKE END <<imports>> */
 
 export function FourOhFour(

@@ -13,12 +13,18 @@ import {
   Card,
   CardMedia,
   CardPrimaryAction,
+} from "rmwc/Card";
+import {
   Grid,
   GridCell,
+} from "rmwc/Grid";
+import {
   List,
   SimpleListItem,
+} from "rmwc/List";
+import {
   Typography,
-} from "rmwc";
+} from "rmwc/Typography";
 
 import {
   goto,
@@ -154,12 +160,12 @@ export function Content(
   return (
     <Grid>
       <GridCell span={12}>
-        <Typography use="headline3" tag="div">
+        <Typography use="headline2" tag="div">
           A confidently immature starting point
         </Typography>
       </GridCell>
       <GridCell span={12}>
-        <Typography use="subheading1" tag="div">
+        <Typography use="body1" tag="div">
           The hardest part of building a new dynamic website is avoiding
           all the dragons. Starting a development environment can freeze us
           with choice overload.
@@ -175,7 +181,7 @@ export function Content(
         </Typography>
       </GridCell>
       <GridCell span={12}>
-        <Typography use="headline3" tag="div">
+        <Typography use="headline2" tag="div">
           Important choices I made for you
         </Typography>
       </GridCell>
@@ -192,7 +198,7 @@ export function Content(
         </GridCell>
       ))}
       <GridCell span={12}>
-        <Typography use="headline3" tag="div">
+        <Typography use="headline2" tag="div">
           <span style={{textDecoration: "line-through"}}>
             Self justification
           </span>
@@ -201,7 +207,7 @@ export function Content(
         </Typography>
       </GridCell>
       <GridCell span={12}>
-        <Typography use="subheading1" tag="div">
+        <Typography use="body1" tag="div">
           This framework is one-size-fits-me. It's an open source
           version of a system I use when building complex websites.
           Anyone may attempt to use, critique, or contribute to it. The
@@ -218,7 +224,7 @@ export function Content(
         </Typography>
       </GridCell>
       <GridCell span={12}>
-        <Typography use="headline3" tag="div">
+        <Typography use="headline2" tag="div">
           Release history
         </Typography>
       </GridCell>
