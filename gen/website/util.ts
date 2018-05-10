@@ -5,16 +5,6 @@ export const module: Module = Module.new({
     Function.Sync.newExported({
       content: [
         Bespoke.new({
-          name: "isElectron",
-        }),
-      ],
-      inTypes: [],
-      name: "isElectron",
-      outType: Type.Anonymous.new({ type: "boolean"}),
-    }),
-    Function.Sync.newExported({
-      content: [
-        Bespoke.new({
           name: "goto",
         }),
       ],

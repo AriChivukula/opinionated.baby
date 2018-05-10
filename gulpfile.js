@@ -115,19 +115,6 @@ gulp.task(
 );
 
 gulp.task(
-  "build:2:application",
-  () => gulp.src("_build_1/application/**/*.js")
-    .pipe(cached("build:2:application"))
-    .pipe(remember("build:2:application"))
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(babel({
-      presets: ["@babel/preset-env"],
-    }))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest("_build_2/application")),
-);
-
-gulp.task(
   "build:2:html",
   () => gulp.src("src/**/*.html")
     .pipe(cached("build:2:html"))
@@ -186,25 +173,12 @@ gulp.task(
 gulp.task(
   "build:2",
   gulp.parallel(
-    "build:2:application",
     "build:2:html",
     "build:2:sass",
     "build:2:server",
     "build:2:static",
     "build:2:website",
   ),
-);
-
-gulp.task(
-  "build:3:application",
-  () => gulp.src("_build_2/application/index.js")
-    .pipe(bro({
-      bundleExternal: false,
-      detectGlobals: false,
-      node: true,
-      transform: [["uglifyify", { global: true, sourceMap: false }]],
-    }))
-    .pipe(gulp.dest("_build_3/application")),
 );
 
 let cache = null;
@@ -232,7 +206,6 @@ gulp.task(
   "build:3:website",
   () => gulp.src("_build_2/website/index.js")
     .pipe(bro({
-      ignore: ["electron"],
       transform: [["uglifyify", { global: true, sourceMap: false }]],
     }))
     .pipe(gulp.dest("_build_3/website")),
@@ -241,7 +214,6 @@ gulp.task(
 gulp.task(
   "build:3",
   gulp.parallel(
-    "build:3:application",
     "build:3:server",
     "build:3:static",
     "build:3:website",
@@ -285,13 +257,6 @@ gulp.task(
 gulp.task(
   "serve",
   shell.task("DEBUG=* node _build_3/server/index.js"),
-);
-
-/* LAUNCH */
-
-gulp.task(
-  "launch",
-  shell.task("ELECTRON_ENABLE_LOGGING=1 DEBUG=* electron _build_3/application/index.js"),
 );
 
 /* SNAP */

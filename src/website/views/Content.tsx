@@ -75,7 +75,7 @@ const tools: ITools[] = [
     title: "TypeScript",
   },
   {
-    graphic: "widgets",
+    graphic: "extension",
     link: "https://github.com/arichiv/typescriptase",
     subtitle: "Code Generation",
     title: "Typescriptase",
@@ -85,12 +85,6 @@ const tools: ITools[] = [
     link: "https://nodejs.org/en/",
     subtitle: "Runtime",
     title: "Node.js",
-  },
-  {
-    graphic: "desktop_mac",
-    link: "https://electronjs.org/",
-    subtitle: "Desktop",
-    title: "Electron",
   },
   {
     graphic: "unarchive",
@@ -115,6 +109,12 @@ const tools: ITools[] = [
     link: "https://graphql.org/",
     subtitle: "API",
     title: "GraphQL",
+  },
+  {
+    graphic: "widgets",
+    link: "http://typeorm.io/",
+    subtitle: "Model",
+    title: "TypeORM",
   },
   {
     graphic: "flip_to_front",
@@ -143,6 +143,7 @@ const tools: ITools[] = [
 ];
 
 const releases: IReleases[] = [
+  { titleA: "Wild", titleB: "Warrior", version: "v8" },
   { titleA: "Pragmatic", titleB: "Plotter", version: "v7" },
   { titleA: "Radical", titleB: "Robot", version: "v6" },
   { titleA: "Fierce", titleB: "Feline", version: "v5" },

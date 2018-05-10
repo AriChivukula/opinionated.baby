@@ -230,7 +230,7 @@ Array [
             <i
               class="material-icons  mdc-list-item__graphic "
             >
-              widgets
+              extension
             </i>
             <span
               class=" mdc-list-item__text"
@@ -267,33 +267,6 @@ Array [
                 class=" mdc-list-item__secondary-text"
               >
                 Runtime
-              </span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
-      >
-        <div
-          class=" mdc-list mdc-list--two-line"
-        >
-          <div
-            class=" mdc-ripple-surface  mdc-list-item"
-          >
-            <i
-              class="material-icons  mdc-list-item__graphic "
-            >
-              desktop_mac
-            </i>
-            <span
-              class=" mdc-list-item__text"
-            >
-              Electron
-              <span
-                class=" mdc-list-item__secondary-text"
-              >
-                Desktop
               </span>
             </span>
           </div>
@@ -402,6 +375,33 @@ Array [
                 class=" mdc-list-item__secondary-text"
               >
                 API
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class=" mdc-list mdc-list--two-line"
+        >
+          <div
+            class=" mdc-ripple-surface  mdc-list-item"
+          >
+            <i
+              class="material-icons  mdc-list-item__graphic "
+            >
+              widgets
+            </i>
+            <span
+              class=" mdc-list-item__text"
+            >
+              TypeORM
+              <span
+                class=" mdc-list-item__secondary-text"
+              >
+                Model
               </span>
             </span>
           </div>
@@ -551,6 +551,36 @@ Array [
           class=" mdc-typography--headline2"
         >
           Release history
+        </div>
+      </div>
+      <div
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class=" mdc-card"
+        >
+          <div
+            class=" mdc-card__primary-action"
+          >
+            <section
+              class=" mdc-card__media mdc-card__media--square"
+              style="background-image:url(/images/v8.jpg)"
+            />
+            <span
+              class=" mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background "
+              >
+                v8
+              </span>
+              <br />
+              Wild
+              <br />
+              Warrior
+            </span>
+          </div>
         </div>
       </div>
       <div
@@ -1023,7 +1053,7 @@ Array [
             <i
               class="material-icons  mdc-list-item__graphic "
             >
-              widgets
+              extension
             </i>
             <span
               class=" mdc-list-item__text"
@@ -1060,33 +1090,6 @@ Array [
                 class=" mdc-list-item__secondary-text"
               >
                 Runtime
-              </span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
-      >
-        <div
-          class=" mdc-list mdc-list--two-line"
-        >
-          <div
-            class=" mdc-ripple-surface  mdc-list-item"
-          >
-            <i
-              class="material-icons  mdc-list-item__graphic "
-            >
-              desktop_mac
-            </i>
-            <span
-              class=" mdc-list-item__text"
-            >
-              Electron
-              <span
-                class=" mdc-list-item__secondary-text"
-              >
-                Desktop
               </span>
             </span>
           </div>
@@ -1195,6 +1198,33 @@ Array [
                 class=" mdc-list-item__secondary-text"
               >
                 API
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class=" mdc-list mdc-list--two-line"
+        >
+          <div
+            class=" mdc-ripple-surface  mdc-list-item"
+          >
+            <i
+              class="material-icons  mdc-list-item__graphic "
+            >
+              widgets
+            </i>
+            <span
+              class=" mdc-list-item__text"
+            >
+              TypeORM
+              <span
+                class=" mdc-list-item__secondary-text"
+              >
+                Model
               </span>
             </span>
           </div>
@@ -1344,6 +1374,36 @@ Array [
           class=" mdc-typography--headline2"
         >
           Release history
+        </div>
+      </div>
+      <div
+        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class=" mdc-card"
+        >
+          <div
+            class=" mdc-card__primary-action"
+          >
+            <section
+              class=" mdc-card__media mdc-card__media--square"
+              style="background-image:url(/images/v8.jpg)"
+            />
+            <span
+              class=" mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background "
+              >
+                v8
+              </span>
+              <br />
+              Wild
+              <br />
+              Warrior
+            </span>
+          </div>
         </div>
       </div>
       <div
