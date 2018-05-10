@@ -7,7 +7,7 @@ export const userEntity: Module = Module.new({
       with: ["Column", "Entity", "PrimaryColumn"],
     }),
     Bespoke.new({
-      name: "DEPRECATE",
+      name: "User",
     }),
   ],
   destination: "src/server/entity/User.ts",

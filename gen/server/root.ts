@@ -18,7 +18,7 @@ export const module: Module = Module.new({
       name: "./util",
       with: ["genNullOnThrow"],
     }),
-    Function.newAsyncExported({
+    Function.Async.newExported({
       content: [
         Bespoke.new({
           name: "genRoot",

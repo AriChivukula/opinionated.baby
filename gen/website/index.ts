@@ -13,7 +13,7 @@ export const module: Module = Module.new({
       type: Type.Required.new({ name: "apiURL", type: "string" }),
     }),
     Bespoke.new({
-      name: "DEPRECATE",
+      name: "main",
     }),
   ],
   destination: "src/website/index.tsx",

@@ -50,9 +50,9 @@ export const module: Module = Module.new({
       type: Type.Required.new({ name: "didSetup", type: "boolean" }),
     }),
     Bespoke.new({
-      name: "DEPRECATE",
+      name: "main",
     }),
-    Function.newSyncExported({
+    Function.Sync.newExported({
       content: [
         Bespoke.new({
           name: "handler",

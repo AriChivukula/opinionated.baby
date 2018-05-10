@@ -34,7 +34,7 @@ export const module: Module = Module.new({
       name: "./views/Root",
       with: ["Root"],
     }),
-    Function.newSyncExported({
+    Function.Sync.newExported({
       content: [
         Bespoke.new({
           name: "render",

@@ -2,7 +2,7 @@ import { Bespoke, Function, Module, Type } from "typescriptase";
 
 export const module: Module = Module.new({
   content: [
-    Function.newSyncExported({
+    Function.Sync.newExported({
       content: [
         Bespoke.new({
           name: "isElectron",
@@ -12,7 +12,7 @@ export const module: Module = Module.new({
       name: "isElectron",
       outType: Type.Anonymous.new({ type: "boolean"}),
     }),
-    Function.newSyncExported({
+    Function.Sync.newExported({
       content: [
         Bespoke.new({
           name: "goto",
