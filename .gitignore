@@ -1,4 +1,5 @@
 .DS_Store
+.terraform
 _build*
 coverage
 node_modules
