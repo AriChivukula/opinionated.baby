@@ -1,10 +1,8 @@
 /* tslint:disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type RootQueryVariables = {
-};
-export type RootQueryResponse = {
-};
+export type RootQueryVariables = {};
+export type RootQueryResponse = {};
 
 
 

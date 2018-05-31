@@ -30,6 +30,10 @@ export const module: Module = Module.new({
       withDefaultAs: "helmet",
     }),
     Import.new({
+      name: "raven",
+      withDefaultAs: "Raven",
+    }),
+    Import.new({
       name: "./db",
       with: ["genSetupDB"],
     }),

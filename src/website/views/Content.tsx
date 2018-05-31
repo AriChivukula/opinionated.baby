@@ -76,7 +76,7 @@ const tools: ITools[] = [
   },
   {
     graphic: "extension",
-    link: "https://github.com/arichiv/typescriptase",
+    link: "https://github.com/AriChivukula/typescriptase",
     subtitle: "Code Generation",
     title: "Typescriptase",
   },
@@ -173,7 +173,7 @@ export function Content(
           {" "}
           <Typography
             theme="text-secondary-on-background"
-            onClick={(): void => { goto("https://github.com/arichiv/opinionated.baby/"); }}>
+            onClick={(): void => { goto("https://github.com/AriChivukula/opinionated.baby/"); }}>
             Opinionated Baby
           </Typography>
           {" "}
@@ -233,7 +233,7 @@ export function Content(
         <GridCell span={4} key={index}>
           <Card>
             <CardPrimaryAction
-              onClick={(): void => { goto(`https://github.com/arichiv/opinionated.baby/releases/tag/${item.version}/`); }}>
+              onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/${item.version}/`); }}>
               <CardMedia
                 square
                 style={{backgroundImage: `url(/images/${item.version}.jpg)`}}
