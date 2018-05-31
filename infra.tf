@@ -23,7 +23,3 @@ provider "aws" {
 data "aws_lambda_function" {
   function_name = "${var.function_name}"
 }
-
-data "aws_lambda_function" {
-  function_name = "beta.${var.function_name}"
-}
