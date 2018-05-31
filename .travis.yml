@@ -48,6 +48,7 @@ deploy:
     - DEBUG=*
     - ENV=BETA
     - REDIRECT_URL=$REDIRECT_URL_BETA
+    - SENTRY=$SENTRY
     function_tags:
     - Name=$FUNCTION_NAME
     skip_cleanup: true
@@ -88,6 +89,7 @@ deploy:
     - DEBUG=*
     - ENV=PROD
     - REDIRECT_URL=$REDIRECT_URL
+    - SENTRY=$SENTRY
     function_tags:
     - Name=$FUNCTION_NAME
     skip_cleanup: true
