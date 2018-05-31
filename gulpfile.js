@@ -120,6 +120,7 @@ gulp.task(
     .pipe(cached("build:2:html"))
     .pipe(remember("build:2:html"))
     .pipe(replace("ENV_TITLE", pkg.title))
+    .pipe(replace("ENV_SENTRY", process.env.SENTRY))
     .pipe(gulp.dest("_build_2")),
 );
 
