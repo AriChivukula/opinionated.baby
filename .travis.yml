@@ -33,17 +33,20 @@ jobs:
     - cp build/3/server/index.js index.js
     - cp build/3/server/schema.graphql schema.graphql
     - zip -q -r build/dist.zip node_modules index.js schema.graphql
-  - stage: Deploy
+  - stage: Deploy S3 & Lambda
     script: skip
+  - script: skip
     deploy:
-    - provider: s3
+      provider: s3
       bucket: $BUCKET_BETA
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
       on:
         branch: master
-    - provider: lambda
+  - script: skip
+    deploy:
+      provider: lambda
       function_name: $FUNCTION_NAME_BETA
       role: $ROLE
       handler_name: handler
@@ -70,7 +73,9 @@ jobs:
       skip_cleanup: true
       on:
         branch: master
-    - provider: s3
+  - script: skip
+    deploy:
+      provider: s3
       bucket: $BUCKET
       local_dir: build/3/website
       acl: public_read
@@ -78,7 +83,9 @@ jobs:
       on:
         tags: true
         condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
-    - provider: lambda
+  - script: skip
+    deploy:
+      provider: lambda
       function_name: $FUNCTION_NAME
       role: $ROLE
       handler_name: handler
@@ -106,5 +113,9 @@ jobs:
       on:
         tags: true
         condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
+stages:
+- Lint & Build
+- Test & Package
+- Deploy S3 & Lambda
 after_success:
 - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
