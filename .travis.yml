@@ -17,14 +17,16 @@ before_install:
 - aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER build
 jobs:
   include:
-  - stage: Lint & Build
-    script:
+  - stage: lint+build
+    script: skip
+  - script:
     - npm run build:0
   - script:
     - npm run build:1
     - npm run build:2
-  - stage: Test & Package
-    script:
+  - stage: test+package
+    script: skip
+  - script:
     - npm run test
   - script
     - npm run build:3
@@ -33,7 +35,7 @@ jobs:
     - cp build/3/server/index.js index.js
     - cp build/3/server/schema.graphql schema.graphql
     - zip -q -r build/dist.zip node_modules index.js schema.graphql
-  - stage: Deploy S3 & Lambda
+  - stage: s3+lambda
     script: skip
   - script: skip
     deploy:
@@ -114,8 +116,8 @@ jobs:
         tags: true
         condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
 stages:
-- Lint & Build
-- Test & Package
-- Deploy S3 & Lambda
+- lint+build
+- test+package
+- s3+lambda
 after_success:
 - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
