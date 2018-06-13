@@ -52,7 +52,7 @@ jobs:
       role: $ROLE
       handler_name: handler
       module_name: index
-      zip: dist.zip
+      zip: build/dist.zip
       timeout: 300
       memory_size: 256
       runtime: nodejs8.10
@@ -91,7 +91,7 @@ jobs:
       role: $ROLE
       handler_name: handler
       module_name: index
-      zip: dist.zip
+      zip: build/dist.zip
       timeout: 300
       memory_size: 256
       runtime: nodejs8.10
