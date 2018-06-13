@@ -14,7 +14,7 @@
         "statements": 50
       }
     },
-    "forceExit": true,
+    "detectOpenHandles": true,
     "roots": [
       "<rootDir>/build/2/"
     ],
