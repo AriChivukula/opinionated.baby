@@ -23,6 +23,7 @@ jobs:
   - script:
     - npx gulp build:1
     - npx gulp build:2
+    - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
   - stage: test+package
     script:
     - npm run test
@@ -33,6 +34,7 @@ jobs:
     - cp build/3/server/index.js index.js
     - cp build/3/server/schema.graphql schema.graphql
     - zip -q -r build/dist.zip node_modules index.js schema.graphql
+    - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
   - stage: s3+lambda
     script: skip
     deploy:
@@ -116,5 +118,3 @@ stages:
 - lint+build
 - test+package
 - s3+lambda
-after_success:
-- aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
