@@ -20,16 +20,16 @@ jobs:
   - stage: lint+build
     script: skip
   - script:
-    - npm run build:0
+    - npx gulp build:0
   - script:
-    - npm run build:1
-    - npm run build:2
+    - npx gulp build:1
+    - npx gulp build:2
   - stage: test+package
     script: skip
   - script:
     - npm run test
   - script
-    - npm run build:3
+    - npx gulp build:3
     - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
     - npm prune --production
     - cp build/3/server/index.js index.js
