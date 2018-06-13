@@ -18,6 +18,7 @@ script:
 - npm run build
 - npm run test
 after_success:
+- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER build
 - npm prune --production
 - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
 - cp build/3/server/index.js index.js
