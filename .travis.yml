@@ -18,15 +18,13 @@ before_install:
 jobs:
   include:
   - stage: lint+build
-    script: skip
-  - script:
+    script:
     - npx gulp build:0
   - script:
     - npx gulp build:1
     - npx gulp build:2
   - stage: test+package
-    script: skip
-  - script:
+    script:
     - npm run test
   - script
     - npx gulp build:3
@@ -37,7 +35,6 @@ jobs:
     - zip -q -r build/dist.zip node_modules index.js schema.graphql
   - stage: s3+lambda
     script: skip
-  - script: skip
     deploy:
       provider: s3
       bucket: $BUCKET_BETA
