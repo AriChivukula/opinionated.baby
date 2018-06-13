@@ -7,6 +7,7 @@ node_js:
 cache:
   directories:
   - node_modules
+  - .cache/pip
 before_install:
 - export AWS_ACCESS_KEY_ID=$ACCESS_KEY_ID
 - export AWS_SECRET_ACCESS_KEY=$SECRET_ACCESS_KEY
@@ -16,19 +17,24 @@ before_install:
 - aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER build
 jobs:
   include:
-  - stage: build
+  - stage: Lint & Build
     script:
-    - npm run build
-  - stage: test
+    - npm run build:0
+  - script:
+    - npm run build:1
+    - npm run build:2
+  - stage: Test & Package
     script:
     - npm run test
-  - stage: deploy
-    script:
-    - npm prune --production
+  - script
+    - npm run build:3
     - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
+    - npm prune --production
     - cp build/3/server/index.js index.js
     - cp build/3/server/schema.graphql schema.graphql
-    - zip -q -r dist.zip node_modules index.js schema.graphql
+    - zip -q -r build/dist.zip node_modules index.js schema.graphql
+  - stage: Deploy
+    script: skip
     deploy:
     - provider: s3
       bucket: $BUCKET_BETA
