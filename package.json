@@ -16,7 +16,7 @@
     },
     "forceExit": true,
     "roots": [
-      "<rootDir>/_build_2/"
+      "<rootDir>/build/2/"
     ],
     "verbose": true
   },
