@@ -14,84 +14,91 @@ before_install:
 - pip install --user awscli
 - mkdir build
 - aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER build
-script:
-- npm run build
-- npm run test
+jobs:
+  include:
+  - stage: build
+    script:
+    - npm run build
+  - stage: test
+    script:
+    - npm run test
+  - stage: deploy
+    script:
+    - npm prune --production
+    - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
+    - cp build/3/server/index.js index.js
+    - cp build/3/server/schema.graphql schema.graphql
+    - zip -q -r dist.zip node_modules index.js schema.graphql
+    deploy:
+    - provider: s3
+      bucket: $BUCKET_BETA
+      local_dir: build/3/website
+      acl: public_read
+      skip_cleanup: true
+      on:
+        branch: master
+    - provider: lambda
+      function_name: $FUNCTION_NAME_BETA
+      role: $ROLE
+      handler_name: handler
+      module_name: index
+      zip: dist.zip
+      timeout: 300
+      memory_size: 256
+      runtime: nodejs8.10
+      publish: true
+      environment_variables:
+      - CLIENT_ID=$CLIENT_ID
+      - CLIENT_SECRET=$CLIENT_SECRET
+      - DB_HOST=$DB_HOST
+      - DB_NAME=$DB_NAME
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_PORT=$DB_PORT
+      - DB_USERNAME=$DB_USERNAME
+      - DEBUG=*
+      - ENV=BETA
+      - REDIRECT_URL=$REDIRECT_URL_BETA
+      - SENTRY=$SENTRY
+      function_tags:
+      - Name=$FUNCTION_NAME
+      skip_cleanup: true
+      on:
+        branch: master
+    - provider: s3
+      bucket: $BUCKET
+      local_dir: build/3/website
+      acl: public_read
+      skip_cleanup: true
+      on:
+        tags: true
+        condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
+    - provider: lambda
+      function_name: $FUNCTION_NAME
+      role: $ROLE
+      handler_name: handler
+      module_name: index
+      zip: dist.zip
+      timeout: 300
+      memory_size: 256
+      runtime: nodejs8.10
+      publish: true
+      environment_variables:
+      - CLIENT_ID=$CLIENT_ID
+      - CLIENT_SECRET=$CLIENT_SECRET
+      - DB_HOST=$DB_HOST
+      - DB_NAME=$DB_NAME
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_PORT=$DB_PORT
+      - DB_USERNAME=$DB_USERNAME
+      - DEBUG=*
+      - ENV=PROD
+      - REDIRECT_URL=$REDIRECT_URL
+      - SENTRY=$SENTRY
+      function_tags:
+      - Name=$FUNCTION_NAME
+      skip_cleanup: true
+      on:
+        tags: true
+        condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
 after_success:
 - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
-- npm prune --production
-- if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
-- cp build/3/server/index.js index.js
-- cp build/3/server/schema.graphql schema.graphql
-- zip -q -r dist.zip node_modules index.js schema.graphql
-deploy:
-  - provider: s3
-    bucket: $BUCKET_BETA
-    local_dir: build/3/website
-    acl: public_read
-    skip_cleanup: true
-    on:
-      branch: master
-  - provider: lambda
-    function_name: $FUNCTION_NAME_BETA
-    role: $ROLE
-    handler_name: handler
-    module_name: index
-    zip: dist.zip
-    timeout: 300
-    memory_size: 256
-    runtime: nodejs8.10
-    publish: true
-    environment_variables:
-    - CLIENT_ID=$CLIENT_ID
-    - CLIENT_SECRET=$CLIENT_SECRET
-    - DB_HOST=$DB_HOST
-    - DB_NAME=$DB_NAME
-    - DB_PASSWORD=$DB_PASSWORD
-    - DB_PORT=$DB_PORT
-    - DB_USERNAME=$DB_USERNAME
-    - DEBUG=*
-    - ENV=BETA
-    - REDIRECT_URL=$REDIRECT_URL_BETA
-    - SENTRY=$SENTRY
-    function_tags:
-    - Name=$FUNCTION_NAME
-    skip_cleanup: true
-    on:
-      branch: master
-  - provider: s3
-    bucket: $BUCKET
-    local_dir: build/3/website
-    acl: public_read
-    skip_cleanup: true
-    on:
-      tags: true
-      condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
-  - provider: lambda
-    function_name: $FUNCTION_NAME
-    role: $ROLE
-    handler_name: handler
-    module_name: index
-    zip: dist.zip
-    timeout: 300
-    memory_size: 256
-    runtime: nodejs8.10
-    publish: true
-    environment_variables:
-    - CLIENT_ID=$CLIENT_ID
-    - CLIENT_SECRET=$CLIENT_SECRET
-    - DB_HOST=$DB_HOST
-    - DB_NAME=$DB_NAME
-    - DB_PASSWORD=$DB_PASSWORD
-    - DB_PORT=$DB_PORT
-    - DB_USERNAME=$DB_USERNAME
-    - DEBUG=*
-    - ENV=PROD
-    - REDIRECT_URL=$REDIRECT_URL
-    - SENTRY=$SENTRY
-    function_tags:
-    - Name=$FUNCTION_NAME
-    skip_cleanup: true
-    on:
-      tags: true
-      condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
