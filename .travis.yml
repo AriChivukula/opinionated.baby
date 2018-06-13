@@ -1,9 +1,16 @@
+env:
+  global:
+  - PATH=$HOME/.local/bin:$PATH
 language: node_js
 node_js:
 - node
 cache:
   directories:
   - node_modules
+before_install:
+- pip install --user awscli
+- mkdir build
+- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER build
 script:
 - npm run build
 - npm run test
