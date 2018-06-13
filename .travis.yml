@@ -26,7 +26,7 @@ jobs:
   - stage: test+package
     script:
     - npm run test
-  - script
+  - script:
     - npx gulp build:3
     - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
     - npm prune --production
