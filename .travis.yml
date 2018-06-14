@@ -7,6 +7,7 @@ node_js:
 cache:
   directories:
   - node_modules
+  - .cache/pip
 before_install:
 - export AWS_ACCESS_KEY_ID=$ACCESS_KEY_ID
 - export AWS_SECRET_ACCESS_KEY=$SECRET_ACCESS_KEY
@@ -16,33 +17,42 @@ before_install:
 - aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER build
 jobs:
   include:
-  - stage: build
+  - stage: +lint&build
     script:
-    - npm run build
-  - stage: test
+    - npx gulp build:0
+  - script:
+    - npx gulp build:1
+    - npx gulp build:2
+  - stage: +test&package
     script:
     - npm run test
-  - stage: deploy
+  - script:
+    - npx gulp build:3
+    - npx gulp build:4
+  - stage: +s3&lambda
+    if: ( branch = master ) OR ( tag =~ ^v[0-9]+$ )
+    install: skip
     script:
-    - npm prune --production
-    - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
-    - cp build/3/server/index.js index.js
-    - cp build/3/server/schema.graphql schema.graphql
-    - zip -q -r dist.zip node_modules index.js schema.graphql
+      - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET=$BUCKET_BETA ; fi
+      - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
     deploy:
-    - provider: s3
-      bucket: $BUCKET_BETA
+      provider: s3
+      bucket: $BUCKET
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
-      on:
-        branch: master
-    - provider: lambda
-      function_name: $FUNCTION_NAME_BETA
+  - if: ( branch = master ) OR ( tag =~ ^v[0-9]+$ )
+    install: skip
+    script:
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export REDIRECT_URL=$REDIRECT_URL_BETA ; fi
+    deploy:
+      provider: lambda
+      function_name: $FUNCTION_NAME
       role: $ROLE
       handler_name: handler
       module_name: index
-      zip: dist.zip
+      zip: build/dist.zip
       timeout: 300
       memory_size: 256
       runtime: nodejs8.10
@@ -57,48 +67,8 @@ jobs:
       - DB_USERNAME=$DB_USERNAME
       - DEBUG=*
       - ENV=BETA
-      - REDIRECT_URL=$REDIRECT_URL_BETA
-      - SENTRY=$SENTRY
-      function_tags:
-      - Name=$FUNCTION_NAME
-      skip_cleanup: true
-      on:
-        branch: master
-    - provider: s3
-      bucket: $BUCKET
-      local_dir: build/3/website
-      acl: public_read
-      skip_cleanup: true
-      on:
-        tags: true
-        condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
-    - provider: lambda
-      function_name: $FUNCTION_NAME
-      role: $ROLE
-      handler_name: handler
-      module_name: index
-      zip: dist.zip
-      timeout: 300
-      memory_size: 256
-      runtime: nodejs8.10
-      publish: true
-      environment_variables:
-      - CLIENT_ID=$CLIENT_ID
-      - CLIENT_SECRET=$CLIENT_SECRET
-      - DB_HOST=$DB_HOST
-      - DB_NAME=$DB_NAME
-      - DB_PASSWORD=$DB_PASSWORD
-      - DB_PORT=$DB_PORT
-      - DB_USERNAME=$DB_USERNAME
-      - DEBUG=*
-      - ENV=PROD
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
-      function_tags:
-      - Name=$FUNCTION_NAME
       skip_cleanup: true
-      on:
-        tags: true
-        condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
 after_success:
 - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
