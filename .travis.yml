@@ -17,14 +17,14 @@ before_install:
 - aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER build
 jobs:
   include:
-  - stage: lint+build
+  - stage: +lint&build
     script:
     - npx gulp build:0
   - script:
     - npx gulp build:1
     - npx gulp build:2
     - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
-  - stage: test+package
+  - stage: +test&package
     script:
     - npm run test
   - script:
@@ -34,7 +34,8 @@ jobs:
     - cp build/3/server/schema.graphql schema.graphql
     - zip -q -r build/dist.zip node_modules index.js schema.graphql
     - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
-  - stage: s3+lambda
+  - stage: +s3&lambda
+    install: skip
     script:
       - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET=$BUCKET_BETA ; fi
       - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
@@ -44,7 +45,8 @@ jobs:
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
-  - script:
+  - install: skip
+    script:
     - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
     - if ! [[ "$TRAVIS_TAG" ]] ; then export REDIRECT_URL=$REDIRECT_URL_BETA ; fi
     deploy:
@@ -72,7 +74,7 @@ jobs:
       - SENTRY=$SENTRY
       skip_cleanup: true
 stages:
-- lint+build
-- test+package
-- name: s3+lambda
+- +lint&build
+- +test&package
+- name: +s3&lambda
   if: (branch = master) OR (tag =~ ^v[0-9]+$)
