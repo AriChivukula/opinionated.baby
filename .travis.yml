@@ -30,6 +30,7 @@ jobs:
     - npx gulp build:3
     - npx gulp build:4
   - stage: +s3&lambda
+    if: (branch = master) OR (tag =~ ^v[0-9]+$)
     install: skip
     script:
       - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET=$BUCKET_BETA ; fi
@@ -68,10 +69,5 @@ jobs:
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
       skip_cleanup: true
-stages:
-- +lint&build
-- +test&package
-- name: +s3&lambda
-  if: (branch = master) OR (tag =~ ^v[0-9]+$)
 after_success:
 - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
