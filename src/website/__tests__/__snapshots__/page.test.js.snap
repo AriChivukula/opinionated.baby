@@ -9,7 +9,7 @@ Array [
       class="mdc-toolbar__row"
     >
       <section
-        class= mdc-toolbar__section mdc-toolbar__section--align-start"
+        class="mdc-toolbar__section mdc-toolbar__section--align-start"
       >
         <div
           class="mdc-toolbar__title"
