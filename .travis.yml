@@ -27,6 +27,7 @@ jobs:
   - stage: +test&package
     script:
     - npm run test
+    - aws s3 cp screenshot.png s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
   - stage: +test&package
     script:
     - npx gulp build:3
