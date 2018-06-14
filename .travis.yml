@@ -20,13 +20,15 @@ jobs:
   - stage: +lint&build
     script:
     - npx gulp build:0
-  - script:
+  - stage: +lint&build
+    script:
     - npx gulp build:1
     - npx gulp build:2
   - stage: +test&package
     script:
     - npm run test
-  - script:
+  - stage: +test&package
+    script:
     - npx gulp build:3
     - npx gulp build:4
   - stage: +s3&lambda
@@ -42,7 +44,8 @@ jobs:
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
-  - if: ( branch = master AND type != pull_request ) OR ( tag =~ ^v[0-9]+$ )
+  - stage: +s3&lambda
+    if: ( branch = master AND type != pull_request ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
     - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
@@ -71,10 +74,20 @@ jobs:
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
       skip_cleanup: true
-  - stage: +gems
+  - stage: +gems&screenshot
     if: type = pull_request
     script:
     - export NPM_OUTDATED=$(npm outdated | sed -e :a -e '$!N;s/\n/<br>/;ta' -e 'P;D')
-    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"**npm outdated**<br /><br />${NPM_OUTDATED}\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
+    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"**npm outdated**<br><br>${NPM_OUTDATED}\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
+  - stage: +gems&screenshot
+    if: type = pull_request
+    script:
+    - export DEBUG=*
+    - export ENV=DEV
+    - export PORT=8080
+    - npm run serve &
+    - npx ts-node src/e2e/screenshot.ts
+    - aws s3 cp screenshot.png s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
+    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![Screenshot](https://s3-us-west-2.amazonaws.com/${BUCKET_BUILD}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
 after_success:
 - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
