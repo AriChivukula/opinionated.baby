@@ -223,7 +223,7 @@ gulp.task(
 
 gulp.task(
   "snap:copy",
-  shell.task("cp -R build/2/website/__tests__/__snapshots__/ src/website/__tests__/__snapshots__/"),
+  shell.task("cp -R build/2/website/__tests__/__snapshots__ src/website/__tests__/__snapshots__"),
 );
 
 gulp.task(
