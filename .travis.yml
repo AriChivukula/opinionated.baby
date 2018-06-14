@@ -23,14 +23,12 @@ jobs:
   - script:
     - npx gulp build:1
     - npx gulp build:2
-    - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
   - stage: +test&package
     script:
     - npm run test
   - script:
     - npx gulp build:3
     - npx gulp build:4
-    - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
   - stage: +s3&lambda
     install: skip
     script:
@@ -75,3 +73,5 @@ stages:
 - +test&package
 - name: +s3&lambda
   if: (branch = master) OR (tag =~ ^v[0-9]+$)
+after_success:
+- aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
