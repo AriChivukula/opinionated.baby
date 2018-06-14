@@ -94,7 +94,7 @@ jobs:
     - npm run codegen
     - git remote add target https://arichiv:$GITHUB_TOKEN@github.com/AriChivukula/opinionated.baby.git
     - git add -A
-    - git commit -m "ARTIFACT"
-    - git push target
+    - git commit -m "ARTIFACT-$TRAVIS_BUILD_NUMBER"
+    - git push target HEAD:TRAVIS_BRANCH
 after_success:
 - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
