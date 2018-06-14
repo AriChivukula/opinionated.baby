@@ -3,38 +3,38 @@
 exports[`PageLoggedIn 1`] = `
 Array [
   <header
-    class=" mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall"
+    class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall"
   >
     <div
-      class=" mdc-toolbar__row"
+      class="mdc-toolbar__row"
     >
       <section
-        class=" mdc-toolbar__section mdc-toolbar__section--align-start"
+        class= mdc-toolbar__section mdc-toolbar__section--align-start"
       >
         <div
-          class=" mdc-toolbar__title"
+          class="mdc-toolbar__title"
         />
       </section>
       <section
-        class=" mdc-toolbar__section mdc-toolbar__section--align-end"
+        class="mdc-toolbar__section mdc-toolbar__section--align-end"
       >
         <div
-          class=" mdc-toolbar__title"
+          class="mdc-toolbar__title"
         >
           TEST
         </div>
         <i
-          class="material-icons  mdc-toolbar__icon "
+          class="material-icons mdc-toolbar__icon "
         >
           exit_to_app
         </i>
         <i
-          class="material-icons  mdc-toolbar__icon "
+          class="material-icons mdc-toolbar__icon "
         >
           code
         </i>
         <i
-          class="material-icons  mdc-toolbar__icon "
+          class="material-icons mdc-toolbar__icon "
         >
           info
         </i>
@@ -42,19 +42,19 @@ Array [
     </div>
   </header>,
   <div
-    class=" mdc-toolbar-fixed-adjust"
+    class="mdc-toolbar-fixed-adjust"
   />,
   <div
-    class=" mdc-layout-grid"
+    class="mdc-layout-grid"
   >
     <div
-      class=" mdc-layout-grid__inner"
+      class="mdc-layout-grid__inner"
     >
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
       >
         <div
-          class=" mdc-typography--headline2"
+          class="mdc-typography--headline2"
         >
           A confidently immature starting point
         </div>
@@ -75,34 +75,34 @@ Array [
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
       >
         <div
-          class=" mdc-typography--headline2"
+          class="mdc-typography--headline2"
         >
           Important choices I made for you
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               memory
             </i>
             <span
-              class=" mdc-list-item__text"
+              class="mdc-list-item__text"
             >
               Lambda
               <span
-                class=" mdc-list-item__secondary-text"
+                class="mdc-list-item__secondary-text"
               >
                 Server(less)
               </span>
@@ -111,16 +111,16 @@ Array [
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
       >
         <div
-          class=" mdc-list mdc-list--two-line"
+          class="mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               share
             </i>
@@ -144,10 +144,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               storage
             </i>
@@ -171,7 +171,7 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
               class="material-icons  mdc-list-item__graphic "
@@ -704,20 +704,20 @@ Array [
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
       >
         <div
-          class=" mdc-card"
+          class="mdc-card"
         >
           <div
-            class=" mdc-card__primary-action"
+            class="mdc-card__primary-action"
           >
             <section
-              class=" mdc-card__media mdc-card__media--square"
+              class="mdc-card__media mdc-card__media--square"
               style="background-image:url(/images/v3.jpg)"
             />
             <span
-              class=" mdc-typography--headline4"
+              class="mdc-typography--headline4"
               style="padding:1rem"
             >
               <span
@@ -734,7 +734,7 @@ Array [
         </div>
       </div>
       <div
-        class=" mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
       >
         <div
           class=" mdc-card"
@@ -847,17 +847,17 @@ Array [
         class=" mdc-toolbar__section mdc-toolbar__section--align-end"
       >
         <i
-          class="material-icons  mdc-toolbar__icon "
+          class="material-icons mdc-toolbar__icon "
         >
           person
         </i>
         <i
-          class="material-icons  mdc-toolbar__icon "
+          class="material-icons mdc-toolbar__icon "
         >
           code
         </i>
         <i
-          class="material-icons  mdc-toolbar__icon "
+          class="material-icons mdc-toolbar__icon "
         >
           info
         </i>
@@ -913,10 +913,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               memory
             </i>
@@ -940,10 +940,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               share
             </i>
@@ -967,10 +967,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               storage
             </i>
@@ -994,10 +994,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               bug_report
             </i>
@@ -1021,10 +1021,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               language
             </i>
@@ -1048,10 +1048,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               extension
             </i>
@@ -1075,10 +1075,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               cached
             </i>
@@ -1102,10 +1102,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               unarchive
             </i>
@@ -1129,10 +1129,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               build
             </i>
@@ -1156,10 +1156,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               playlist_add_check
             </i>
@@ -1183,10 +1183,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               graphic_eq
             </i>
@@ -1210,10 +1210,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               widgets
             </i>
@@ -1237,10 +1237,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               flip_to_front
             </i>
@@ -1264,10 +1264,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               local_library
             </i>
@@ -1291,10 +1291,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               style
             </i>
@@ -1318,10 +1318,10 @@ Array [
           class=" mdc-list mdc-list--two-line"
         >
           <div
-            class=" mdc-ripple-surface  mdc-list-item"
+            class=" mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons  mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic "
             >
               line_style
             </i>
