@@ -11,21 +11,27 @@ before_install:
 - aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER build
 jobs:
   include:
-  - stage: +lint&build
+  - stage: Codegen (api only)
+    if: type = api
+    - npx gulp codegen
+  - stage: Build
     script:
     - npx gulp build:0
-  - stage: +lint&build
+  - stage: Build
     script:
     - npx gulp build:1
     - npx gulp build:2
-  - stage: +test&package
+  - stage: Snap (api only)
+    if: type = api
+    - npx gulp snap
+  - stage: Test
     script:
     - npx gulp test
-  - stage: +test&package
+  - stage: Test
     script:
     - npx gulp build:3
     - npx gulp build:4
-  - stage: +s3&lambda
+  - stage: Deploy (merge and tag only)
     if: ( branch = master AND type = push ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
@@ -38,7 +44,7 @@ jobs:
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
-  - stage: +s3&lambda
+  - stage: Deploy (merge and tag only)
     if: ( branch = master AND type = push ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
@@ -68,12 +74,12 @@ jobs:
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
       skip_cleanup: true
-  - stage: +gems&screenshot
+  - stage: Bot (pull request only)
     if: type = pull_request
     script:
     - export NPM_OUTDATED=$(npm outdated | sed -e :a -e '$!N;s/\n/<br>/;ta' -e 'P;D')
     - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"**npm outdated**<br><br>${NPM_OUTDATED}\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
-  - stage: +gems&screenshot
+  - stage: Bot (pull request only)
     if: type = pull_request
     script:
     - export DEBUG=*
@@ -83,18 +89,16 @@ jobs:
     - npx ts-node src/e2e/screenshot.ts
     - aws s3 cp screenshot.png s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
     - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![Screenshot](https://s3-us-west-2.amazonaws.com/${BUCKET_BUILD}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
-  - stage: +sql&artifact
+  - stage: Actualize (api only)
     if: type = api
     script:
     - npx gulp sql
-  - stage: +sql&artifact
+  - stage: Actualize (api only)
     if: type = api
     script:
-    - npx gulp snap
-    - npx gulp codegen
     - git remote add target https://arichiv:$GITHUB_TOKEN@github.com/AriChivukula/opinionated.baby.git
     - git add -A
-    - git commit -m "ARTIFACT-$TRAVIS_BUILD_NUMBER"
-    - git push target HEAD:TRAVIS_BRANCH
+    - git commit -m "ACTUALIZE $TRAVIS_BUILD_NUMBER"
+    - git push target HEAD:$TRAVIS_BRANCH
 after_success:
 - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
