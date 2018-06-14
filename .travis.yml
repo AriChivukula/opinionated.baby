@@ -8,7 +8,7 @@ before_install:
 - export AWS_DEFAULT_REGION=$REGION
 - pip install --user awscli
 - mkdir build
-- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER build
+- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER ~
 jobs:
   include:
   - stage: Codegen
@@ -103,4 +103,4 @@ jobs:
     - git commit -m "ACTUALIZE $TRAVIS_BUILD_NUMBER"
     - git push target HEAD:$TRAVIS_BRANCH
 after_success:
-- aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
+- aws s3 sync ~ s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
