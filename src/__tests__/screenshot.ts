@@ -1,4 +1,4 @@
-import * as puppeteer from 'puppeteer';
+import * as puppeteer from "puppeteer";
 
 (async (): Awaitable<void> => {
   const browser: puppeteer.Browser = await puppeteer.launch();
