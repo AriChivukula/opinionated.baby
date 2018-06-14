@@ -29,10 +29,7 @@ jobs:
     - npm run test
   - script:
     - npx gulp build:3
-    - npm prune --production
-    - cp build/3/server/index.js index.js
-    - cp build/3/server/schema.graphql schema.graphql
-    - zip -q -r build/dist.zip node_modules index.js schema.graphql
+    - npx gulp build:4
     - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
   - stage: +s3&lambda
     install: skip
