@@ -30,7 +30,7 @@ jobs:
     - npx gulp build:3
     - npx gulp build:4
   - stage: +s3&lambda
-    if: ( branch = master ) OR ( tag =~ ^v[0-9]+$ )
+    if: ( branch = master AND type != pull_request ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
       - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET=$BUCKET_BETA ; fi
@@ -38,10 +38,11 @@ jobs:
     deploy:
       provider: s3
       bucket: $BUCKET
+      region: $AWS_DEFAULT_REGION
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
-  - if: ( branch = master ) OR ( tag =~ ^v[0-9]+$ )
+  - if: ( branch = master AND type != pull_request ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
     - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
@@ -70,5 +71,10 @@ jobs:
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
       skip_cleanup: true
+  - stage: +gems
+    if: type = pull_request
+    script:
+    - export NPM_OUTDATED=$(npm outdated | sed -e :a -e '$!N;s/\n/<br>/;ta' -e 'P;D')
+    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"**npm outdated**<br /><br />${NPM_OUTDATED}\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
 after_success:
 - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
