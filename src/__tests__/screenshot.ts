@@ -1,5 +1,5 @@
 import * as puppeteer from "puppeteer";
-import { makeSync } from "server/util";
+import { makeSync } from "./server/util";
 
 makeSync((async (): Promise<void> => {
   const browser: puppeteer.Browser = await puppeteer.launch();
