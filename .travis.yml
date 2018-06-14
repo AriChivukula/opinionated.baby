@@ -1,98 +1,93 @@
+env:
+  global:
+  - PATH=$HOME/.local/bin:$PATH
 language: node_js
 node_js:
 - node
 cache:
   directories:
   - node_modules
-script:
-- npm run build
-- npm run test
+  - .cache/pip
+before_install:
+- export AWS_ACCESS_KEY_ID=$ACCESS_KEY_ID
+- export AWS_SECRET_ACCESS_KEY=$SECRET_ACCESS_KEY
+- export AWS_DEFAULT_REGION=$REGION
+- pip install --user awscli
+- mkdir build
+- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER build
+jobs:
+  include:
+  - stage: +lint&build
+    script:
+    - npx gulp build:0
+  - stage: +lint&build
+    script:
+    - npx gulp build:1
+    - npx gulp build:2
+  - stage: +test&package
+    script:
+    - npm run test
+  - stage: +test&package
+    script:
+    - npx gulp build:3
+    - npx gulp build:4
+  - stage: +s3&lambda
+    if: ( branch = master AND type != pull_request ) OR ( tag =~ ^v[0-9]+$ )
+    install: skip
+    script:
+      - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET=$BUCKET_BETA ; fi
+      - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
+    deploy:
+      provider: s3
+      bucket: $BUCKET
+      region: $AWS_DEFAULT_REGION
+      local_dir: build/3/website
+      acl: public_read
+      skip_cleanup: true
+  - stage: +s3&lambda
+    if: ( branch = master AND type != pull_request ) OR ( tag =~ ^v[0-9]+$ )
+    install: skip
+    script:
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export REDIRECT_URL=$REDIRECT_URL_BETA ; fi
+    deploy:
+      provider: lambda
+      function_name: $FUNCTION_NAME
+      role: $ROLE
+      handler_name: handler
+      module_name: index
+      zip: build/dist.zip
+      timeout: 300
+      memory_size: 256
+      runtime: nodejs8.10
+      publish: true
+      environment_variables:
+      - CLIENT_ID=$CLIENT_ID
+      - CLIENT_SECRET=$CLIENT_SECRET
+      - DB_HOST=$DB_HOST
+      - DB_NAME=$DB_NAME
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_PORT=$DB_PORT
+      - DB_USERNAME=$DB_USERNAME
+      - DEBUG=*
+      - ENV=BETA
+      - REDIRECT_URL=$REDIRECT_URL
+      - SENTRY=$SENTRY
+      skip_cleanup: true
+  - stage: +gems&screenshot
+    if: type = pull_request
+    script:
+    - export NPM_OUTDATED=$(npm outdated | sed -e :a -e '$!N;s/\n/<br>/;ta' -e 'P;D')
+    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"**npm outdated**<br><br>${NPM_OUTDATED}\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
+  - stage: +gems&screenshot
+    if: type = pull_request
+    script:
+    - export DEBUG=*
+    - export ENV=DEV
+    - export PORT=8080
+    - npm run serve &
+    - npx ts-node src/e2e/screenshot.ts
+    - aws s3 cp screenshot.png s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
+    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![Screenshot](https://s3-us-west-2.amazonaws.com/${BUCKET_BUILD}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
 after_success:
-- npm prune --production
-- if [[ "$TRAVIS_TAG" ]] ; then rm _build_3/website/static/robots.txt ; fi
-- cp _build_3/server/index.js index.js
-- cp _build_3/server/schema.graphql schema.graphql
-- zip -q -r dist.zip node_modules index.js schema.graphql
-deploy:
-  - provider: s3
-    access_key_id: $ACCESS_KEY_ID
-    secret_access_key: $SECRET_ACCESS_KEY
-    bucket: $BUCKET_BETA
-    region: $REGION
-    local_dir: _build_3/website
-    acl: public_read
-    skip_cleanup: true
-    on:
-      branch: master
-  - provider: lambda
-    access_key_id: $ACCESS_KEY_ID
-    secret_access_key: $SECRET_ACCESS_KEY
-    region: $REGION
-    function_name: $FUNCTION_NAME_BETA
-    role: $ROLE
-    handler_name: handler
-    module_name: index
-    zip: dist.zip
-    timeout: 300
-    memory_size: 256
-    runtime: nodejs8.10
-    publish: true
-    environment_variables:
-    - CLIENT_ID=$CLIENT_ID
-    - CLIENT_SECRET=$CLIENT_SECRET
-    - DB_HOST=$DB_HOST
-    - DB_NAME=$DB_NAME
-    - DB_PASSWORD=$DB_PASSWORD
-    - DB_PORT=$DB_PORT
-    - DB_USERNAME=$DB_USERNAME
-    - DEBUG=*
-    - ENV=BETA
-    - REDIRECT_URL=$REDIRECT_URL_BETA
-    - SENTRY=$SENTRY
-    function_tags:
-    - Name=$FUNCTION_NAME
-    skip_cleanup: true
-    on:
-      branch: master
-  - provider: s3
-    access_key_id: $ACCESS_KEY_ID
-    secret_access_key: $SECRET_ACCESS_KEY
-    bucket: $BUCKET
-    region: $REGION
-    local_dir: _build_3/website
-    acl: public_read
-    skip_cleanup: true
-    on:
-      tags: true
-      condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
-  - provider: lambda
-    access_key_id: $ACCESS_KEY_ID
-    secret_access_key: $SECRET_ACCESS_KEY
-    region: $REGION
-    function_name: $FUNCTION_NAME
-    role: $ROLE
-    handler_name: handler
-    module_name: index
-    zip: dist.zip
-    timeout: 300
-    memory_size: 256
-    runtime: nodejs8.10
-    publish: true
-    environment_variables:
-    - CLIENT_ID=$CLIENT_ID
-    - CLIENT_SECRET=$CLIENT_SECRET
-    - DB_HOST=$DB_HOST
-    - DB_NAME=$DB_NAME
-    - DB_PASSWORD=$DB_PASSWORD
-    - DB_PORT=$DB_PORT
-    - DB_USERNAME=$DB_USERNAME
-    - DEBUG=*
-    - ENV=PROD
-    - REDIRECT_URL=$REDIRECT_URL
-    - SENTRY=$SENTRY
-    function_tags:
-    - Name=$FUNCTION_NAME
-    skip_cleanup: true
-    on:
-      tags: true
-      condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
+- aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER

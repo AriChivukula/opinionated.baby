@@ -18,7 +18,7 @@ var project = ts.createProject("tsconfig.json");
 
 gulp.task(
   "prep:delete:artifacts",
-  shell.task("rm -rf _build*"),
+  shell.task("rm -rf build*"),
 );
 
 gulp.task(
@@ -98,12 +98,12 @@ gulp.task(
     .pipe(project())
     .js
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest("_build_1")),
+    .pipe(gulp.dest("build/1")),
 );
 
 gulp.task(
   "build:1:relay",
-  shell.task("relay-compiler --src _build_1/ --schema src/server/schema.graphql"),
+  shell.task("relay-compiler --src build/1/ --schema src/server/schema.graphql"),
 );
 
 gulp.task(
@@ -121,7 +121,7 @@ gulp.task(
     .pipe(remember("build:2:html"))
     .pipe(replace("ENV_TITLE", pkg.title))
     .pipe(replace("ENV_SENTRY", process.env.SENTRY))
-    .pipe(gulp.dest("_build_2")),
+    .pipe(gulp.dest("build/2")),
 );
 
 gulp.task(
@@ -133,12 +133,12 @@ gulp.task(
       includePaths: "node_modules",
       outputStyle: "compressed",
     }))
-    .pipe(gulp.dest("_build_2")),
+    .pipe(gulp.dest("build/2")),
 );
 
 gulp.task(
   "build:2:server",
-  () => gulp.src("_build_1/server/**/*.js")
+  () => gulp.src("build/1/server/**/*.js")
     .pipe(cached("build:2:server"))
     .pipe(remember("build:2:server"))
     .pipe(sourcemaps.init({loadMaps: true}))
@@ -146,7 +146,7 @@ gulp.task(
       presets: [["@babel/preset-env", { "modules": false }]],
     }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest("_build_2/server")),
+    .pipe(gulp.dest("build/2/server")),
 );
 
 gulp.task(
@@ -154,12 +154,12 @@ gulp.task(
   () => gulp.src("src/**/*.@(graphql|jpg|png|snap|txt)")
     .pipe(cached("build:2:static"))
     .pipe(remember("build:2:static"))
-    .pipe(gulp.dest("_build_2")),
+    .pipe(gulp.dest("build/2")),
 );
 
 gulp.task(
   "build:2:website",
-  () => gulp.src("_build_1/website/**/*.js")
+  () => gulp.src("build/1/website/**/*.js")
     .pipe(cached("build:2:website"))
     .pipe(remember("build:2:website"))
     .pipe(sourcemaps.init({loadMaps: true}))
@@ -168,7 +168,7 @@ gulp.task(
       presets: ["@babel/preset-env"],
     }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest("_build_2/website")),
+    .pipe(gulp.dest("build/2/website")),
 );
 
 gulp.task(
@@ -187,29 +187,29 @@ gulp.task(
   "build:3:server",
   () => rollup({
     cache: cache,
-    input: "_build_2/server/index.js",
+    input: "build/2/server/index.js",
     format: "cjs",
   })
     .on("bundle", (bundle) => {
       cache = bundle;
     })
     .pipe(source("index.js"))
-    .pipe(gulp.dest("_build_3/server")),
+    .pipe(gulp.dest("build/3/server")),
 );
 
 gulp.task(
   "build:3:static",
-  () => gulp.src("_build_2/**/*.@(css|graphql|html|jpg|png|txt)")
-    .pipe(gulp.dest("_build_3")),
+  () => gulp.src("build/2/**/*.@(css|graphql|html|jpg|png|txt)")
+    .pipe(gulp.dest("build/3")),
 );
 
 gulp.task(
   "build:3:website",
-  () => gulp.src("_build_2/website/index.js")
+  () => gulp.src("build/2/website/index.js")
     .pipe(bro({
       transform: [["uglifyify", { global: true, sourceMap: false }]],
     }))
-    .pipe(gulp.dest("_build_3/website")),
+    .pipe(gulp.dest("build/3/website")),
 );
 
 gulp.task(
@@ -222,12 +222,45 @@ gulp.task(
 );
 
 gulp.task(
+  "build:4:prune",
+  shell.task("npm prune --production"),
+);
+
+gulp.task(
+  "build:4:cp",
+  shell.task("cp build/3/server/index.js index.js && cp build/3/server/schema.graphql schema.graphql"),
+);
+
+gulp.task(
+  "build:4:zip",
+  shell.task("zip -q -r build/dist.zip node_modules index.js schema.graphql"),
+);
+
+gulp.task(
+  "build:4:clean",
+  shell.task("rm index.js schema.graphql"),
+);
+
+gulp.task(
+  "build:4",
+  gulp.series(
+    gulp.parallel(
+      "build:4:prune",
+      "build:4:cp",
+    ),
+    "build:4:zip",
+    "build:4:clean",
+  ),
+);
+
+gulp.task(
   "build",
   gulp.series(
     "build:0",
     "build:1",
     "build:2",
     "build:3",
+    "build:4",
   ),
 );
 
@@ -257,19 +290,19 @@ gulp.task(
 
 gulp.task(
   "serve",
-  shell.task("DEBUG=* node _build_3/server/index.js"),
+  shell.task("DEBUG=* node build/3/server/index.js"),
 );
 
 /* SNAP */
 
 gulp.task(
   "snap:jest",
-  shell.task("jest -u _build_2/website"),
+  shell.task("jest -u build/2/website"),
 );
 
 gulp.task(
   "snap:copy",
-  shell.task("cp -R _build_2/website/__tests__/__snapshots__/ src/website/__tests__/__snapshots__/"),
+  shell.task("cp -R build/2/website/__tests__/__snapshots__/ src/website/__tests__/__snapshots__/"),
 );
 
 gulp.task(
