@@ -222,12 +222,45 @@ gulp.task(
 );
 
 gulp.task(
+  "build:4:prune",
+  shell.task("npm prune --production"),
+);
+
+gulp.task(
+  "build:4:cp",
+  shell.task("cp build/3/server/index.js index.js && cp build/3/server/schema.graphql schema.graphql"),
+);
+
+gulp.task(
+  "build:4:zip",
+  shell.task("zip -q -r build/dist.zip node_modules index.js schema.graphql"),
+);
+
+gulp.task(
+  "build:4:clean",
+  shell.task("rm index.js schema.graphql"),
+);
+
+gulp.task(
+  "build:4",
+  gulp.series(
+    gulp.parallel(
+      "build:4:prune",
+      "build:4:cp",
+    ),
+    "build:4:zip",
+    "build:4:clean",
+  ),
+);
+
+gulp.task(
   "build",
   gulp.series(
     "build:0",
     "build:1",
     "build:2",
     "build:3",
+    "build:4",
   ),
 );
 
