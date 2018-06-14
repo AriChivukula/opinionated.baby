@@ -20,7 +20,7 @@ jobs:
     - npx gulp build:2
   - stage: +test&package
     script:
-    - npm run test
+    - npx gulp test
   - stage: +test&package
     script:
     - npx gulp build:3
@@ -79,19 +79,19 @@ jobs:
     - export DEBUG=*
     - export ENV=DEV
     - export PORT=8080
-    - npm run serve &
+    - npx gulp serve &
     - npx ts-node src/e2e/screenshot.ts
     - aws s3 cp screenshot.png s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
     - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![Screenshot](https://s3-us-west-2.amazonaws.com/${BUCKET_BUILD}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
   - stage: +sql&artifact
     if: type = api
     script:
-    - npm run sql
+    - npx gulp sql
   - stage: +sql&artifact
     if: type = api
     script:
-    - npm run snap
-    - npm run codegen
+    - npx gulp snap
+    - npx gulp codegen
     - git remote add target https://arichiv:$GITHUB_TOKEN@github.com/AriChivukula/opinionated.baby.git
     - git add -A
     - git commit -m "ARTIFACT-$TRAVIS_BUILD_NUMBER"
