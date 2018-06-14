@@ -1,37 +1,41 @@
-env:
-  global:
-  - PATH=$HOME/.local/bin:$PATH
 language: node_js
 node_js:
 - node
-cache:
-  directories:
-  - node_modules
-  - .cache/pip
 before_install:
+- export PATH=$HOME/.local/bin:$PATH
 - export AWS_ACCESS_KEY_ID=$ACCESS_KEY_ID
 - export AWS_SECRET_ACCESS_KEY=$SECRET_ACCESS_KEY
 - export AWS_DEFAULT_REGION=$REGION
 - pip install --user awscli
 - mkdir build
-- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER build
+- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/build build
+- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/gen gen
+- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/src src
 jobs:
   include:
-  - stage: +lint&build
+  - stage: Codegen
+    if: type = api
+    script:
+    - npx gulp codegen
+  - stage: Build
     script:
     - npx gulp build:0
-  - stage: +lint&build
+  - stage: Build
     script:
     - npx gulp build:1
     - npx gulp build:2
-  - stage: +test&package
+  - stage: Snap
+    if: type = api
     script:
-    - npm run test
-  - stage: +test&package
+    - npx gulp snap
+  - stage: Test
+    script:
+    - npx gulp test
+  - stage: Test
     script:
     - npx gulp build:3
     - npx gulp build:4
-  - stage: +s3&lambda
+  - stage: Deploy
     if: ( branch = master AND type = push ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
@@ -44,7 +48,7 @@ jobs:
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
-  - stage: +s3&lambda
+  - stage: Deploy
     if: ( branch = master AND type = push ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
@@ -74,24 +78,34 @@ jobs:
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
       skip_cleanup: true
-  - stage: +gems&screenshot
+  - stage: Bot
     if: type = pull_request
     script:
     - export NPM_OUTDATED=$(npm outdated | sed -e :a -e '$!N;s/\n/<br>/;ta' -e 'P;D')
     - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"**npm outdated**<br><br>${NPM_OUTDATED}\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
-  - stage: +gems&screenshot
+  - stage: Bot
     if: type = pull_request
     script:
     - export DEBUG=*
     - export ENV=DEV
     - export PORT=8080
-    - npm run serve &
+    - npx gulp serve &
     - npx ts-node src/e2e/screenshot.ts
     - aws s3 cp screenshot.png s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
     - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![Screenshot](https://s3-us-west-2.amazonaws.com/${BUCKET_BUILD}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
-  - stage: +sql
+  - stage: Actualize
     if: type = api
     script:
-    - npm run sql
+    - npx gulp sql
+  - stage: Actualize
+    install: skip
+    if: type = api
+    script:
+    - git remote add target https://arichiv:$GITHUB_TOKEN@github.com/AriChivukula/opinionated.baby.git
+    - git add -A
+    - git commit -m "ACTUALIZE $TRAVIS_BUILD_NUMBER"
+    - git push target HEAD:$TRAVIS_BRANCH
 after_success:
-- aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
+- aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/build
+- aws s3 sync src s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/src
+- aws s3 sync gen s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/gen

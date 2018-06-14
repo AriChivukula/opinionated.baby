@@ -1,8 +1,6 @@
 var gulp = require("gulp");
 var babel = require("gulp-babel");
 var bro = require("gulp-bro");
-var cached = require("gulp-cached");
-var remember = require("gulp-remember");
 var replace = require("gulp-string-replace");
 var rollup = require("rollup-stream");
 var sass = require("gulp-sass");
@@ -13,40 +11,6 @@ var ts = require("gulp-typescript");
 
 var pkg = require("./package.json");
 var project = ts.createProject("tsconfig.json");
-
-/* PREP */
-
-gulp.task(
-  "prep:delete:artifacts",
-  shell.task("rm -rf build*"),
-);
-
-gulp.task(
-  "prep:delete:modules",
-  shell.task("rm -rf node_modules"),
-);
-
-gulp.task(
-  "prep:delete:npm",
-  shell.task("rm -rf package-lock.json"),
-);
-
-gulp.task(
-  "prep:install",
-  shell.task("npm install"),
-);
-
-gulp.task(
-  "prep",
-  gulp.series(
-    gulp.parallel(
-      "prep:delete:artifacts",
-      "prep:delete:modules",
-      "prep:delete:npm"
-    ),
-    "prep:install",
-  ),
-);
 
 /* CODEGEN */
 
@@ -92,8 +56,6 @@ gulp.task(
 gulp.task(
   "build:1:typescript",
   () => gulp.src(["src/**/*.ts", "src/**/*.tsx"])
-    .pipe(cached("build:1:typescript"))
-    .pipe(remember("build:1:typescript"))
     .pipe(sourcemaps.init())
     .pipe(project())
     .js
@@ -117,8 +79,6 @@ gulp.task(
 gulp.task(
   "build:2:html",
   () => gulp.src("src/**/*.html")
-    .pipe(cached("build:2:html"))
-    .pipe(remember("build:2:html"))
     .pipe(replace("ENV_TITLE", pkg.title))
     .pipe(replace("ENV_SENTRY", process.env.SENTRY))
     .pipe(gulp.dest("build/2")),
@@ -127,8 +87,6 @@ gulp.task(
 gulp.task(
   "build:2:sass",
   () => gulp.src("src/**/*.scss")
-    .pipe(cached("build:2:sass"))
-    .pipe(remember("build:2:sass"))
     .pipe(sass({
       includePaths: "node_modules",
       outputStyle: "compressed",
@@ -139,8 +97,6 @@ gulp.task(
 gulp.task(
   "build:2:server",
   () => gulp.src("build/1/server/**/*.js")
-    .pipe(cached("build:2:server"))
-    .pipe(remember("build:2:server"))
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(babel({
       presets: [["@babel/preset-env", { "modules": false }]],
@@ -152,16 +108,12 @@ gulp.task(
 gulp.task(
   "build:2:static",
   () => gulp.src("src/**/*.@(graphql|jpg|png|snap|txt)")
-    .pipe(cached("build:2:static"))
-    .pipe(remember("build:2:static"))
     .pipe(gulp.dest("build/2")),
 );
 
 gulp.task(
   "build:2:website",
   () => gulp.src("build/1/website/**/*.js")
-    .pipe(cached("build:2:website"))
-    .pipe(remember("build:2:website"))
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(babel({
       plugins: ["relay"],
@@ -182,17 +134,12 @@ gulp.task(
   ),
 );
 
-let cache = null;
 gulp.task(
   "build:3:server",
   () => rollup({
-    cache: cache,
     input: "build/2/server/index.js",
     format: "cjs",
   })
-    .on("bundle", (bundle) => {
-      cache = bundle;
-    })
     .pipe(source("index.js"))
     .pipe(gulp.dest("build/3/server")),
 );
@@ -253,32 +200,6 @@ gulp.task(
   ),
 );
 
-gulp.task(
-  "build",
-  gulp.series(
-    "build:0",
-    "build:1",
-    "build:2",
-    "build:3",
-    "build:4",
-  ),
-);
-
-/* WATCH */
-
-gulp.task(
-  "watch:incremental",
-  () => gulp.watch("src/**/*", gulp.series("build")),
-);
-
-gulp.task(
-  "watch",
-  gulp.series(
-    "build",
-    "watch:incremental",
-  ),
-);
-
 /* TEST */
 
 gulp.task(
@@ -302,7 +223,7 @@ gulp.task(
 
 gulp.task(
   "snap:copy",
-  shell.task("cp -R build/2/website/__tests__/__snapshots__/ src/website/__tests__/__snapshots__/"),
+  shell.task("cp -R build/2/website/__tests__/__snapshots__ src/website/__tests__/__snapshots__"),
 );
 
 gulp.task(
