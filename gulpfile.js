@@ -283,7 +283,7 @@ gulp.task(
 
 gulp.task(
   "test",
-  shell.task("jest --collectCoverage && node build/2/__tests__/screenshot.js"),
+  shell.task("jest --collectCoverage"),
 );
 
 /* SERVE */
