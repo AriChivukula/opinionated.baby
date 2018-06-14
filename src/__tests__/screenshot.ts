@@ -1,8 +1,8 @@
 import * as puppeteer from "puppeteer";
 
-(async (): Awaitable<void> => {
+(async (): Promise<void> => {
   const browser: puppeteer.Browser = await puppeteer.launch();
-  const page: puppeteer.page = await browser.newPage();
+  const page: puppeteer.Page = await browser.newPage();
   await page.goto("http://127.0.0.1:8080");
   await page.screenshot({path: "screenshot.png"});
 
