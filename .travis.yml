@@ -29,8 +29,8 @@ jobs:
   - script:
     - npx gulp build:3
     - npx gulp build:4
-  - if: (branch = master) OR (tag =~ ^v[0-9]+$)
-    stage: +s3&lambda
+  - stage: +s3&lambda
+    if: ( branch = master ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
       - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET=$BUCKET_BETA ; fi
@@ -41,7 +41,7 @@ jobs:
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
-  - if: (branch = master) OR (tag =~ ^v[0-9]+$)
+  - if: ( branch = master ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
     - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
