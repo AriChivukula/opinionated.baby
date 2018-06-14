@@ -121,7 +121,7 @@ gulp.task(
     .pipe(remember("build:2:e2e"))
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(babel({
-      presets: [["@babel/preset-env", { "modules": false }]],
+      presets: ["@babel/preset-env"],
     }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest("build/2/e2e")),
