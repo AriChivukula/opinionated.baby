@@ -38,6 +38,7 @@ jobs:
     deploy:
       provider: s3
       bucket: $BUCKET
+      region $AWS_DEFAULT_REGION
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
