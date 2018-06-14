@@ -82,6 +82,9 @@ jobs:
   - stage: +gems&screenshot
     if: type = pull_request
     script:
+    - export DEBUG=*
+    - export ENV=DEV
+    - export PORT=8080
     - npm run serve &
     - node build/2/e2e/screenshot.js
     - aws s3 cp screenshot.png s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
