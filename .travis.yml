@@ -86,7 +86,7 @@ jobs:
     - export ENV=DEV
     - export PORT=8080
     - npm run serve &
-    - node build/2/e2e/screenshot.js
+    - npx tsnode src/e2e/screenshot.js
     - aws s3 cp screenshot.png s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
     - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![Screenshot](https://s3-us-west-2.amazonaws.com/${BUCKET_BUILD}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
 after_success:
