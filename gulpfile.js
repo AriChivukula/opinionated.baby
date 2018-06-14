@@ -116,7 +116,7 @@ gulp.task(
 
 gulp.task(
   "build:2:e2e",
-  () => gulp.src("build/1/__tests__/**/*.js")
+  () => gulp.src("build/1/e2e/**/*.js")
     .pipe(cached("build:2:e2e"))
     .pipe(remember("build:2:e2e"))
     .pipe(sourcemaps.init({loadMaps: true}))
@@ -124,7 +124,7 @@ gulp.task(
       presets: [["@babel/preset-env", { "modules": false }]],
     }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest("build/2/__tests__")),
+    .pipe(gulp.dest("build/2/e2e")),
 );
 
 gulp.task(
