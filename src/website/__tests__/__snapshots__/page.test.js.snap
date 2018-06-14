@@ -24,17 +24,17 @@ Array [
           TEST
         </div>
         <i
-          class="material-icons mdc-toolbar__icon "
+          class="material-icons mdc-toolbar__icon"
         >
           exit_to_app
         </i>
         <i
-          class="material-icons mdc-toolbar__icon "
+          class="material-icons mdc-toolbar__icon"
         >
           code
         </i>
         <i
-          class="material-icons mdc-toolbar__icon "
+          class="material-icons mdc-toolbar__icon"
         >
           info
         </i>
@@ -67,7 +67,7 @@ Array [
         >
           The hardest part of building a new dynamic website is avoiding all the dragons. Starting a development environment can freeze us with choice overload. 
           <span
-            class="mdc-theme--text-secondary-on-background "
+            class="mdc-theme--text-secondary-on-background"
           >
             Opinionated Baby
           </span>
@@ -93,7 +93,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               memory
             </i>
@@ -120,7 +120,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               share
             </i>
@@ -147,7 +147,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               storage
             </i>
@@ -174,7 +174,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               bug_report
             </i>
@@ -201,7 +201,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               language
             </i>
@@ -228,7 +228,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               extension
             </i>
@@ -255,7 +255,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               cached
             </i>
@@ -282,7 +282,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               unarchive
             </i>
@@ -309,7 +309,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               build
             </i>
@@ -336,7 +336,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               playlist_add_check
             </i>
@@ -363,7 +363,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               graphic_eq
             </i>
@@ -390,7 +390,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               widgets
             </i>
@@ -417,7 +417,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               flip_to_front
             </i>
@@ -444,7 +444,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               local_library
             </i>
@@ -471,7 +471,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               style
             </i>
@@ -498,7 +498,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               line_style
             </i>
@@ -537,7 +537,7 @@ Array [
         >
           This framework is one-size-fits-me. It's an open source version of a system I use when building complex websites. Anyone may attempt to use, critique, or contribute to it. The consistency with which feedback is incorporated will be nothing short of capricious. My general mission and purpose is to support the vitality and happy, healthy development of our 
           <span
-            class="mdc-theme--text-secondary-on-background "
+            class="mdc-theme--text-secondary-on-background"
           >
             babies and children
           </span>
@@ -571,7 +571,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v8
               </span>
@@ -601,7 +601,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v7
               </span>
@@ -631,7 +631,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v6
               </span>
@@ -661,7 +661,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v5
               </span>
@@ -691,7 +691,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v4
               </span>
@@ -721,7 +721,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v3
               </span>
@@ -751,7 +751,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v2
               </span>
@@ -781,7 +781,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v1
               </span>
@@ -811,7 +811,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v0
               </span>
@@ -847,17 +847,17 @@ Array [
         class="mdc-toolbar__section mdc-toolbar__section--align-end"
       >
         <i
-          class="material-icons mdc-toolbar__icon "
+          class="material-icons mdc-toolbar__icon"
         >
           person
         </i>
         <i
-          class="material-icons mdc-toolbar__icon "
+          class="material-icons mdc-toolbar__icon"
         >
           code
         </i>
         <i
-          class="material-icons mdc-toolbar__icon "
+          class="material-icons mdc-toolbar__icon"
         >
           info
         </i>
@@ -890,7 +890,7 @@ Array [
         >
           The hardest part of building a new dynamic website is avoiding all the dragons. Starting a development environment can freeze us with choice overload. 
           <span
-            class="mdc-theme--text-secondary-on-background "
+            class="mdc-theme--text-secondary-on-background"
           >
             Opinionated Baby
           </span>
@@ -916,7 +916,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               memory
             </i>
@@ -943,7 +943,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               share
             </i>
@@ -970,7 +970,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               storage
             </i>
@@ -997,7 +997,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               bug_report
             </i>
@@ -1024,7 +1024,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               language
             </i>
@@ -1051,7 +1051,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               extension
             </i>
@@ -1078,7 +1078,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               cached
             </i>
@@ -1105,7 +1105,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               unarchive
             </i>
@@ -1132,7 +1132,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               build
             </i>
@@ -1159,7 +1159,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               playlist_add_check
             </i>
@@ -1186,7 +1186,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               graphic_eq
             </i>
@@ -1213,7 +1213,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               widgets
             </i>
@@ -1240,7 +1240,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               flip_to_front
             </i>
@@ -1267,7 +1267,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               local_library
             </i>
@@ -1294,7 +1294,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               style
             </i>
@@ -1321,7 +1321,7 @@ Array [
             class="mdc-ripple-surface mdc-list-item"
           >
             <i
-              class="material-icons mdc-list-item__graphic "
+              class="material-icons mdc-list-item__graphic"
             >
               line_style
             </i>
@@ -1360,7 +1360,7 @@ Array [
         >
           This framework is one-size-fits-me. It's an open source version of a system I use when building complex websites. Anyone may attempt to use, critique, or contribute to it. The consistency with which feedback is incorporated will be nothing short of capricious. My general mission and purpose is to support the vitality and happy, healthy development of our 
           <span
-            class="mdc-theme--text-secondary-on-background "
+            class="mdc-theme--text-secondary-on-background"
           >
             babies and children
           </span>
@@ -1394,7 +1394,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v8
               </span>
@@ -1424,7 +1424,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v7
               </span>
@@ -1454,7 +1454,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v6
               </span>
@@ -1484,7 +1484,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v5
               </span>
@@ -1514,7 +1514,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v4
               </span>
@@ -1544,7 +1544,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v3
               </span>
@@ -1574,7 +1574,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v2
               </span>
@@ -1604,7 +1604,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v1
               </span>
@@ -1634,7 +1634,7 @@ Array [
               style="padding:1rem"
             >
               <span
-                class="mdc-theme--text-secondary-on-background "
+                class="mdc-theme--text-secondary-on-background"
               >
                 v0
               </span>
