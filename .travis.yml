@@ -29,62 +29,24 @@ jobs:
     - npm run test
   - script:
     - npx gulp build:3
-    - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
     - npm prune --production
     - cp build/3/server/index.js index.js
     - cp build/3/server/schema.graphql schema.graphql
     - zip -q -r build/dist.zip node_modules index.js schema.graphql
     - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
   - stage: s3+lambda
-    script: skip
-    deploy:
-      provider: s3
-      bucket: $BUCKET_BETA
-      local_dir: build/3/website
-      acl: public_read
-      skip_cleanup: true
-      on:
-        branch: master
-  - script: skip
-    deploy:
-      provider: lambda
-      function_name: $FUNCTION_NAME_BETA
-      role: $ROLE
-      handler_name: handler
-      module_name: index
-      zip: build/dist.zip
-      timeout: 300
-      memory_size: 256
-      runtime: nodejs8.10
-      publish: true
-      environment_variables:
-      - CLIENT_ID=$CLIENT_ID
-      - CLIENT_SECRET=$CLIENT_SECRET
-      - DB_HOST=$DB_HOST
-      - DB_NAME=$DB_NAME
-      - DB_PASSWORD=$DB_PASSWORD
-      - DB_PORT=$DB_PORT
-      - DB_USERNAME=$DB_USERNAME
-      - DEBUG=*
-      - ENV=BETA
-      - REDIRECT_URL=$REDIRECT_URL_BETA
-      - SENTRY=$SENTRY
-      function_tags:
-      - Name=$FUNCTION_NAME
-      skip_cleanup: true
-      on:
-        branch: master
-  - script: skip
+    script:
+      - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET=$BUCKET_BETA ; fi
+      - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
     deploy:
       provider: s3
       bucket: $BUCKET
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
-      on:
-        tags: true
-        condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
-  - script: skip
+  - script:
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export REDIRECT_URL=$REDIRECT_URL_BETA ; fi
     deploy:
       provider: lambda
       function_name: $FUNCTION_NAME
@@ -105,16 +67,12 @@ jobs:
       - DB_PORT=$DB_PORT
       - DB_USERNAME=$DB_USERNAME
       - DEBUG=*
-      - ENV=PROD
+      - ENV=BETA
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
-      function_tags:
-      - Name=$FUNCTION_NAME
       skip_cleanup: true
-      on:
-        tags: true
-        condition: "$TRAVIS_TAG =~ ^v[0-9]+$"
 stages:
 - lint+build
 - test+package
-- s3+lambda
+- name: s3+lambda
+  if: (branch = master) OR (tag =~ ^v[0-9]+$)
