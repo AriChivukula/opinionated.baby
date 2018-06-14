@@ -73,8 +73,6 @@ jobs:
       skip_cleanup: true
   - stage: +gems
     if: type = pull_request
-    script:
-    - NPM_OUTDATED=$(npm outdated)
-    - curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST -d "{\"body\": \"${NPM_OUTDATED}\"}" "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments"
+    script: skip
 after_success:
 - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
