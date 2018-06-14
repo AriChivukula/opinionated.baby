@@ -98,6 +98,7 @@ jobs:
     script:
     - npx gulp sql
   - stage: Actualize
+    install: skip
     if: type = api
     script:
     - git remote add target https://arichiv:$GITHUB_TOKEN@github.com/AriChivukula/opinionated.baby.git
