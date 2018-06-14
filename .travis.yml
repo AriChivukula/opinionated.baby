@@ -32,7 +32,7 @@ jobs:
     - npx gulp build:3
     - npx gulp build:4
   - stage: +s3&lambda
-    if: ( branch = master AND type != pull_request ) OR ( tag =~ ^v[0-9]+$ )
+    if: ( branch = master AND type = push ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
       - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET=$BUCKET_BETA ; fi
@@ -45,7 +45,7 @@ jobs:
       acl: public_read
       skip_cleanup: true
   - stage: +s3&lambda
-    if: ( branch = master AND type != pull_request ) OR ( tag =~ ^v[0-9]+$ )
+    if: ( branch = master AND type = push ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
     - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
@@ -89,5 +89,9 @@ jobs:
     - npx ts-node src/e2e/screenshot.ts
     - aws s3 cp screenshot.png s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
     - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![Screenshot](https://s3-us-west-2.amazonaws.com/${BUCKET_BUILD}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
+  - stage: +sql
+    if: type = api
+    script:
+    - npm run sql
 after_success:
 - aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER
