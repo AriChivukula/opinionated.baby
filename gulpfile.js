@@ -115,6 +115,19 @@ gulp.task(
 );
 
 gulp.task(
+  "build:2:e2e",
+  () => gulp.src("build/1/__tests__/**/*.js")
+    .pipe(cached("build:2:e2e"))
+    .pipe(remember("build:2:e2e"))
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(babel({
+      presets: [["@babel/preset-env", { "modules": false }]],
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest("build/2/__tests__")),
+);
+
+gulp.task(
   "build:2:html",
   () => gulp.src("src/**/*.html")
     .pipe(cached("build:2:html"))
@@ -174,6 +187,7 @@ gulp.task(
 gulp.task(
   "build:2",
   gulp.parallel(
+    "build:2:e2e",
     "build:2:html",
     "build:2:sass",
     "build:2:server",
