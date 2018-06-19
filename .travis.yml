@@ -59,6 +59,8 @@ jobs:
     script:
     - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
     - if ! [[ "$TRAVIS_TAG" ]] ; then export REDIRECT_URL=$REDIRECT_URL_BETA ; fi
+    - export ENV=PROD
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export ENV=BETA ; fi
     deploy:
       provider: lambda
       function_name: $FUNCTION_NAME
@@ -79,7 +81,7 @@ jobs:
       - DB_PORT=$DB_PORT
       - DB_USERNAME=$DB_USERNAME
       - DEBUG=*
-      - ENV=PROD
+      - ENV=$ENV
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
       skip_cleanup: true
