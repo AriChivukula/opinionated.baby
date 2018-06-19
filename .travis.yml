@@ -81,11 +81,6 @@ jobs:
   - stage: Bot
     if: type = pull_request
     script:
-    - export NPM_OUTDATED=$(npm outdated | sed -e :a -e '$!N;s/\n/<br>/;ta' -e 'P;D')
-    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"**npm outdated**<br><br>${NPM_OUTDATED}\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
-  - stage: Bot
-    if: type = pull_request
-    script:
     - export DEBUG=*
     - export ENV=DEV
     - export PORT=8080
@@ -93,7 +88,7 @@ jobs:
     - sleep 5
     - npx ts-node src/e2e/screenshot.ts
     - aws s3 cp screenshot.png s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
-    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![Screenshot](https://s3-us-west-2.amazonaws.com/${BUCKET_BUILD}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
+    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![${TRAVIS_BUILD_NUMBER}](https://s3-us-west-2.amazonaws.com/${BUCKET_BUILD}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
   - stage: Actualize
     if: type = api
     script:
