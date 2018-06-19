@@ -87,7 +87,7 @@ jobs:
   - stage: Bot
     if: type = pull_request
     script:
-    - ENV=DEV
+    - export ENV=DEV
     - npx gulp serve &
     - sleep 5
     - npx ts-node src/e2e/screenshot.ts
