@@ -2,7 +2,6 @@ env:
   global:
     - PATH=$HOME/.local/bin:$PATH
     - DEBUG=*
-    - ENV=BETA
     - PORT=8080
 language: node_js
 node_js:
@@ -80,14 +79,15 @@ jobs:
       - DB_PASSWORD=$DB_PASSWORD
       - DB_PORT=$DB_PORT
       - DB_USERNAME=$DB_USERNAME
-      - DEBUG=*
-      - ENV=BETA
+      - DEBUG=$DEBUG
+      - ENV=PROD
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
       skip_cleanup: true
   - stage: Bot
     if: type = pull_request
     script:
+    - ENV=DEV
     - npx gulp serve &
     - sleep 5
     - npx ts-node src/e2e/screenshot.ts
