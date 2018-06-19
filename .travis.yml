@@ -1,8 +1,11 @@
+env:
+  global:
+    - PATH=$HOME/.local/bin:$PATH
+    - PORT=8080
 language: node_js
 node_js:
 - node
 before_install:
-- export PATH=$HOME/.local/bin:$PATH
 - export AWS_ACCESS_KEY_ID=$ACCESS_KEY_ID
 - export AWS_SECRET_ACCESS_KEY=$SECRET_ACCESS_KEY
 - export AWS_DEFAULT_REGION=$REGION
@@ -56,6 +59,8 @@ jobs:
     script:
     - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
     - if ! [[ "$TRAVIS_TAG" ]] ; then export REDIRECT_URL=$REDIRECT_URL_BETA ; fi
+    - export ENV=PROD
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export ENV=BETA ; fi
     deploy:
       provider: lambda
       function_name: $FUNCTION_NAME
@@ -76,16 +81,14 @@ jobs:
       - DB_PORT=$DB_PORT
       - DB_USERNAME=$DB_USERNAME
       - DEBUG=*
-      - ENV=BETA
+      - ENV=$ENV
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
       skip_cleanup: true
   - stage: Bot
     if: type = pull_request
     script:
-    - export DEBUG=*
     - export ENV=DEV
-    - export PORT=8080
     - npx gulp serve &
     - sleep 5
     - npx ts-node src/e2e/screenshot.ts
