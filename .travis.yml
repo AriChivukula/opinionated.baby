@@ -1,7 +1,6 @@
 env:
   global:
     - PATH=$HOME/.local/bin:$PATH
-    - DEBUG=*
     - PORT=8080
 language: node_js
 node_js:
@@ -79,7 +78,7 @@ jobs:
       - DB_PASSWORD=$DB_PASSWORD
       - DB_PORT=$DB_PORT
       - DB_USERNAME=$DB_USERNAME
-      - DEBUG=$DEBUG
+      - DEBUG=*
       - ENV=PROD
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
