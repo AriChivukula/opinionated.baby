@@ -28,6 +28,7 @@ jobs:
   - stage: Snap
     if: type = api
     script:
+    - rm -rf src/website/__tests__/__snapshots__
     - npx gulp snap
   - stage: Test
     script:
