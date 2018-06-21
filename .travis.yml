@@ -40,25 +40,20 @@ jobs:
     if: ( branch = master AND type = push ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
-      - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET=$BUCKET_BETA ; fi
-      - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
-    deploy:
-      provider: s3
-      bucket: $BUCKET
-      region: $AWS_DEFAULT_REGION
-      local_dir: build/3/website
-      acl: public_read
-      skip_cleanup: true
-  - stage: Deploy
-    if: ( branch = master AND type = push ) OR ( tag =~ ^v[0-9]+$ )
-    install: skip
-    script:
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET=$BUCKET_BETA ; fi
+    - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
     - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
     - if ! [[ "$TRAVIS_TAG" ]] ; then export REDIRECT_URL=$REDIRECT_URL_BETA ; fi
     - export ENV=PROD
     - if ! [[ "$TRAVIS_TAG" ]] ; then export ENV=BETA ; fi
     deploy:
-      provider: lambda
+    - provider: s3
+      bucket: $BUCKET
+      region: $AWS_DEFAULT_REGION
+      local_dir: build/3/website
+      acl: public_read
+      skip_cleanup: true
+    - provider: lambda
       function_name: $FUNCTION_NAME
       role: $ROLE
       handler_name: handler
