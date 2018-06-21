@@ -12,7 +12,7 @@ before_install:
 - aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/gen gen
 - aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/src src
 before_script:
-- npm outdated || true
+- npm outdated
 jobs:
   include:
   - stage: Codegen
