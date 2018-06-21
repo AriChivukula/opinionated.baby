@@ -9,9 +9,9 @@ before_install:
 - export AWS_SECRET_ACCESS_KEY=$SECRET_ACCESS_KEY
 - pip install --user awscli
 - mkdir build
-- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/build build
-- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/gen gen
-- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/src src
+- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/build build
+- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/gen gen
+- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/src src
 before_script:
 - npm outdated || true
 jobs:
