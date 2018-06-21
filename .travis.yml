@@ -34,8 +34,6 @@ jobs:
   - stage: Test
     script:
     - npx gulp test
-  - stage: Test
-    script:
     - npx gulp build:3
     - npx gulp build:4
   - stage: Deploy
@@ -96,10 +94,6 @@ jobs:
     if: type = api
     script:
     - npx gulp sql
-  - stage: Actualize
-    install: skip
-    if: type = api
-    script:
     - git remote add target https://arichiv:$GITHUB_TOKEN@github.com/AriChivukula/opinionated.baby.git
     - git add -A
     - git commit -m "ACTUALIZE $TRAVIS_BUILD_NUMBER"
