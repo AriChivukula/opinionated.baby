@@ -9,8 +9,6 @@ before_install:
 - pip install --user awscli
 - mkdir build
 - aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*"
-- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*"
-- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*"
 before_script:
 - npm outdated > .outdated.new || true
 - cmp .outdated.new .outdated && cmp -s .outdated.new .outdated
@@ -93,6 +91,4 @@ jobs:
     - git commit -m "ACTUALIZE $TRAVIS_BUILD_NUMBER"
     - git push target HEAD:$TRAVIS_BRANCH
 after_success:
-- aws s3 sync build s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/build
-- aws s3 sync src s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/src
-- aws s3 sync gen s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/gen
+- aws s3 sync . s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER --exclude "*.git*"
