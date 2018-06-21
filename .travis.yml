@@ -6,16 +6,12 @@ language: node_js
 node_js:
 - node
 before_install:
-- export AWS_ACCESS_KEY_ID=$ACCESS_KEY_ID
-- export AWS_SECRET_ACCESS_KEY=$SECRET_ACCESS_KEY
-- export AWS_DEFAULT_REGION=$REGION
 - pip install --user awscli
 - mkdir build
-- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/build build
-- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/gen gen
-- aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/src src
+- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*" --exclude "*node_modules*"
 before_script:
-- npm outdated || true
+- npm outdated > .outdated.new || true
+- cmp .outdated.new .outdated && cmp -s .outdated.new .outdated
 jobs:
   include:
   - stage: Codegen
@@ -25,44 +21,36 @@ jobs:
   - stage: Build
     script:
     - npx gulp build:0
-  - stage: Build
-    script:
     - npx gulp build:1
     - npx gulp build:2
   - stage: Snap
     if: type = api
     script:
+    - rm -rf src/website/__tests__/__snapshots__
     - npx gulp snap
   - stage: Test
     script:
     - npx gulp test
-  - stage: Test
-    script:
     - npx gulp build:3
     - npx gulp build:4
   - stage: Deploy
     if: ( branch = master AND type = push ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
-      - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET=$BUCKET_BETA ; fi
-      - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET="beta.${BUCKET}" ; fi
+    - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME="beta${FUNCTION_NAME}" ; fi
+    - export REDIRECT_URL="https://${BUCKET}"
+    - export ENV=PROD
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export ENV=BETA ; fi
     deploy:
-      provider: s3
+    - provider: s3
       bucket: $BUCKET
       region: $AWS_DEFAULT_REGION
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
-  - stage: Deploy
-    if: ( branch = master AND type = push ) OR ( tag =~ ^v[0-9]+$ )
-    install: skip
-    script:
-    - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
-    - if ! [[ "$TRAVIS_TAG" ]] ; then export REDIRECT_URL=$REDIRECT_URL_BETA ; fi
-    - export ENV=PROD
-    - if ! [[ "$TRAVIS_TAG" ]] ; then export ENV=BETA ; fi
-    deploy:
-      provider: lambda
+    - provider: lambda
       function_name: $FUNCTION_NAME
       role: $ROLE
       handler_name: handler
@@ -92,21 +80,15 @@ jobs:
     - npx gulp serve &
     - sleep 5
     - npx ts-node src/e2e/screenshot.ts
-    - aws s3 cp screenshot.png s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
-    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![${TRAVIS_BUILD_NUMBER}](https://s3-us-west-2.amazonaws.com/${BUCKET_BUILD}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
+    - aws s3 cp screenshot.png s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
+    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![${TRAVIS_BUILD_NUMBER}](https://s3-${AWS_DEFAULT_REGION}.amazonaws.com/builds.$BUCKET/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
   - stage: Actualize
     if: type = api
     script:
     - npx gulp sql
-  - stage: Actualize
-    install: skip
-    if: type = api
-    script:
     - git remote add target https://arichiv:$GITHUB_TOKEN@github.com/AriChivukula/opinionated.baby.git
     - git add -A
     - git commit -m "ACTUALIZE $TRAVIS_BUILD_NUMBER"
     - git push target HEAD:$TRAVIS_BRANCH
 after_success:
-- aws s3 sync build s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/build
-- aws s3 sync src s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/src
-- aws s3 sync gen s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/gen
+- aws s3 sync . s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER --exclude "*.git*" --exclude "*node_modules*"
