@@ -8,7 +8,7 @@ node_js:
 before_install:
 - pip install --user awscli
 - mkdir build
-- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*"
+- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*" --exclude "*node_modules*"
 before_script:
 - npm outdated > .outdated.new || true
 - cmp .outdated.new .outdated && cmp -s .outdated.new .outdated
@@ -91,4 +91,4 @@ jobs:
     - git commit -m "ACTUALIZE $TRAVIS_BUILD_NUMBER"
     - git push target HEAD:$TRAVIS_BRANCH
 after_success:
-- aws s3 sync . s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER --exclude "*.git*"
+- aws s3 sync . s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER --exclude "*.git*" --exclude "*node_modules*"
