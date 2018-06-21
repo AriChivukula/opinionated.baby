@@ -8,9 +8,9 @@ node_js:
 before_install:
 - pip install --user awscli
 - mkdir build
-- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/build build
-- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/gen gen
-- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/src src
+- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*"
+- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*"
+- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*"
 before_script:
 - npm outdated > .outdated.new || true
 - cmp .outdated.new .outdated && cmp -s .outdated.new .outdated
