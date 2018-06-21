@@ -1,7 +1,6 @@
 .DS_Store
-.terraform
+.outdated.new
 build
 coverage
 node_modules
 package-lock.json
-secrets

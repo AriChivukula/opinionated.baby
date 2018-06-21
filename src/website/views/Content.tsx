@@ -189,12 +189,13 @@ export function Content(
       {tools.map((item: ITools, index: number) => (
         <GridCell span={3} key={index}>
           <List twoLine>
-            <SimpleListItem
-              graphic={item.graphic}
-              text={item.title}
-              secondaryText={item.subtitle}
-              onClick={(): void => { goto(item.link); }}
-            />
+            <a onClick={(): void => { goto(item.link); }}>
+              <SimpleListItem
+                graphic={item.graphic}
+                text={item.title}
+                secondaryText={item.subtitle}
+              />
+            </a>
           </List>
         </GridCell>
       ))}
