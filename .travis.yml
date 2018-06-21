@@ -6,7 +6,6 @@ language: node_js
 node_js:
 - node
 before_install:
-- export AWS_SECRET_ACCESS_KEY=$SECRET_ACCESS_KEY
 - pip install --user awscli
 - mkdir build
 - aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/build build
