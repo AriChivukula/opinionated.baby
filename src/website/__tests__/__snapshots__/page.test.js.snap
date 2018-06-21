@@ -96,6 +96,35 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
+                star
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Terraform
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Orchestration
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
                 memory
               </i>
               <span
@@ -125,65 +154,36 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
-                share
-              </i>
-              <span
-                class="mdc-list-item__text"
-              >
-                PostgreSQL
-                <span
-                  class="mdc-list-item__secondary-text"
-                >
-                  Database
-                </span>
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div
-        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
-      >
-        <div
-          class="mdc-list mdc-list--two-line"
-        >
-          <a>
-            <div
-              class="mdc-ripple-surface mdc-list-item"
-            >
-              <i
-                class="material-icons mdc-list-item__graphic"
-              >
-                storage
-              </i>
-              <span
-                class="mdc-list-item__text"
-              >
-                S3
-                <span
-                  class="mdc-list-item__secondary-text"
-                >
-                  Storage
-                </span>
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div
-        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
-      >
-        <div
-          class="mdc-list mdc-list--two-line"
-        >
-          <a>
-            <div
-              class="mdc-ripple-surface mdc-list-item"
-            >
-              <i
-                class="material-icons mdc-list-item__graphic"
-              >
                 bug_report
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Sentry
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Debugging
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                share
               </i>
               <span
                 class="mdc-list-item__text"
@@ -951,6 +951,35 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
+                star
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Terraform
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Orchestration
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
                 memory
               </i>
               <span
@@ -980,65 +1009,36 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
-                share
-              </i>
-              <span
-                class="mdc-list-item__text"
-              >
-                PostgreSQL
-                <span
-                  class="mdc-list-item__secondary-text"
-                >
-                  Database
-                </span>
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div
-        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
-      >
-        <div
-          class="mdc-list mdc-list--two-line"
-        >
-          <a>
-            <div
-              class="mdc-ripple-surface mdc-list-item"
-            >
-              <i
-                class="material-icons mdc-list-item__graphic"
-              >
-                storage
-              </i>
-              <span
-                class="mdc-list-item__text"
-              >
-                S3
-                <span
-                  class="mdc-list-item__secondary-text"
-                >
-                  Storage
-                </span>
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div
-        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
-      >
-        <div
-          class="mdc-list mdc-list--two-line"
-        >
-          <a>
-            <div
-              class="mdc-ripple-surface mdc-list-item"
-            >
-              <i
-                class="material-icons mdc-list-item__graphic"
-              >
                 bug_report
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Sentry
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Debugging
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                share
               </i>
               <span
                 class="mdc-list-item__text"

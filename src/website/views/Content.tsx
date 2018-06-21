@@ -45,25 +45,25 @@ interface IReleases {
 
 const tools: ITools[] = [
   {
+    graphic: "star",
+    link: "https://www.terraform.io/",
+    subtitle: "Orchestration",
+    title: "Terraform",
+  },
+  {
     graphic: "memory",
     link: "https://aws.amazon.com/lambda/",
     subtitle: "Server(less)",
     title: "Lambda",
   },
   {
-    graphic: "share",
-    link: "https://www.postgresql.org/",
-    subtitle: "Database",
-    title: "PostgreSQL",
-  },
-  {
-    graphic: "storage",
-    link: "https://aws.amazon.com/s3/",
-    subtitle: "Storage",
-    title: "S3",
-  },
-  {
     graphic: "bug_report",
+    link: "https://sentry.io/",
+    subtitle: "Debugging",
+    title: "Sentry",
+  },
+  {
+    graphic: "share",
     link: "https://travis-ci.org/",
     subtitle: "CI/CD",
     title: "Travis CI",
