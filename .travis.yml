@@ -42,8 +42,8 @@ jobs:
     script:
     - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET="beta.${BUCKET}" ; fi
     - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
-    - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME=$FUNCTION_NAME_BETA ; fi
-    - if ! [[ "$TRAVIS_TAG" ]] ; then export REDIRECT_URL=$REDIRECT_URL_BETA ; fi
+    - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME="beta${FUNCTION_NAME}" ; fi
+    - export REDIRECT_URL="https://${BUCKET}"
     - export ENV=PROD
     - if ! [[ "$TRAVIS_TAG" ]] ; then export ENV=BETA ; fi
     deploy:
