@@ -7,7 +7,6 @@ node_js:
 - node
 before_install:
 - export AWS_SECRET_ACCESS_KEY=$SECRET_ACCESS_KEY
-- export AWS_DEFAULT_REGION=$REGION
 - pip install --user awscli
 - mkdir build
 - aws s3 sync s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/build build
@@ -83,7 +82,7 @@ jobs:
     - sleep 5
     - npx ts-node src/e2e/screenshot.ts
     - aws s3 cp screenshot.png s3://$BUCKET_BUILD/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
-    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![${TRAVIS_BUILD_NUMBER}](https://s3-us-west-2.amazonaws.com/${BUCKET_BUILD}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
+    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![${TRAVIS_BUILD_NUMBER}](https://s3-${AWS_DEFAULT_REGION}.amazonaws.com/${BUCKET_BUILD}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
   - stage: Actualize
     if: type = api
     script:
