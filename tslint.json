@@ -10,10 +10,12 @@
     "no-implicit-dependencies": false,
     "no-import-side-effect": false,
     "no-inferrable-types": false,
+    "no-magic-numbers": false,
     "no-null-keyword": false,
     "no-unsafe-any": false,
     "object-literal-sort-keys": false,
     "only-arrow-functions": [true, "allow-named-functions"],
+    "prefer-conditional-expression": false,
     "variable-name": false
   }
 }
