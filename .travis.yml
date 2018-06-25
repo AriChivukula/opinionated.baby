@@ -11,11 +11,21 @@ before_install:
 - aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*" --exclude "*node_modules*"
 jobs:
   include:
-  - stage: Codegen
+  - stage: Actualize
     if: type = api
     script:
     - npx gulp codegen
+    - npx gulp build:1
+    - npx gulp build:2
+    - rm -rf src/website/__tests__/__snapshots__
+    - npx gulp snap
+    - npx gulp sql
+    - git remote add target "https://arichiv:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
+    - git add -A
+    - git commit -m "ACTUALIZE ${TRAVIS_BUILD_NUMBER}"
+    - git push target HEAD:$TRAVIS_BRANCH
   - stage: Build
+    if: type = push
     script:
     - npm outdated > .outdated.new || true
     - npm outdated || true
@@ -23,13 +33,6 @@ jobs:
     - npx gulp build:0
     - npx gulp build:1
     - npx gulp build:2
-  - stage: Snap
-    if: type = api
-    script:
-    - rm -rf src/website/__tests__/__snapshots__
-    - npx gulp snap
-  - stage: Test
-    script:
     - npx gulp test
     - npx gulp build:3
     - npx gulp build:4
@@ -41,8 +44,6 @@ jobs:
     - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
     - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME="beta${FUNCTION_NAME}" ; fi
     - export REDIRECT_URL="https://${BUCKET}"
-    - export ENV=PROD
-    - if ! [[ "$TRAVIS_TAG" ]] ; then export ENV=BETA ; fi
     deploy:
     - provider: s3
       bucket: $BUCKET
@@ -69,26 +70,20 @@ jobs:
       - DB_PORT=$DB_PORT
       - DB_USERNAME=$DB_USERNAME
       - DEBUG=*
-      - ENV=$ENV
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
       skip_cleanup: true
-  - stage: Bot
+  - stage: Screenshot
     if: type = pull_request
     script:
+    - npx gulp build:1
+    - npx gulp build:2
+    - npx gulp build:3
     - export ENV=DEV
     - npx gulp serve &
     - sleep 5
     - npx ts-node src/e2e/screenshot.ts
     - aws s3 cp screenshot.png s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
     - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![${TRAVIS_BUILD_NUMBER}](https://s3-${AWS_DEFAULT_REGION}.amazonaws.com/builds.${BUCKET}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
-  - stage: Actualize
-    if: type = api
-    script:
-    - npx gulp sql
-    - git remote add target "https://arichiv:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
-    - git add -A
-    - git commit -m "ACTUALIZE ${TRAVIS_BUILD_NUMBER}"
-    - git push target HEAD:$TRAVIS_BRANCH
 after_success:
 - aws s3 sync . s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER --exclude "*.git*" --exclude "*node_modules*"
