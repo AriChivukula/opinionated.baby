@@ -69,17 +69,12 @@ jobs:
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
       skip_cleanup: true
-  - stage: Screenshot
+  - stage: Verify
     if: type = pull_request
     script:
     - npx gulp build:1
     - npx gulp build:2
     - npx gulp build:3
-    - export ENV=DEV
-    - npx gulp serve &
-    - sleep 5
-    - npx ts-node src/e2e/screenshot.ts
-    - aws s3 cp screenshot.png s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER/screenshot.png --acl public-read
-    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"![${TRAVIS_BUILD_NUMBER}](https://s3.amazonaws.com/builds.${BUCKET}/${TRAVIS_BUILD_NUMBER}/screenshot.png)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
+    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"[Test Build ${TRAVIS_BUILD_NUMBER}](https://to.do)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
 after_success:
 - aws s3 sync . s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER --exclude "*.git*" --exclude "*node_modules*"
