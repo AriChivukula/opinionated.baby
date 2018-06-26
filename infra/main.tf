@@ -52,48 +52,49 @@ resource "aws_api_gateway_resource" "ob_resource" {
   rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
 }
 
-resource "aws_api_gateway_method" "ob_method_proxy" {
+resource "aws_api_gateway_method" "ob_method" {
   rest_api_id   = "${aws_api_gateway_rest_api.ob_api.id}"
   resource_id   = "${aws_api_gateway_resource.ob_resource.id}"
   http_method   = "ANY"
   authorization = "NONE"
 }
 
-resource "aws_api_gateway_integration" "ob_integration_proxy" {
+resource "aws_api_gateway_integration" "ob_integration" {
   rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
-  resource_id = "${aws_api_gateway_method.ob_method_proxy.resource_id}"
-  http_method = "${aws_api_gateway_method.ob_method_proxy.http_method}"
+  resource_id = "${aws_api_gateway_method.ob_method.resource_id}"
+  http_method = "${aws_api_gateway_method.ob_method.http_method}"
 
-  integration_http_method = "POST"
+  integration_http_method = "ANY"
   type                    = "AWS_PROXY"
-  uri                     = "${data.aws_lambda_function.ob_lambda.invoke_arn}"
+  uri                     = "${replace(data.aws_lambda_function.ob_lambda.invoke_arn, ":$LATEST", "")}"
 }
 
-resource "aws_api_gateway_method" "ob_method_root" {
-  rest_api_id   = "${aws_api_gateway_rest_api.ob_api.id}"
-  resource_id   = "${aws_api_gateway_rest_api.ob_api.root_resource_id}"
-  http_method   = "ANY"
-  authorization = "NONE"
-}
-
-resource "aws_api_gateway_integration" "ob_integration_root" {
+resource "aws_api_gateway_integration_response" "ob_response" {
   rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
-  resource_id = "${aws_api_gateway_method.ob_method_root.resource_id}"
-  http_method = "${aws_api_gateway_method.ob_method_root.http_method}"
-
-  integration_http_method = "POST"
-  type                    = "AWS_PROXY"
-  uri                     = "${data.aws_lambda_function.ob_lambda.invoke_arn}"
+  resource_id = "${aws_api_gateway_resource.ob_resource.id}"
+  http_method = "${aws_api_gateway_method.ob_method.http_method}"
+  status_code = "200"
 }
 
 resource "aws_api_gateway_deployment" "ob_deployment" {
   depends_on = [
-    "aws_api_gateway_integration.ob_integration_proxy",
-    "aws_api_gateway_integration.ob_integration_root",
+    "aws_api_gateway_integration.ob_integration",
   ]
 
   rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
   stage_name  = "PROD"
+}
+
+resource "aws_api_gateway_domain_name" "ob_domain" {
+  domain_name = "api.${local.domain}"
+
+  certificate_arn = "${aws_acm_certificate.ob_certificate.arn}"
+}
+
+resource "aws_api_gateway_base_path_mapping" "ob_map" {
+  api_id      = "${aws_api_gateway_rest_api.ob_api.id}"
+  stage_name  = "${aws_api_gateway_deployment.ob_deployment.stage_name}"
+  domain_name = "${aws_api_gateway_domain_name.ob_domain.domain_name}"
 }
 
 resource "aws_lambda_permission" "ob_permission" {
@@ -109,8 +110,8 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   enabled = true
 
   default_cache_behavior {
-    allowed_methods = ["HEAD", "GET"]
-    cached_methods  = ["HEAD", "GET"]
+    allowed_methods = ["POST", "HEAD", "PATCH", "DELETE", "PUT", "GET", "OPTIONS"]
+    cached_methods  = ["HEAD", "GET", "OPTIONS"]
     compress        = false
     default_ttl     = 0
 
