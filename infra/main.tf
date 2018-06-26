@@ -175,6 +175,18 @@ resource "aws_route53_record" "ob_record" {
   }
 }
 
+resource "aws_route53_record" "ob_record_" {
+  name    = "api.${local.domain}."
+  type    = "A"
+  zone_id = "${aws_route53_zone.ob_zone.zone_id}"
+
+  alias {
+    evaluate_target_health = false
+    name                   = "${aws_api_gateway_domain_name.ob_domain.cloudfront_domain_name}"
+    zone_id                = "${aws_api_gateway_domain_name.ob_domain.cloudfront_zone_id}"
+  }
+}
+
 resource "aws_route53_record" "ob_record_validation" {
   count   = "${length(aws_acm_certificate.ob_certificate.domain_validation_options)}"
   name    = "${lookup(aws_acm_certificate.ob_certificate.domain_validation_options[count.index], "resource_record_name")}"
