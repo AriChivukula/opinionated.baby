@@ -46,6 +46,8 @@ jobs:
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
+      on:
+        all_branches: true
     - provider: lambda
       function_name: $FUNCTION_NAME
       region: $AWS_DEFAULT_REGION
@@ -69,6 +71,8 @@ jobs:
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
       skip_cleanup: true
+      on:
+        all_branches: true
   - stage: Screenshot
     if: type = pull_request
     script:
