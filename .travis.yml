@@ -52,6 +52,7 @@ jobs:
       skip_cleanup: true
     - provider: lambda
       function_name: $FUNCTION_NAME
+      region: $AWS_DEFAULT_REGION
       role: $ROLE
       handler_name: handler
       module_name: index

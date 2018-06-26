@@ -57,6 +57,14 @@ resource "aws_s3_bucket" "ob_bucket_builds" {
   }
 }
 
+data "aws_lambda_function" "ob_lambda_www" {
+  function_name = "${local.name}"
+}
+
+data "aws_lambda_function" "ob_lambda_beta" {
+  function_name = "beta${local.name}"
+}
+
 resource "aws_cloudfront_distribution" "ob_distribution_www" {
   aliases = ["${local.domain}"]
   enabled = true
