@@ -37,12 +37,8 @@ jobs:
     - npx gulp build:3
     - npx gulp build:4
   - stage: Deploy
-    if: ( branch = master AND type = push ) OR ( tag =~ ^v[0-9]+$ )
     install: skip
     script:
-    - if ! [[ "$TRAVIS_TAG" ]] ; then export BUCKET="beta.${BUCKET}" ; fi
-    - if [[ "$TRAVIS_TAG" ]] ; then rm build/3/website/static/robots.txt ; fi
-    - if ! [[ "$TRAVIS_TAG" ]] ; then export FUNCTION_NAME="beta${FUNCTION_NAME}" ; fi
     - export REDIRECT_URL="https://${BUCKET}"
     deploy:
     - provider: s3
@@ -50,8 +46,11 @@ jobs:
       local_dir: build/3/website
       acl: public_read
       skip_cleanup: true
+      on:
+        all_branches: true
     - provider: lambda
       function_name: $FUNCTION_NAME
+      region: $AWS_DEFAULT_REGION
       role: $ROLE
       handler_name: handler
       module_name: index
@@ -72,6 +71,8 @@ jobs:
       - REDIRECT_URL=$REDIRECT_URL
       - SENTRY=$SENTRY
       skip_cleanup: true
+      on:
+        all_branches: true
   - stage: Screenshot
     if: type = pull_request
     script:

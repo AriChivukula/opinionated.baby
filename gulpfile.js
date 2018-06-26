@@ -107,7 +107,7 @@ gulp.task(
 
 gulp.task(
   "build:2:static",
-  () => gulp.src("src/**/*.@(graphql|jpg|png|snap|txt)")
+  () => gulp.src("src/**/*.@(graphql|jpg|png|snap)")
     .pipe(gulp.dest("build/2")),
 );
 
@@ -146,7 +146,7 @@ gulp.task(
 
 gulp.task(
   "build:3:static",
-  () => gulp.src("build/2/**/*.@(css|graphql|html|jpg|png|txt)")
+  () => gulp.src("build/2/**/*.@(css|graphql|html|jpg|png)")
     .pipe(gulp.dest("build/3")),
 );
 
