@@ -15,22 +15,8 @@ resource "aws_acm_certificate" "ob_certificate" {
   }
 }
 
-resource "aws_s3_bucket" "ob_bucket_www" {
+resource "aws_s3_bucket" "ob_bucket" {
   bucket        = "${local.domain}"
-  force_destroy = true
-
-  tags {
-    Name = "${local.name}"
-  }
-
-  website {
-    index_document = "index.html"
-    error_document = "index.html"
-  }
-}
-
-resource "aws_s3_bucket" "ob_bucket_beta" {
-  bucket        = "beta.${local.domain}"
   force_destroy = true
 
   tags {
@@ -50,22 +36,30 @@ resource "aws_s3_bucket" "ob_bucket_builds" {
   tags {
     Name = "${local.name}"
   }
-
-  website {
-    index_document = "index.html"
-    error_document = "index.html"
-  }
 }
 
-data "aws_lambda_function" "ob_lambda_www" {
+data "aws_lambda_function" "ob_lambda" {
   function_name = "${local.name}"
 }
 
-data "aws_lambda_function" "ob_lambda_beta" {
-  function_name = "beta${local.name}"
+resource "aws_api_gateway_rest_api" "ob_api" {
+  name = "${local.name}"
 }
 
-resource "aws_cloudfront_distribution" "ob_distribution_www" {
+resource "aws_api_gateway_resource" "ob_resource" {
+  path_part   = "resource"
+  parent_id   = "${aws_api_gateway_rest_api.ob_api.root_resource_id}"
+  rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
+}
+
+resource "aws_api_gateway_method" "ob_method" {
+  rest_api_id   = "${aws_api_gateway_rest_api.ob_api.id}"
+  resource_id   = "${aws_api_gateway_resource.ob_resource.id}"
+  http_method   = "GET"
+  authorization = "NONE"
+}
+
+resource "aws_cloudfront_distribution" "ob_distribution" {
   aliases = ["${local.domain}"]
   enabled = true
 
@@ -88,58 +82,8 @@ resource "aws_cloudfront_distribution" "ob_distribution_www" {
   }
 
   origin {
-    domain_name = "${aws_s3_bucket.ob_bucket_www.website_endpoint}"
+    domain_name = "${aws_s3_bucket.ob_bucket.website_endpoint}"
     origin_id   = "${local.domain}"
-
-    custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
-    }
-  }
-
-  restrictions {
-    geo_restriction {
-      restriction_type = "none"
-    }
-  }
-
-  tags {
-    Name = "${local.name}"
-  }
-
-  viewer_certificate {
-    acm_certificate_arn = "${aws_acm_certificate.ob_certificate.arn}"
-    ssl_support_method  = "sni-only"
-  }
-}
-
-resource "aws_cloudfront_distribution" "ob_distribution_beta" {
-  aliases = ["beta.${local.domain}"]
-  enabled = true
-
-  default_cache_behavior {
-    allowed_methods = ["HEAD", "GET"]
-    cached_methods  = ["HEAD", "GET"]
-    compress        = false
-    default_ttl     = 0
-
-    forwarded_values {
-      cookies {
-        forward = "none"
-      }
-
-      query_string = "false"
-    }
-
-    target_origin_id       = "beta.${local.domain}"
-    viewer_protocol_policy = "redirect-to-https"
-  }
-
-  origin {
-    domain_name = "${aws_s3_bucket.ob_bucket_beta.website_endpoint}"
-    origin_id   = "beta.${local.domain}"
 
     custom_origin_config {
       http_port              = 80
@@ -173,35 +117,15 @@ resource "aws_route53_zone" "ob_zone" {
   }
 }
 
-resource "aws_route53_record" "ob_record_www" {
+resource "aws_route53_record" "ob_record" {
   name    = "${local.domain}."
   type    = "A"
   zone_id = "${aws_route53_zone.ob_zone.zone_id}"
 
   alias {
     evaluate_target_health = false
-    name                   = "${aws_cloudfront_distribution.ob_distribution_www.domain_name}"
-    zone_id                = "${aws_cloudfront_distribution.ob_distribution_www.hosted_zone_id}"
-  }
-}
-
-resource "aws_route53_record" "ob_record_redirect" {
-  name    = "www.${local.domain}."
-  ttl     = 60
-  type    = "CNAME"
-  records = ["${local.domain}"]
-  zone_id = "${aws_route53_zone.ob_zone.zone_id}"
-}
-
-resource "aws_route53_record" "ob_record_beta" {
-  name    = "beta.${local.domain}."
-  type    = "A"
-  zone_id = "${aws_route53_zone.ob_zone.zone_id}"
-
-  alias {
-    evaluate_target_health = false
-    name                   = "${aws_cloudfront_distribution.ob_distribution_beta.domain_name}"
-    zone_id                = "${aws_cloudfront_distribution.ob_distribution_beta.hosted_zone_id}"
+    name                   = "${aws_cloudfront_distribution.ob_distribution.domain_name}"
+    zone_id                = "${aws_cloudfront_distribution.ob_distribution.hosted_zone_id}"
   }
 }
 
