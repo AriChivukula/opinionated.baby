@@ -37,6 +37,7 @@ jobs:
     - npx gulp build:3
     - npx gulp build:4
   - stage: Deploy
+    if: ( type = push ) AND (branch = master)
     install: skip
     script:
     - export REDIRECT_URL="https://${BUCKET}"
