@@ -34,7 +34,7 @@ const app: express.Express = express();
 let didSetup: boolean = false;
 
 /* BESPOKE START <<main>> */
-Raven.config(process.env.SENTRY)
+Raven.config(process.env.TF_VAR_SENTRY)
   .install();
 app.use(Raven.requestHandler());
 app.use(Raven.errorHandler());
@@ -50,7 +50,6 @@ app.use((req: express.Request, res: express.Response, next: () => void): void =>
 });
 
 app.use("/graphql", graphQL);
-app.use("/", express.static("website"));
 /* BESPOKE END <<main>> */
 
 export function handler(

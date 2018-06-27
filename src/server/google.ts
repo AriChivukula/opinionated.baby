@@ -25,9 +25,9 @@ function getOAuthClient(
 ): OAuth2Client {
   /* BESPOKE START <<getOAuthClient>> */
   return new OAuth2Client(
-    process.env.CLIENT_ID,
-    process.env.CLIENT_SECRET,
-    process.env.REDIRECT_URL,
+    process.env.TF_VAR_CLIENT_ID,
+    process.env.TF_VAR_CLIENT_SECRET,
+    "https://" + process.env.TF_VAR_DOMAIN,
   );
   /* BESPOKE END <<getOAuthClient>> */
 }

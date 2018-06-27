@@ -1,85 +1,18 @@
-env:
-  global:
-    - PATH=$HOME/.local/bin:$PATH
 language: node_js
 node_js:
 - node
-before_install:
-- pip install --user awscli
-- mkdir build
-- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*" --exclude "*node_modules*"
+before_install: bash shell/install.sh
 jobs:
   include:
   - stage: Actualize
     if: type = api
-    script:
-    - npx gulp codegen
-    - npx gulp relay
-    - npx gulp build:1
-    - npx gulp build:2
-    - rm -rf src/website/__tests__/__snapshots__
-    - npx gulp snap
-    - npx gulp sql
-    - wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
-    - unzip terraform_0.11.7_linux_amd64.zip
-    - sudo mv terraform /usr/local/bin/
-    - rm terraform_0.11.7_linux_amd64.zip
-    - cd infra && terraform init && terraform apply -auto-approve
-    - git remote add target "https://arichiv:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
-    - git add -A
-    - git commit -m "ACTUALIZE ${TRAVIS_BUILD_NUMBER}"
-    - git push target HEAD:$TRAVIS_BRANCH
-  - stage: Build
-    if: type = push
-    script:
-    - npm outdated > .outdated.new || true
-    - npm outdated || true
-    - cmp -s .outdated.new .outdated
-    - npx gulp build:1
-    - npx gulp build:2
-    - npx gulp test
-    - npx gulp build:3
-    - npx gulp build:4
+    script: bash shell/actualize.sh
+  - stage: Test
+    if: ( type = push ) AND ( branch != master )
+    script: bash shell/test.sh
   - stage: Deploy
-    if: ( type = push ) AND (branch = master)
-    install: skip
-    script:
-    - export REDIRECT_URL="https://${BUCKET}"
-    deploy:
-    - provider: s3
-      bucket: $BUCKET
-      local_dir: build/3/website
-      acl: public_read
-      skip_cleanup: true
-    - provider: lambda
-      function_name: $FUNCTION_NAME
-      region: $AWS_DEFAULT_REGION
-      role: $ROLE
-      handler_name: handler
-      module_name: index
-      zip: build/dist.zip
-      timeout: 300
-      memory_size: 256
-      runtime: nodejs8.10
-      publish: true
-      environment_variables:
-      - CLIENT_ID=$CLIENT_ID
-      - CLIENT_SECRET=$CLIENT_SECRET
-      - DB_HOST=$DB_HOST
-      - DB_NAME=$DB_NAME
-      - DB_PASSWORD=$DB_PASSWORD
-      - DB_PORT=$DB_PORT
-      - DB_USERNAME=$DB_USERNAME
-      - DEBUG=*
-      - REDIRECT_URL=$REDIRECT_URL
-      - SENTRY=$SENTRY
-      skip_cleanup: true
+    if: ( type = push ) AND ( branch = master )
+    script: bash shell/deploy.sh
   - stage: Verify
     if: type = pull_request
-    script:
-    - npx gulp build:1
-    - npx gulp build:2
-    - npx gulp build:3
-    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"[Test build ${TRAVIS_BUILD_NUMBER}](https://to.do)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
-after_success:
-- aws s3 sync . s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER --exclude "*.git*" --exclude "*node_modules*"
+    script: bash shell/verify.sh

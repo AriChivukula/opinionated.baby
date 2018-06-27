@@ -1,11 +1,11 @@
 module.exports = {
-  "database": process.env.DB_NAME,
+  "database": process.env.TF_VAR_DB_NAME,
   "entities": [
     "src/server/entity/*.ts"
   ],
-  "host": process.env.DB_HOST,
-  "password": process.env.DB_PASSWORD,
-  "port": process.env.DB_PORT,
+  "host": process.env.TF_VAR_DB_HOST,
+  "password": process.env.TF_VAR_DB_PASSWORD,
+  "port": process.env.TF_VAR_DB_PORT,
   "type": "postgres",
-  "username": process.env.DB_USERNAME
+  "username": process.env.TF_VAR_DB_USERNAME
 }

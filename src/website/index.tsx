@@ -16,6 +16,6 @@ let apiURL: string;
 
 /* BESPOKE START <<main>> */
 window.onload = (): void => {
-  render("https://api.opinionated.baby/graphql/opinionatedbaby/");
+  render("https://dynamic-ENV_BUILD.ENV_DOMAIN/graphql/ENV_NAME-ENV_BUILD/");
 };
 /* BESPOKE END <<main>> */
