@@ -12,22 +12,6 @@ var ts = require("gulp-typescript");
 var pkg = require("./package.json");
 var project = ts.createProject("tsconfig.json");
 
-/* CODEGEN */
-
-gulp.task(
-  "codegen",
-  shell.task("ts-node node_modules/.bin/typescriptase --files gen/**/*.ts"),
-);
-
-/* RELAY */
-
-gulp.task(
-  "relay",
-  shell.task("relay-compiler --src src/ --schema src/server/schema.graphql --language typescript"),
-);
-
-/* BUILD */
-
 gulp.task(
   "build:1:typescript",
   () => gulp.src(["src/**/*.ts", "src/**/*.tsx"])
@@ -144,67 +128,10 @@ gulp.task(
 );
 
 gulp.task(
-  "build:4:prune",
-  shell.task("npm prune --production"),
-);
-
-gulp.task(
-  "build:4:cp",
-  shell.task("cp build/3/server/index.js index.js && cp build/3/server/schema.graphql schema.graphql && cp -R build/3/website website"),
-);
-
-gulp.task(
-  "build:4:zip",
-  shell.task("zip -q -r build/dist.zip node_modules index.js schema.graphql website"),
-);
-
-gulp.task(
-  "build:4:clean",
-  shell.task("rm index.js schema.graphql"),
-);
-
-gulp.task(
-  "build:4",
+  "build",
   gulp.series(
-    gulp.parallel(
-      "build:4:prune",
-      "build:4:cp",
-    ),
-    "build:4:zip",
-    "build:4:clean",
+    "build:1",
+    "build:2",
+    "build:3",
   ),
-);
-
-/* TEST */
-
-gulp.task(
-  "test",
-  shell.task("jest --collectCoverage"),
-);
-
-/* SNAP */
-
-gulp.task(
-  "snap:jest",
-  shell.task("jest -u build/2/website"),
-);
-
-gulp.task(
-  "snap:copy",
-  shell.task("cp -R build/2/website/__tests__/__snapshots__ src/website/__tests__/__snapshots__"),
-);
-
-gulp.task(
-  "snap",
-  gulp.series(
-    "snap:jest",
-    "snap:copy",
-  ),
-);
-
-/* SQL */
-
-gulp.task(
-  "sql",
-  shell.task("ts-node ./node_modules/.bin/typeorm schema:sync"),
 );

@@ -13,25 +13,17 @@ jobs:
   - stage: Actualize
     if: type = api
     script:
-    - npx gulp codegen
-    - npx gulp relay
-    - npx gulp build:1
-    - npx gulp build:2
     - rm -rf src/website/__tests__/__snapshots__
-    - npx gulp snap
-    - npx gulp sql
+    - bash shell/regen.sh
     - bash shell/terraform.sh
-    - cd infra && terraform init && terraform apply -auto-approve
     - bash shell/commit.sh
   - stage: Build
     if: type = push
     script:
     - bash shell/check.sh
-    - npx gulp build:1
-    - npx gulp build:2
-    - npx gulp test
-    - npx gulp build:3
-    - npx gulp build:4
+    - npx gulp build
+    - npx jest --collectCoverage
+    - bash shell/package.sh
   - stage: Deploy
     if: ( type = push ) AND (branch = master)
     install: skip
@@ -69,9 +61,7 @@ jobs:
   - stage: Verify
     if: type = pull_request
     script:
-    - npx gulp build:1
-    - npx gulp build:2
-    - npx gulp build:3
+    - npx gulp build
     - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"[Test build ${TRAVIS_BUILD_NUMBER}](https://to.do)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
 after_success:
 - aws s3 sync . s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER --exclude "*.git*" --exclude "*node_modules*"
