@@ -30,10 +30,6 @@ data "aws_s3_bucket" "ob_bucket" {
   bucket = "${var.NAME}"
 }
 
-resource "aws_api_gateway_rest_api" "ob_api" {
-  name = "${var.NAME}-${var.BUILD}"
-}
-
 data "aws_iam_role" "ob_iam" {
   name = "${var.NAME}"
 }
@@ -73,21 +69,25 @@ resource "aws_lambda_function" "ob_lambda" {
   }
 }
 
+resource "aws_api_gateway_rest_api" "ob_api" {
+  name = "${var.NAME}-${var.BUILD}"
+}
+
 resource "aws_api_gateway_resource" "ob_resource" {
   path_part   = "{proxy+}"
-  parent_id   = "${data.aws_api_gateway_rest_api.ob_api.root_resource_id}"
-  rest_api_id = "${data.aws_api_gateway_rest_api.ob_api.id}"
+  parent_id   = "${aws_api_gateway_rest_api.ob_api.root_resource_id}"
+  rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
 }
 
 resource "aws_api_gateway_method" "ob_method" {
-  rest_api_id   = "${data.aws_api_gateway_rest_api.ob_api.id}"
+  rest_api_id   = "${aws_api_gateway_rest_api.ob_api.id}"
   resource_id   = "${aws_api_gateway_resource.ob_resource.id}"
   http_method   = "ANY"
   authorization = "NONE"
 }
 
 resource "aws_api_gateway_integration" "ob_integration" {
-  rest_api_id = "${data.aws_api_gateway_rest_api.ob_api.id}"
+  rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
   resource_id = "${aws_api_gateway_method.ob_method.resource_id}"
   http_method = "${aws_api_gateway_method.ob_method.http_method}"
 
@@ -97,7 +97,7 @@ resource "aws_api_gateway_integration" "ob_integration" {
 }
 
 resource "aws_api_gateway_integration_response" "ob_response" {
-  rest_api_id = "${data.aws_api_gateway_rest_api.ob_api.id}"
+  rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
   resource_id = "${aws_api_gateway_resource.ob_resource.id}"
   http_method = "${aws_api_gateway_method.ob_method.http_method}"
   status_code = "200"
@@ -108,7 +108,7 @@ resource "aws_api_gateway_deployment" "ob_deployment" {
     "aws_api_gateway_integration.ob_integration",
   ]
 
-  rest_api_id = "${data.aws_api_gateway_rest_api.ob_api.id}"
+  rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
   stage_name  = "${var.BUILD}"
 }
 
@@ -119,7 +119,7 @@ resource "aws_api_gateway_domain_name" "ob_gateway" {
 }
 
 resource "aws_api_gateway_base_path_mapping" "ob_map" {
-  api_id      = "${data.aws_api_gateway_rest_api.ob_api.id}"
+  api_id      = "${aws_api_gateway_rest_api.ob_api.id}"
   stage_name  = "${aws_api_gateway_deployment.ob_deployment.stage_name}"
   domain_name = "${aws_api_gateway_domain_name.ob_gateway.domain_name}"
 }
