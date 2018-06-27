@@ -71,6 +71,7 @@ EOF
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
+  aliases = ["${var.DOMAIN}"]
   enabled = true
 
   default_cache_behavior {

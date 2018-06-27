@@ -161,6 +161,7 @@ resource "aws_s3_bucket_object" "ob_object" {
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
+  aliases = ["static-${var.BUILD}.${var.DOMAIN}"]
   enabled = true
 
   default_cache_behavior {
