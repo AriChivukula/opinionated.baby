@@ -109,7 +109,7 @@ resource "aws_api_gateway_deployment" "ob_deployment" {
   ]
 
   rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
-  stage_name  = "${var.BUILD}"
+  stage_name  = "PROD"
 }
 
 resource "aws_api_gateway_domain_name" "ob_gateway" {
