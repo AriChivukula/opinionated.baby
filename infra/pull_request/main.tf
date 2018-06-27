@@ -148,17 +148,32 @@ resource "aws_route53_record" "ob_record_dynamic" {
   }
 }
 
+
 locals {
-  files = ["index.html", "index.js", "index.css", "images/favicon.png", "images/v0.jpg", "images/v1.jpg", "images/v2.jpg", "images/v3.jpg", "images/v4.jpg", "images/v5.jpg", "images/v6.jpg", "images/v7.jpg", "images/v8.jpg"]
+  files = {
+    ["index.html", "text/html"],
+    ["index.js", "application/javascript"],
+    ["index.css", "text/css"],
+    ["images/favicon.png", "image/png"],
+    ["images/v0.jpg", "image/jpeg"],
+    ["images/v1.jpg", "image/jpeg"],
+    ["images/v2.jpg", "image/jpeg"],
+    ["images/v3.jpg", "image/jpeg"],
+    ["images/v4.jpg", "image/jpeg"],
+    ["images/v5.jpg", "image/jpeg"],
+    ["images/v6.jpg", "image/jpeg"],
+    ["images/v7.jpg", "image/jpeg"],
+    ["images/v8.jpg", "image/jpeg"],
+  }
 }
 
 resource "aws_s3_bucket_object" "ob_object" {
   count  = "${length(local.files)}"
   bucket = "${var.NAME}"
-  key    = "${var.BUILD}/${local.files[count.index]}"
-  source = "static/${local.files[count.index]}"
+  key    = "${var.BUILD}/${local.files[count.index][0]}"
+  source = "static/${local.files[count.index][0]}"
   acl    = "public-read"
-  content_type = "text/plain"
+  content_type = "${local.files[count.index][1]}"
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
