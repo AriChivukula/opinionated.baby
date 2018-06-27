@@ -91,7 +91,7 @@ resource "aws_api_gateway_integration" "ob_integration" {
   resource_id = "${aws_api_gateway_method.ob_method.resource_id}"
   http_method = "${aws_api_gateway_method.ob_method.http_method}"
 
-  integration_http_method = "ANY"
+  integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = "${replace(aws_lambda_function.ob_lambda.invoke_arn, ":$LATEST", "")}"
 }
