@@ -51,10 +51,6 @@ app.use((req: express.Request, res: express.Response, next: () => void): void =>
 
 app.use("/graphql", graphQL);
 app.use("/", express.static("website"));
-
-if (process.env.ENV === "DEV") {
-  app.listen(process.env.PORT);
-}
 /* BESPOKE END <<main>> */
 
 export function handler(
