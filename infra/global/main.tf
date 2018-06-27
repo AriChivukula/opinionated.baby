@@ -94,7 +94,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   }
 
   origin {
-    domain_name = "${aws_s3_bucket.ob_bucket.bucket_regional_domain_name}"
+    domain_name = "${aws_s3_bucket.ob_bucket.bucket_domain_name}"
     origin_id   = "${var.DOMAIN}"
     origin_path = "/master"
 
