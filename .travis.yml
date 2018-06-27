@@ -8,22 +8,17 @@ jobs:
   - stage: Actualize
     if: type = api
     script:
-    - rm -rf src/website/__tests__/__snapshots__
     - bash shell/regen.sh
     - bash shell/terraform.sh
     - bash shell/commit.sh
   - stage: Build
     if: type = push
     script:
-    - bash shell/check.sh
-    - npx gulp build
-    - npx jest --collectCoverage
-    - bash shell/package.sh
+    - bash shell/test.sh
   - stage: Deploy
     if: ( type = push ) AND ( branch = master )
-    install: skip
     script:
-    - export REDIRECT_URL="https://${BUCKET}"
+    - bash shell/package.sh
     deploy:
     - provider: s3
       bucket: $BUCKET
@@ -50,7 +45,7 @@ jobs:
       - DB_PORT=$DB_PORT
       - DB_USERNAME=$DB_USERNAME
       - DEBUG=*
-      - REDIRECT_URL=$REDIRECT_URL
+      - REDIRECT_URL="https://${BUCKET}"
       - SENTRY=$SENTRY
       skip_cleanup: true
   - stage: Verify
