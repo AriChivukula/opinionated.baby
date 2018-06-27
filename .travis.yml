@@ -1,13 +1,8 @@
-env:
-  global:
-    - PATH=$HOME/.local/bin:$PATH
 language: node_js
 node_js:
 - node
 before_install:
-- pip install --user awscli
-- mkdir build
-- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*" --exclude "*node_modules*"
+- bash shell/awscli.sh
 jobs:
   include:
   - stage: Actualize
@@ -25,7 +20,7 @@ jobs:
     - npx jest --collectCoverage
     - bash shell/package.sh
   - stage: Deploy
-    if: ( type = push ) AND (branch = master)
+    if: ( type = push ) AND ( branch = master )
     install: skip
     script:
     - export REDIRECT_URL="https://${BUCKET}"
@@ -64,4 +59,4 @@ jobs:
     - npx gulp build
     - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"[Test build ${TRAVIS_BUILD_NUMBER}](https://to.do)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
 after_success:
-- aws s3 sync . s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER --exclude "*.git*" --exclude "*node_modules*"
+- bash shell/awscli.sh
