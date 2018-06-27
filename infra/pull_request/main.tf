@@ -109,7 +109,7 @@ resource "aws_api_gateway_integration_response" "ob_response" {
 
 resource "aws_api_gateway_deployment" "ob_deployment" {
   depends_on = [
-    "aws_api_gateway_integration.aws_api_gateway_integration_response",
+    "aws_api_gateway_integration_response.ob_response",
   ]
 
   rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
