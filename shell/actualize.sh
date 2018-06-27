@@ -1,5 +1,9 @@
 set -e
 
+npm outdated > .outdated.new || true
+npm outdated || true
+cmp -s .outdated.new .outdated
+rm .outdated.new
 rm -rf src/website/__tests__/__snapshots__
 npx ts-node node_modules/.bin/typescriptase --files gen/**/*.ts
 npx relay-compiler --src src/ --schema src/server/schema.graphql --language typescript
