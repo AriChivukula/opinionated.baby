@@ -70,6 +70,11 @@ resource "aws_iam_role" "ob_iam" {
 EOF
 }
 
+resource "aws_iam_role_policy_attachment" "ob_attachment" {
+  role       = "${aws_iam_role.ob_iam.name}"
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
 resource "aws_cloudfront_distribution" "ob_distribution" {
   aliases = ["${var.DOMAIN}"]
   enabled = true
