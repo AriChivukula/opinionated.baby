@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - node
-install: bash shell/install.sh
+before_install: bash shell/install.sh
 jobs:
   include:
   - stage: Actualize
