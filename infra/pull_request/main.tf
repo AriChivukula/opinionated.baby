@@ -185,7 +185,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   }
 
   origin {
-    domain_name = "${data.aws_s3_bucket.ob_bucket.bucket_regional_domain_name}"
+    domain_name = "${data.aws_s3_bucket.ob_bucket.bucket_domain_name}"
     origin_id   = "static-${var.BUILD}.${var.DOMAIN}"
     origin_path = "/${var.BUILD}"
 
