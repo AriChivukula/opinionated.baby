@@ -17,6 +17,9 @@ import {
 } from "url";
 
 import {
+  TopBarQuery,
+} from "./__generated__/TopBarQuery.graphql";
+import {
   Content,
 } from "./Content";
 import {
@@ -25,7 +28,7 @@ import {
 /* BESPOKE END <<imports>> */
 
 export interface IPageProps {
-  data: any | null;
+  data: TopBarQuery | null;
 }
 
 export class Page extends React.Component<IPageProps> {
