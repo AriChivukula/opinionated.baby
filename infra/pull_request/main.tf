@@ -139,7 +139,7 @@ locals {
 resource "aws_s3_bucket_object" "ob_object" {
   count  = "${length(local.files)}"
   bucket = "${var.NAME}"
-  key    = "${local.files[count.index]}"
+  key    = "${var.BUILD}/${local.files[count.index]}"
   source = "static/${local.files[count.index]}"
 }
 
@@ -167,7 +167,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   origin {
     domain_name = "${data.aws_s3_bucket.ob_bucket.website_endpoint}"
     origin_id   = "static-${var.BUILD}.${var.DOMAIN}"
-    origin_path = "${var.BUILD}/static"
+    origin_path = "${var.BUILD}"
 
     custom_origin_config {
       http_port              = 80
