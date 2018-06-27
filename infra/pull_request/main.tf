@@ -167,7 +167,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   origin {
     domain_name = "${data.aws_s3_bucket.ob_bucket.website_endpoint}"
     origin_id   = "static-${var.BUILD}.${var.DOMAIN}"
-    origin_path = "${var.BUILD}"
+    origin_path = "/${var.BUILD}"
 
     custom_origin_config {
       http_port              = 80
