@@ -1,44 +1,76 @@
-variable "name" {
-  type = "string"
-}
+variable "CLIENT_ID" {}
 
-variable "domain" {
-  type = "string"
-}
+variable "BUILD" {}
 
-variable "build" {
-  type = "string"
-}
+variable "CLIENT_SECRET" {}
+
+variable "DB_HOST" {}
+
+variable "DB_NAME" {}
+
+variable "DB_PASSWORD" {}
+
+variable "DB_PORT" {}
+
+variable "DB_USERNAME" {}
+
+variable "SENTRY" {}
+
+variable "NAME" {}
+
+variable "DOMAIN" {}
 
 provider "aws" {}
 
 data "aws_acm_certificate" "ob_certificate" {
-  domain = "${var.domain}"
+  domain = "${var.DOMAIN}"
 }
 
 data "aws_s3_bucket" "ob_bucket" {
-  bucket = "${var.name}"
+  bucket = "${var.NAME}"
 }
 
 data "aws_api_gateway_rest_api" "ob_api" {
-  name = "${var.name}"
+  name = "${var.NAME}"
 }
 
 data "aws_iam_role" "ob_iam" {
-  name = "${var.name}"
+  name = "${var.NAME}"
 }
 
 data "aws_route53_zone" "ob_zone" {
-  name = "${var.domain}."
+  name = "${var.DOMAIN}."
 }
 
 resource "aws_lambda_function" "ob_lambda" {
-  function_name = "${var.build}-${var.name}"
+  function_name = "${var.BUILD}-${var.NAME}"
   handler       = "handler"
   role          = "${data.aws_iam_role.ob_iam.arn}"
   runtime       = "nodejs8.10"
   memory_size   = 256
   timeout       = 300
+  filename      = "dynamic.zip"
+
+  environment {
+    variables = {
+      CLIENT_ID     = "${var.CLIENT_ID}"
+      CLIENT_SECRET = "${var.CLIENT_SECRET}"
+      DB_HOST       = "${var.DB_HOST}"
+      DB_NAME       = "${var.DB_NAME}"
+      DB_PASSWORD   = "${var.DB_PASSWORD}"
+      DB_PORT       = "${var.DB_PORT}"
+      DB_USERNAME   = "${var.DB_USERNAME}"
+      SENTRY        = "${var.SENTRY}"
+      NAME          = "${var.NAME}"
+      DOMAIN        = "${var.DOMAIN}"
+      BUILD         = "${var.BUILD}"
+      DEBUG         = "*"
+    }
+  }
+
+  tags {
+    Name = "${var.NAME}"
+  }
 }
 
 resource "aws_api_gateway_resource" "ob_resource" {
@@ -77,11 +109,11 @@ resource "aws_api_gateway_deployment" "ob_deployment" {
   ]
 
   rest_api_id = "${data.aws_api_gateway_rest_api.ob_api.id}"
-  stage_name  = "${var.build}"
+  stage_name  = "${var.BUILD}"
 }
 
 resource "aws_api_gateway_domain_name" "ob_gateway" {
-  domain_name = "dynamic-${var.build}.${var.domain}"
+  domain_name = "dynamic-${var.BUILD}.${var.DOMAIN}"
 
   certificate_arn = "${data.aws_acm_certificate.ob_certificate.arn}"
 }
@@ -95,7 +127,7 @@ resource "aws_api_gateway_base_path_mapping" "ob_map" {
 resource "aws_lambda_permission" "ob_permission" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = "${var.build}-${var.name}"
+  function_name = "${var.BUILD}-${var.NAME}"
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_deployment.ob_deployment.execution_arn}/*/*"
 }
@@ -117,14 +149,14 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
       query_string = "false"
     }
 
-    target_origin_id       = "static-${var.build}.${var.domain}"
+    target_origin_id       = "static-${var.BUILD}.${var.DOMAIN}"
     viewer_protocol_policy = "redirect-to-https"
   }
 
   origin {
     domain_name = "${data.aws_s3_bucket.ob_bucket.website_endpoint}"
-    origin_id   = "static-${var.build}.${var.domain}"
-    origin_path = "${var.build}/static"
+    origin_id   = "static-${var.BUILD}.${var.DOMAIN}"
+    origin_path = "${var.BUILD}/static"
 
     custom_origin_config {
       http_port              = 80
@@ -141,7 +173,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   }
 
   tags {
-    Name = "${var.name}"
+    Name = "${var.NAME}"
   }
 
   viewer_certificate {
@@ -151,7 +183,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
 }
 
 resource "aws_route53_record" "ob_record_dynamic" {
-  name    = "$dynamic-${var.build}.${var.domain}."
+  name    = "$dynamic-${var.BUILD}.${var.DOMAIN}."
   type    = "A"
   zone_id = "${data.aws_route53_zone.ob_zone.zone_id}"
 
@@ -163,7 +195,7 @@ resource "aws_route53_record" "ob_record_dynamic" {
 }
 
 resource "aws_route53_record" "ob_record_static" {
-  name    = "static-${var.build}.${var.domain}."
+  name    = "static-${var.BUILD}.${var.DOMAIN}."
   type    = "A"
   zone_id = "${data.aws_route53_zone.ob_zone.zone_id}"
 
