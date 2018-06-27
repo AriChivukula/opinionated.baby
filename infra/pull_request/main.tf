@@ -6,6 +6,10 @@ variable "domain" {
   type = "string"
 }
 
+variable "build" {
+  type = "string"
+}
+
 provider "aws" {}
 
 data "aws_acm_certificate" "ob_certificate" {
@@ -16,12 +20,20 @@ data "aws_s3_bucket" "ob_bucket" {
   bucket = "${var.name}"
 }
 
-data "aws_lambda_function" "ob_lambda" {
-  function_name = "${var.name}"
-}
-
 data "aws_api_gateway_rest_api" "ob_api" {
   name = "${var.name}"
+}
+
+data "aws_iam_role" "ob_iam" {
+  name = "${var.name}"
+}
+
+data "aws_route53_zone" "ob_zone" {
+  name = "${var.domain}."
+}
+
+data "aws_lambda_function" "ob_lambda" {
+  function_name = "${var.build}-${var.domain}"
 }
 
 resource "aws_api_gateway_resource" "ob_resource" {
@@ -60,11 +72,11 @@ resource "aws_api_gateway_deployment" "ob_deployment" {
   ]
 
   rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
-  stage_name  = "PROD"
+  stage_name  = "${var.build}"
 }
 
-resource "aws_api_gateway_domain_name" "ob_domain" {
-  domain_name = "api.${var.domain}"
+resource "aws_api_gateway_domain_name" "ob_gateway" {
+  domain_name = "dynamic-${var.build}.${var.domain}"
 
   certificate_arn = "${aws_acm_certificate.ob_certificate.arn}"
 }
@@ -72,19 +84,18 @@ resource "aws_api_gateway_domain_name" "ob_domain" {
 resource "aws_api_gateway_base_path_mapping" "ob_map" {
   api_id      = "${aws_api_gateway_rest_api.ob_api.id}"
   stage_name  = "${aws_api_gateway_deployment.ob_deployment.stage_name}"
-  domain_name = "${aws_api_gateway_domain_name.ob_domain.domain_name}"
+  domain_name = "${aws_api_gateway_domain_name.ob_gateway.domain_name}"
 }
 
 resource "aws_lambda_permission" "ob_permission" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = "${var.name}"
+  function_name = "${var.build}-${var.domain}"
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_deployment.ob_deployment.execution_arn}/*/*"
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
-  aliases = ["${var.domain}"]
   enabled = true
 
   default_cache_behavior {
@@ -101,13 +112,14 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
       query_string = "false"
     }
 
-    target_origin_id       = "${var.domain}"
+    target_origin_id       = "static-${var.build}.${var.domain}"
     viewer_protocol_policy = "redirect-to-https"
   }
 
   origin {
     domain_name = "${aws_s3_bucket.ob_bucket.website_endpoint}"
-    origin_id   = "${var.domain}"
+    origin_id   = "static-${var.build}.${var.domain}"
+    origin_path = "${var.build}/static"
 
     custom_origin_config {
       http_port              = 80
@@ -133,12 +145,8 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   }
 }
 
-data "aws_route53_zone" "ob_zone" {
-  name = "${var.domain}."
-}
-
 resource "aws_route53_record" "ob_record" {
-  name    = "${var.domain}."
+  name    = "$dynamic-${var.build}.${var.domain}."
   type    = "A"
   zone_id = "${aws_route53_zone.ob_zone.zone_id}"
 
@@ -150,13 +158,13 @@ resource "aws_route53_record" "ob_record" {
 }
 
 resource "aws_route53_record" "ob_record_" {
-  name    = "api.${var.domain}."
+  name    = "static-${var.build}.${var.domain}."
   type    = "A"
   zone_id = "${aws_route53_zone.ob_zone.zone_id}"
 
   alias {
     evaluate_target_health = false
-    name                   = "${aws_api_gateway_domain_name.ob_domain.cloudfront_domain_name}"
-    zone_id                = "${aws_api_gateway_domain_name.ob_domain.cloudfront_zone_id}"
+    name                   = "${aws_api_gateway_domain_name.ob_gateway.cloudfront_domain_name}"
+    zone_id                = "${aws_api_gateway_domain_name.ob_gateway.cloudfront_zone_id}"
   }
 }

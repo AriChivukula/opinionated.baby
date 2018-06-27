@@ -50,7 +50,6 @@ app.use((req: express.Request, res: express.Response, next: () => void): void =>
 });
 
 app.use("/graphql", graphQL);
-app.use("/", express.static("website"));
 /* BESPOKE END <<main>> */
 
 export function handler(
