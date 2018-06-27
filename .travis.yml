@@ -9,10 +9,10 @@ before_script:
 jobs:
   include:
   - stage: Actualize
-    if: type = api
+    if: type IN ( api, cron )
     script: bash shell/actualize.sh
   - stage: Test
-    if: type = push
+    if: ( type = push ) AND ( branch != master )
     script: bash shell/test.sh
   - stage: Deploy
     if: ( type = push ) AND ( branch = master )
