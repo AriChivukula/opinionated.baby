@@ -150,7 +150,7 @@ resource "aws_route53_record" "ob_record_dynamic" {
 
 
 locals {
-  files = {
+  files = [
     ["index.html", "text/html"],
     ["index.js", "application/javascript"],
     ["index.css", "text/css"],
@@ -164,7 +164,7 @@ locals {
     ["images/v6.jpg", "image/jpeg"],
     ["images/v7.jpg", "image/jpeg"],
     ["images/v8.jpg", "image/jpeg"],
-  }
+  ]
 }
 
 resource "aws_s3_bucket_object" "ob_object" {
