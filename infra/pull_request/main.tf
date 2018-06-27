@@ -30,8 +30,8 @@ data "aws_s3_bucket" "ob_bucket" {
   bucket = "${var.NAME}"
 }
 
-data "aws_api_gateway_rest_api" "ob_api" {
-  name = "${var.NAME}"
+resource "aws_api_gateway_rest_api" "ob_api" {
+  name = "${var.NAME}-${var.BUILD}"
 }
 
 data "aws_iam_role" "ob_iam" {
@@ -43,7 +43,7 @@ data "aws_route53_zone" "ob_zone" {
 }
 
 resource "aws_lambda_function" "ob_lambda" {
-  function_name = "${var.BUILD}-${var.NAME}"
+  function_name = "${var.NAME}-${var.BUILD}"
   handler       = "handler"
   role          = "${data.aws_iam_role.ob_iam.arn}"
   runtime       = "nodejs8.10"
@@ -74,7 +74,7 @@ resource "aws_lambda_function" "ob_lambda" {
 }
 
 resource "aws_api_gateway_resource" "ob_resource" {
-  path_part   = "${var.BUILD}"
+  path_part   = "{proxy+}"
   parent_id   = "${data.aws_api_gateway_rest_api.ob_api.root_resource_id}"
   rest_api_id = "${data.aws_api_gateway_rest_api.ob_api.id}"
 }
@@ -127,7 +127,7 @@ resource "aws_api_gateway_base_path_mapping" "ob_map" {
 resource "aws_lambda_permission" "ob_permission" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = "${var.BUILD}-${var.NAME}"
+  function_name = "${var.NAME}-${var.BUILD}"
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_deployment.ob_deployment.execution_arn}/*/*"
 }

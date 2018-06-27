@@ -28,10 +28,6 @@ resource "aws_s3_bucket" "ob_bucket" {
   }
 }
 
-resource "aws_api_gateway_rest_api" "ob_api" {
-  name = "${var.NAME}"
-}
-
 resource "aws_route53_zone" "ob_zone" {
   name = "${var.DOMAIN}."
 
