@@ -19,39 +19,14 @@ gulp.task(
   shell.task("ts-node node_modules/.bin/typescriptase --files gen/**/*.ts"),
 );
 
-/* BUILD */
+/* RELAY */
 
 gulp.task(
-  "build:0:artifact",
+  "relay",
   shell.task("relay-compiler --src src/ --schema src/server/schema.graphql --language typescript"),
 );
 
-gulp.task(
-  "build:0:lint:sass",
-  shell.task("sass-lint src/**/*.scss"),
-);
-
-gulp.task(
-  "build:0:lint:typescript",
-  shell.task("tslint -p . gen/**/*.ts src/**/*.ts src/**/*.tsx"),
-);
-
-gulp.task(
-  "build:0:lint:verify",
-  shell.task("ts-node node_modules/.bin/typescriptase --expectNoChanges --files gen/**/*.ts"),
-);
-
-gulp.task(
-  "build:0",
-  gulp.series(
-    "build:0:artifact",
-    gulp.parallel(
-      "build:0:lint:sass",
-      "build:0:lint:typescript",
-      "build:0:lint:verify",
-    ),
-  ),
-);
+/* BUILD */
 
 gulp.task(
   "build:1:typescript",
