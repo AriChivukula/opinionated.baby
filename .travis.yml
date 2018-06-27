@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - node
-before_install:
+before_script:
 - bash shell/awscli.sh
 jobs:
   include:
@@ -58,5 +58,5 @@ jobs:
     script:
     - npx gulp build
     - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"[Test build ${TRAVIS_BUILD_NUMBER}](https://to.do)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
-after_success:
+before_cache:
 - bash shell/awscli.sh
