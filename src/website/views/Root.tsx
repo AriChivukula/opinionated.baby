@@ -22,8 +22,6 @@ import {
 import {
   Page,
 } from "./Page";
-
-type TopBarQuery = any;
 /* BESPOKE END <<imports>> */
 
 export interface IRootProps {
@@ -44,7 +42,7 @@ export class Root extends React.Component<IRootProps> {
             ...TopBarQuery
           }
         `}
-        render={({error, props}: {error: Error | null; props: TopBarQuery}): JSX.Element => {
+        render={({error, props}: {error: Error | null; props: any}): JSX.Element => {
           if (error !== null) {
             console.log(error);
 
