@@ -21,11 +21,6 @@ resource "aws_s3_bucket" "ob_bucket" {
   tags {
     Name = "${var.NAME}"
   }
-
-  website {
-    index_document = "index.html"
-    error_document = "index.html"
-  }
 }
 
 resource "aws_route53_zone" "ob_zone" {
