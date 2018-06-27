@@ -97,6 +97,10 @@ resource "aws_api_gateway_integration" "ob_integration" {
 }
 
 resource "aws_api_gateway_integration_response" "ob_response" {
+  depends_on = [
+    "aws_api_gateway_integration.ob_integration",
+  ]
+
   rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
   resource_id = "${aws_api_gateway_resource.ob_resource.id}"
   http_method = "${aws_api_gateway_method.ob_method.http_method}"
@@ -105,7 +109,7 @@ resource "aws_api_gateway_integration_response" "ob_response" {
 
 resource "aws_api_gateway_deployment" "ob_deployment" {
   depends_on = [
-    "aws_api_gateway_integration.ob_integration",
+    "aws_api_gateway_integration.aws_api_gateway_integration_response",
   ]
 
   rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
