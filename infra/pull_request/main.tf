@@ -141,6 +141,7 @@ resource "aws_s3_bucket_object" "ob_object" {
   bucket = "${var.NAME}"
   key    = "${var.BUILD}/${local.files[count.index]}"
   source = "static/${local.files[count.index]}"
+  acl    = "public_read"
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
