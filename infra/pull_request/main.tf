@@ -88,7 +88,7 @@ resource "aws_api_gateway_method" "ob_method" {
 
 resource "aws_api_gateway_integration" "ob_integration" {
   rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
-  resource_id = "${aws_api_gateway_method.ob_method.resource_id}"
+  resource_id = "${aws_api_gateway_method.ob_resource.resource_id}"
   http_method = "${aws_api_gateway_method.ob_method.http_method}"
 
   integration_http_method = "ANY"
