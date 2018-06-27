@@ -1,10 +1,9 @@
 language: node_js
 node_js:
 - node
+before_install:
+- bash shell/awscli.sh
 before_script:
-- export PATH=$HOME/.local/bin:$PATH
-- pip install --user awscli
-- mkdir build
 - aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*" --exclude "*node_modules*"
 jobs:
   include:
