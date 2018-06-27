@@ -74,7 +74,7 @@ resource "aws_lambda_function" "ob_lambda" {
 }
 
 resource "aws_api_gateway_resource" "ob_resource" {
-  path_part   = "{proxy+}"
+  path_part   = "${var.BUILD}"
   parent_id   = "${data.aws_api_gateway_rest_api.ob_api.root_resource_id}"
   rest_api_id = "${data.aws_api_gateway_rest_api.ob_api.id}"
 }
