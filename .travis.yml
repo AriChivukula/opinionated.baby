@@ -1,10 +1,8 @@
 language: node_js
 node_js:
 - node
-before_install:
-- bash shell/install.sh
 before_script:
-- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*" --exclude "*node_modules*"
+- bash shell/install.sh
 jobs:
   include:
   - stage: Actualize
@@ -48,5 +46,3 @@ jobs:
   - stage: Verify
     if: type = pull_request
     script: bash shell verify.sh
-before_cache:
-- aws s3 sync . s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER --exclude "*.git*" --exclude "*node_modules*"

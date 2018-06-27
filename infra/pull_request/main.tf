@@ -13,7 +13,7 @@ variable "build" {
 provider "aws" {}
 
 data "aws_acm_certificate" "ob_certificate" {
-  domain_name = "${var.domain}"
+  domain = "${var.domain}"
 }
 
 data "aws_s3_bucket" "ob_bucket" {
@@ -32,35 +32,40 @@ data "aws_route53_zone" "ob_zone" {
   name = "${var.domain}."
 }
 
-data "aws_lambda_function" "ob_lambda" {
-  function_name = "${var.build}-${var.domain}"
+resource "aws_lambda_function" "ob_lambda" {
+  function_name = "${var.build}-${var.name}"
+  handler       = "handler"
+  role          = "${data.aws_iam_role.ob_iam.arn}"
+  runtime       = "nodejs8.10"
+  memory_size   = 256
+  timeout       = 300
 }
 
 resource "aws_api_gateway_resource" "ob_resource" {
   path_part   = "{proxy+}"
-  parent_id   = "${aws_api_gateway_rest_api.ob_api.root_resource_id}"
-  rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
+  parent_id   = "${data.aws_api_gateway_rest_api.ob_api.root_resource_id}"
+  rest_api_id = "${data.aws_api_gateway_rest_api.ob_api.id}"
 }
 
 resource "aws_api_gateway_method" "ob_method" {
-  rest_api_id   = "${aws_api_gateway_rest_api.ob_api.id}"
+  rest_api_id   = "${data.aws_api_gateway_rest_api.ob_api.id}"
   resource_id   = "${aws_api_gateway_resource.ob_resource.id}"
   http_method   = "ANY"
   authorization = "NONE"
 }
 
 resource "aws_api_gateway_integration" "ob_integration" {
-  rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
+  rest_api_id = "${data.aws_api_gateway_rest_api.ob_api.id}"
   resource_id = "${aws_api_gateway_method.ob_method.resource_id}"
   http_method = "${aws_api_gateway_method.ob_method.http_method}"
 
   integration_http_method = "ANY"
   type                    = "AWS_PROXY"
-  uri                     = "${replace(data.aws_lambda_function.ob_lambda.invoke_arn, ":$LATEST", "")}"
+  uri                     = "${replace(aws_lambda_function.ob_lambda.invoke_arn, ":$LATEST", "")}"
 }
 
 resource "aws_api_gateway_integration_response" "ob_response" {
-  rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
+  rest_api_id = "${data.aws_api_gateway_rest_api.ob_api.id}"
   resource_id = "${aws_api_gateway_resource.ob_resource.id}"
   http_method = "${aws_api_gateway_method.ob_method.http_method}"
   status_code = "200"
@@ -71,18 +76,18 @@ resource "aws_api_gateway_deployment" "ob_deployment" {
     "aws_api_gateway_integration.ob_integration",
   ]
 
-  rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
+  rest_api_id = "${data.aws_api_gateway_rest_api.ob_api.id}"
   stage_name  = "${var.build}"
 }
 
 resource "aws_api_gateway_domain_name" "ob_gateway" {
   domain_name = "dynamic-${var.build}.${var.domain}"
 
-  certificate_arn = "${aws_acm_certificate.ob_certificate.arn}"
+  certificate_arn = "${data.aws_acm_certificate.ob_certificate.arn}"
 }
 
 resource "aws_api_gateway_base_path_mapping" "ob_map" {
-  api_id      = "${aws_api_gateway_rest_api.ob_api.id}"
+  api_id      = "${data.aws_api_gateway_rest_api.ob_api.id}"
   stage_name  = "${aws_api_gateway_deployment.ob_deployment.stage_name}"
   domain_name = "${aws_api_gateway_domain_name.ob_gateway.domain_name}"
 }
@@ -90,7 +95,7 @@ resource "aws_api_gateway_base_path_mapping" "ob_map" {
 resource "aws_lambda_permission" "ob_permission" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = "${var.build}-${var.domain}"
+  function_name = "${var.build}-${var.name}"
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_deployment.ob_deployment.execution_arn}/*/*"
 }
@@ -117,7 +122,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   }
 
   origin {
-    domain_name = "${aws_s3_bucket.ob_bucket.website_endpoint}"
+    domain_name = "${data.aws_s3_bucket.ob_bucket.website_endpoint}"
     origin_id   = "static-${var.build}.${var.domain}"
     origin_path = "${var.build}/static"
 
@@ -140,15 +145,15 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = "${aws_acm_certificate.ob_certificate.arn}"
+    acm_certificate_arn = "${data.aws_acm_certificate.ob_certificate.arn}"
     ssl_support_method  = "sni-only"
   }
 }
 
-resource "aws_route53_record" "ob_record" {
+resource "aws_route53_record" "ob_record_dynamic" {
   name    = "$dynamic-${var.build}.${var.domain}."
   type    = "A"
-  zone_id = "${aws_route53_zone.ob_zone.zone_id}"
+  zone_id = "${data.aws_route53_zone.ob_zone.zone_id}"
 
   alias {
     evaluate_target_health = false
@@ -157,10 +162,10 @@ resource "aws_route53_record" "ob_record" {
   }
 }
 
-resource "aws_route53_record" "ob_record_" {
+resource "aws_route53_record" "ob_record_static" {
   name    = "static-${var.build}.${var.domain}."
   type    = "A"
-  zone_id = "${aws_route53_zone.ob_zone.zone_id}"
+  zone_id = "${data.aws_route53_zone.ob_zone.zone_id}"
 
   alias {
     evaluate_target_health = false
