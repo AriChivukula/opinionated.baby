@@ -1,29 +1,25 @@
-variable "name" {
-  type = "string"
-}
+variable "NAME" {}
 
-variable "domain" {
-  type = "string"
-}
+variable "DOMAIN" {}
 
 provider "aws" {}
 
 resource "aws_acm_certificate" "ob_certificate" {
-  domain_name               = "${var.domain}"
-  subject_alternative_names = ["*.${var.domain}"]
+  domain_name               = "${var.DOMAIN}"
+  subject_alternative_names = ["*.${var.DOMAIN}"]
   validation_method         = "DNS"
 
   tags {
-    Name = "${var.name}"
+    Name = "${var.NAME}"
   }
 }
 
 resource "aws_s3_bucket" "ob_bucket" {
-  bucket        = "${var.name}"
+  bucket        = "${var.NAME}"
   force_destroy = true
 
   tags {
-    Name = "${var.name}"
+    Name = "${var.NAME}"
   }
 
   website {
@@ -33,14 +29,14 @@ resource "aws_s3_bucket" "ob_bucket" {
 }
 
 resource "aws_api_gateway_rest_api" "ob_api" {
-  name = "${var.name}"
+  name = "${var.NAME}"
 }
 
 resource "aws_route53_zone" "ob_zone" {
-  name = "${var.domain}."
+  name = "${var.DOMAIN}."
 
   tags {
-    Name = "${var.name}"
+    Name = "${var.NAME}"
   }
 }
 
@@ -59,7 +55,7 @@ resource "aws_acm_certificate_validation" "ob_validation" {
 }
 
 resource "aws_iam_role" "ob_iam" {
-  name = "${var.name}"
+  name = "${var.NAME}"
 
   assume_role_policy = <<EOF
 {
