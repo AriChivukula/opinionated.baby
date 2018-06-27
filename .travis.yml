@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - node
 before_install:
-- bash shell/awscli.sh
+- bash shell/install.sh
 before_script:
 - aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*" --exclude "*node_modules*"
 jobs:
