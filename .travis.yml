@@ -2,23 +2,21 @@ language: node_js
 node_js:
 - node
 before_script:
-- bash shell/awscli.sh
+- export PATH=$HOME/.local/bin:$PATH
+- pip install --user awscli
+- mkdir build
+- aws s3 sync s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER . --exclude "*.git*" --exclude "*node_modules*"
 jobs:
   include:
   - stage: Actualize
     if: type = api
-    script:
-    - bash shell/regen.sh
-    - bash shell/terraform.sh
-    - bash shell/commit.sh
-  - stage: Build
+    script: bash shell/actualize.sh
+  - stage: Test
     if: type = push
-    script:
-    - bash shell/test.sh
+    script: bash shell/test.sh
   - stage: Deploy
     if: ( type = push ) AND ( branch = master )
-    script:
-    - bash shell/package.sh
+    script: bash shell/deploy.sh
     deploy:
     - provider: s3
       bucket: $BUCKET
@@ -50,8 +48,6 @@ jobs:
       skip_cleanup: true
   - stage: Verify
     if: type = pull_request
-    script:
-    - npx gulp build
-    - "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"[Test build ${TRAVIS_BUILD_NUMBER}](https://to.do)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
+    script: bash shell verify.sh
 before_cache:
-- bash shell/awscli.sh
+- aws s3 sync . s3://builds.$BUCKET/$TRAVIS_BUILD_NUMBER --exclude "*.git*" --exclude "*node_modules*"

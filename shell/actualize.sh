@@ -7,3 +7,7 @@ npx gulp build
 npx jest -u build/2/website
 cp -R build/2/website/__tests__/__snapshots__ src/website/__tests__/__snapshots__
 npx ts-node ./node_modules/.bin/typeorm schema:sync
+git remote add target "https://arichiv:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
+git add -A
+git commit -m "ACTUALIZE ${TRAVIS_BUILD_NUMBER}"
+git push target HEAD:$TRAVIS_BRANCH
