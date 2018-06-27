@@ -15,13 +15,7 @@ import {
 let apiURL: string;
 
 /* BESPOKE START <<main>> */
-if (window.location.hostname === "opinionated.baby") {
-  apiURL = "https://api.opinionated.baby/graphql/opinionatedbaby/";
-} else {
-  apiURL = "http://127.0.0.1:8080/graphql/";
-}
-
 window.onload = (): void => {
-  render(apiURL);
+  render("https://api.opinionated.baby/graphql/opinionatedbaby/");
 };
 /* BESPOKE END <<main>> */

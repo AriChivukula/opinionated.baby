@@ -237,7 +237,7 @@ export function Content(
               onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/${item.version}/`); }}>
               <CardMedia
                 square
-                style={{backgroundImage: `url(/images/${item.version}.jpg)`}}
+                style={{backgroundImage: `url(images/${item.version}.jpg)`}}
               />
               <Typography
                 use="headline4"

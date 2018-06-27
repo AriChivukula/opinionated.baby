@@ -1,7 +1,6 @@
 env:
   global:
     - PATH=$HOME/.local/bin:$PATH
-    - PORT=8080
 language: node_js
 node_js:
 - node
@@ -15,6 +14,7 @@ jobs:
     if: type = api
     script:
     - npx gulp codegen
+    - npx gulp relay
     - npx gulp build:1
     - npx gulp build:2
     - rm -rf src/website/__tests__/__snapshots__
@@ -35,7 +35,6 @@ jobs:
     - npm outdated > .outdated.new || true
     - npm outdated || true
     - cmp -s .outdated.new .outdated
-    - npx gulp build:0
     - npx gulp build:1
     - npx gulp build:2
     - npx gulp test

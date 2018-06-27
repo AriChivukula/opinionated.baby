@@ -97,7 +97,6 @@ test(
   "PageLoggedOut",
   async (): Promise<void> => {
     /* BESPOKE START <<PageLoggedOut>> */
-    // tslint:disable-next-line:no-any
     const props: any = {
       data: {
         __fragments: {
@@ -124,7 +123,6 @@ test(
   "PageLoggedIn",
   async (): Promise<void> => {
     /* BESPOKE START <<PageLoggedIn>> */
-    // tslint:disable-next-line:no-any
     const props: any = {
       data: {
         __fragments: {
