@@ -32,10 +32,12 @@ import {
 import {
   goto,
 } from "../util";
+
+type TopBarQuery = any;
 /* BESPOKE END <<imports>> */
 
 export interface ITopBarProps {
-  data: any;
+  data: TopBarQuery;
   relay: Relay;
 }
 

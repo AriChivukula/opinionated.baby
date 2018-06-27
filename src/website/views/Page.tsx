@@ -22,10 +22,12 @@ import {
 import {
   TopBar,
 } from "./TopBar";
+
+type TopBarQuery = any;
 /* BESPOKE END <<imports>> */
 
 export interface IPageProps {
-  data: any | null;
+  data: TopBarQuery | null;
 }
 
 export class Page extends React.Component<IPageProps> {
