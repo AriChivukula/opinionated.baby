@@ -164,6 +164,7 @@ resource "aws_s3_bucket_object" "ob_object" {
 resource "aws_cloudfront_distribution" "ob_distribution" {
   aliases = ["static-${var.BUILD}.${var.DOMAIN}"]
   enabled = true
+  default_root_object = "index.html"
 
   default_cache_behavior {
     allowed_methods = ["POST", "HEAD", "PATCH", "DELETE", "PUT", "GET", "OPTIONS"]
@@ -184,7 +185,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   }
 
   origin {
-    domain_name = "${data.aws_s3_bucket.ob_bucket.website_endpoint}"
+    domain_name = "${data.aws_s3_bucket.ob_bucket.bucket_regional_domain_name}"
     origin_id   = "static-${var.BUILD}.${var.DOMAIN}"
     origin_path = "/${var.BUILD}"
 
