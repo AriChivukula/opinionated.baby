@@ -175,12 +175,12 @@ gulp.task(
 
 gulp.task(
   "build:4:cp",
-  shell.task("cp build/3/server/index.js index.js && cp build/3/server/schema.graphql schema.graphql"),
+  shell.task("cp build/3/server/index.js index.js && cp build/3/server/schema.graphql schema.graphql && cp -R build/3/website website"),
 );
 
 gulp.task(
   "build:4:zip",
-  shell.task("zip -q -r build/dist.zip node_modules index.js schema.graphql"),
+  shell.task("zip -q -r build/dist.zip node_modules index.js schema.graphql website"),
 );
 
 gulp.task(
