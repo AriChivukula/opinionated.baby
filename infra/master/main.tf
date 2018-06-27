@@ -12,5 +12,5 @@ resource "aws_s3_bucket_object" "ob_object" {
   key    = "master/${local.files[count.index]}"
   source = "static/${local.files[count.index]}"
   acl    = "public-read"
-  content_type = "text/html"
+  content_type = "text/plain"
 }
