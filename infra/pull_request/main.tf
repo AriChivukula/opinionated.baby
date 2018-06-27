@@ -194,7 +194,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
 }
 
 resource "aws_route53_record" "ob_record_dynamic" {
-  name    = "$dynamic-${var.BUILD}.${var.DOMAIN}."
+  name    = "dynamic-${var.BUILD}.${var.DOMAIN}."
   type    = "A"
   zone_id = "${data.aws_route53_zone.ob_zone.zone_id}"
 
