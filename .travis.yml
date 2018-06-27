@@ -1,3 +1,7 @@
+env:
+  globals:
+    - TF_VAR_BUILD=$TRAVIS_BUILD_NUMBER
+    - PATH=$HOME/.local/bin:$PATH
 language: node_js
 node_js:
 - node
