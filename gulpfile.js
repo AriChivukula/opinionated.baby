@@ -207,13 +207,6 @@ gulp.task(
   shell.task("jest --collectCoverage"),
 );
 
-/* SERVE */
-
-gulp.task(
-  "serve",
-  shell.task("DEBUG=* node build/3/server/index.js"),
-);
-
 /* SNAP */
 
 gulp.task(
