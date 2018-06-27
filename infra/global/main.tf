@@ -73,6 +73,7 @@ resource "aws_iam_role_policy_attachment" "ob_attachment" {
 resource "aws_cloudfront_distribution" "ob_distribution" {
   aliases = ["${var.DOMAIN}"]
   enabled = true
+  default_root_object = "index.html"
 
   default_cache_behavior {
     allowed_methods = ["POST", "HEAD", "PATCH", "DELETE", "PUT", "GET", "OPTIONS"]
