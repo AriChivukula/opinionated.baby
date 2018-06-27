@@ -20,9 +20,6 @@ import {
 } from "relay-runtime";
 
 import {
-  TopBarQuery,
-} from "./__generated__/TopBarQuery.graphql";
-import {
   Page,
 } from "./Page";
 /* BESPOKE END <<imports>> */
@@ -45,7 +42,7 @@ export class Root extends React.Component<IRootProps> {
             ...TopBarQuery
           }
         `}
-        render={({error, props}: {error: Error | null; props: TopBarQuery}): JSX.Element => {
+        render={({error, props}: {error: Error | null; props: any}): JSX.Element => {
           if (error !== null) {
             console.log(error);
 

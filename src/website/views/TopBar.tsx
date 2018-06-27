@@ -32,19 +32,10 @@ import {
 import {
   goto,
 } from "../util";
-import {
-  TopBarLoginMutationResponse,
-} from "./__generated__/TopBarLoginMutation.graphql";
-import {
-  TopBarLogoutMutationResponse,
-} from "./__generated__/TopBarLogoutMutation.graphql";
-import {
-  TopBarQuery,
-} from "./__generated__/TopBarQuery.graphql";
 /* BESPOKE END <<imports>> */
 
 export interface ITopBarProps {
-  data: TopBarQuery;
+  data: any;
   relay: Relay;
 }
 
@@ -126,7 +117,7 @@ class TopBarImpl extends React.Component<ITopBarProps> {
             }
           }
         `,
-        onCompleted: (response: TopBarLoginMutationResponse, errors: Error[]): void => {
+        onCompleted: (response: any, errors: Error[]): void => {
           cookie.set(
             "accessToken",
             response.login.accessToken,
@@ -154,7 +145,7 @@ class TopBarImpl extends React.Component<ITopBarProps> {
             }
           }
         `,
-        onCompleted: (response: TopBarLogoutMutationResponse, errors: Error[]): void => {
+        onCompleted: (response: any, errors: Error[]): void => {
           cookie.set(
             "accessToken",
             response.logout.accessToken,
