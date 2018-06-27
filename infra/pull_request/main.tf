@@ -40,7 +40,7 @@ data "aws_route53_zone" "ob_zone" {
 
 resource "aws_lambda_function" "ob_lambda" {
   function_name = "${var.NAME}-${var.BUILD}"
-  handler       = "handler"
+  handler       = "index.handler"
   role          = "${data.aws_iam_role.ob_iam.arn}"
   runtime       = "nodejs8.10"
   memory_size   = 256
