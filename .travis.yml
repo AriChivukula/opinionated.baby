@@ -20,21 +20,13 @@ jobs:
     - rm -rf src/website/__tests__/__snapshots__
     - npx gulp snap
     - npx gulp sql
-    - wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
-    - unzip terraform_0.11.7_linux_amd64.zip
-    - sudo mv terraform /usr/local/bin/
-    - rm terraform_0.11.7_linux_amd64.zip
+    - bash shell/terraform.sh
     - cd infra && terraform init && terraform apply -auto-approve
-    - git remote add target "https://arichiv:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
-    - git add -A
-    - git commit -m "ACTUALIZE ${TRAVIS_BUILD_NUMBER}"
-    - git push target HEAD:$TRAVIS_BRANCH
+    - bash shell/commit.sh
   - stage: Build
     if: type = push
     script:
-    - npm outdated > .outdated.new || true
-    - npm outdated || true
-    - cmp -s .outdated.new .outdated
+    - bash shell/check.sh
     - npx gulp build:1
     - npx gulp build:2
     - npx gulp test

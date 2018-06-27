@@ -1,8 +1,7 @@
 .DS_Store
-.outdated.new
 build
 coverage
 node_modules
 package-lock.json
-*.backup*
-*.terraform*
+*.backup
+*.terraform
