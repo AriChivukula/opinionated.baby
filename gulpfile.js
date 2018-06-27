@@ -39,7 +39,7 @@ gulp.task(
   "build:2:html",
   () => gulp.src("src/**/*.html")
     .pipe(replace("ENV_TITLE", pkg.title))
-    .pipe(replace("ENV_SENTRY", process.env.SENTRY))
+    .pipe(replace("ENV_SENTRY", process.env.TF_VAR_SENTRY))
     .pipe(gulp.dest("build/2")),
 );
 

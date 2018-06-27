@@ -34,7 +34,7 @@ const app: express.Express = express();
 let didSetup: boolean = false;
 
 /* BESPOKE START <<main>> */
-Raven.config(process.env.SENTRY)
+Raven.config(process.env.TF_VAR_SENTRY)
   .install();
 app.use(Raven.requestHandler());
 app.use(Raven.errorHandler());

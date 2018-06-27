@@ -23,13 +23,13 @@ export async function genSetupDB(
 ): Promise<void> {
   /* BESPOKE START <<genSetupDB>> */
   await createConnection({
-    database: process.env.DB_NAME,
+    database: process.env.TF_VAR_DB_NAME,
     entities: [User],
-    host: process.env.DB_HOST,
-    password: process.env.DB_PASSWORD,
-    port: parseInt(process.env.DB_PORT as string, 10),
+    host: process.env.TF_VAR_DB_HOST,
+    password: process.env.TF_VAR_DB_PASSWORD,
+    port: parseInt(process.env.TF_VAR_DB_PORT as string, 10),
     type: "postgres",
-    username: process.env.DB_USERNAME,
+    username: process.env.TF_VAR_DB_USERNAME,
   });
   /* BESPOKE END <<genSetupDB>> */
 }
