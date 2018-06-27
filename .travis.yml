@@ -1,8 +1,7 @@
 language: node_js
 node_js:
 - node
-before_script:
-- bash shell/install.sh
+install: bash shell/install.sh
 jobs:
   include:
   - stage: Actualize
@@ -14,35 +13,6 @@ jobs:
   - stage: Deploy
     if: ( type = push ) AND ( branch = master )
     script: bash shell/deploy.sh
-    deploy:
-    - provider: s3
-      bucket: $BUCKET
-      local_dir: build/3/website
-      acl: public_read
-      skip_cleanup: true
-    - provider: lambda
-      function_name: $FUNCTION_NAME
-      region: $AWS_DEFAULT_REGION
-      role: $ROLE
-      handler_name: handler
-      module_name: index
-      zip: build/dist.zip
-      timeout: 300
-      memory_size: 256
-      runtime: nodejs8.10
-      publish: true
-      environment_variables:
-      - CLIENT_ID=$CLIENT_ID
-      - CLIENT_SECRET=$CLIENT_SECRET
-      - DB_HOST=$DB_HOST
-      - DB_NAME=$DB_NAME
-      - DB_PASSWORD=$DB_PASSWORD
-      - DB_PORT=$DB_PORT
-      - DB_USERNAME=$DB_USERNAME
-      - DEBUG=*
-      - REDIRECT_URL="https://${BUCKET}"
-      - SENTRY=$SENTRY
-      skip_cleanup: true
   - stage: Verify
     if: type = pull_request
     script: bash shell verify.sh
