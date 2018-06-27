@@ -13,5 +13,5 @@ cp -R build/3/website static
 rm -rf index.js schema.graphql
 export TF_VAR_BUILD=$TRAVIS_BUILD_NUMBER
 terraform init infra/pull_request
-terraform apply -state=infra/pull_request/terraform.tfstate infra/pull_request
+terraform apply -state=infra/pull_request/terraform.tfstate -auto-approve infra/pull_request
 "curl -H \"Authorization: token ${GITHUB_TOKEN}\" -X POST -d \"{\\\"body\\\": \\\"[Test build ${TF_VAR_BUILD}](https://static-${TF_VAR_BUILD}.$TF_VAR_DOMAIN)\\\"}\" \"https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments\""
