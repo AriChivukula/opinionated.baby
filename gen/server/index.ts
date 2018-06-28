@@ -33,10 +33,6 @@ export const module: Module = Module.new({
       name: "newrelic",
     }),
     Import.new({
-      name: "./db",
-      with: ["genSetupDB"],
-    }),
-    Import.new({
       name: "./server",
       with: ["graphQL"],
     }),
