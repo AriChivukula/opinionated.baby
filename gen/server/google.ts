@@ -76,7 +76,7 @@ export const module: Module = Module.new({
         Type.Argument.new({ name: "accessToken", type: "string" }),
       ],
       name: "genUserForAccessToken",
-      outType: Type.Anonymous.new({ type: "Promise<any>" }),
+      outType: Type.Anonymous.new({ type: "Promise<object>" }),
     }),
   ],
   destination: "src/server/google.ts",
