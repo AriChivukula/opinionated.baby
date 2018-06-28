@@ -175,6 +175,7 @@ class __TopBar extends React.Component<ITopBarProps> {
   /* BESPOKE END <<implementation>> */
 }
 
+polyfill(__TopBar);
 const _TopBar: React.ComponentType = createFragmentContainer(
   __TopBar,
   /* BESPOKE START <<relay>> */
