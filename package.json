@@ -70,8 +70,8 @@
     "rmwc": "1.7.6",
     "rollup-stream": "1.24.1",
     "ts-node": "7.0.0",
-    "typescript": "2.9.3",
-    "typescriptase": "0.6.8",
+    "typescript": "2.9.2",
+    "typescriptase": "0.6.9",
     "uglifyify": "5.0.1",
     "vinyl-source-stream": "2.0.0"
   },
