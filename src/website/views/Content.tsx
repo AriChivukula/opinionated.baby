@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::ContentReact>>
  * BESPOKE<<imports, render>>
- * SIGNED<<DhA9gn8eDNHuciH+UHbhNo1hC5eoUXoTIL8hjRLTrQmffaydPzH6Ygbdgqw7uTpSK87/xFOzajVuBEhDb0KSdQ==>>
+ * SIGNED<<gscXsBEIzakwfEhJGeFlwaJNMOxpcLtfoahh7cQbKx2XGinA+bOauMwJavqUVXbG15W1xAm18Fni0hsMnImmfQ==>>
  */
 
 import * as React from "react";
@@ -262,5 +262,4 @@ export function _Content(
   /* BESPOKE END <<render>> */
 }
 
-polyfill(_Content);
 export { _Content as Content };
