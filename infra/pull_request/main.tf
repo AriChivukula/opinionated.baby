@@ -151,29 +151,68 @@ resource "aws_route53_record" "ob_record_dynamic" {
 
 locals {
   files = [
-    ["index.html", "text/html"],
-    ["index.js", "application/javascript"],
-    ["index.css", "text/css"],
-    ["images/favicon.png", "image/png"],
-    ["images/v0.jpg", "image/jpeg"],
-    ["images/v1.jpg", "image/jpeg"],
-    ["images/v2.jpg", "image/jpeg"],
-    ["images/v3.jpg", "image/jpeg"],
-    ["images/v4.jpg", "image/jpeg"],
-    ["images/v5.jpg", "image/jpeg"],
-    ["images/v6.jpg", "image/jpeg"],
-    ["images/v7.jpg", "image/jpeg"],
-    ["images/v8.jpg", "image/jpeg"],
+    {
+      file  = "index.html"
+      type = "text/html"
+    },
+    {
+      file  = "index.js"
+      type = "application/javascript"
+    },
+    {
+      file  = "index.css"
+      type = "text/css"
+    },
+    {
+      file  = "images/favicon.png"
+      type = "image/png"
+    },
+    {
+      file  = "images/v0.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v1.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v2.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v3.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v4.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v5.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v6.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v7.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v8.jpg"
+      type = "image/jpeg"
+    },
   ]
 }
 
 resource "aws_s3_bucket_object" "ob_object" {
   count  = "${length(local.files)}"
   bucket = "${var.NAME}"
-  key    = "${var.BUILD}/${local.files[count.index][0]}"
-  source = "static/${local.files[count.index][0]}"
+  key    = "${var.BUILD}/${lookup(local.files[count.index], "file")}"
+  source = "static/${lookup(local.files[count.index], "file")}"
   acl    = "public-read"
-  content_type = "${local.files[count.index][1]}"
+  content_type = "${lookup(local.files[count.index], "type")}"
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
