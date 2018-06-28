@@ -1,11 +1,11 @@
 set -e
 
-npm outdated > .outdated.new || true
-npm outdated || true
+yarn outdated > .outdated.new || true
+yarn outdated || true
 cmp -s .outdated.new .outdated
 rm .outdated.new
-npx gulp build
-npm prune --production
+yarn gulp build
+yarn install --production=true --ignore-engines
 cp build/3/server/index.js index.js
 cp build/3/server/schema.graphql schema.graphql
 zip -q -r dynamic.zip node_modules index.js schema.graphql
