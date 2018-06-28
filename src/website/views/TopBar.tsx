@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::TopBarReact>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<woSAKW3WntYkfbvpgV/6kEivqAqznKSJOU87I2sO5k/CcOBrj9VdWFGLhQeEfG1Lh48PiP4x7Qf10dY1FgFSig==>>
+ * SIGNED<<cc1AN1qU5ZOxiGxyc9wF1QlFpobHngrvXZxS4gb4MbFdF9Kwsq6BXfxlyscRAxaEjJCZjKPpCBzJFES+sPkP3g==>>
  */
 
 import * as React from "react";
@@ -190,4 +190,5 @@ const _TopBar: React.ComponentType = createFragmentContainer(
   /* BESPOKE END <<relay>> */
 );
 
+// @ts-lint
 export const TopBar: React.Component<ITopBarProps> = polyfill(_TopBar);

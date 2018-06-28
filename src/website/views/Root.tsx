@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::RootReact>>
  * BESPOKE<<imports, render, implementation>>
- * SIGNED<<1fWdgtSxJqoOtTWfjdt/HnSg3Amo71oiDVfCXN9751mfD3q3Y2oU6+my7tSPiaCIVgnH8lKx+5iK5WlgNVsetQ==>>
+ * SIGNED<<EjDJkHBSnP5tsoyrpr8FpDRkQbbsCLEorEtwC2pNC504v/+sVDfhDPCKXCAoe4s+cF0DPk0I1cQY9LK7khOSPw==>>
  */
 
 import * as React from "react";
@@ -66,4 +66,5 @@ class _Root extends React.Component<IRootProps> {
   /* BESPOKE END <<implementation>> */
 }
 
+// @ts-lint
 export const Root: React.Component<IRootProps> = polyfill(_Root);

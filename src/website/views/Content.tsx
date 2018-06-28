@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::ContentReact>>
  * BESPOKE<<imports, render>>
- * SIGNED<<bnnhnFH8GexK+N5epG5LN1fWMfykyQuHG+MpnmOlTam/rfJs5iWm3wVQPJNfY6uyVTupA9I6vB6CeEFemjFd7w==>>
+ * SIGNED<<bbYtS/24+es0P0VUdt3Dux+5/N2wNEdhpZlqg+LLwirSOKI5mZRM5lnv00gypPi28vnswIVLDNd8gUexAeg6Ig==>>
  */
 
 import * as React from "react";
@@ -158,7 +158,7 @@ const releases: IReleases[] = [
 ];
 /* BESPOKE END <<imports>> */
 
-export function _Content,(
+export function _Content(
 ): JSX.Element {
   /* BESPOKE START <<render>> */
   return (
@@ -262,4 +262,5 @@ export function _Content,(
   /* BESPOKE END <<render>> */
 }
 
+// @ts-lint
 export const Content: React.ComponentType = polyfill(_Content);

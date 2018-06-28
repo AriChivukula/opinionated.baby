@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::PageReact>>
  * BESPOKE<<imports, render, implementation>>
- * SIGNED<<3ewgAyEndblK1LK9ZahZWoLe0R/m1ySmoQ7THzaKgSbB5HyNzTvIlvUBQaPjISKHd6ayko88pjY+B3tZZM2dGA==>>
+ * SIGNED<<lM2/e937oBWgNNrqpWTTg5Z6xTtqk0OFAgoDNM9x4Uv3CTyOJ+nsIhXv5JvUOQLMhK4+7iSIy/TFqG0aE+Zu2g==>>
  */
 
 import * as React from "react";
@@ -64,4 +64,5 @@ class _Page extends React.Component<IPageProps> {
   /* BESPOKE END <<implementation>> */
 }
 
+// @ts-lint
 export const Page: React.Component<IPageProps> = polyfill(_Page);
