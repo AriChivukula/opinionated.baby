@@ -1,4 +1,4 @@
 set -e
 
-npx gulp build
-npx jest --collectCoverage
+yarn gulp build
+yarn jest --collectCoverage
