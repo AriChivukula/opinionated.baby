@@ -34,11 +34,6 @@ const app: express.Express = express();
 let didSetup: boolean = false;
 
 /* BESPOKE START <<main>> */
-Raven.config(process.env.TF_VAR_SENTRY)
-  .install();
-app.use(Raven.requestHandler());
-app.use(Raven.errorHandler());
-
 app.use(cors(), helmet(), bearer(), json(), urlencoded({ extended: true }));
 
 app.use((req: express.Request, res: express.Response, next: () => void): void => {
