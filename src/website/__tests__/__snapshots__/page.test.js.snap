@@ -1,0 +1,1744 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageLoggedIn 1`] = `
+Array [
+  <header
+    class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall"
+  >
+    <div
+      class="mdc-toolbar__row"
+    >
+      <section
+        class="mdc-toolbar__section mdc-toolbar__section--align-start"
+      >
+        <div
+          class="mdc-toolbar__title"
+        />
+      </section>
+      <section
+        class="mdc-toolbar__section mdc-toolbar__section--align-end"
+      >
+        <div
+          class="mdc-toolbar__title"
+        >
+          TEST
+        </div>
+        <i
+          class="material-icons mdc-toolbar__icon"
+        >
+          exit_to_app
+        </i>
+        <i
+          class="material-icons mdc-toolbar__icon"
+        >
+          code
+        </i>
+        <i
+          class="material-icons mdc-toolbar__icon"
+        >
+          info
+        </i>
+      </section>
+    </div>
+  </header>,
+  <div
+    class="mdc-toolbar-fixed-adjust"
+  />,
+  <div
+    class="mdc-layout-grid"
+  >
+    <div
+      class="mdc-layout-grid__inner"
+    >
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+      >
+        <div
+          class="mdc-typography--headline2"
+        >
+          A confidently immature starting point
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+      >
+        <div
+          class="mdc-typography--body1"
+        >
+          The hardest part of building a new dynamic website is avoiding all the dragons. Starting a development environment can freeze us with choice overload. 
+          <span
+            class="mdc-theme--text-secondary-on-background"
+          >
+            Opinionated Baby
+          </span>
+           solves this by moving the starting line past the quagmire of setup and into the pleasure of production logic.
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+      >
+        <div
+          class="mdc-typography--headline2"
+        >
+          Important choices I made for you
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                star
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Terraform
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Orchestration
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                memory
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Lambda
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Server(less)
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                bug_report
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Sentry
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Debugging
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                share
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Travis CI
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  CI/CD
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                language
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                TypeScript
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Language
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                extension
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Typescriptase
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Code Generation
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                cached
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Node.js
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Runtime
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                unarchive
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                npm
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Dependency
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                build
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Gulp
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Toolchain
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                playlist_add_check
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Jest
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Testing
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                graphic_eq
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                GraphQL
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  API
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                widgets
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                TypeORM
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Model
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                flip_to_front
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                React
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Interface
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                local_library
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Relay
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Fetch
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                style
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Material Design
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Theme
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                line_style
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                SASS
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Style
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+      >
+        <div
+          class="mdc-typography--headline2"
+        >
+          <span
+            style="text-decoration:line-through"
+          >
+            Self justification
+          </span>
+           Philosophy
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+      >
+        <div
+          class="mdc-typography--body1"
+        >
+          This framework is one-size-fits-me. It's an open source version of a system I use when building complex websites. Anyone may attempt to use, critique, or contribute to it. The consistency with which feedback is incorporated will be nothing short of capricious. My general mission and purpose is to support the vitality and happy, healthy development of our 
+          <span
+            class="mdc-theme--text-secondary-on-background"
+          >
+            babies and children
+          </span>
+          .
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+      >
+        <div
+          class="mdc-typography--headline2"
+        >
+          Release history
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v8.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v8
+              </span>
+              <br />
+              Wild
+              <br />
+              Warrior
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v7.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v7
+              </span>
+              <br />
+              Pragmatic
+              <br />
+              Plotter
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v6.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v6
+              </span>
+              <br />
+              Radical
+              <br />
+              Robot
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v5.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v5
+              </span>
+              <br />
+              Fierce
+              <br />
+              Feline
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v4.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v4
+              </span>
+              <br />
+              Staunch
+              <br />
+              Sibling
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v3.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v3
+              </span>
+              <br />
+              Tilted
+              <br />
+              Turtle
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v2.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v2
+              </span>
+              <br />
+              Assertive
+              <br />
+              Actor
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v1.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v1
+              </span>
+              <br />
+              Dogged
+              <br />
+              Dapper
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v0.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v0
+              </span>
+              <br />
+              Cocksure
+              <br />
+              Castle
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`PageLoggedOut 1`] = `
+Array [
+  <header
+    class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall"
+  >
+    <div
+      class="mdc-toolbar__row"
+    >
+      <section
+        class="mdc-toolbar__section mdc-toolbar__section--align-start"
+      >
+        <div
+          class="mdc-toolbar__title"
+        />
+      </section>
+      <section
+        class="mdc-toolbar__section mdc-toolbar__section--align-end"
+      >
+        <i
+          class="material-icons mdc-toolbar__icon"
+        >
+          person
+        </i>
+        <i
+          class="material-icons mdc-toolbar__icon"
+        >
+          code
+        </i>
+        <i
+          class="material-icons mdc-toolbar__icon"
+        >
+          info
+        </i>
+      </section>
+    </div>
+  </header>,
+  <div
+    class="mdc-toolbar-fixed-adjust"
+  />,
+  <div
+    class="mdc-layout-grid"
+  >
+    <div
+      class="mdc-layout-grid__inner"
+    >
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+      >
+        <div
+          class="mdc-typography--headline2"
+        >
+          A confidently immature starting point
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+      >
+        <div
+          class="mdc-typography--body1"
+        >
+          The hardest part of building a new dynamic website is avoiding all the dragons. Starting a development environment can freeze us with choice overload. 
+          <span
+            class="mdc-theme--text-secondary-on-background"
+          >
+            Opinionated Baby
+          </span>
+           solves this by moving the starting line past the quagmire of setup and into the pleasure of production logic.
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+      >
+        <div
+          class="mdc-typography--headline2"
+        >
+          Important choices I made for you
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                star
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Terraform
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Orchestration
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                memory
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Lambda
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Server(less)
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                bug_report
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Sentry
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Debugging
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                share
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Travis CI
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  CI/CD
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                language
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                TypeScript
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Language
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                extension
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Typescriptase
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Code Generation
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                cached
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Node.js
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Runtime
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                unarchive
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                npm
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Dependency
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                build
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Gulp
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Toolchain
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                playlist_add_check
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Jest
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Testing
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                graphic_eq
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                GraphQL
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  API
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                widgets
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                TypeORM
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Model
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                flip_to_front
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                React
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Interface
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                local_library
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Relay
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Fetch
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                style
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                Material Design
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Theme
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3"
+      >
+        <div
+          class="mdc-list mdc-list--two-line"
+        >
+          <a>
+            <div
+              class="mdc-ripple-surface mdc-list-item"
+            >
+              <i
+                class="material-icons mdc-list-item__graphic"
+              >
+                line_style
+              </i>
+              <span
+                class="mdc-list-item__text"
+              >
+                SASS
+                <span
+                  class="mdc-list-item__secondary-text"
+                >
+                  Style
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+      >
+        <div
+          class="mdc-typography--headline2"
+        >
+          <span
+            style="text-decoration:line-through"
+          >
+            Self justification
+          </span>
+           Philosophy
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+      >
+        <div
+          class="mdc-typography--body1"
+        >
+          This framework is one-size-fits-me. It's an open source version of a system I use when building complex websites. Anyone may attempt to use, critique, or contribute to it. The consistency with which feedback is incorporated will be nothing short of capricious. My general mission and purpose is to support the vitality and happy, healthy development of our 
+          <span
+            class="mdc-theme--text-secondary-on-background"
+          >
+            babies and children
+          </span>
+          .
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
+      >
+        <div
+          class="mdc-typography--headline2"
+        >
+          Release history
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v8.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v8
+              </span>
+              <br />
+              Wild
+              <br />
+              Warrior
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v7.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v7
+              </span>
+              <br />
+              Pragmatic
+              <br />
+              Plotter
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v6.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v6
+              </span>
+              <br />
+              Radical
+              <br />
+              Robot
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v5.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v5
+              </span>
+              <br />
+              Fierce
+              <br />
+              Feline
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v4.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v4
+              </span>
+              <br />
+              Staunch
+              <br />
+              Sibling
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v3.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v3
+              </span>
+              <br />
+              Tilted
+              <br />
+              Turtle
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v2.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v2
+              </span>
+              <br />
+              Assertive
+              <br />
+              Actor
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v1.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v1
+              </span>
+              <br />
+              Dogged
+              <br />
+              Dapper
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4"
+      >
+        <div
+          class="mdc-card"
+        >
+          <div
+            class="mdc-card__primary-action"
+          >
+            <section
+              class="mdc-card__media mdc-card__media--square"
+              style="background-image:url(images/v0.jpg)"
+            />
+            <span
+              class="mdc-typography--headline4"
+              style="padding:1rem"
+            >
+              <span
+                class="mdc-theme--text-secondary-on-background"
+              >
+                v0
+              </span>
+              <br />
+              Cocksure
+              <br />
+              Castle
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;
+
+exports[`PageUnloaded 1`] = `
+<nav
+  class="mdc-linear-progress mdc-linear-progress--indeterminate"
+  role="progressbar"
+>
+  <div
+    class="mdc-linear-progress__buffering-dots"
+  />
+  <div
+    class="mdc-linear-progress__buffer"
+  />
+  <div
+    class="mdc-linear-progress__bar mdc-linear-progress__primary-bar"
+  >
+    <div
+      class="mdc-linear-progress__bar-inner"
+    />
+  </div>
+  <div
+    class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar"
+  >
+    <div
+      class="mdc-linear-progress__bar-inner"
+    />
+  </div>
+</nav>
+`;
