@@ -1,3 +1,7 @@
+terraform {
+  backend "s3" {}
+}
+
 variable "CLIENT_ID" {}
 
 variable "BUILD" {}
@@ -21,13 +25,6 @@ variable "NAME" {}
 variable "DOMAIN" {}
 
 provider "aws" {}
-
-terraform {
-  backend "s3" {
-    bucket = "${var.NAME}"
-    key    = "tfstate/${var.BUILD}.tfstate"
-  }
-}
 
 data "aws_acm_certificate" "ob_certificate" {
   domain = "${var.DOMAIN}"
