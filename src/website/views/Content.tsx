@@ -58,9 +58,9 @@ const tools: ITools[] = [
   },
   {
     graphic: "bug_report",
-    link: "https://sentry.io/",
+    link: "https://newrelic.com/",
     subtitle: "Debugging",
-    title: "Sentry",
+    title: "New Relic",
   },
   {
     graphic: "share",
@@ -88,9 +88,9 @@ const tools: ITools[] = [
   },
   {
     graphic: "unarchive",
-    link: "https://www.npmjs.com/",
+    link: "https://www.yarnpkg.com/",
     subtitle: "Dependency",
-    title: "npm",
+    title: "yarn",
   },
   {
     graphic: "build",
