@@ -30,8 +30,7 @@ export const module: Module = Module.new({
       withDefaultAs: "helmet",
     }),
     Import.new({
-      name: "raven",
-      withDefaultAs: "Raven",
+      name: "newrelic",
     }),
     Import.new({
       name: "./db",
