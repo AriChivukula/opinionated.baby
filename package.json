@@ -61,6 +61,7 @@
     "mutationobserver-shim": "0.3.2",
     "react": "16.4.1",
     "react-dom": "16.4.1",
+    "react-lifecycles-compat": "3.0.4",
     "react-relay": "https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/react-relay-1.5.0-plugin.5.tgz",
     "react-relay-network-modern": "2.3.3",
     "react-router-dom": "4.3.1",
