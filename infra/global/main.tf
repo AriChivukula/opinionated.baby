@@ -7,7 +7,7 @@ provider "aws" {}
 terraform {
   backend "s3" {
     bucket = "${var.NAME}"
-    key    = "tfstate/global.tf"
+    key    = "tfstate/global.tfstate"
   }
 }
 
