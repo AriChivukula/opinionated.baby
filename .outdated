@@ -1,4 +1,5 @@
-Package            Current          Wanted  Latest  Location
-babel-core  7.0.0-bridge.0  7.0.0-bridge.0  6.26.3  opinionated.baby
-gulp                 4.0.0           4.0.0   3.9.1  opinionated.baby
-gulp-babel    8.0.0-beta.2    8.0.0-beta.2   7.0.1  opinionated.baby
+Package        Current        Wanted Latest Package Type           URL                                                                                               
+react-relay    1.5.0-plugin.5 exotic exotic devDependencies        https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/react-relay-1.5.0-plugin.5.tgz   
+relay-compiler 1.5.0-plugin.5 exotic exotic devDependencies        https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/relay-compiler-1.5.0-plugin.5.tgz
+relay-runtime  1.5.0          1.5.0  1.6.0  resolutionDependencies https://facebook.github.io/relay/                                                                 
+relay-runtime  1.5.0-plugin.5 exotic exotic devDependencies        https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/relay-runtime-1.5.0-plugin.5.tgz 
