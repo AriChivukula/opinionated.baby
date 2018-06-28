@@ -67,5 +67,13 @@ export async function genUserForAccessToken(
   accessToken: string,
 ): Promise<any> {
   /* BESPOKE START <<genUserForAccessToken>> */
+  const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
+  if (info.data.user_id === undefined) {
+    throw new Error("Missing user id");
+  }
+  if (info.data.email === undefined) {
+    throw new Error("Missing email");
+  }
+  return { id: info.data.user_id, email: info.data.email };
   /* BESPOKE END <<genUserForAccessToken>> */
 }
