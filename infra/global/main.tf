@@ -4,6 +4,13 @@ variable "DOMAIN" {}
 
 provider "aws" {}
 
+terraform {
+  backend "s3" {
+    bucket = "${var.NAME}"
+    key    = "tfstate/global.tf"
+  }
+}
+
 resource "aws_acm_certificate" "ob_certificate" {
   domain_name               = "${var.DOMAIN}"
   subject_alternative_names = ["*.${var.DOMAIN}"]
