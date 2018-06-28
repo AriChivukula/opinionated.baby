@@ -25,6 +25,10 @@ resource "aws_s3_bucket" "ob_bucket" {
   tags {
     Name = "${var.NAME}"
   }
+  
+  versioning {
+    enabled = true
+  }
 }
 
 resource "aws_route53_zone" "ob_zone" {
