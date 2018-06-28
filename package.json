@@ -33,7 +33,7 @@
     "graphql": "0.13.2",
     "helmet": "3.12.1",
     "pg": "7.4.3",
-    "raven": "2.6.3",
+    "newrelic": "4.2.0",
     "typeorm": "0.2.7"
   },
   "devDependencies": {
