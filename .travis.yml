@@ -1,8 +1,8 @@
 language: node_js
 node_js:
 - node
-cache: yarn
 install: bash shell/install.sh
+cache: yarn
 jobs:
   include:
   - stage: Actualize
