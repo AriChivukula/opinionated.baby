@@ -66,6 +66,18 @@ export const module: Module = Module.new({
       name: "genAccessTokenInfo",
       outType: Type.Anonymous.new({ type: "Promise<IAccessTokenInfo>" }),
     }),
+    Function.Async.newExported({
+      content: [
+        Bespoke.new({
+          name: "genUserForAccessToken",
+        }),
+      ],
+      inTypes: [
+        Type.Argument.new({ name: "accessToken", type: "string" }),
+      ],
+      name: "genUserForAccessToken",
+      outType: Type.Anonymous.new({ type: "Promise<any>" }),
+    }),
   ],
   destination: "src/server/google.ts",
 });
