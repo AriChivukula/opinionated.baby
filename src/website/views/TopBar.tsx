@@ -3,10 +3,13 @@
  *
  * SOURCE<<gen/website/views.ts::TopBarReact>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<QQer5ODQObjA0TbryjxagM3ZuPBSSxR7x/XHirXry6P2CyIO7brHD6H7S5aCUXVvTMwQFsWQBEZlswbp2R7U5w==>>
+ * SIGNED<<woSAKW3WntYkfbvpgV/6kEivqAqznKSJOU87I2sO5k/CcOBrj9VdWFGLhQeEfG1Lh48PiP4x7Qf10dY1FgFSig==>>
  */
 
 import * as React from "react";
+import {
+  polyfill,
+} from "react-lifecycles-compat";
 import {
   commitMutation,
   createFragmentContainer,
@@ -48,7 +51,7 @@ export interface ITopBarProps {
   relay: Relay;
 }
 
-class TopBarImpl extends React.Component<ITopBarProps> {
+class __TopBar extends React.Component<ITopBarProps> {
 
   public render(
   ): JSX.Element {
@@ -172,8 +175,8 @@ class TopBarImpl extends React.Component<ITopBarProps> {
   /* BESPOKE END <<implementation>> */
 }
 
-export const TopBar: React.ComponentType = createFragmentContainer(
-  TopBarImpl,
+const _TopBar: React.ComponentType = createFragmentContainer(
+  __TopBar,
   /* BESPOKE START <<relay>> */
   graphql`
     fragment TopBarQuery on Query {
@@ -186,3 +189,5 @@ export const TopBar: React.ComponentType = createFragmentContainer(
   `,
   /* BESPOKE END <<relay>> */
 );
+
+export const TopBar: React.Component<ITopBarProps> = polyfill(_TopBar);

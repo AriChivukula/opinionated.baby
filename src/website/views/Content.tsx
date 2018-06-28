@@ -3,10 +3,13 @@
  *
  * SOURCE<<gen/website/views.ts::ContentReact>>
  * BESPOKE<<imports, render>>
- * SIGNED<<Z9wKEURmQUdo66Mh4JAEAKIEfbLkZEyeOqtShcQW4VF/gAT192ep6VAop5kNZO7TJdzBEovWcYSXfzD/xZu04g==>>
+ * SIGNED<<bnnhnFH8GexK+N5epG5LN1fWMfykyQuHG+MpnmOlTam/rfJs5iWm3wVQPJNfY6uyVTupA9I6vB6CeEFemjFd7w==>>
  */
 
 import * as React from "react";
+import {
+  polyfill,
+} from "react-lifecycles-compat";
 
 /* BESPOKE START <<imports>> */
 import {
@@ -155,7 +158,7 @@ const releases: IReleases[] = [
 ];
 /* BESPOKE END <<imports>> */
 
-export function Content(
+export function _Content,(
 ): JSX.Element {
   /* BESPOKE START <<render>> */
   return (
@@ -258,3 +261,5 @@ export function Content(
   );
   /* BESPOKE END <<render>> */
 }
+
+export const Content: React.ComponentType = polyfill(_Content);

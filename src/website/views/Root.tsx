@@ -3,10 +3,13 @@
  *
  * SOURCE<<gen/website/views.ts::RootReact>>
  * BESPOKE<<imports, render, implementation>>
- * SIGNED<<gMIF8UpVVL82bKe3h5hks3leg9xgncZlMpe7iI1YBko4QmdbaN/NWzhDJ+XChPhVDRLOzy0Dk87YdKXuRkLG5w==>>
+ * SIGNED<<1fWdgtSxJqoOtTWfjdt/HnSg3Amo71oiDVfCXN9751mfD3q3Y2oU6+my7tSPiaCIVgnH8lKx+5iK5WlgNVsetQ==>>
  */
 
 import * as React from "react";
+import {
+  polyfill,
+} from "react-lifecycles-compat";
 
 /* BESPOKE START <<imports>> */
 import * as cookie from "js-cookie";
@@ -31,7 +34,7 @@ export interface IRootProps {
   environment: Environment;
 }
 
-export class Root extends React.Component<IRootProps> {
+class _Root extends React.Component<IRootProps> {
 
   public render(
   ): JSX.Element {
@@ -62,3 +65,5 @@ export class Root extends React.Component<IRootProps> {
   /* BESPOKE START <<implementation>> */
   /* BESPOKE END <<implementation>> */
 }
+
+export const Root: React.Component<IRootProps> = polyfill(_Root);

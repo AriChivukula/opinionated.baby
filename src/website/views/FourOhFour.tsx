@@ -3,10 +3,13 @@
  *
  * SOURCE<<gen/website/views.ts::FourOhFourReact>>
  * BESPOKE<<imports, render>>
- * SIGNED<<Wo7FHIquVd9YzijkRCSetdV1nHxCGfKK0xB9HLsvhpEvvvuxPK5GgxZgCRWIXjdl3lh+Y6pDlF5rnF6SVC7bCQ==>>
+ * SIGNED<<5A3AGWjFsbLQWSY5gtb7ah98Fj53Y3uZum4Ik7ft8w/Lhsdb9ApAFpM3mLqnUzY8asJCTcmWKPSlFQ9RvuFYmA==>>
  */
 
 import * as React from "react";
+import {
+  polyfill,
+} from "react-lifecycles-compat";
 
 /* BESPOKE START <<imports>> */
 import {
@@ -17,7 +20,7 @@ import {
 } from "rmwc/Typography";
 /* BESPOKE END <<imports>> */
 
-export function FourOhFour(
+export function _FourOhFour,(
 ): JSX.Element {
   /* BESPOKE START <<render>> */
   return (
@@ -29,3 +32,5 @@ export function FourOhFour(
   );
   /* BESPOKE END <<render>> */
 }
+
+export const FourOhFour: React.ComponentType = polyfill(_FourOhFour);

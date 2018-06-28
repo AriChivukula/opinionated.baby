@@ -3,10 +3,13 @@
  *
  * SOURCE<<gen/website/views.ts::PageReact>>
  * BESPOKE<<imports, render, implementation>>
- * SIGNED<<FjLWlBIS1UVsEvqdBpisBZmIw5oPgcO/Z6xoPkxKfJN0EVRZm+l/l+fldZzjSIW1M/HjnEWNPtsVXo7VxlVfbQ==>>
+ * SIGNED<<3ewgAyEndblK1LK9ZahZWoLe0R/m1ySmoQ7THzaKgSbB5HyNzTvIlvUBQaPjISKHd6ayko88pjY+B3tZZM2dGA==>>
  */
 
 import * as React from "react";
+import {
+  polyfill,
+} from "react-lifecycles-compat";
 
 /* BESPOKE START <<imports>> */
 import {
@@ -31,7 +34,7 @@ export interface IPageProps {
   data: TopBarQuery | null;
 }
 
-export class Page extends React.Component<IPageProps> {
+class _Page extends React.Component<IPageProps> {
 
   public render(
   ): JSX.Element {
@@ -60,3 +63,5 @@ export class Page extends React.Component<IPageProps> {
   /* BESPOKE START <<implementation>> */
   /* BESPOKE END <<implementation>> */
 }
+
+export const Page: React.Component<IPageProps> = polyfill(_Page);

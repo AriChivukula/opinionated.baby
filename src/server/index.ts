@@ -3,10 +3,11 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<main, handler>>
- * SIGNED<<6b5kVh/2N+cJEEFsC5+ob8ojmdeO1BTCpvmWVeQ4jgojKfUbKJVh6Qd9fI42v72gpJER/Sye6/2kYLd/R2RG9g==>>
+ * SIGNED<<f8xxjvyzCOqU196YqGAzHzEKxgBE5X8J67KlM7AJ49UnsozphqrM8KImh2+86lUiShdXcR8AW8TbHKVOu3kZ2Q==>>
  */
 
 import "@babel/polyfill";
+import "newrelic";
 
 import lambda from "aws-serverless-express";
 import {
@@ -17,7 +18,6 @@ import cors from "cors";
 import express from "express";
 import bearer from "express-bearer-token";
 import helmet from "helmet";
-import Raven from "raven";
 
 import {
   genSetupDB,
