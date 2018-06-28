@@ -3,13 +3,10 @@
  *
  * SOURCE<<gen/website/views.ts::RootReact>>
  * BESPOKE<<imports, render, implementation>>
- * SIGNED<<9CEiTCcJWFmbDvTRynck4KuBtPU8/bHObwhVksgT3DQCnJbNknd+1HI2qGjcLBlzd//mQDCo/BxdTpd6B/nemg==>>
+ * SIGNED<<P1ff7Tq61T6TuGrXUQvDBChPYA3fkVQw5inLdp0dAapcC/WfbOxI0rMWNw2D4U6lQnQIs0JFh94DDLgp+a8NgA==>>
  */
 
 import * as React from "react";
-import {
-  polyfill,
-} from "react-lifecycles-compat";
 
 /* BESPOKE START <<imports>> */
 import * as cookie from "js-cookie";
@@ -66,5 +63,4 @@ class _Root extends React.Component<IRootProps> {
   /* BESPOKE END <<implementation>> */
 }
 
-polyfill(_Root);
 export { _Root as Root };

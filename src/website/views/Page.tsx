@@ -3,13 +3,10 @@
  *
  * SOURCE<<gen/website/views.ts::PageReact>>
  * BESPOKE<<imports, render, implementation>>
- * SIGNED<<tkBAMF9WhupbomPX1wQwne/w4RXPQ0XUE0DC7r9ewEriQOxNMUNg99rAYvGAqGi60MAkmQi5hRcjj7iexWyPWQ==>>
+ * SIGNED<<XmFCve8nWfz4XdJXkvRH3RLjJ9sYdESu1Nm83AvAPml1yVoH0yS8+4WxpqF++W6/n8XLKit+KU/3A6DESNVgQA==>>
  */
 
 import * as React from "react";
-import {
-  polyfill,
-} from "react-lifecycles-compat";
 
 /* BESPOKE START <<imports>> */
 import {
@@ -64,5 +61,4 @@ class _Page extends React.Component<IPageProps> {
   /* BESPOKE END <<implementation>> */
 }
 
-polyfill(_Page);
 export { _Page as Page };

@@ -3,13 +3,10 @@
  *
  * SOURCE<<gen/website/views.ts::TopBarReact>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<zoHMF1UzyRWg0I1PIe1OSQHD6SvLs6QHOpl8V6FSFaUrps7L/LafibNf680xVcfr70J62sAT0HXGIxMqw1lAIw==>>
+ * SIGNED<<dQxgFiFUe81+bAvrHr3b9WDhYc1AHf+yLyVrX8KnjU+iRPynIjto2D9r8e62jv2H1SujYFzz/PiWf60aBbv6ag==>>
  */
 
 import * as React from "react";
-import {
-  polyfill,
-} from "react-lifecycles-compat";
 import {
   commitMutation,
   createFragmentContainer,
@@ -175,7 +172,6 @@ class __TopBar extends React.Component<ITopBarProps> {
   /* BESPOKE END <<implementation>> */
 }
 
-polyfill(__TopBar);
 const _TopBar: React.ComponentType = createFragmentContainer(
   __TopBar,
   /* BESPOKE START <<relay>> */

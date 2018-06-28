@@ -3,13 +3,10 @@
  *
  * SOURCE<<gen/website/views.ts::FourOhFourReact>>
  * BESPOKE<<imports, render>>
- * SIGNED<<hOqvB+7Y3dPhm7Hr3I6tXSjkwmBleUL1GhKD5fv8nVsTA/m9MxxFgHi+wyeC4RMfw4bI1thpn19F1t20zP+UBA==>>
+ * SIGNED<<5/rwE5ktYAy1yQrOY0+YlN8Y2k/Ygnzrcou+JIKABzHkMFOaBJtA2+oxULcG9ESyesqwU7MaJMp+k/4+kmLx9A==>>
  */
 
 import * as React from "react";
-import {
-  polyfill,
-} from "react-lifecycles-compat";
 
 /* BESPOKE START <<imports>> */
 import {
