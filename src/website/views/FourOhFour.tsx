@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::FourOhFourReact>>
  * BESPOKE<<imports, render>>
- * SIGNED<<n2H56tSGN93qWOdwfEeh8BWEt/NWibC5yiJszD2OAFNpDRjTevdTIDPYeSaP1AQGUuKD89kyBQxUpODtK5un9Q==>>
+ * SIGNED<<sTCnMB3AjDN/AsVbuIVFN3hP7ZzvxETW4wvosPT/fz9cDeBQdqXCN5kfwOkNLmCXzHIL1ewMf2tOx/I9K2jhzw==>>
  */
 
 import * as React from "react";
@@ -33,5 +33,5 @@ export function _FourOhFour(
   /* BESPOKE END <<render>> */
 }
 
-// @ts-lint
-export const FourOhFour: React.ComponentType = polyfill(_FourOhFour);
+polyfill(_FourOhFour);
+export const FourOhFour: React.ComponentType = _FourOhFour;

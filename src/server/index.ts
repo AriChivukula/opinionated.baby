@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<main, handler>>
- * SIGNED<<f8xxjvyzCOqU196YqGAzHzEKxgBE5X8J67KlM7AJ49UnsozphqrM8KImh2+86lUiShdXcR8AW8TbHKVOu3kZ2Q==>>
+ * SIGNED<<JCnhmGGXqLmb3dTS48keeFq6+TDNaaYRL615D/Kd1RKkpq4E0Lq9HVkAw02RQaGY7Zehpfnv+KZAh2kZBGSATA==>>
  */
 
 import "@babel/polyfill";
@@ -19,9 +19,6 @@ import express from "express";
 import bearer from "express-bearer-token";
 import helmet from "helmet";
 
-import {
-  genSetupDB,
-} from "./db";
 import {
   graphQL,
 } from "./server";

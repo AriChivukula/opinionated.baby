@@ -2,8 +2,8 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/server/google.ts::module>>
- * BESPOKE<<getOAuthClient, getLoginURL, genAccessToken, genAccessTokenInfo>>
- * SIGNED<<7THdksCfUTGVLLA10hSBleKzW8ieyQPyqLBOqB1Efq2mfltz104UC79aPVPqyGUVn+T6fZfqk15OQHN+wtrtGA==>>
+ * BESPOKE<<getOAuthClient, getLoginURL, genAccessToken, genAccessTokenInfo, genUserForAccessToken>>
+ * SIGNED<<owC7ut9kTDdSLBFNr0BNY7W0pjEGNDelfhwHXoJz81qqwsz+CfhvZFqFnZ1rX1TLVfK2hguO6oFb+6dl3tdIng==>>
  */
 
 import {
@@ -61,4 +61,11 @@ export async function genAccessTokenInfo(
     .oauth2("v2")
     .tokeninfo({access_token: accessToken});
   /* BESPOKE END <<genAccessTokenInfo>> */
+}
+
+export async function genUserForAccessToken(
+  accessToken: string,
+): Promise<any> {
+  /* BESPOKE START <<genUserForAccessToken>> */
+  /* BESPOKE END <<genUserForAccessToken>> */
 }
