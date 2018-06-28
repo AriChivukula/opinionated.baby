@@ -36,10 +36,6 @@ export const module: Module = Module.new({
       name: "./server",
       with: ["graphQL"],
     }),
-    Import.new({
-      name: "./util",
-      with: ["makeSync"],
-    }),
     Variable.newImmutable({
       assignment: "express()",
       type: Type.Required.new({ name: "app", type: "express.Express" }),
