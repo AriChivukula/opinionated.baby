@@ -1,5 +1,0 @@
-Package        Current        Wanted Latest Package Type           URL                                                                                               
-react-relay    1.5.0-plugin.5 exotic exotic devDependencies        https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/react-relay-1.5.0-plugin.5.tgz   
-relay-compiler 1.5.0-plugin.5 exotic exotic devDependencies        https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/relay-compiler-1.5.0-plugin.5.tgz
-relay-runtime  1.5.0          1.5.0  1.6.0  resolutionDependencies https://facebook.github.io/relay/                                                                 
-relay-runtime  1.5.0-plugin.5 exotic exotic devDependencies        https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/relay-runtime-1.5.0-plugin.5.tgz 
