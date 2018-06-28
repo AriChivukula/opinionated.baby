@@ -21,11 +21,6 @@ resource "aws_s3_bucket" "ob_bucket" {
   tags {
     Name = "${var.NAME}"
   }
-
-  website {
-    index_document = "index.html"
-    error_document = "index.html"
-  }
 }
 
 resource "aws_route53_zone" "ob_zone" {
@@ -78,6 +73,7 @@ resource "aws_iam_role_policy_attachment" "ob_attachment" {
 resource "aws_cloudfront_distribution" "ob_distribution" {
   aliases = ["${var.DOMAIN}"]
   enabled = true
+  default_root_object = "index.html"
 
   default_cache_behavior {
     allowed_methods = ["POST", "HEAD", "PATCH", "DELETE", "PUT", "GET", "OPTIONS"]
@@ -98,7 +94,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   }
 
   origin {
-    domain_name = "${aws_s3_bucket.ob_bucket.website_endpoint}"
+    domain_name = "${aws_s3_bucket.ob_bucket.bucket_domain_name}"
     origin_id   = "${var.DOMAIN}"
     origin_path = "/master"
 

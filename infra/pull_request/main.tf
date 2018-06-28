@@ -40,7 +40,7 @@ data "aws_route53_zone" "ob_zone" {
 
 resource "aws_lambda_function" "ob_lambda" {
   function_name = "${var.NAME}-${var.BUILD}"
-  handler       = "handler"
+  handler       = "index.handler"
   role          = "${data.aws_iam_role.ob_iam.arn}"
   runtime       = "nodejs8.10"
   memory_size   = 256
@@ -91,7 +91,7 @@ resource "aws_api_gateway_integration" "ob_integration" {
   resource_id = "${aws_api_gateway_method.ob_method.resource_id}"
   http_method = "${aws_api_gateway_method.ob_method.http_method}"
 
-  integration_http_method = "ANY"
+  integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = "${replace(aws_lambda_function.ob_lambda.invoke_arn, ":$LATEST", "")}"
 }
@@ -148,21 +148,77 @@ resource "aws_route53_record" "ob_record_dynamic" {
   }
 }
 
+
 locals {
-  files = ["index.html", "index.js", "index.css", "images/favicon.png", "images/v0.jpg", "images/v1.jpg", "images/v2.jpg", "images/v3.jpg", "images/v4.jpg", "images/v5.jpg", "images/v6.jpg", "images/v7.jpg", "images/v8.jpg"]
+  files = [
+    {
+      file  = "index.html"
+      type = "text/html"
+    },
+    {
+      file  = "index.js"
+      type = "application/javascript"
+    },
+    {
+      file  = "index.css"
+      type = "text/css"
+    },
+    {
+      file  = "images/favicon.png"
+      type = "image/png"
+    },
+    {
+      file  = "images/v0.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v1.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v2.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v3.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v4.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v5.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v6.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v7.jpg"
+      type = "image/jpeg"
+    },
+    {
+      file  = "images/v8.jpg"
+      type = "image/jpeg"
+    },
+  ]
 }
 
 resource "aws_s3_bucket_object" "ob_object" {
   count  = "${length(local.files)}"
   bucket = "${var.NAME}"
-  key    = "${var.BUILD}/${local.files[count.index]}"
-  source = "static/${local.files[count.index]}"
+  key    = "${var.BUILD}/${lookup(local.files[count.index], "file")}"
+  source = "static/${lookup(local.files[count.index], "file")}"
   acl    = "public-read"
+  content_type = "${lookup(local.files[count.index], "type")}"
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
   aliases = ["static-${var.BUILD}.${var.DOMAIN}"]
   enabled = true
+  default_root_object = "index.html"
 
   default_cache_behavior {
     allowed_methods = ["POST", "HEAD", "PATCH", "DELETE", "PUT", "GET", "OPTIONS"]
@@ -183,7 +239,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   }
 
   origin {
-    domain_name = "${data.aws_s3_bucket.ob_bucket.website_endpoint}"
+    domain_name = "${data.aws_s3_bucket.ob_bucket.bucket_domain_name}"
     origin_id   = "static-${var.BUILD}.${var.DOMAIN}"
     origin_path = "/${var.BUILD}"
 
