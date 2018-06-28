@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::ContentReact>>
  * BESPOKE<<imports, render>>
- * SIGNED<<o9HdTOUlU/4V4mO9Ah4elX5jjKdzT2unsX3tHSJT7CByKleUR+x1AlQXlYbIAfFez9oTy+MF0CKa+bwDuurarg==>>
+ * SIGNED<<DhA9gn8eDNHuciH+UHbhNo1hC5eoUXoTIL8hjRLTrQmffaydPzH6Ygbdgqw7uTpSK87/xFOzajVuBEhDb0KSdQ==>>
  */
 
 import * as React from "react";
@@ -263,4 +263,4 @@ export function _Content(
 }
 
 polyfill(_Content);
-export const Content: React.ComponentType = _Content;
+export { _Content as Content };

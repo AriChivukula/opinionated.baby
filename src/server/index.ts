@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<main, handler>>
- * SIGNED<<JCnhmGGXqLmb3dTS48keeFq6+TDNaaYRL615D/Kd1RKkpq4E0Lq9HVkAw02RQaGY7Zehpfnv+KZAh2kZBGSATA==>>
+ * SIGNED<<+vBlzuKU1fU/A+QvRwoJLyPQbCripCZxQb6i5D65LQ8rYEJEaVHGxjVW8Bia9RvxlSfLAJ6X9y9OScSZIgOODg==>>
  */
 
 import "@babel/polyfill";
@@ -22,9 +22,6 @@ import helmet from "helmet";
 import {
   graphQL,
 } from "./server";
-import {
-  makeSync,
-} from "./util";
 
 const app: express.Express = express();
 

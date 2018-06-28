@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::TopBarReact>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<MNBGzVG+F7ELnBsL+mGwLQ8SPF4njT/0FNjPvygYSu5u6Bv1F5ScmJBQYA71CzG4rrZYm0ZNBTK843ABUG8ZzQ==>>
+ * SIGNED<<JpWzV7kQOJzH+GjgayX7UzsBSFndzGdNAyDoBIiBJHjUUPL84M7Ai5xOHpjpF79UcnpPvv9rS9f+2xvcjiz+sw==>>
  */
 
 import * as React from "react";
@@ -191,4 +191,4 @@ const _TopBar: React.ComponentType = createFragmentContainer(
 );
 
 polyfill(_TopBar);
-export const TopBar: React.ComponentType = _TopBar;
+export { _TopBar as TopBar };

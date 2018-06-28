@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/google.ts::module>>
  * BESPOKE<<getOAuthClient, getLoginURL, genAccessToken, genAccessTokenInfo, genUserForAccessToken>>
- * SIGNED<<owC7ut9kTDdSLBFNr0BNY7W0pjEGNDelfhwHXoJz81qqwsz+CfhvZFqFnZ1rX1TLVfK2hguO6oFb+6dl3tdIng==>>
+ * SIGNED<<PGwO+6Bjf72Si8TBEIzen19q/uwpucO/5Ggh8u0wMmOk/BPWh9Sm5Y4ZxzmJI4GNxck6/WZycXvw7F/4eEWzzQ==>>
  */
 
 import {
@@ -65,7 +65,7 @@ export async function genAccessTokenInfo(
 
 export async function genUserForAccessToken(
   accessToken: string,
-): Promise<any> {
+): Promise<object> {
   /* BESPOKE START <<genUserForAccessToken>> */
   const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
   if (info.data.user_id === undefined) {

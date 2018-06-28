@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::FourOhFourReact>>
  * BESPOKE<<imports, render>>
- * SIGNED<<sTCnMB3AjDN/AsVbuIVFN3hP7ZzvxETW4wvosPT/fz9cDeBQdqXCN5kfwOkNLmCXzHIL1ewMf2tOx/I9K2jhzw==>>
+ * SIGNED<<EFHBgQ1ocFNlShnh5JUYHKnseOmGkxHuuB0/yvFuO9+n7oy5j73njZguD4RtUX5ILrrMYc9WRsif7VaaTafXhw==>>
  */
 
 import * as React from "react";
@@ -34,4 +34,4 @@ export function _FourOhFour(
 }
 
 polyfill(_FourOhFour);
-export const FourOhFour: React.ComponentType = _FourOhFour;
+export { _FourOhFour as FourOhFour };

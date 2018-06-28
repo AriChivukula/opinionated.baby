@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::PageReact>>
  * BESPOKE<<imports, render, implementation>>
- * SIGNED<<cp67m8eagBFQt+ELCDLgoMVPirjXiorrU2+uTtA4vbkXBlsUngy8SmIx3M+cmEVHq1K44NSQdGiar2eUdCH6+g==>>
+ * SIGNED<<tkBAMF9WhupbomPX1wQwne/w4RXPQ0XUE0DC7r9ewEriQOxNMUNg99rAYvGAqGi60MAkmQi5hRcjj7iexWyPWQ==>>
  */
 
 import * as React from "react";
@@ -65,4 +65,4 @@ class _Page extends React.Component<IPageProps> {
 }
 
 polyfill(_Page);
-export const Page: React.Component<IPageProps> = _Page;
+export { _Page as Page };
