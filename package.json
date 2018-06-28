@@ -68,7 +68,7 @@
     "relay-compiler": "https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/relay-compiler-1.5.0-plugin.5.tgz",
     "relay-compiler-language-typescript": "0.9.0",
     "relay-runtime": "https://github.com/alloy/relay/releases/download/v1.5.0-plugin.5/relay-runtime-1.5.0-plugin.5.tgz",
-    "rmwc": "1.7.5",
+    "rmwc": "1.7.6",
     "rollup-stream": "1.24.1",
     "ts-node": "7.0.0",
     "typescript": "2.9.2",
