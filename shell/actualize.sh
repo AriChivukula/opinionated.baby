@@ -7,7 +7,7 @@ yarn gulp build
 yarn jest -u build/2/website
 cp -R build/2/website/__tests__/__snapshots__ src/website/__tests__/__snapshots__
 terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=tfstate/global.tfstate" infra/global
-terraform apply -state=infra/global/terraform.tfstate -auto-approve infra/global
+terraform apply -auto-approve infra/global
 git remote add target "https://arichiv:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
 git add -A
 git commit -m "ACTUALIZE ${TRAVIS_BUILD_NUMBER}"
