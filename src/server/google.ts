@@ -2,8 +2,8 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/server/google.ts::module>>
- * BESPOKE<<getOAuthClient, getLoginURL, genAccessToken, genAccessTokenInfo>>
- * SIGNED<<7THdksCfUTGVLLA10hSBleKzW8ieyQPyqLBOqB1Efq2mfltz104UC79aPVPqyGUVn+T6fZfqk15OQHN+wtrtGA==>>
+ * BESPOKE<<getOAuthClient, getLoginURL, genAccessToken, genAccessTokenInfo, genUserForAccessToken>>
+ * SIGNED<<PGwO+6Bjf72Si8TBEIzen19q/uwpucO/5Ggh8u0wMmOk/BPWh9Sm5Y4ZxzmJI4GNxck6/WZycXvw7F/4eEWzzQ==>>
  */
 
 import {
@@ -61,4 +61,19 @@ export async function genAccessTokenInfo(
     .oauth2("v2")
     .tokeninfo({access_token: accessToken});
   /* BESPOKE END <<genAccessTokenInfo>> */
+}
+
+export async function genUserForAccessToken(
+  accessToken: string,
+): Promise<object> {
+  /* BESPOKE START <<genUserForAccessToken>> */
+  const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
+  if (info.data.user_id === undefined) {
+    throw new Error("Missing user id");
+  }
+  if (info.data.email === undefined) {
+    throw new Error("Missing email");
+  }
+  return { id: info.data.user_id, email: info.data.email };
+  /* BESPOKE END <<genUserForAccessToken>> */
 }

@@ -3,10 +3,11 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<main, handler>>
- * SIGNED<<6b5kVh/2N+cJEEFsC5+ob8ojmdeO1BTCpvmWVeQ4jgojKfUbKJVh6Qd9fI42v72gpJER/Sye6/2kYLd/R2RG9g==>>
+ * SIGNED<<+vBlzuKU1fU/A+QvRwoJLyPQbCripCZxQb6i5D65LQ8rYEJEaVHGxjVW8Bia9RvxlSfLAJ6X9y9OScSZIgOODg==>>
  */
 
 import "@babel/polyfill";
+import "newrelic";
 
 import lambda from "aws-serverless-express";
 import {
@@ -17,33 +18,20 @@ import cors from "cors";
 import express from "express";
 import bearer from "express-bearer-token";
 import helmet from "helmet";
-import Raven from "raven";
 
-import {
-  genSetupDB,
-} from "./db";
 import {
   graphQL,
 } from "./server";
-import {
-  makeSync,
-} from "./util";
 
 const app: express.Express = express();
 
 let didSetup: boolean = false;
 
 /* BESPOKE START <<main>> */
-Raven.config(process.env.TF_VAR_SENTRY)
-  .install();
-app.use(Raven.requestHandler());
-app.use(Raven.errorHandler());
-
 app.use(cors(), helmet(), bearer(), json(), urlencoded({ extended: true }));
 
 app.use((req: express.Request, res: express.Response, next: () => void): void => {
   if (!didSetup) {
-    makeSync(genSetupDB());
     didSetup = true;
   }
   next();

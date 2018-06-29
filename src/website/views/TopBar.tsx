@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::TopBarReact>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<QQer5ODQObjA0TbryjxagM3ZuPBSSxR7x/XHirXry6P2CyIO7brHD6H7S5aCUXVvTMwQFsWQBEZlswbp2R7U5w==>>
+ * SIGNED<<dQxgFiFUe81+bAvrHr3b9WDhYc1AHf+yLyVrX8KnjU+iRPynIjto2D9r8e62jv2H1SujYFzz/PiWf60aBbv6ag==>>
  */
 
 import * as React from "react";
@@ -48,7 +48,7 @@ export interface ITopBarProps {
   relay: Relay;
 }
 
-class TopBarImpl extends React.Component<ITopBarProps> {
+class __TopBar extends React.Component<ITopBarProps> {
 
   public render(
   ): JSX.Element {
@@ -172,8 +172,8 @@ class TopBarImpl extends React.Component<ITopBarProps> {
   /* BESPOKE END <<implementation>> */
 }
 
-export const TopBar: React.ComponentType = createFragmentContainer(
-  TopBarImpl,
+const _TopBar: React.ComponentType = createFragmentContainer(
+  __TopBar,
   /* BESPOKE START <<relay>> */
   graphql`
     fragment TopBarQuery on Query {
@@ -186,3 +186,5 @@ export const TopBar: React.ComponentType = createFragmentContainer(
   `,
   /* BESPOKE END <<relay>> */
 );
+
+export { _TopBar as TopBar };

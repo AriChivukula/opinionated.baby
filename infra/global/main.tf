@@ -1,15 +1,12 @@
+terraform {
+  backend "s3" {}
+}
+
 variable "NAME" {}
 
 variable "DOMAIN" {}
 
 provider "aws" {}
-
-terraform {
-  backend "s3" {
-    bucket = "${var.NAME}"
-    key    = "tfstate/global.tfstate"
-  }
-}
 
 resource "aws_acm_certificate" "ob_certificate" {
   domain_name               = "${var.DOMAIN}"
@@ -27,6 +24,10 @@ resource "aws_s3_bucket" "ob_bucket" {
 
   tags {
     Name = "${var.NAME}"
+  }
+  
+  versioning {
+    enabled = true
   }
 }
 

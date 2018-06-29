@@ -1,33 +1,18 @@
+terraform {
+  backend "s3" {}
+}
+
 variable "CLIENT_ID" {}
 
 variable "BUILD" {}
 
 variable "CLIENT_SECRET" {}
 
-variable "DB_HOST" {}
-
-variable "DB_NAME" {}
-
-variable "DB_PASSWORD" {}
-
-variable "DB_PORT" {}
-
-variable "DB_USERNAME" {}
-
-variable "SENTRY" {}
-
 variable "NAME" {}
 
 variable "DOMAIN" {}
 
 provider "aws" {}
-
-terraform {
-  backend "s3" {
-    bucket = "${var.NAME}"
-    key    = "tfstate/${var.BUILD}.tfstate"
-  }
-}
 
 data "aws_acm_certificate" "ob_certificate" {
   domain = "${var.DOMAIN}"
@@ -58,12 +43,6 @@ resource "aws_lambda_function" "ob_lambda" {
     variables = {
       TF_VAR_CLIENT_ID     = "${var.CLIENT_ID}"
       TF_VAR_CLIENT_SECRET = "${var.CLIENT_SECRET}"
-      TF_VAR_DB_HOST       = "${var.DB_HOST}"
-      TF_VAR_DB_NAME       = "${var.DB_NAME}"
-      TF_VAR_DB_PASSWORD   = "${var.DB_PASSWORD}"
-      TF_VAR_DB_PORT       = "${var.DB_PORT}"
-      TF_VAR_DB_USERNAME   = "${var.DB_USERNAME}"
-      TF_VAR_SENTRY        = "${var.SENTRY}"
       TF_VAR_NAME          = "${var.NAME}"
       TF_VAR_DOMAIN        = "${var.DOMAIN}"
       TF_VAR_BUILD         = "${var.BUILD}"

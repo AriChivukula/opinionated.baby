@@ -1,13 +1,10 @@
+terraform {
+  backend "s3" {}
+}
+
 variable "NAME" {}
 
 provider "aws" {}
-
-terraform {
-  backend "s3" {
-    bucket = "${var.NAME}"
-    key    = "tfstate/master.tfstate"
-  }
-}
 
 locals {
   files = [

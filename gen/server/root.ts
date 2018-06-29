@@ -7,12 +7,8 @@ export const module: Module = Module.new({
       withDefaultAs: "express",
     }),
     Import.new({
-      name: "./db",
-      with: ["genUserForAccessToken"],
-    }),
-    Import.new({
       name: "./google",
-      with: ["genAccessToken", "getLoginURL"],
+      with: ["genAccessToken", "getLoginURL", "genUserForAccessToken"],
     }),
     Import.new({
       name: "./util",

@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::ContentReact>>
  * BESPOKE<<imports, render>>
- * SIGNED<<Z9wKEURmQUdo66Mh4JAEAKIEfbLkZEyeOqtShcQW4VF/gAT192ep6VAop5kNZO7TJdzBEovWcYSXfzD/xZu04g==>>
+ * SIGNED<<HGQ2naQjVCG8EdBOFyN/JsFC80EWUKgn2zE8tGwn+dqCbgH3trBWCjDHwkH1zccsaIX6CG1sxWtebWDqSSjozA==>>
  */
 
 import * as React from "react";
@@ -58,9 +58,9 @@ const tools: ITools[] = [
   },
   {
     graphic: "bug_report",
-    link: "https://sentry.io/",
+    link: "https://newrelic.com/",
     subtitle: "Debugging",
-    title: "Sentry",
+    title: "New Relic",
   },
   {
     graphic: "share",
@@ -88,9 +88,9 @@ const tools: ITools[] = [
   },
   {
     graphic: "unarchive",
-    link: "https://www.npmjs.com/",
+    link: "https://www.yarnpkg.com/",
     subtitle: "Dependency",
-    title: "npm",
+    title: "yarn",
   },
   {
     graphic: "build",
@@ -155,7 +155,7 @@ const releases: IReleases[] = [
 ];
 /* BESPOKE END <<imports>> */
 
-export function Content(
+export function _Content(
 ): JSX.Element {
   /* BESPOKE START <<render>> */
   return (
@@ -258,3 +258,5 @@ export function Content(
   );
   /* BESPOKE END <<render>> */
 }
+
+export { _Content as Content };

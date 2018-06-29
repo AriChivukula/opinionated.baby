@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::RootReact>>
  * BESPOKE<<imports, render, implementation>>
- * SIGNED<<gMIF8UpVVL82bKe3h5hks3leg9xgncZlMpe7iI1YBko4QmdbaN/NWzhDJ+XChPhVDRLOzy0Dk87YdKXuRkLG5w==>>
+ * SIGNED<<P1ff7Tq61T6TuGrXUQvDBChPYA3fkVQw5inLdp0dAapcC/WfbOxI0rMWNw2D4U6lQnQIs0JFh94DDLgp+a8NgA==>>
  */
 
 import * as React from "react";
@@ -31,7 +31,7 @@ export interface IRootProps {
   environment: Environment;
 }
 
-export class Root extends React.Component<IRootProps> {
+class _Root extends React.Component<IRootProps> {
 
   public render(
   ): JSX.Element {
@@ -62,3 +62,5 @@ export class Root extends React.Component<IRootProps> {
   /* BESPOKE START <<implementation>> */
   /* BESPOKE END <<implementation>> */
 }
+
+export { _Root as Root };

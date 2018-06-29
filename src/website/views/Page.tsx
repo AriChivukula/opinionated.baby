@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::PageReact>>
  * BESPOKE<<imports, render, implementation>>
- * SIGNED<<FjLWlBIS1UVsEvqdBpisBZmIw5oPgcO/Z6xoPkxKfJN0EVRZm+l/l+fldZzjSIW1M/HjnEWNPtsVXo7VxlVfbQ==>>
+ * SIGNED<<XmFCve8nWfz4XdJXkvRH3RLjJ9sYdESu1Nm83AvAPml1yVoH0yS8+4WxpqF++W6/n8XLKit+KU/3A6DESNVgQA==>>
  */
 
 import * as React from "react";
@@ -31,7 +31,7 @@ export interface IPageProps {
   data: TopBarQuery | null;
 }
 
-export class Page extends React.Component<IPageProps> {
+class _Page extends React.Component<IPageProps> {
 
   public render(
   ): JSX.Element {
@@ -60,3 +60,5 @@ export class Page extends React.Component<IPageProps> {
   /* BESPOKE START <<implementation>> */
   /* BESPOKE END <<implementation>> */
 }
+
+export { _Page as Page };
