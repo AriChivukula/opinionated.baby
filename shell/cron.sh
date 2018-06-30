@@ -1,5 +1,6 @@
 set -e
 
+bash shell/build.sh
 for TF_VAR_BUILD in {1..1000}
 do
   export TF_VAR_BUILD=$TF_VAR_BUILD
