@@ -1,3 +1,5 @@
+set -e
+
 yarn gulp build
 yarn install --production=true --ignore-engines
 cp build/3/server/index.js index.js
