@@ -11,5 +11,5 @@ terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=tfst
 terraform apply -auto-approve infra/trigger
 git remote add target "https://arichiv:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
 git add -A
-git commit -m "ACTUALIZE ${TRAVIS_BUILD_NUMBER}"
+git commit -m "ACTUALIZE ${TF_VAR_BUILD}"
 git push target HEAD:$TRAVIS_BRANCH
