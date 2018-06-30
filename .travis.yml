@@ -5,15 +5,18 @@ install: bash shell/install.sh
 cache: yarn
 jobs:
   include:
-  - stage: Actualize
+  - stage: Api
     if: type = api
     script: bash shell/trigger.sh
-  - stage: Test
+  - stage: Push
     if: ( type = push ) AND ( branch != master )
     script: bash shell/push.sh
-  - stage: Deploy
+  - stage: Master
     if: ( type = push ) AND ( branch = master )
     script: bash shell/master.sh
-  - stage: Verify
+  - stage: Pull request
     if: type = pull_request
     script: bash shell/pr.sh
+  - stage: Cron
+    if: type = cron
+    script: bash shell/cron.sh
