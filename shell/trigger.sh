@@ -6,8 +6,8 @@ yarn relay-compiler --src src/ --schema src/server/schema.graphql --language typ
 yarn gulp build
 yarn jest -u build/2/website
 cp -R build/2/website/__tests__/__snapshots__ src/website/__tests__/__snapshots__
-terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=tfstate/global.tfstate" infra/global
-terraform apply -auto-approve infra/global
+terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=tfstate/trigger.tfstate" infra/trigger
+terraform apply -auto-approve infra/trigger
 git remote add target "https://arichiv:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
 git add -A
 git commit -m "ACTUALIZE ${TRAVIS_BUILD_NUMBER}"
