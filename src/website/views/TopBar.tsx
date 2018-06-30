@@ -130,6 +130,9 @@ class __TopBar extends React.Component<ITopBarProps> {
           cookie.set(
             "accessToken",
             response.login.accessToken,
+            {
+              domain: "opinionated.baby",
+            },
           );
           goto("/", true);
         },
@@ -158,6 +161,9 @@ class __TopBar extends React.Component<ITopBarProps> {
           cookie.set(
             "accessToken",
             response.logout.accessToken,
+            {
+              domain: "opinionated.baby",
+            },
           );
           goto("/", true);
         },
