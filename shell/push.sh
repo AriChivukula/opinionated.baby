@@ -1,4 +1,4 @@
 set -e
 
-yarn gulp build
+bash shell/build.sh
 yarn jest --collectCoverage
