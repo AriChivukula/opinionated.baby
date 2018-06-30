@@ -7,13 +7,13 @@ jobs:
   include:
   - stage: Actualize
     if: type = api
-    script: bash shell/actualize.sh
+    script: bash shell/trigger.sh
   - stage: Test
     if: ( type = push ) AND ( branch != master )
-    script: bash shell/test.sh
+    script: bash shell/push.sh
   - stage: Deploy
     if: ( type = push ) AND ( branch = master )
-    script: bash shell/deploy.sh
+    script: bash shell/master.sh
   - stage: Verify
     if: type = pull_request
-    script: bash shell/verify.sh
+    script: bash shell/pr.sh

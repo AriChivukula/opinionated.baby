@@ -199,6 +199,7 @@ resource "aws_s3_bucket_object" "ob_object" {
   source = "static/${lookup(local.files[count.index], "file")}"
   acl    = "public-read"
   content_type = "${lookup(local.files[count.index], "type")}"
+  etag   = "${md5(file("static/${lookup(local.files[count.index], "file")}"))}"
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
