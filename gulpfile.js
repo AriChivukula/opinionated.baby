@@ -77,7 +77,7 @@ gulp.task(
       plugins: ["relay"],
       presets: ["@babel/preset-env"],
     }))
-    .pipe(replace("ENV_BUILD", process.env.TRAVIS_BUILD_NUMBER))
+    .pipe(replace("ENV_BUILD", process.env.TF_VAR_BUILD))
     .pipe(replace("ENV_DOMAIN", process.env.TF_VAR_DOMAIN))
     .pipe(replace("ENV_NAME", process.env.TF_VAR_NAME))
     .pipe(sourcemaps.write())
