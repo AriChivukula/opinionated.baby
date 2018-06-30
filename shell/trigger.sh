@@ -1,5 +1,6 @@
 set -e
 
+export TF_VAR_BUILD=$TRAVIS_BUILD_NUMBER
 rm -rf src/website/__tests__/__snapshots__
 yarn ts-node node_modules/.bin/typescriptase --files gen/**/*.ts
 yarn relay-compiler --src src/ --schema src/server/schema.graphql --language typescript
