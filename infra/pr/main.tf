@@ -38,6 +38,7 @@ resource "aws_lambda_function" "ob_lambda" {
   memory_size   = 256
   timeout       = 300
   filename      = "dynamic.zip"
+  publish       = true
 
   environment {
     variables = {
