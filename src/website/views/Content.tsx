@@ -112,9 +112,9 @@ const tools: ITools[] = [
   },
   {
     graphic: "widgets",
-    link: "http://typeorm.io/",
+    link: "https://tinkerpop.apache.org/",
     subtitle: "Model",
-    title: "TypeORM",
+    title: "Tinkerpop",
   },
   {
     graphic: "flip_to_front",
@@ -124,7 +124,7 @@ const tools: ITools[] = [
   },
   {
     graphic: "local_library",
-    link: "http://facebook.github.io/relay/",
+    link: "https://facebook.github.io/relay/",
     subtitle: "Fetch",
     title: "Relay",
   },
