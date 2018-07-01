@@ -5,7 +5,7 @@ install: bash shell/install.sh
 cache: yarn
 jobs:
   include:
-  - stage: Api
+  - stage: Trigger
     if: type = api
     script: bash shell/trigger.sh
   - stage: Push
