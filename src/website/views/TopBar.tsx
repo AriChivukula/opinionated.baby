@@ -94,7 +94,7 @@ class __TopBar extends React.Component<ITopBarProps> {
               />
               <ToolbarIcon
                 use="info"
-                onClick={(): void => { goto("http://chivuku.la/"); }}
+                onClick={(): void => { goto("https://chivuku.la/"); }}
               />
             </ToolbarSection>
           </ToolbarRow>
