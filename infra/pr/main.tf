@@ -12,6 +12,8 @@ variable "NAME" {}
 
 variable "DOMAIN" {}
 
+variable "ID" {}
+
 provider "aws" {}
 
 data "aws_acm_certificate" "ob_certificate" {
@@ -47,6 +49,7 @@ resource "aws_lambda_function" "ob_lambda" {
       TF_VAR_NAME          = "${var.NAME}"
       TF_VAR_DOMAIN        = "${var.DOMAIN}"
       TF_VAR_BUILD         = "${var.BUILD}"
+      TF_VAR_ID            = "${var.ID}"
       DEBUG                = "*"
     }
   }
