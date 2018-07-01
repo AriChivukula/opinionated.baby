@@ -40,6 +40,10 @@ resource "aws_route53_zone" "ob_zone" {
 }
 
 resource "aws_route53_record" "ob_record" {
+  depends_on = [
+    "aws_acm_certificate.ob_certificate",
+  ]
+  
   count   = "${length(aws_acm_certificate.ob_certificate.domain_validation_options)}"
   name    = "${lookup(aws_acm_certificate.ob_certificate.domain_validation_options[count.index], "resource_record_name")}"
   records = ["${lookup(aws_acm_certificate.ob_certificate.domain_validation_options[count.index], "resource_record_value")}"]
