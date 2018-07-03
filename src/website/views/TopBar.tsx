@@ -131,7 +131,7 @@ class __TopBar extends React.Component<ITopBarProps> {
             "accessToken",
             response.login.accessToken,
             {
-              domain: "opinionated.baby",
+              domain: ".opinionated.baby",
               secure: true,
             },
           );
@@ -163,7 +163,7 @@ class __TopBar extends React.Component<ITopBarProps> {
             "accessToken",
             response.logout.accessToken,
             {
-              domain: "opinionated.baby",
+              domain: ".opinionated.baby",
               secure: true,
             },
           );
