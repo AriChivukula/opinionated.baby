@@ -58,9 +58,9 @@ const tools: ITools[] = [
   },
   {
     graphic: "bug_report",
-    link: "https://newrelic.com/",
+    link: "https://rollbar.com/",
     subtitle: "Debugging",
-    title: "New Relic",
+    title: "Rollbar",
   },
   {
     graphic: "share",

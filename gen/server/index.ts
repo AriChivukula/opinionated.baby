@@ -10,6 +10,10 @@ export const module: Module = Module.new({
       withDefaultAs: "lambda",
     }),
     Import.new({
+      name: "rollbar",
+      withAllAs: "Rollbar",
+    }),
+    Import.new({
       name: "body-parser",
       with: ["json", "urlencoded"],
     }),
@@ -28,9 +32,6 @@ export const module: Module = Module.new({
     Import.new({
       name: "helmet",
       withDefaultAs: "helmet",
-    }),
-    Import.new({
-      name: "newrelic",
     }),
     Import.new({
       name: "./server",

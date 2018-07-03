@@ -65,10 +65,7 @@ resource "aws_iam_role" "ob_iam" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Action": [
-        "sts:AssumeRole",
-        "neptune-db:*"
-      ],
+      "Action": "sts:AssumeRole",
       "Principal": {
         "Service": "lambda.amazonaws.com"
       },
@@ -80,7 +77,12 @@ resource "aws_iam_role" "ob_iam" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "ob_attachment" {
+resource "aws_iam_role_policy_attachment" "ob_attachment_lambda" {
   role       = "${aws_iam_role.ob_iam.name}"
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+resource "aws_iam_role_policy_attachment" "ob_attachment_neptune" {
+  role       = "${aws_iam_role.ob_iam.name}"
+  policy_arn = "arn:aws:iam::aws:policy/NeptuneConsoleFullAccess"
 }

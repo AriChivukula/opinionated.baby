@@ -3,11 +3,10 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<main, handler>>
- * SIGNED<<+vBlzuKU1fU/A+QvRwoJLyPQbCripCZxQb6i5D65LQ8rYEJEaVHGxjVW8Bia9RvxlSfLAJ6X9y9OScSZIgOODg==>>
+ * SIGNED<<wk0RxDdf7rQb5KfcgjNqlo+l5wCeOkUz+lc8iB0QOaTdXGH6nkayMoBPe3PoQVDfqtKU09PC7Ppw8766uAfhSg==>>
  */
 
 import "@babel/polyfill";
-import "newrelic";
 
 import lambda from "aws-serverless-express";
 import {
@@ -18,6 +17,7 @@ import cors from "cors";
 import express from "express";
 import bearer from "express-bearer-token";
 import helmet from "helmet";
+import * as Rollbar from "rollbar";
 
 import {
   graphQL,
@@ -38,6 +38,13 @@ app.use((req: express.Request, res: express.Response, next: () => void): void =>
 });
 
 app.use("/graphql", graphQL);
+
+app.use((new Rollbar({
+  accessToken: process.env.TF_VAR_ROLLBAR_SERVER,
+  verbose: true,
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})).errorHandler());
 /* BESPOKE END <<main>> */
 
 export function handler(
