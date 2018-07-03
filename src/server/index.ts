@@ -39,7 +39,12 @@ app.use((req: express.Request, res: express.Response, next: () => void): void =>
 
 app.use("/graphql", graphQL);
 
-app.use((new Rollbar(process.env.ROLLBAR)).errorHandler());
+app.use((new Rollbar({
+  accessToken: process.env.ROLLBAR,
+  verbose: true,
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})).errorHandler());
 /* BESPOKE END <<main>> */
 
 export function handler(
