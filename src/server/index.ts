@@ -40,7 +40,7 @@ app.use((req: express.Request, res: express.Response, next: () => void): void =>
 app.use("/graphql", graphQL);
 
 app.use((new Rollbar({
-  accessToken: process.env.ROLLBAR,
+  accessToken: process.env.TF_VAR_ROLLBAR_SERVER,
   verbose: true,
   captureUncaught: true,
   captureUnhandledRejections: true,
