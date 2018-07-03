@@ -10,6 +10,10 @@ export const module: Module = Module.new({
       withDefaultAs: "lambda",
     }),
     Import.new({
+      name: "rollbar",
+      withDefaultAs: "Rollbar",
+    }),
+    Import.new({
       name: "body-parser",
       with: ["json", "urlencoded"],
     }),
