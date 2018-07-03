@@ -3,11 +3,10 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<main, handler>>
- * SIGNED<<vnNPjDaMg1AMT1OKhSpoKo83Y6cLO5wa0IjTVel+vGC3id9PfUElNluhWXpoTiG5Lt/LNkKq5fW3D4zaKfF0uw==>>
+ * SIGNED<<wk0RxDdf7rQb5KfcgjNqlo+l5wCeOkUz+lc8iB0QOaTdXGH6nkayMoBPe3PoQVDfqtKU09PC7Ppw8766uAfhSg==>>
  */
 
 import "@babel/polyfill";
-import "newrelic";
 
 import lambda from "aws-serverless-express";
 import {
@@ -18,7 +17,7 @@ import cors from "cors";
 import express from "express";
 import bearer from "express-bearer-token";
 import helmet from "helmet";
-import Rollbar from "rollbar";
+import * as Rollbar from "rollbar";
 
 import {
   graphQL,
