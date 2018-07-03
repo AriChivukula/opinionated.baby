@@ -14,6 +14,8 @@ variable "DOMAIN" {}
 
 variable "GREMLIN_HOST" {}
 
+variable "ROLLBAR" {}
+
 provider "aws" {}
 
 data "aws_acm_certificate" "ob_certificate" {
@@ -51,6 +53,7 @@ resource "aws_lambda_function" "ob_lambda" {
       TF_VAR_DOMAIN        = "${var.DOMAIN}"
       TF_VAR_BUILD         = "${var.BUILD}"
       TF_VAR_GREMLIN_HOST  = "${var.GREMLIN_HOST}"
+      TF_VAR_ROLLBAR       = "${var.ROLLBAR}"
       DEBUG                = "*"
     }
   }
