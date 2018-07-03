@@ -11,7 +11,7 @@ export const module: Module = Module.new({
     }),
     Import.new({
       name: "rollbar",
-      withDefaultAs: "Rollbar",
+      withAllAs: "Rollbar",
     }),
     Import.new({
       name: "body-parser",
@@ -32,9 +32,6 @@ export const module: Module = Module.new({
     Import.new({
       name: "helmet",
       withDefaultAs: "helmet",
-    }),
-    Import.new({
-      name: "newrelic",
     }),
     Import.new({
       name: "./server",
