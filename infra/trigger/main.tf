@@ -65,7 +65,10 @@ resource "aws_iam_role" "ob_iam" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Action": "sts:AssumeRole",
+      "Action": [
+        "sts:AssumeRole",
+        "neptune-db:*"
+      ],
       "Principal": {
         "Service": "lambda.amazonaws.com"
       },
