@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<main, handler>>
- * SIGNED<<+vBlzuKU1fU/A+QvRwoJLyPQbCripCZxQb6i5D65LQ8rYEJEaVHGxjVW8Bia9RvxlSfLAJ6X9y9OScSZIgOODg==>>
+ * SIGNED<<vnNPjDaMg1AMT1OKhSpoKo83Y6cLO5wa0IjTVel+vGC3id9PfUElNluhWXpoTiG5Lt/LNkKq5fW3D4zaKfF0uw==>>
  */
 
 import "@babel/polyfill";
@@ -18,6 +18,7 @@ import cors from "cors";
 import express from "express";
 import bearer from "express-bearer-token";
 import helmet from "helmet";
+import Rollbar from "rollbar";
 
 import {
   graphQL,
