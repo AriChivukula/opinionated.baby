@@ -143,6 +143,7 @@ const tools: ITools[] = [
 ];
 
 const releases: IReleases[] = [
+  { titleA: "Wild", titleB: "Warrior", version: "v9" },
   { titleA: "Wild", titleB: "Warrior", version: "v8" },
   { titleA: "Pragmatic", titleB: "Plotter", version: "v7" },
   { titleA: "Radical", titleB: "Robot", version: "v6" },
