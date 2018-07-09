@@ -9,7 +9,7 @@
     "github": "@arichiv"
   },
   "jest": {
-    "collectCoverage": true
+    "collectCoverage": true,
     "coverageDirectory": "./coverage/",
     "roots": [
       "<rootDir>/build/2/"
