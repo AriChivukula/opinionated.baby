@@ -7,7 +7,7 @@ yarn jest -u build/2/website
 cp -R build/2/website/__tests__/__snapshots__ src/website/__tests__/__snapshots__
 terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=tfstate/trigger.tfstate" infra/trigger
 terraform apply -auto-approve infra/trigger
-git remote add target "https://arichiv:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
+git remote add target "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
 git add -A
 git commit -m "ACTUALIZE ${TF_VAR_BUILD}"
 git push target HEAD:$TRAVIS_BRANCH
