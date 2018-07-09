@@ -93,16 +93,16 @@ const tools: ITools[] = [
     title: "yarn",
   },
   {
-    graphic: "line_style",
-    link: "https://gulpjs.com/",
-    subtitle: "Toolchain",
-    title: "Gulp",
-  },
-  {
     graphic: "playlist_add_check",
     link: "https://facebook.github.io/jest/",
     subtitle: "Testing",
     title: "Jest",
+  },
+  {
+    graphic: "line_style",
+    link: "https://codecov.io/",
+    subtitle: "Coverage",
+    title: "Codecov",
   },
   {
     graphic: "graphic_eq",
