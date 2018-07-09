@@ -93,16 +93,16 @@ const tools: ITools[] = [
     title: "yarn",
   },
   {
-    graphic: "build",
-    link: "https://gulpjs.com/",
-    subtitle: "Toolchain",
-    title: "Gulp",
-  },
-  {
     graphic: "playlist_add_check",
     link: "https://facebook.github.io/jest/",
     subtitle: "Testing",
     title: "Jest",
+  },
+  {
+    graphic: "line_style",
+    link: "https://codecov.io/",
+    subtitle: "Coverage",
+    title: "Codecov",
   },
   {
     graphic: "graphic_eq",
@@ -123,19 +123,19 @@ const tools: ITools[] = [
     title: "React",
   },
   {
-    graphic: "local_library",
+    graphic: "build",
     link: "https://facebook.github.io/relay/",
     subtitle: "Fetch",
     title: "Relay",
   },
   {
-    graphic: "style",
+    graphic: "local_library",
     link: "https://material.io/components/web/",
     subtitle: "Theme",
     title: "Material Design",
   },
   {
-    graphic: "line_style",
+    graphic: "style",
     link: "https://sass-lang.com/",
     subtitle: "Style",
     title: "SASS",

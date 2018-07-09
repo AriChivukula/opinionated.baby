@@ -328,16 +328,16 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
-                build
+                playlist_add_check
               </i>
               <span
                 class="mdc-list-item__text"
               >
-                Gulp
+                Jest
                 <span
                   class="mdc-list-item__secondary-text"
                 >
-                  Toolchain
+                  Testing
                 </span>
               </span>
             </div>
@@ -357,16 +357,16 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
-                playlist_add_check
+                line_style
               </i>
               <span
                 class="mdc-list-item__text"
               >
-                Jest
+                Codecov
                 <span
                   class="mdc-list-item__secondary-text"
                 >
-                  Testing
+                  Coverage
                 </span>
               </span>
             </div>
@@ -473,7 +473,7 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
-                local_library
+                build
               </i>
               <span
                 class="mdc-list-item__text"
@@ -502,7 +502,7 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
-                style
+                local_library
               </i>
               <span
                 class="mdc-list-item__text"
@@ -531,7 +531,7 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
-                line_style
+                style
               </i>
               <span
                 class="mdc-list-item__text"
@@ -1213,16 +1213,16 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
-                build
+                playlist_add_check
               </i>
               <span
                 class="mdc-list-item__text"
               >
-                Gulp
+                Jest
                 <span
                   class="mdc-list-item__secondary-text"
                 >
-                  Toolchain
+                  Testing
                 </span>
               </span>
             </div>
@@ -1242,16 +1242,16 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
-                playlist_add_check
+                line_style
               </i>
               <span
                 class="mdc-list-item__text"
               >
-                Jest
+                Codecov
                 <span
                   class="mdc-list-item__secondary-text"
                 >
-                  Testing
+                  Coverage
                 </span>
               </span>
             </div>
@@ -1358,7 +1358,7 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
-                local_library
+                build
               </i>
               <span
                 class="mdc-list-item__text"
@@ -1387,7 +1387,7 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
-                style
+                local_library
               </i>
               <span
                 class="mdc-list-item__text"
@@ -1416,7 +1416,7 @@ Array [
               <i
                 class="material-icons mdc-list-item__graphic"
               >
-                line_style
+                style
               </i>
               <span
                 class="mdc-list-item__text"
