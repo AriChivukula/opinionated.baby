@@ -20,5 +20,3 @@ jobs:
   - stage: Cron
     if: type = cron
     script: bash shell/cron.sh
-after_success:
-- yarn codecov
