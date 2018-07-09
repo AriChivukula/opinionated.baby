@@ -21,4 +21,4 @@ jobs:
     if: type = cron
     script: bash shell/cron.sh
 after_success:
-- codecov
+- yarn codecov
