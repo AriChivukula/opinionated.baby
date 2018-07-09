@@ -197,6 +197,10 @@ locals {
       file  = "images/v8.jpg"
       type = "image/jpeg"
     },
+    {
+      file  = "images/v9.jpg"
+      type = "image/jpeg"
+    },
   ]
 }
 
