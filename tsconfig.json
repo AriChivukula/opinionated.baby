@@ -6,6 +6,7 @@
     "jsx": "React",
     "moduleResolution": "Node",
     "target": "ES6",
+    "sourceMap": true,
     "strictNullChecks": true
   },
   "exclude": [
