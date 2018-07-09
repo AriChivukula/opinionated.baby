@@ -9,11 +9,8 @@
     "github": "@arichiv"
   },
   "jest": {
-    "coverageThreshold": {
-      "global": {
-        "statements": 50
-      }
-    },
+    "collectCoverage": true
+    "coverageDirectory": "./coverage/",
     "roots": [
       "<rootDir>/build/2/"
     ],
