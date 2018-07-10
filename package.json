@@ -78,7 +78,7 @@
     "gulp-typescript": "5.0.0-alpha.3",
     "js-cookie": "2.2.0",
     "mocha": "5.2.0",
-    "nyc": "13.0.0",
+    "nyc": "12.0.2",
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-relay": "1.6.0",
