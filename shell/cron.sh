@@ -1,6 +1,5 @@
 set -e
 
-bash shell/build_for_prod.sh
 (( LOOP_START = TRAVIS_BUILD_NUMBER - 100 ))
 (( LOOP_END = TRAVIS_BUILD_NUMBER - 1 ))
 for TF_VAR_BUILD in `seq $LOOP_START $LOOP_END`
