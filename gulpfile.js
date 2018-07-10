@@ -110,7 +110,7 @@ gulp.task(
   "build:3:website",
   () => gulp.src("build/2/website/index.js")
     .pipe(bro({
-      transform: [["uglifyify", { global: true }]],
+      transform: [["uglifyify", { global: true, sourceMap: false }]],
     }))
     .pipe(gulp.dest("build/3/website")),
 );
