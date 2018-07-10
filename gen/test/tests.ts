@@ -6,8 +6,8 @@ import {
 export const googleTest: Module = Module.new({
   content: [
     Bespoke.new({
-      name: "test",
+      name: "google",
     }),
   ],
-  destination: "src/server/test/google.ts",
+  destination: "src/test/google.ts",
 });
