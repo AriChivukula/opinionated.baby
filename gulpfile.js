@@ -6,7 +6,6 @@ var rollup = require("rollup-stream");
 var sass = require("gulp-sass");
 var shell = require("gulp-shell");
 var source = require("vinyl-source-stream");
-var sourcemaps = require("gulp-sourcemaps");
 var ts = require("gulp-typescript");
 
 var pkg = require("./package.json");
@@ -15,10 +14,8 @@ var project = ts.createProject("tsconfig.json");
 gulp.task(
   "build:1:typescript",
   () => gulp.src(["src/**/*.ts", "src/**/*.tsx"])
-    .pipe(sourcemaps.init())
     .pipe(project())
     .js
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest("build/1")),
 );
 
@@ -57,11 +54,9 @@ gulp.task(
 gulp.task(
   "build:2:server",
   () => gulp.src("build/1/server/**/*.js")
-    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(babel({
       presets: [["@babel/preset-env", { "modules": false }]],
     }))
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest("build/2/server")),
 );
 
@@ -74,7 +69,6 @@ gulp.task(
 gulp.task(
   "build:2:website",
   () => gulp.src("build/1/website/**/*.js")
-    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(babel({
       plugins: ["relay"],
       presets: ["@babel/preset-env"],
@@ -82,7 +76,6 @@ gulp.task(
     .pipe(replace("ENV_BUILD", process.env.TF_VAR_BUILD))
     .pipe(replace("ENV_DOMAIN", process.env.TF_VAR_DOMAIN))
     .pipe(replace("ENV_NAME", process.env.TF_VAR_NAME))
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest("build/2/website")),
 );
 
@@ -117,7 +110,7 @@ gulp.task(
   "build:3:website",
   () => gulp.src("build/2/website/index.js")
     .pipe(bro({
-      transform: [["uglifyify", { global: true, sourceMap: false }]],
+      transform: [["uglifyify", { global: true }]],
     }))
     .pipe(gulp.dest("build/3/website")),
 );
