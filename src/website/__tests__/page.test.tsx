@@ -84,6 +84,7 @@ test(
     expect(
       Enzyme.render(
         Enzyme.mount(
+          // @ts-ignore
           context(ctx, <Page data={null} />),
         ),
       ),
@@ -110,6 +111,7 @@ test(
     expect(
       Enzyme.render(
         Enzyme.mount(
+          // @ts-ignore
           context(ctx, <Page {...props} />),
         ),
       ),
@@ -139,6 +141,7 @@ test(
     expect(
       Enzyme.render(
         Enzyme.mount(
+          // @ts-ignore
           context(ctx, <Page {...props} />),
         ),
       ),
