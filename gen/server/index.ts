@@ -56,7 +56,7 @@ export const module: Module = Module.new({
       ],
       inTypes: [
         Type.Argument.new({ name: "event", type: "object" }),
-        Type.Argument.new({ name: "context", type: "lambda.Context" }),
+        Type.Argument.new({ name: "context", type: "object" }),
       ],
       name: "handler",
       outType: Type.Anonymous.new({ type: "void" }),
