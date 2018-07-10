@@ -4,7 +4,7 @@ export const module: Module = Module.new({
   content: [
     Import.new({
       name: "express",
-      withDefaultAs: "express",
+      withAllAs: "express",
     }),
     Import.new({
       name: "./google",
