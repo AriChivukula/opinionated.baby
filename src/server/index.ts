@@ -67,6 +67,7 @@ export function handler(
       ],
     ),
     event,
+    // @ts-lint
     context,
   );
   /* BESPOKE END <<handler>> */
