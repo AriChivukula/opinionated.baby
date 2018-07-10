@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<main, handler>>
- * SIGNED<<MQqHjbQafTGbir/xcAc6qcpT8O6lLkeK+tSKwe22oELfepIJQkWDfc3mXKxsjvXMAFlzu1emk2Yctp4P8AHKdA==>>
+ * SIGNED<<Ue2WYNaafqMjyFmHyFd3o8qYipyDDl0NuElGbLFyfCZp6M1Hg162MfhTzCqAOsJSiCXQl41FZfffgED2tgQx9w==>>
  */
 
 import "@babel/polyfill";
@@ -49,7 +49,7 @@ app.use((new Rollbar({
 
 export function handler(
   event: object,
-  context: lambda.Context,
+  context: object,
 ): void {
   /* BESPOKE START <<handler>> */
   lambda.proxy(
