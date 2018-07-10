@@ -3,20 +3,20 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<main, handler>>
- * SIGNED<<wk0RxDdf7rQb5KfcgjNqlo+l5wCeOkUz+lc8iB0QOaTdXGH6nkayMoBPe3PoQVDfqtKU09PC7Ppw8766uAfhSg==>>
+ * SIGNED<<Ue2WYNaafqMjyFmHyFd3o8qYipyDDl0NuElGbLFyfCZp6M1Hg162MfhTzCqAOsJSiCXQl41FZfffgED2tgQx9w==>>
  */
 
 import "@babel/polyfill";
 
-import lambda from "aws-serverless-express";
+import * as lambda from "aws-serverless-express";
 import {
   json,
   urlencoded,
 } from "body-parser";
-import cors from "cors";
-import express from "express";
-import bearer from "express-bearer-token";
-import helmet from "helmet";
+import * as cors from "cors";
+import * as express from "express";
+import * as bearer from "express-bearer-token";
+import * as helmet from "helmet";
 import * as Rollbar from "rollbar";
 
 import {
@@ -55,7 +55,7 @@ export function handler(
   lambda.proxy(
     lambda.createServer(
       app,
-      null,
+      undefined,
       [
         "application/octet-stream",
         "font/eot",

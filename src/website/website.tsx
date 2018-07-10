@@ -43,7 +43,7 @@ export function render(
       }),
       authMiddleware({
         allowEmptyToken: true,
-        token: (): string => cookie.get("accessToken"),
+        token: (): string => cookie.get("accessToken") || "",
       }),
     ]),
     store: new Store(new RecordSource()),

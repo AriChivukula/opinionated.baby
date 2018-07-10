@@ -45,10 +45,6 @@ export const TopBarReact: Module = React({
       name: "data",
       type: "TopBarQuery",
     }),
-    Type.Required.new({
-      name: "relay",
-      type: "Relay",
-    }),
   ],
   relayMutation: true,
   relayType: ERelayType.FRAGMENT,

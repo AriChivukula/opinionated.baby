@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website/views.ts::TopBarReact>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<dQxgFiFUe81+bAvrHr3b9WDhYc1AHf+yLyVrX8KnjU+iRPynIjto2D9r8e62jv2H1SujYFzz/PiWf60aBbv6ag==>>
+ * SIGNED<<nERiIastBWG6bZUM0PoT5oM6/QwQWmfo3Q1Ag5q6pFRHzZsUX8oTuH3BurNfT+8w5OUItXuFsRmbGfNix4VLDw==>>
  */
 
 import * as React from "react";
@@ -16,7 +16,7 @@ import {
 /* BESPOKE START <<imports>> */
 import * as cookie from "js-cookie";
 
-import Relay from "relay-runtime";
+import * as Relay from "relay-runtime";
 import {
   Toolbar,
   ToolbarFixedAdjust,
@@ -45,7 +45,6 @@ import {
 
 export interface ITopBarProps {
   data: TopBarQuery;
-  relay: Relay;
 }
 
 class __TopBar extends React.Component<ITopBarProps> {

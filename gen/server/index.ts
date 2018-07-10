@@ -7,7 +7,7 @@ export const module: Module = Module.new({
     }),
     Import.new({
       name: "aws-serverless-express",
-      withDefaultAs: "lambda",
+      withAllAs: "lambda",
     }),
     Import.new({
       name: "rollbar",
@@ -19,19 +19,19 @@ export const module: Module = Module.new({
     }),
     Import.new({
       name: "cors",
-      withDefaultAs: "cors",
+      withAllAs: "cors",
     }),
     Import.new({
       name: "express",
-      withDefaultAs: "express",
+      withAllAs: "express",
     }),
-    Import.new({
+     Import.new({
       name: "express-bearer-token",
-      withDefaultAs: "bearer",
+      withAllAs: "bearer",
     }),
     Import.new({
       name: "helmet",
-      withDefaultAs: "helmet",
+      withAllAs: "helmet",
     }),
     Import.new({
       name: "./server",

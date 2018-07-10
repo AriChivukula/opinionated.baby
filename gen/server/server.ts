@@ -4,11 +4,11 @@ export const module: Module = Module.new({
   content: [
     Import.new({
       name: "express",
-      withDefaultAs: "express",
+      withAllAs: "express",
     }),
     Import.new({
       name: "express-graphql",
-      withDefaultAs: "graphqlHTTP",
+      withAllAs: "graphqlHTTP",
     }),
     Import.new({
       name: "fs",

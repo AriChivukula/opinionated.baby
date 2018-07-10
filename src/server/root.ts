@@ -3,10 +3,10 @@
  *
  * SOURCE<<gen/server/root.ts::module>>
  * BESPOKE<<genRoot>>
- * SIGNED<<Sf89ynE9jHElM9HY+IlpIYgB2o9/Xw3iEF6AKealciE1NjabcyCN0UQqNIY1H/wOEuqprVC8V2EfkKTIq3tvlQ==>>
+ * SIGNED<<yF/EPJSI/BOS/l72eD4xkDh7mcwe8BbByWXLs5VMsJ1/JyRD1+kQOdhnzZKn5O540XH4rIgk5aFs6OEywrkyqw==>>
  */
 
-import express from "express";
+import * as express from "express";
 
 import {
   genAccessToken,
@@ -33,7 +33,10 @@ export async function genRoot(
     logout: async (): Promise<object> => ({
       accessToken: "",
     }),
-    me: async (): Promise<object | null> => genNullOnThrow(async () => genUserForAccessToken(req.token)),
+    me: async (): Promise<object | null> => genNullOnThrow(
+      // @ts-ignore
+      async () => genUserForAccessToken(req.token),
+    ),
   };
   /* BESPOKE END <<genRoot>> */
 }
