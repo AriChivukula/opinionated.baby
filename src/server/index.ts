@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server/index.ts::module>>
  * BESPOKE<<main, handler>>
- * SIGNED<<ZHoOjDzfsDoKnFj2o0ZcQhSxipQOam5BPOTpj1Clva7N1IVdC7nUkOtqIOMpglj7+zEaRSNjr9Bdnx5klfbUmA==>>
+ * SIGNED<<Ue2WYNaafqMjyFmHyFd3o8qYipyDDl0NuElGbLFyfCZp6M1Hg162MfhTzCqAOsJSiCXQl41FZfffgED2tgQx9w==>>
  */
 
 import "@babel/polyfill";
@@ -15,6 +15,7 @@ import {
 } from "body-parser";
 import * as cors from "cors";
 import * as express from "express";
+import * as bearer from "express-bearer-token";
 import * as helmet from "helmet";
 import * as Rollbar from "rollbar";
 
