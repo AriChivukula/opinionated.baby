@@ -20,3 +20,4 @@ jobs:
   - stage: Cron
     if: type = cron
     script: bash shell/cron.sh
+after_script: cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
