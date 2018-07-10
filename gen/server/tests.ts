@@ -9,5 +9,5 @@ export const googleTest: Module = Module.new({
       name: "test",
     }),
   ],
-  destination: "src/server/__tests__/google.test.ts",
+  destination: "src/server/test/google.test.ts",
 });
