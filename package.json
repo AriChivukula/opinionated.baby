@@ -19,6 +19,9 @@
       "json",
       "node"
     ],
+    "roots": [
+      "<rootDir>/"
+    ],
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
