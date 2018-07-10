@@ -51,7 +51,7 @@ export function render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" render={renderer} />
-        <Route path="/index.html" render={renderer}/>
+        <Route path="/index.html" render={renderer} />
         <Route component={FourOhFour} />
       </Switch>
     </BrowserRouter>,
