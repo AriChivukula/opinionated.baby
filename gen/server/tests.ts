@@ -1,12 +1,13 @@
 import {
-  Jest,
+  Bespoke,
   Module,
 } from "typescriptase";
 
-export const googleTest: Module = Jest({
-  destination: "src/server/__tests__/google.test.ts",
-  tests: [
-    "getLoginURL",
-    "genAccessTokenInfo",
+export const googleTest: Module = Module({
+  content: [
+    Bespoke.new({
+      name: "test",
+    }),
   ],
+  destination: "src/server/__tests__/google.test.ts",
 });
