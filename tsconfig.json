@@ -35,7 +35,7 @@
     ],
     "module": "ESNext",
     "moduleResolution": "Node",
-    "target": "ESNext",
+    "target": "ES6",
     "sourceMap": true,
     "strict": true
   }
