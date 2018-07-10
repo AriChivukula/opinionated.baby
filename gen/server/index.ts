@@ -23,7 +23,7 @@ export const module: Module = Module.new({
     }),
     Import.new({
       name: "express",
-      withAllAs: "express",
+      withDefaultAs: "express",
     }),
      Import.new({
       name: "express-bearer-token",
