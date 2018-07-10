@@ -10,7 +10,7 @@
   },
   "jest": {
     "collectCoverage": true,
-    "collectFrom": [
+    "collectCoverageFrom": [
       "**/*.{ts,tsx}",
       "!**/node_modules/**",
       "!**/vendor/**"
