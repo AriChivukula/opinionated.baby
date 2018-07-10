@@ -12,7 +12,8 @@
     "extension": [
       ".ts",
       ".tsx"
-    ]
+    ],
+    "instrument": true
   },
   "private": true,
   "dependencies": {
