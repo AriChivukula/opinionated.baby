@@ -23,7 +23,7 @@ it(
   "getLoginURL",
   async (): Promise<void> => {
     const url: string = getLoginURL();
-    chai.assert.equal(url, "/accounts.google.com/");
+    chai.expect(url).to.include("accounts.google.com");
   },
 );
 
