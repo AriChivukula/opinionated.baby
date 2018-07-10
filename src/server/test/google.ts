@@ -7,9 +7,10 @@
  */
 
 /* BESPOKE START <<test>> */
+import "mocha";
+
 import chai from "chai";
-import chaiAsPromised "chai-as-promised";
-import 'mocha';
+import chaiAsPromised from "chai-as-promised";
 
 import {
   genAccessTokenInfo,
