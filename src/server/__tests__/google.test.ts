@@ -7,7 +7,7 @@
  */
 
 /* BESPOKE START <<test>> */
-import assert from "assert";
+import chai from "chai";
 
 import {
   genAccessTokenInfo,
@@ -18,16 +18,14 @@ it(
   "getLoginURL",
   async (): Promise<void> => {
     const url: string = getLoginURL();
-    assert.equal(url, "/accounts.google.com/");
+    chai.assert.equal(url, "/accounts.google.com/");
   },
 );
 
 it(
   "genAccessTokenInfo",
   async (): Promise<void> => {
-    await expect(genAccessTokenInfo("ERROR"))
-      .rejects
-      .toThrow(Error);
+    await chai.expect(genAccessTokenInfo("ERROR")).to.throw();
   },
 );
 /* BESPOKE END <<test>> */
