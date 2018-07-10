@@ -6,7 +6,7 @@ import {
 export const googleTest: Module = Module.new({
   content: [
     Bespoke.new({
-      name: "google",
+      name: "test",
     }),
   ],
   destination: "src/test/google.ts",
