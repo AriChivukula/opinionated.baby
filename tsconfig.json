@@ -33,7 +33,7 @@
       "ESNext.AsyncIterable",
       "ESNext.Array"
     ],
-    "module": "ES6",
+    "module": "CommonJS",
     "moduleResolution": "Node",
     "target": "ES3",
     "sourceMap": true,
