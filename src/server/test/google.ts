@@ -10,7 +10,7 @@
 import "mocha";
 
 import * as chai from "chai";
-import chaiAsPromised from "chai-as-promised";
+import * as chaiAsPromised from "chai-as-promised";
 
 import {
   genAccessTokenInfo,
