@@ -25,7 +25,7 @@ it(
 it(
   "genAccessTokenInfo",
   async (): Promise<void> => {
-    await chai.expect(genAccessTokenInfo("ERROR")).to.throw();
+    return genAccessTokenInfo("ERROR").should.eventually.throw();
   },
 );
 /* BESPOKE END <<test>> */
