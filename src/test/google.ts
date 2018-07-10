@@ -21,7 +21,7 @@ chai.use(chaiAsPromised);
 
 it(
   "getLoginURL",
-  async (): Promise<void> => {
+  (): void => {
     const url: string = getLoginURL();
     chai.expect(url).to.include("accounts.google.com");
   },
