@@ -142,6 +142,27 @@ const tools: ITools[] = [
   },
 ];
 
+function renderContent(
+): JSX.Element {
+  return (
+    <>
+      {tools.map((item: ITools, index: number) => (
+        <GridCell span={3} key={index}>
+          <List twoLine>
+            <a onClick={(): void => { goto(item.link); }}>
+              <SimpleListItem
+                graphic={item.graphic}
+                text={item.title}
+                secondaryText={item.subtitle}
+              />
+            </a>
+          </List>
+        </GridCell>
+      ))}
+    </>
+  );
+}
+
 const releases: IReleases[] = [
   { titleA: "Bossy", titleB: "Biker", version: "v9" },
   { titleA: "Wild", titleB: "Warrior", version: "v8" },
@@ -154,6 +175,38 @@ const releases: IReleases[] = [
   { titleA: "Dogged", titleB: "Dapper", version: "v1" },
   { titleA: "Cocksure", titleB: "Castle", version: "v0" },
 ];
+
+function renderReleases(
+): JSX.Element {
+  return (
+    <>
+      {releases.map((item: IReleases, index: number) => (
+        <GridCell span={4} key={index}>
+          <Card>
+            <CardPrimaryAction
+              onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/${item.version}/`); }}>
+              <CardMedia
+                square
+                style={{backgroundImage: `url(images/${item.version}.jpg)`}}
+              />
+              <Typography
+                use="headline4"
+                style={{padding: "1rem"}}>
+                <Typography theme="text-secondary-on-background">
+                  {item.version}
+                </Typography>
+                <br />
+                {item.titleA}
+                <br />
+                {item.titleB}
+              </Typography>
+            </CardPrimaryAction>
+          </Card>
+        </GridCell>
+      ))}
+    </>
+  );
+}
 /* BESPOKE END <<imports>> */
 
 export function _Content(
@@ -187,19 +240,7 @@ export function _Content(
           Important choices I made for you
         </Typography>
       </GridCell>
-      {tools.map((item: ITools, index: number) => (
-        <GridCell span={3} key={index}>
-          <List twoLine>
-            <a onClick={(): void => { goto(item.link); }}>
-              <SimpleListItem
-                graphic={item.graphic}
-                text={item.title}
-                secondaryText={item.subtitle}
-              />
-            </a>
-          </List>
-        </GridCell>
-      ))}
+      {renderContent()}
       <GridCell span={12}>
         <Typography use="headline2" tag="div">
           <span style={{textDecoration: "line-through"}}>
@@ -231,30 +272,7 @@ export function _Content(
           Release history
         </Typography>
       </GridCell>
-      {releases.map((item: IReleases, index: number) => (
-        <GridCell span={4} key={index}>
-          <Card>
-            <CardPrimaryAction
-              onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/${item.version}/`); }}>
-              <CardMedia
-                square
-                style={{backgroundImage: `url(images/${item.version}.jpg)`}}
-              />
-              <Typography
-                use="headline4"
-                style={{padding: "1rem"}}>
-                <Typography theme="text-secondary-on-background">
-                  {item.version}
-                </Typography>
-                <br />
-                {item.titleA}
-                <br />
-                {item.titleB}
-              </Typography>
-            </CardPrimaryAction>
-          </Card>
-        </GridCell>
-      ))}
+      {renderReleases()}
     </Grid>
   );
   /* BESPOKE END <<render>> */
