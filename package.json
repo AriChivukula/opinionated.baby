@@ -10,10 +10,15 @@
   },
   "jest": {
     "collectCoverage": true,
+    "collectFrom": [
+      "**/*.{ts,tsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "coverageDirectory": "<rootDir>/coverage/",
     "roots": [
       "<rootDir>/src/"
     ],
-    "coverageDirectory": "<rootDir>/coverage/",
     "moduleFileExtensions": [
       "ts",
       "tsx",
