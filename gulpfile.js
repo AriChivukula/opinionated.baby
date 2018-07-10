@@ -7,6 +7,7 @@ var sass = require("gulp-sass");
 var shell = require("gulp-shell");
 var source = require("vinyl-source-stream");
 var ts = require("gulp-typescript");
+var uglify = require("rollup-plugin-uglify");
 
 var pkg = require("./package.json");
 var project = ts.createProject("tsconfig.json");
@@ -95,6 +96,7 @@ gulp.task(
   () => rollup({
     input: "build/2/server/index.js",
     format: "cjs",
+    plugins: [ uglify() ]
   })
     .pipe(source("index.js"))
     .pipe(gulp.dest("build/3/server")),
