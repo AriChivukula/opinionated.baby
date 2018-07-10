@@ -19,9 +19,6 @@
       "json",
       "node"
     ],
-    "roots": [
-      "<rootDir>/build/2/"
-    ],
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
