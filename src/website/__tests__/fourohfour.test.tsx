@@ -61,6 +61,7 @@ test(
     expect(
       Enzyme.render(
         Enzyme.mount(
+          // @ts-ignore
           <BrowserRouter>
             <FourOhFour />
           </BrowserRouter>,
