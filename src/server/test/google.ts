@@ -8,11 +8,14 @@
 
 /* BESPOKE START <<test>> */
 import chai from "chai";
+import chaiAsPromised "chai-as-promised";
 
 import {
   genAccessTokenInfo,
   getLoginURL,
 } from "../google";
+
+chai.use(chaiAsPromised);
 
 it(
   "getLoginURL",
