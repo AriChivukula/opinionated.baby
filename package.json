@@ -9,10 +9,12 @@
     "github": "@arichiv"
   },
   "nyc": {
+    "all": true,
     "include": [
       "src/**/*.ts",
       "src/**/*.tsx"
     ],
+    "instrument": true,
     "extension": [
       ".ts",
       ".tsx"
@@ -21,11 +23,9 @@
       "ts-node/register"
     ],
     "reporter": [
-      "text-lcov",
-      "lcov"
+      "html"
     ],
-    "sourceMap": true,
-    "instrument": true
+    "sourceMap": true
   },
   "private": true,
   "dependencies": {
