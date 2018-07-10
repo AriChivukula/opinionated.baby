@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
-    "jsx": "React",
+    "jsx": "react",
     "moduleResolution": "Node",
     "target": "ES6",
     "sourceMap": true,
-    "strictNullChecks": true
-  },
-  "exclude": [
-    "src/website/views/__generated__/*"
-  ]
+    "strict": true
+  }
 }
