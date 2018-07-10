@@ -7,16 +7,22 @@
  */
 
 /* BESPOKE START <<test>> */
-test(
+import assert from "assert";
+
+import {
+  genAccessTokenInfo,
+  getLoginURL,
+} from "../google";
+
+it(
   "getLoginURL",
   async (): Promise<void> => {
     const url: string = getLoginURL();
-    expect(url)
-      .toMatch("/accounts.google.com/");
+    assert.equal(url, "/accounts.google.com/");
   },
 );
 
-test(
+it(
   "genAccessTokenInfo",
   async (): Promise<void> => {
     await expect(genAccessTokenInfo("ERROR"))
