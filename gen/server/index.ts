@@ -19,7 +19,7 @@ export const module: Module = Module.new({
     }),
     Import.new({
       name: "cors",
-      withAllAs: "cors",
+      withDefaultAs: "cors",
     }),
     Import.new({
       name: "express",
@@ -27,11 +27,11 @@ export const module: Module = Module.new({
     }),
      Import.new({
       name: "express-bearer-token",
-      withAllAs: "bearer",
+      withDefaultAs: "bearer",
     }),
     Import.new({
       name: "helmet",
-      withAllAs: "helmet",
+      withDefaultAs: "helmet",
     }),
     Import.new({
       name: "./server",
