@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1531187175238" clover="3.2.0">
+  <project timestamp="1531187175238" name="All files">
+    <metrics statements="122" coveredstatements="87" conditionals="178" coveredconditionals="85" methods="58" coveredmethods="31" elements="358" coveredelements="203" complexity="0" loc="122" ncloc="122" packages="3" files="6" classes="6">
+      <package name="website">
+        <metrics statements="6" coveredstatements="2" conditionals="6" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <file name="util.js" path="/home/travis/build/AriChivukula/opinionated.baby/build/2/website/util.js">
+          <metrics statements="6" coveredstatements="2" conditionals="6" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="16" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="website.views">
+        <metrics statements="113" coveredstatements="82" conditionals="172" coveredconditionals="85" methods="57" coveredmethods="31"/>
+        <file name="Content.js" path="/home/travis/build/AriChivukula/opinionated.baby/build/2/website/views/Content.js">
+          <metrics statements="18" coveredstatements="14" conditionals="16" coveredconditionals="11" methods="8" coveredmethods="4"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="20" count="16" type="cond" truecount="11" falsecount="5"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="112" count="1" type="stmt"/>
+          <line num="157" count="4" type="stmt"/>
+          <line num="170" count="0" type="stmt"/>
+          <line num="178" count="64" type="stmt"/>
+          <line num="185" count="0" type="stmt"/>
+          <line num="209" count="0" type="stmt"/>
+          <line num="217" count="40" type="stmt"/>
+          <line num="222" count="0" type="stmt"/>
+        </file>
+        <file name="FourOhFour.js" path="/home/travis/build/AriChivukula/opinionated.baby/build/2/website/views/FourOhFour.js">
+          <metrics statements="7" coveredstatements="7" conditionals="16" coveredconditionals="11" methods="2" coveredmethods="2"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="14" count="16" type="cond" truecount="11" falsecount="5"/>
+          <line num="29" count="2" type="stmt"/>
+        </file>
+        <file name="Page.js" path="/home/travis/build/AriChivukula/opinionated.baby/build/2/website/views/Page.js">
+          <metrics statements="29" coveredstatements="27" conditionals="61" coveredconditionals="30" methods="17" coveredmethods="12"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="16" count="16" type="cond" truecount="11" falsecount="5"/>
+          <line num="18" count="0" type="cond" truecount="0" falsecount="10"/>
+          <line num="20" count="6" type="cond" truecount="1" falsecount="1"/>
+          <line num="22" count="1" type="cond" truecount="3" falsecount="1"/>
+          <line num="24" count="1" type="cond" truecount="2" falsecount="2"/>
+          <line num="26" count="6" type="cond" truecount="2" falsecount="3"/>
+          <line num="28" count="6" type="cond" truecount="1" falsecount="1"/>
+          <line num="30" count="1" type="cond" truecount="1" falsecount="3"/>
+          <line num="32" count="1" type="cond" truecount="5" falsecount="3"/>
+          <line num="34" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="38" count="1" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+          <line num="42" count="6" type="stmt"/>
+          <line num="44" count="6" type="stmt"/>
+          <line num="47" count="1" type="stmt"/>
+          <line num="51" count="6" type="stmt"/>
+          <line num="53" count="6" type="cond" truecount="2" falsecount="0"/>
+          <line num="54" count="2" type="stmt"/>
+          <line num="57" count="4" type="cond" truecount="1" falsecount="1"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="62" count="4" type="stmt"/>
+          <line num="69" count="1" type="stmt"/>
+          <line num="72" count="1" type="stmt"/>
+        </file>
+        <file name="TopBar.js" path="/home/travis/build/AriChivukula/opinionated.baby/build/2/website/views/TopBar.js">
+          <metrics statements="59" coveredstatements="34" conditionals="79" coveredconditionals="33" methods="30" coveredmethods="13"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="20" count="22" type="cond" truecount="11" falsecount="5"/>
+          <line num="22" count="0" type="cond" truecount="0" falsecount="10"/>
+          <line num="24" count="4" type="cond" truecount="1" falsecount="1"/>
+          <line num="26" count="4" type="cond" truecount="3" falsecount="1"/>
+          <line num="28" count="1" type="cond" truecount="2" falsecount="2"/>
+          <line num="30" count="4" type="cond" truecount="2" falsecount="3"/>
+          <line num="32" count="4" type="cond" truecount="1" falsecount="1"/>
+          <line num="34" count="1" type="cond" truecount="1" falsecount="3"/>
+          <line num="36" count="1" type="cond" truecount="5" falsecount="3"/>
+          <line num="38" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="42" count="1" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="46" count="4" type="stmt"/>
+          <line num="48" count="4" type="stmt"/>
+          <line num="51" count="1" type="stmt"/>
+          <line num="54" count="4" type="stmt"/>
+          <line num="57" count="4" type="stmt"/>
+          <line num="59" count="4" type="cond" truecount="1" falsecount="1"/>
+          <line num="60" count="0" type="stmt"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="64" count="4" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="71" count="4" type="cond" truecount="2" falsecount="0"/>
+          <line num="72" count="2" type="stmt"/>
+          <line num="75" count="0" type="stmt"/>
+          <line num="80" count="4" type="stmt"/>
+          <line num="87" count="0" type="stmt"/>
+          <line num="94" count="0" type="stmt"/>
+          <line num="99" count="0" type="stmt"/>
+          <line num="109" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="110" count="0" type="stmt"/>
+          <line num="116" count="0" type="stmt"/>
+          <line num="118" count="0" type="stmt"/>
+          <line num="120" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="121" count="0" type="stmt"/>
+          <line num="124" count="0" type="stmt"/>
+          <line num="127" count="0" type="stmt"/>
+          <line num="131" count="0" type="stmt"/>
+          <line num="143" count="0" type="stmt"/>
+          <line num="145" count="0" type="stmt"/>
+          <line num="147" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="148" count="0" type="stmt"/>
+          <line num="151" count="0" type="stmt"/>
+          <line num="154" count="0" type="stmt"/>
+          <line num="158" count="0" type="stmt"/>
+          <line num="169" count="1" type="stmt"/>
+          <line num="172" count="1" type="stmt"/>
+          <line num="176" count="1" type="stmt"/>
+          <line num="178" count="1" type="cond" truecount="3" falsecount="1"/>
+          <line num="179" count="0" type="stmt"/>
+          <line num="182" count="1" type="stmt"/>
+          <line num="186" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="website.views.__generated__">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="TopBarQuery.graphql.js" path="/home/travis/build/AriChivukula/opinionated.baby/build/2/website/views/__generated__/TopBarQuery.graphql.js">
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="59" count="1" type="stmt"/>
+          <line num="62" count="1" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>
