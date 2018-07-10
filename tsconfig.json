@@ -38,6 +38,7 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "target": "ES3",
-    "sourceMap": true
+    "sourceMap": true,
+    "strict": true
   }
 }
