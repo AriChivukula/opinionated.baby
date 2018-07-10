@@ -1,5 +1,6 @@
 set -e
 
 cc-test-reporter before-build
-yarn jest
+yarn nyc mocha
+yarn nyc report
 cc-test-reporter after-build

@@ -94,9 +94,9 @@ const tools: ITools[] = [
   },
   {
     graphic: "playlist_add_check",
-    link: "https://facebook.github.io/jest/",
+    link: "https://mochajs.org/",
     subtitle: "Testing",
-    title: "Jest",
+    title: "Mocha",
   },
   {
     graphic: "line_style",
