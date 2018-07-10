@@ -67,7 +67,7 @@ export function handler(
       ],
     ),
     event,
-    // @ts-lint
+    // @ts-ignore
     context,
   );
   /* BESPOKE END <<handler>> */
