@@ -100,9 +100,9 @@ const tools: ITools[] = [
   },
   {
     graphic: "line_style",
-    link: "https://codecov.io/",
-    subtitle: "Coverage",
-    title: "Codecov",
+    link: "https://codeclimate.com/",
+    subtitle: "Quality",
+    title: "Code Climate",
   },
   {
     graphic: "graphic_eq",
