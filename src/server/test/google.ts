@@ -9,6 +9,7 @@
 /* BESPOKE START <<test>> */
 import chai from "chai";
 import chaiAsPromised "chai-as-promised";
+import 'mocha';
 
 import {
   genAccessTokenInfo,
