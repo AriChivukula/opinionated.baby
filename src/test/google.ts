@@ -26,11 +26,4 @@ it(
     chai.expect(url).to.include("accounts.google.com");
   },
 );
-
-it(
-  "genAccessTokenInfo",
-  async (): Promise<void> => {
-    return genAccessTokenInfo("ERROR").should.be.rejectedWith(Error);
-  },
-);
 /* BESPOKE END <<test>> */
