@@ -33,7 +33,10 @@ export async function genRoot(
     logout: async (): Promise<object> => ({
       accessToken: "",
     }),
-    me: async (): Promise<object | null> => genNullOnThrow(async () => genUserForAccessToken(req.token)),
+    me: async (): Promise<object | null> => genNullOnThrow(
+      // @ts-ignore
+      async () => genUserForAccessToken(req.token),
+    ),
   };
   /* BESPOKE END <<genRoot>> */
 }
