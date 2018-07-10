@@ -55,7 +55,7 @@ export function handler(
   lambda.proxy(
     lambda.createServer(
       app,
-      null,
+      undefined,
       [
         "application/octet-stream",
         "font/eot",
