@@ -4,6 +4,7 @@ node_js:
 install: bash shell/install.sh
 cache: yarn
 env:
+script: skip
 matrix:
   fast_finish: true
   allow_failures:
