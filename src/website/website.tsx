@@ -38,9 +38,7 @@ export function render(
   /* BESPOKE START <<render>> */
   const environment: Environment = new Environment({
     network: new RelayNetworkLayer([
-      urlMiddleware({
-        url: apiURL,
-      }),
+      urlMiddleware({ url: apiURL }),
       authMiddleware({
         allowEmptyToken: true,
         token: (): string => cookie.get("accessToken") || "",
@@ -48,18 +46,12 @@ export function render(
     ]),
     store: new Store(new RecordSource()),
   });
+  const renderer: () => JSX.Element = (): JSX.Element => <Root environment={environment} />;
   ReactDOM.render(
     <BrowserRouter>
       <Switch>
-        <Route
-          exact
-          path="/"
-          render={(): JSX.Element => <Root environment={environment} />}
-        />
-        <Route
-          path="/index.html"
-          render={(): JSX.Element => <Root environment={environment} />}
-        />
+        <Route exact path="/" render={renderer} />
+        <Route path="/index.html" render={renderer} />
         <Route component={FourOhFour} />
       </Switch>
     </BrowserRouter>,
