@@ -10,7 +10,7 @@ var ts = require("gulp-typescript");
 var uglify = require("rollup-plugin-uglify");
 
 var pkg = require("./package.json");
-var project = ts.createProject("tsconfig.json");
+var project = ts.createProject("tsconfig.json", { module: "ES2015" });
 
 gulp.task(
   "build:1:typescript",
