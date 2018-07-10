@@ -34,7 +34,7 @@
       "ESNext.Array"
     ],
     "inlineSourceMap": true,
-    "module": "ES2015",
+    "module": "CommonJS",
     "moduleResolution": "Node",
     "target": "ES3",
     "sourceMap": true
