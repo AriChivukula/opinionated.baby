@@ -10,7 +10,7 @@
   },
   "jest": {
     "collectCoverage": true,
-    "coverageDirectory": "./coverage/",
+    "coverageDirectory": "<rootDir>/coverage/",
     "roots": [
       "<rootDir>/build/2/"
     ],
