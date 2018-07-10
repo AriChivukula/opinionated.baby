@@ -3,10 +3,6 @@ node_js:
 - node
 install: bash shell/install.sh
 cache: yarn
-matrix:
-  fast_finish: true
-  allow_failures:
-  - env: L8R=TRUE
 jobs:
   include:
   - stage: Trigger
@@ -21,7 +17,6 @@ jobs:
   - stage: Pull request
     if: type = pull_request
     script: bash shell/pr.sh
-  - stage: Cron
-    env: L8R=TRUE
+  - stage: Trigger
     if: type IN (api, cron)
     script: bash shell/cron.sh
