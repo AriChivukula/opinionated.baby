@@ -11,6 +11,11 @@
   "jest": {
     "collectCoverage": true,
     "coverageDirectory": "<rootDir>/coverage/",
+    "globals": {
+      "ts-jest": {
+        "useBabelrc": true
+      }
+    },
     "moduleFileExtensions": [
       "ts",
       "tsx",
