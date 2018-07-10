@@ -96,7 +96,7 @@ gulp.task(
   () => rollup({
     input: "build/2/server/index.js",
     format: "cjs",
-    plugins: [ uglify() ]
+    plugins: [ uglify() ],
   })
     .pipe(source("index.js"))
     .pipe(gulp.dest("build/3/server")),
