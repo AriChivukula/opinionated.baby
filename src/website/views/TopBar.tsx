@@ -117,6 +117,7 @@ class __TopBar extends React.Component<ITopBarProps> {
     code: string,
   ): void {
     commitMutation(
+      // @ts-ignore
       this.props.relay.environment,
       {
         mutation: graphql`
@@ -149,6 +150,7 @@ class __TopBar extends React.Component<ITopBarProps> {
   private logout(
   ): void {
     commitMutation(
+      // @ts-ignore
       this.props.relay.environment,
       {
         mutation: graphql`
