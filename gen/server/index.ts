@@ -25,6 +25,10 @@ export const module: Module = Module.new({
       name: "express",
       withAllAs: "express",
     }),
+     Import.new({
+      name: "express-bearer-token",
+      withAllAs: "bearer",
+    }),
     Import.new({
       name: "helmet",
       withAllAs: "helmet",
