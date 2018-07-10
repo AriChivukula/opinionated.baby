@@ -11,9 +11,21 @@
   "jest": {
     "collectCoverage": true,
     "coverageDirectory": "<rootDir>/coverage/",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
     "roots": [
       "<rootDir>/build/2/"
     ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "verbose": true
   },
   "private": true,
