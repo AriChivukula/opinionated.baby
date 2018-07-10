@@ -3,7 +3,7 @@ import {
   Module,
 } from "typescriptase";
 
-export const googleTest: Module = Module({
+export const googleTest: Module = Module.new({
   content: [
     Bespoke.new({
       name: "test",
