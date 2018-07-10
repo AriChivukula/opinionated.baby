@@ -25,7 +25,7 @@ it(
 it(
   "genAccessTokenInfo",
   async (): Promise<void> => {
-    return genAccessTokenInfo("ERROR").should.eventually.throw();
+    return genAccessTokenInfo("ERROR").should.be.rejectedWith(Error);
   },
 );
 /* BESPOKE END <<test>> */
