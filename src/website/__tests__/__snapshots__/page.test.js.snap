@@ -362,11 +362,11 @@ Array [
               <span
                 class="mdc-list-item__text"
               >
-                Codecov
+                Code Climate
                 <span
                   class="mdc-list-item__secondary-text"
                 >
-                  Coverage
+                  Quality
                 </span>
               </span>
             </div>
@@ -1247,11 +1247,11 @@ Array [
               <span
                 class="mdc-list-item__text"
               >
-                Codecov
+                Code Climate
                 <span
                   class="mdc-list-item__secondary-text"
                 >
-                  Coverage
+                  Quality
                 </span>
               </span>
             </div>
