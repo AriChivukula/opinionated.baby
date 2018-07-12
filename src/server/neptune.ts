@@ -11,7 +11,7 @@ import gremlin from "gremlin";
 
 let neptuneDriver: gremlin.driver.DriverRemoteConnection;
 
-export async function neptuneInit(): Promise<object> {
+export async function neptuneInit(): Promise<void> {
   neptuneDriver = new gremlin.driver.DriverRemoteConnection(`ws://${process.env.NEPTUNE}/gremlin`);
 }
 
