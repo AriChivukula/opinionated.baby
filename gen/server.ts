@@ -26,6 +26,10 @@ export const Server: Module = Module.new({
       name: "./root",
       with: ["genRoot"],
     }),
+    Import.new({
+      name: "./neptune",
+      with: ["neptuneInit"],
+    }),
     Bespoke.new({
       name: "servers",
     }),
@@ -202,6 +206,10 @@ export const Root: Module = Module.new({
     Import.new({
       name: "./util",
       with: ["genNullOnThrow"],
+    }),
+    Import.new({
+      name: "./neptune",
+      with: ["createOrUpdateUser"],
     }),
     Function.Async.newExported({
       content: [
