@@ -12,11 +12,15 @@ import "mocha";
 import * as chai from "chai";
 
 import {
+  neptuneInit,
+  createOrUpdateUser,
 } from "../server/neptune";
 
 it(
   "createOrUpdateUser",
   async (): Promise<void> => {
+    await neptuneInit();
+    await createOrUpdateUser();
   },
 );
 /* BESPOKE END <<test>> */
