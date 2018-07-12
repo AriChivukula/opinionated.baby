@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/server.ts::Index>>
  * BESPOKE<<main, handler>>
- * SIGNED<<4zMZbzOp/z/0yhs2rcJGxqHS6WKofygAF4d5we/BydKyQZIWgmhLr4z811sktN3Pnauy6VyOv7MJvzwyTKE+kw==>>
+ * SIGNED<<LQQTlBK0D0xWtsHo4Qy1kbsCNRb+p35Ts8ManuelnbxFJ6m2iYynE/ka+8krZofv2wjST3xQvGqjAEjHWfHC1w==>>
  */
 
 import "@babel/polyfill";
@@ -19,6 +19,9 @@ import bearer from "express-bearer-token";
 import helmet from "helmet";
 import * as Rollbar from "rollbar";
 
+import {
+  neptuneInit,
+} from "./neptune";
 import {
   graphQL,
 } from "./server";
