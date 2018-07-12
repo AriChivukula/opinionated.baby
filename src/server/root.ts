@@ -7,4 +7,36 @@
  */
 
 /* BESPOKE START <<custom>> */
+import * as express from "express";
+
+import {
+  genAccessToken,
+  genUserForAccessToken,
+  getLoginURL,
+} from "./google";
+import {
+  genNullOnThrow,
+} from "./util";
+
+export async function genRoot(
+  req: express.Request,
+  res: express.Response,
+): Promise<object> {
+  return {
+    login: async ({ input }: { input: { code: string } }): Promise<object> => {
+      const accessToken: string = await genAccessToken(input.code);
+      await genUserForAccessToken(accessToken);
+
+      return { accessToken };
+    },
+    loginURL: async (): Promise<string> => getLoginURL(),
+    logout: async (): Promise<object> => ({
+      accessToken: "",
+    }),
+    me: async (): Promise<object | null> => genNullOnThrow(
+      // @ts-ignore
+      async () => genUserForAccessToken(req.token),
+    ),
+  };
+}
 /* BESPOKE END <<custom>> */
