@@ -34,6 +34,21 @@ data "aws_route53_zone" "ob_zone" {
   name = "${var.DOMAIN}."
 }
 
+data "aws_security_group" "ob_security" {
+  name = "${var.NAME}"
+}
+
+data "aws_vpc" "ob_vpc" {
+  filter {
+    name = "tag:Name"
+    value = "${var.NAME}"
+  }
+}
+
+data "aws_subnet_ids" "ob_subnets" {
+  vpc_id = "${data.aws_vpc.ob_vpc.id}"
+}
+
 resource "aws_lambda_function" "ob_lambda" {
   function_name = "${var.NAME}-${var.BUILD}"
   handler = "index.handler"
@@ -56,6 +71,11 @@ resource "aws_lambda_function" "ob_lambda" {
       TF_VAR_ROLLBAR_SERVER = "${var.ROLLBAR_SERVER}"
       DEBUG = "*"
     }
+  }
+  
+  vpc_config {
+    subnet_ids = ["${data.aws_subnet_ids.ob_subnets.ids.*}"]
+    security_group_ids = ["${data.aws_security_group.ob_security.id}"]
   }
 
   tags {
