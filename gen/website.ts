@@ -1,4 +1,4 @@
-import { Bespoke, Module, React, Type } from "typescriptase";
+import { Bespoke, ERelayType, Module, React, Type } from "typescriptase";
 
 export const index: Module = Module.new({
   content: [
