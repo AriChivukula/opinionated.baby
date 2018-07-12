@@ -7,4 +7,15 @@
  */
 
 /* BESPOKE START <<custom>> */
+export function goto(
+  url: string,
+  samePage: boolean = false,
+): void {
+  if (samePage) {
+    // @ts-ignore
+    window.location = url;
+  } else {
+    window.open(url);
+  }
+}
 /* BESPOKE END <<custom>> */
