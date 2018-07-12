@@ -1,21 +1,21 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/util.ts::module>>
- * BESPOKE<<goto>>
- * SIGNED<<xmEAmBCNkmKkh5J4cChPNmzfMV9za8dykTqYkxcp6vXCxNnsX9pYsV8JaGtW9B+ec5kmTEUgb0MctNZrBsQX3Q==>>
+ * SOURCE<<gen/website.ts::utility>>
+ * BESPOKE<<custom>>
+ * SIGNED<<J9FCy5Eb9w0afcgAaRFGr3gxQY8sbFhMkYnvR4PLOLGutLf1jQN3nT49Pgi/UgT8KqpaBJanNZoyEo3inVMTZQ==>>
  */
 
+/* BESPOKE START <<custom>> */
 export function goto(
   url: string,
   samePage: boolean = false,
 ): void {
-  /* BESPOKE START <<goto>> */
   if (samePage) {
     // @ts-ignore
     window.location = url;
   } else {
     window.open(url);
   }
-  /* BESPOKE END <<goto>> */
 }
+/* BESPOKE END <<custom>> */

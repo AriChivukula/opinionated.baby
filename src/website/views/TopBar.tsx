@@ -1,7 +1,7 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/views.ts::TopBarReact>>
+ * SOURCE<<gen/website.ts::TopBar>>
  * BESPOKE<<imports, render, implementation, relay>>
  * SIGNED<<nERiIastBWG6bZUM0PoT5oM6/QwQWmfo3Q1Ag5q6pFRHzZsUX8oTuH3BurNfT+8w5OUItXuFsRmbGfNix4VLDw==>>
  */
@@ -31,7 +31,7 @@ import {
 
 import {
   goto,
-} from "../util";
+} from "../utility";
 import {
   TopBarLoginMutationResponse,
 } from "./__generated__/TopBarLoginMutation.graphql";
@@ -87,14 +87,6 @@ class __TopBar extends React.Component<ITopBarProps> {
             </ToolbarSection>
             <ToolbarSection alignEnd>
               {login}
-              <ToolbarIcon
-                use="code"
-                onClick={(): void => { goto("https://github.com/arichiv/opinionated.baby/"); }}
-              />
-              <ToolbarIcon
-                use="info"
-                onClick={(): void => { goto("https://chivuku.la/"); }}
-              />
             </ToolbarSection>
           </ToolbarRow>
         </Toolbar>

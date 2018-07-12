@@ -1,11 +1,12 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/server/server.ts::module>>
- * BESPOKE<<servers>>
- * SIGNED<<t793RpMk6FtnvSaTcr+3R8567fAo8eBMb2ony7sKsJEd5ozmmrbxGArMftgPuAIYfJAK2zPUCoopPhhRAN2OYw==>>
+ * SOURCE<<gen/server.ts::server>>
+ * BESPOKE<<custom>>
+ * SIGNED<<J9FCy5Eb9w0afcgAaRFGr3gxQY8sbFhMkYnvR4PLOLGutLf1jQN3nT49Pgi/UgT8KqpaBJanNZoyEo3inVMTZQ==>>
  */
 
+/* BESPOKE START <<custom>> */
 import express from "express";
 import graphqlHTTP from "express-graphql";
 import {
@@ -23,7 +24,6 @@ import {
   genRoot,
 } from "./root";
 
-/* BESPOKE START <<servers>> */
 const schema: GraphQLSchema = buildSchema(
   readFileSync(join(__dirname, "schema.graphql"), "ascii"),
 );
@@ -35,4 +35,4 @@ export const graphQL: graphqlHTTP.Middleware = graphqlHTTP(
     schema,
   }),
 );
-/* BESPOKE END <<servers>> */
+/* BESPOKE END <<custom>> */

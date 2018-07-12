@@ -1,11 +1,12 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/website.ts::module>>
- * BESPOKE<<render>>
- * SIGNED<<xnsAl1/89keIKjheiAkSuVGkw8OGqGA9Q653KkN0+ADLVWpwnv0FhpP3Ajpg9X0f1BjJWZAYcyPK7TwlYk5xSA==>>
+ * SOURCE<<gen/website.ts::website>>
+ * BESPOKE<<custom>>
+ * SIGNED<<J9FCy5Eb9w0afcgAaRFGr3gxQY8sbFhMkYnvR4PLOLGutLf1jQN3nT49Pgi/UgT8KqpaBJanNZoyEo3inVMTZQ==>>
  */
 
+/* BESPOKE START <<custom>> */
 import * as cookie from "js-cookie";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -35,7 +36,6 @@ import {
 export function render(
   apiURL: string,
 ): void {
-  /* BESPOKE START <<render>> */
   const environment: Environment = new Environment({
     network: new RelayNetworkLayer([
       urlMiddleware({ url: apiURL }),
@@ -57,5 +57,5 @@ export function render(
     </BrowserRouter>,
     document.getElementById("root"),
   );
-  /* BESPOKE END <<render>> */
 }
+/* BESPOKE END <<custom>> */

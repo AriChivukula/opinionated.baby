@@ -1,15 +1,15 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/server/util.ts::module>>
- * BESPOKE<<makeSync<T>, genNullOnThrow<T>>>
- * SIGNED<<2m34PnVVRoF9SFCHuaToEY4UQOiX8F+wA1aSsvAVttE67YwlTGsB8uP7m69x2hKn9S0oQPCfzlKN9/PhHi0L/Q==>>
+ * SOURCE<<gen/server.ts::utility>>
+ * BESPOKE<<custom>>
+ * SIGNED<<J9FCy5Eb9w0afcgAaRFGr3gxQY8sbFhMkYnvR4PLOLGutLf1jQN3nT49Pgi/UgT8KqpaBJanNZoyEo3inVMTZQ==>>
  */
 
+/* BESPOKE START <<custom>> */
 export function makeSync<T>(
   wasAsync: Promise<T>,
 ): void {
-  /* BESPOKE START <<makeSync<T>>> */
   wasAsync
     .catch((err: Error): void => {
       console.log(err);
@@ -22,13 +22,11 @@ export function makeSync<T>(
     });
 
   return;
-  /* BESPOKE END <<makeSync<T>>> */
 }
 
 export async function genNullOnThrow<T>(
   mightThrow: () => Promise<T>,
 ): Promise<T | null> {
-  /* BESPOKE START <<genNullOnThrow<T>>> */
   try {
     return await mightThrow();
   } catch (error) {
@@ -36,5 +34,5 @@ export async function genNullOnThrow<T>(
 
     return null;
   }
-  /* BESPOKE END <<genNullOnThrow<T>>> */
 }
+/* BESPOKE END <<custom>> */

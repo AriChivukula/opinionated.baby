@@ -1,7 +1,7 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/views.ts::FourOhFourReact>>
+ * SOURCE<<gen/website.ts::FourOhFour>>
  * BESPOKE<<imports, render>>
  * SIGNED<<5/rwE5ktYAy1yQrOY0+YlN8Y2k/Ygnzrcou+JIKABzHkMFOaBJtA2+oxULcG9ESyesqwU7MaJMp+k/4+kmLx9A==>>
  */

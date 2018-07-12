@@ -3,10 +3,10 @@ import {
   Module,
 } from "typescriptase";
 
-export const googleTest: Module = Module.new({
+export const google: Module = Module.new({
   content: [
     Bespoke.new({
-      name: "test",
+      name: "custom",
     }),
   ],
   destination: "src/test/google.ts",

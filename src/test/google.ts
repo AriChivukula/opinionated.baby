@@ -1,23 +1,19 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/test/tests.ts::googleTest>>
- * BESPOKE<<test>>
- * SIGNED<<4MD6HpCxEHJEieR4CvNaKXz0/Dkn5A4pwUpvUeSMYjRxHMbKdAMlTqAdsfWS0klw+sJtm2qRxU5a0lVikTwbKg==>>
+ * SOURCE<<gen/test.ts::google>>
+ * BESPOKE<<custom>>
+ * SIGNED<<J9FCy5Eb9w0afcgAaRFGr3gxQY8sbFhMkYnvR4PLOLGutLf1jQN3nT49Pgi/UgT8KqpaBJanNZoyEo3inVMTZQ==>>
  */
 
-/* BESPOKE START <<test>> */
+/* BESPOKE START <<custom>> */
 import "mocha";
 
 import * as chai from "chai";
-import * as chaiAsPromised from "chai-as-promised";
 
 import {
-  genAccessTokenInfo,
   getLoginURL,
 } from "../server/google";
-
-chai.use(chaiAsPromised);
 
 it(
   "getLoginURL",
@@ -26,4 +22,4 @@ it(
     chai.expect(url).to.include("accounts.google.com");
   },
 );
-/* BESPOKE END <<test>> */
+/* BESPOKE END <<custom>> */

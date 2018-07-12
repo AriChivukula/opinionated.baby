@@ -1,11 +1,12 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/server/index.ts::module>>
- * BESPOKE<<main, handler>>
- * SIGNED<<4zMZbzOp/z/0yhs2rcJGxqHS6WKofygAF4d5we/BydKyQZIWgmhLr4z811sktN3Pnauy6VyOv7MJvzwyTKE+kw==>>
+ * SOURCE<<gen/server.ts::index>>
+ * BESPOKE<<custom>>
+ * SIGNED<<J9FCy5Eb9w0afcgAaRFGr3gxQY8sbFhMkYnvR4PLOLGutLf1jQN3nT49Pgi/UgT8KqpaBJanNZoyEo3inVMTZQ==>>
  */
 
+/* BESPOKE START <<custom>> */
 import "@babel/polyfill";
 
 import * as lambda from "aws-serverless-express";
@@ -27,7 +28,6 @@ const app: express.Express = express();
 
 let didSetup: boolean = false;
 
-/* BESPOKE START <<main>> */
 app.use(cors(), helmet(), bearer(), json(), urlencoded({ extended: true }));
 
 app.use((req: express.Request, res: express.Response, next: () => void): void => {
@@ -45,13 +45,11 @@ app.use((new Rollbar({
   captureUncaught: true,
   captureUnhandledRejections: true,
 })).errorHandler());
-/* BESPOKE END <<main>> */
 
 export function handler(
   event: object,
   context: object,
 ): void {
-  /* BESPOKE START <<handler>> */
   lambda.proxy(
     lambda.createServer(
       app,
@@ -70,5 +68,5 @@ export function handler(
     // @ts-ignore
     context,
   );
-  /* BESPOKE END <<handler>> */
 }
+/* BESPOKE END <<custom>> */
