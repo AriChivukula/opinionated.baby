@@ -7,4 +7,16 @@
  */
 
 /* BESPOKE START <<test>> */
+import "mocha";
+
+import * as chai from "chai";
+
+import {
+} from "../server/neptune";
+
+it(
+  "createOrUpdateUser",
+  async (): Promise<void> => {
+  },
+);
 /* BESPOKE END <<test>> */
