@@ -136,3 +136,8 @@ resource "aws_iam_role_policy_attachment" "ob_attachment_lambda" {
   role = "${aws_iam_role.ob_iam.name}"
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
+
+resource "aws_iam_role_policy_attachment" "ob_attachment_lambda" {
+  role = "${aws_iam_role.ob_iam.name}"
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+}
