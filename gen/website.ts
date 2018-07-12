@@ -1,41 +1,21 @@
-import { Bespoke, ERelayType, Function, Import, Module, React, Type, Variable } from "typescriptase";
+import { Bespoke, Module, React, Type } from "typescriptase";
 
-export const Index: Module = Module.new({
+export const index: Module = Module.new({
   content: [
-    Import.new({
-      name: "@babel/polyfill",
-    }),
-    Import.new({
-      name: "./website",
-      with: ["render"],
-    }),
-    Variable.newMutable({
-      type: Type.Required.new({ name: "apiURL", type: "string" }),
-    }),
     Bespoke.new({
-      name: "main",
+      name: "custom",
     }),
   ],
   destination: "src/website/index.tsx",
 });
 
-export const Util: Module = Module.new({
+export const utility: Module = Module.new({
   content: [
-    Function.Sync.newExported({
-      content: [
-        Bespoke.new({
-          name: "goto",
-        }),
-      ],
-      inTypes: [
-        Type.Argument.new({ name: "url", type: "string" }),
-        Type.Argument.new({ default: "false", name: "samePage", type: "boolean" }),
-      ],
-      name: "goto",
-      outType: Type.Anonymous.new({ type: "void" }),
+    Bespoke.new({
+      name: "custom",
     }),
   ],
-  destination: "src/website/util.tsx",
+  destination: "src/website/utility.tsx",
 });
 
 export const Content: Module = React({
@@ -83,51 +63,10 @@ export const TopBar: Module = React({
   relayType: ERelayType.FRAGMENT,
 });
 
-export const Website: Module = Module.new({
+export const website: Module = Module.new({
   content: [
-    Import.new({
-      name: "js-cookie",
-      withAllAs: "cookie",
-    }),
-    Import.new({
-      name: "react",
-      withAllAs: "React",
-    }),
-    Import.new({
-      name: "react-dom",
-      withAllAs: "ReactDOM",
-    }),
-    Import.new({
-      name: "react-relay-network-modern",
-      with: ["authMiddleware", "RelayNetworkLayer", "urlMiddleware"],
-    }),
-    Import.new({
-      name: "react-router-dom",
-      with: ["BrowserRouter", "Route", "Switch"],
-    }),
-    Import.new({
-      name: "relay-runtime",
-      with: ["Environment", "RecordSource", "Store"],
-    }),
-    Import.new({
-      name: "./views/FourOhFour",
-      with: ["FourOhFour"],
-    }),
-    Import.new({
-      name: "./views/Root",
-      with: ["Root"],
-    }),
-    Function.Sync.newExported({
-      content: [
-        Bespoke.new({
-          name: "render",
-        }),
-      ],
-      inTypes: [
-        Type.Argument.new({ name: "apiURL", type: "string" }),
-      ],
-      name: "render",
-      outType: Type.Anonymous.new({ type: "void" }),
+    Bespoke.new({
+      name: "custom",
     }),
   ],
   destination: "src/website/website.tsx",
