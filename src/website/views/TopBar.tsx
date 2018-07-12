@@ -87,14 +87,6 @@ class __TopBar extends React.Component<ITopBarProps> {
             </ToolbarSection>
             <ToolbarSection alignEnd>
               {login}
-              <ToolbarIcon
-                use="code"
-                onClick={(): void => { goto("https://github.com/arichiv/opinionated.baby/"); }}
-              />
-              <ToolbarIcon
-                use="info"
-                onClick={(): void => { goto("https://chivuku.la/"); }}
-              />
             </ToolbarSection>
           </ToolbarRow>
         </Toolbar>
