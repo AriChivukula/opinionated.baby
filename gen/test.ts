@@ -3,7 +3,7 @@ import {
   Module,
 } from "typescriptase";
 
-export const googleTest: Module = Module.new({
+export const google: Module = Module.new({
   content: [
     Bespoke.new({
       name: "test",
@@ -12,7 +12,7 @@ export const googleTest: Module = Module.new({
   destination: "src/test/google.ts",
 });
 
-export const neptuneTest: Module = Module.new({
+export const neptune: Module = Module.new({
   content: [
     Bespoke.new({
       name: "test",
