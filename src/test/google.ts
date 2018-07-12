@@ -7,4 +7,19 @@
  */
 
 /* BESPOKE START <<custom>> */
+import "mocha";
+
+import * as chai from "chai";
+
+import {
+  getLoginURL,
+} from "../server/google";
+
+it(
+  "getLoginURL",
+  async (): Promise<void> => {
+    const url: string = getLoginURL();
+    chai.expect(url).to.include("accounts.google.com");
+  },
+);
 /* BESPOKE END <<custom>> */
