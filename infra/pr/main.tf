@@ -38,13 +38,13 @@ data "aws_route53_zone" "ob_zone" {
 
 resource "aws_lambda_function" "ob_lambda" {
   function_name = "${var.NAME}-${var.BUILD}"
-  handler       = "index.handler"
-  role          = "${data.aws_iam_role.ob_iam.arn}"
-  runtime       = "nodejs8.10"
-  memory_size   = 256
-  timeout       = 300
-  filename      = "dynamic.zip"
-  publish       = true
+  handler = "index.handler"
+  role = "${data.aws_iam_role.ob_iam.arn}"
+  runtime = "nodejs8.10"
+  memory_size = 256
+  timeout = 300
+  filename = "dynamic.zip"
+  publish = true
   source_code_hash = "${base64sha256(file("dynamic.zip"))}"
 
   environment {
@@ -71,15 +71,15 @@ resource "aws_api_gateway_rest_api" "ob_api" {
 }
 
 resource "aws_api_gateway_resource" "ob_resource" {
-  path_part   = "{proxy+}"
-  parent_id   = "${aws_api_gateway_rest_api.ob_api.root_resource_id}"
+  path_part = "{proxy+}"
+  parent_id = "${aws_api_gateway_rest_api.ob_api.root_resource_id}"
   rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
 }
 
 resource "aws_api_gateway_method" "ob_method" {
-  rest_api_id   = "${aws_api_gateway_rest_api.ob_api.id}"
-  resource_id   = "${aws_api_gateway_resource.ob_resource.id}"
-  http_method   = "ANY"
+  rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
+  resource_id = "${aws_api_gateway_resource.ob_resource.id}"
+  http_method = "ANY"
   authorization = "NONE"
 }
 
@@ -89,8 +89,8 @@ resource "aws_api_gateway_integration" "ob_integration" {
   http_method = "${aws_api_gateway_method.ob_method.http_method}"
 
   integration_http_method = "POST"
-  type                    = "AWS_PROXY"
-  uri                     = "${replace(aws_lambda_function.ob_lambda.invoke_arn, ":$LATEST", "")}"
+  type = "AWS_PROXY"
+  uri = "${replace(aws_lambda_function.ob_lambda.invoke_arn, ":$LATEST", "")}"
 }
 
 resource "aws_api_gateway_integration_response" "ob_response" {
@@ -110,7 +110,7 @@ resource "aws_api_gateway_deployment" "ob_deployment" {
   ]
 
   rest_api_id = "${aws_api_gateway_rest_api.ob_api.id}"
-  stage_name  = "PROD"
+  stage_name = "PROD"
 }
 
 resource "aws_api_gateway_domain_name" "ob_gateway" {
@@ -120,28 +120,28 @@ resource "aws_api_gateway_domain_name" "ob_gateway" {
 }
 
 resource "aws_api_gateway_base_path_mapping" "ob_map" {
-  api_id      = "${aws_api_gateway_rest_api.ob_api.id}"
-  stage_name  = "${aws_api_gateway_deployment.ob_deployment.stage_name}"
+  api_id = "${aws_api_gateway_rest_api.ob_api.id}"
+  stage_name = "${aws_api_gateway_deployment.ob_deployment.stage_name}"
   domain_name = "${aws_api_gateway_domain_name.ob_gateway.domain_name}"
 }
 
 resource "aws_lambda_permission" "ob_permission" {
-  statement_id  = "AllowAPIGatewayInvoke"
-  action        = "lambda:InvokeFunction"
+  statement_id = "AllowAPIGatewayInvoke"
+  action = "lambda:InvokeFunction"
   function_name = "${var.NAME}-${var.BUILD}"
-  principal     = "apigateway.amazonaws.com"
-  source_arn    = "${aws_api_gateway_deployment.ob_deployment.execution_arn}/*/*"
+  principal = "apigateway.amazonaws.com"
+  source_arn = "${aws_api_gateway_deployment.ob_deployment.execution_arn}/*/*"
 }
 
 resource "aws_route53_record" "ob_record_dynamic" {
-  name    = "dynamic-${var.BUILD}.${var.DOMAIN}."
-  type    = "A"
+  name = "dynamic-${var.BUILD}.${var.DOMAIN}."
+  type = "A"
   zone_id = "${data.aws_route53_zone.ob_zone.zone_id}"
 
   alias {
     evaluate_target_health = false
-    name                   = "${aws_api_gateway_domain_name.ob_gateway.cloudfront_domain_name}"
-    zone_id                = "${aws_api_gateway_domain_name.ob_gateway.cloudfront_zone_id}"
+    name = "${aws_api_gateway_domain_name.ob_gateway.cloudfront_domain_name}"
+    zone_id = "${aws_api_gateway_domain_name.ob_gateway.cloudfront_zone_id}"
   }
 }
 
@@ -149,72 +149,72 @@ resource "aws_route53_record" "ob_record_dynamic" {
 locals {
   files = [
     {
-      file  = "index.html"
+      file = "index.html"
       type = "text/html"
     },
     {
-      file  = "index.js"
+      file = "index.js"
       type = "application/javascript"
     },
     {
-      file  = "index.css"
+      file = "index.css"
       type = "text/css"
     },
     {
-      file  = "images/favicon.png"
+      file = "images/favicon.png"
       type = "image/png"
     },
     {
-      file  = "images/v0.jpg"
+      file = "images/v0.jpg"
       type = "image/jpeg"
     },
     {
-      file  = "images/v1.jpg"
+      file = "images/v1.jpg"
       type = "image/jpeg"
     },
     {
-      file  = "images/v2.jpg"
+      file = "images/v2.jpg"
       type = "image/jpeg"
     },
     {
-      file  = "images/v3.jpg"
+      file = "images/v3.jpg"
       type = "image/jpeg"
     },
     {
-      file  = "images/v4.jpg"
+      file = "images/v4.jpg"
       type = "image/jpeg"
     },
     {
-      file  = "images/v5.jpg"
+      file = "images/v5.jpg"
       type = "image/jpeg"
     },
     {
-      file  = "images/v6.jpg"
+      file = "images/v6.jpg"
       type = "image/jpeg"
     },
     {
-      file  = "images/v7.jpg"
+      file = "images/v7.jpg"
       type = "image/jpeg"
     },
     {
-      file  = "images/v8.jpg"
+      file = "images/v8.jpg"
       type = "image/jpeg"
     },
     {
-      file  = "images/v9.jpg"
+      file = "images/v9.jpg"
       type = "image/jpeg"
     },
   ]
 }
 
 resource "aws_s3_bucket_object" "ob_object" {
-  count  = "${length(local.files)}"
+  count = "${length(local.files)}"
   bucket = "${var.NAME}"
-  key    = "${var.BUILD}/${lookup(local.files[count.index], "file")}"
+  key = "${var.BUILD}/${lookup(local.files[count.index], "file")}"
   source = "static/${lookup(local.files[count.index], "file")}"
-  acl    = "public-read"
+  acl = "public-read"
   content_type = "${lookup(local.files[count.index], "type")}"
-  etag   = "${md5(file("static/${lookup(local.files[count.index], "file")}"))}"
+  etag = "${md5(file("static/${lookup(local.files[count.index], "file")}"))}"
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
@@ -224,9 +224,9 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
 
   default_cache_behavior {
     allowed_methods = ["POST", "HEAD", "PATCH", "DELETE", "PUT", "GET", "OPTIONS"]
-    cached_methods  = ["HEAD", "GET", "OPTIONS"]
-    compress        = false
-    default_ttl     = 0
+    cached_methods = ["HEAD", "GET", "OPTIONS"]
+    compress = false
+    default_ttl = 0
 
     forwarded_values {
       cookies {
@@ -236,20 +236,20 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
       query_string = "false"
     }
 
-    target_origin_id       = "static-${var.BUILD}.${var.DOMAIN}"
+    target_origin_id = "static-${var.BUILD}.${var.DOMAIN}"
     viewer_protocol_policy = "redirect-to-https"
   }
 
   origin {
     domain_name = "${data.aws_s3_bucket.ob_bucket.bucket_domain_name}"
-    origin_id   = "static-${var.BUILD}.${var.DOMAIN}"
+    origin_id = "static-${var.BUILD}.${var.DOMAIN}"
     origin_path = "/${var.BUILD}"
 
     custom_origin_config {
-      http_port              = 80
-      https_port             = 443
+      http_port = 80
+      https_port = 443
       origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
+      origin_ssl_protocols = ["TLSv1", "TLSv1.1", "TLSv1.2"]
     }
   }
 
@@ -265,18 +265,18 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
 
   viewer_certificate {
     acm_certificate_arn = "${data.aws_acm_certificate.ob_certificate.arn}"
-    ssl_support_method  = "sni-only"
+    ssl_support_method = "sni-only"
   }
 }
 
 resource "aws_route53_record" "ob_record_static" {
-  name    = "static-${var.BUILD}.${var.DOMAIN}."
-  type    = "A"
+  name = "static-${var.BUILD}.${var.DOMAIN}."
+  type = "A"
   zone_id = "${data.aws_route53_zone.ob_zone.zone_id}"
 
   alias {
     evaluate_target_health = false
-    name                   = "${aws_cloudfront_distribution.ob_distribution.domain_name}"
-    zone_id                = "${aws_cloudfront_distribution.ob_distribution.hosted_zone_id}"
+    name = "${aws_cloudfront_distribution.ob_distribution.domain_name}"
+    zone_id = "${aws_cloudfront_distribution.ob_distribution.hosted_zone_id}"
   }
 }
