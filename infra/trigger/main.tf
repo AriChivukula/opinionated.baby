@@ -40,7 +40,6 @@ resource "aws_internet_gateway" "ob_gateway" {
 
 resource "aws_route" "ob_route" {
   route_table_id = "${aws_vpc.ob_vpc.main_route_table_id}"
-  destination_cidr_block = "0.0.0.0/0"
   gateway_id = "${aws_internet_gateway.ob_gateway.id}"
 }
 
@@ -49,17 +48,15 @@ resource "aws_security_group" "ob_security" {
   vpc_id = "${aws_vpc.ob_vpc.id}"
 
   ingress {
-    from_port = -1
-    to_port = -1
+    from_port = 0
+    to_port = 0
     protocol = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
-    from_port = -1
-    to_port = -1
+    from_port = 0
+    to_port = 0
     protocol = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
