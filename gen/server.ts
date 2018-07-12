@@ -152,10 +152,6 @@ export const Index: Module = Module.new({
       name: "./server",
       with: ["graphQL"],
     }),
-    Import.new({
-      name: "./neptune",
-      with: ["neptuneInit"],
-    }),
     Variable.newImmutable({
       assignment: "express()",
       type: Type.Required.new({ name: "app", type: "express.Express" }),
@@ -184,15 +180,6 @@ export const Index: Module = Module.new({
   destination: "src/server/index.ts",
 });
 
-export const Neptune: Module = Module.new({
-  content: [
-    Bespoke.new({
-      name: "neptune",
-    }),
-  ],
-  destination: "src/server/neptune.ts",
-});
-
 export const Root: Module = Module.new({
   content: [
     Import.new({
@@ -206,10 +193,6 @@ export const Root: Module = Module.new({
     Import.new({
       name: "./util",
       with: ["genNullOnThrow"],
-    }),
-    Import.new({
-      name: "./neptune",
-      with: ["createOrUpdateUser"],
     }),
     Function.Async.newExported({
       content: [
