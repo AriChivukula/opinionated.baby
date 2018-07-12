@@ -62,6 +62,30 @@ resource "aws_security_group" "ob_security" {
   }
 }
 
+resource "aws_network_acl" "ob_acl" {
+  vpc_id = "${aws_vpc.ob_vpc.id}"
+
+  egress {
+    protocol   = "-1"
+    rule_no    = 200
+    action     = "allow"
+    from_port  = 0
+    to_port    = 0
+  }
+
+  ingress {
+    protocol   = "-1"
+    rule_no    = 200
+    action     = "allow"
+    from_port  = 0
+    to_port    = 0
+  }
+
+  tags {
+    Name = "${var.NAME}"
+  }
+}
+
 resource "aws_acm_certificate" "ob_certificate" {
   domain_name = "${var.DOMAIN}"
   subject_alternative_names = ["*.${var.DOMAIN}"]
