@@ -179,3 +179,43 @@ export const Index: Module = Module.new({
   ],
   destination: "src/server/index.ts",
 });
+
+export const Neptune: Module = Module.new({
+  content: [
+    Bespoke.new({
+      name: "neptune",
+    }),
+  ],
+  destination: "src/server/neptune.ts",
+});
+
+export const Root: Module = Module.new({
+  content: [
+    Import.new({
+      name: "express",
+      withAllAs: "express",
+    }),
+    Import.new({
+      name: "./google",
+      with: ["genAccessToken", "getLoginURL", "genUserForAccessToken"],
+    }),
+    Import.new({
+      name: "./util",
+      with: ["genNullOnThrow"],
+    }),
+    Function.Async.newExported({
+      content: [
+        Bespoke.new({
+          name: "genRoot",
+        }),
+      ],
+      inTypes: [
+        Type.Argument.new({ name: "req", type: "express.Request" }),
+        Type.Argument.new({ name: "res", type: "express.Response" }),
+      ],
+      name: "genRoot",
+      outType: Type.Anonymous.new({ type: "Promise<object>" }),
+    }),
+  ],
+  destination: "src/server/root.ts",
+});
