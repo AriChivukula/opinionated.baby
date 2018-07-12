@@ -12,8 +12,6 @@ variable "NAME" {}
 
 variable "DOMAIN" {}
 
-variable "GREMLIN_HOST" {}
-
 variable "ROLLBAR_SERVER" {}
 
 provider "aws" {}
@@ -67,14 +65,13 @@ resource "aws_lambda_function" "ob_lambda" {
       TF_VAR_NAME = "${var.NAME}"
       TF_VAR_DOMAIN = "${var.DOMAIN}"
       TF_VAR_BUILD = "${var.BUILD}"
-      TF_VAR_GREMLIN_HOST = "${var.GREMLIN_HOST}"
       TF_VAR_ROLLBAR_SERVER = "${var.ROLLBAR_SERVER}"
       DEBUG = "*"
     }
   }
   
   vpc_config {
-    subnet_ids = "${data.aws_subnet_ids.ob_subnets.ids}"
+    subnet_ids = ["${data.aws_subnet_ids.ob_subnets.ids}"]
     security_group_ids = ["${data.aws_security_group.ob_security.id}"]
   }
 
