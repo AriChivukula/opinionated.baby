@@ -16,8 +16,6 @@ variable "GREMLIN_HOST" {}
 
 variable "ROLLBAR_SERVER" {}
 
-variable "NEPTUNE" {}
-
 provider "aws" {}
 
 data "aws_acm_certificate" "ob_certificate" {
@@ -56,7 +54,6 @@ resource "aws_lambda_function" "ob_lambda" {
       TF_VAR_BUILD = "${var.BUILD}"
       TF_VAR_GREMLIN_HOST = "${var.GREMLIN_HOST}"
       TF_VAR_ROLLBAR_SERVER = "${var.ROLLBAR_SERVER}"
-      TF_VAR_NEPTUNE = "${var.NEPTUNE}"
       DEBUG = "*"
     }
   }
