@@ -16,7 +16,7 @@ import {
 } from "./google";
 import {
   genNullOnThrow,
-} from "./util";
+} from "./utility";
 
 export async function genRoot(
   req: express.Request,
