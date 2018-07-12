@@ -27,11 +27,11 @@ import {
 } from "rmwc/Toolbar";
 import {
   Url,
-} from "utility";
+} from "url";
 
 import {
   goto,
-} from "../util";
+} from "../utility";
 import {
   TopBarLoginMutationResponse,
 } from "./__generated__/TopBarLoginMutation.graphql";
