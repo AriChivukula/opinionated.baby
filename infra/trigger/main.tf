@@ -8,6 +8,46 @@ variable "DOMAIN" {}
 
 provider "aws" {}
 
+data "aws_availability_zones" "ob_az" {}
+
+resource "aws_vpc" "ob_vpc" {
+  cidr_block = "192.168.0.0/16"
+  
+  tags {
+    Name = "${var.NAME}"
+  }
+}
+
+resource "aws_subnet" "ob_subnet" {
+  count = "${length(data.aws_availability_zones.ob_az.names)}"
+  cidr_block = "${cidrsubnet(aws_vpc.ob_vpc.cidr_block, 8, count.index)}"
+  availability_zone = "${data.aws_availability_zones.ob_az.names[count.index]}"
+  vpc_id = "${aws_vpc.ob_vpc.id}"
+  map_public_ip_on_launch = true
+  
+  tags {
+    Name = "${var.NAME}"
+  }
+}
+
+resource "aws_internet_gateway" "ob_gateway" {
+  vpc_id = "${aws_vpc.ob_vpc.id}"
+  
+  tags {
+    Name = "${var.NAME}"
+  }
+}
+
+resource "aws_route" "ob_route" {
+  route_table_id = "${aws_vpc.ob_vpc.main_route_table_id}"
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id = "${aws_internet_gateway.ob_gateway.id}"
+  
+  tags {
+    Name = "${var.NAME}"
+  }
+}
+
 resource "aws_acm_certificate" "ob_certificate" {
   domain_name = "${var.DOMAIN}"
   subject_alternative_names = ["*.${var.DOMAIN}"]
