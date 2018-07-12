@@ -3,7 +3,7 @@ import { Bespoke, Function, Import, Interface, Module, Type, Variable } from "ty
 export const server: Module = Module.new({
   content: [
     Bespoke.new({
-      name: "server",
+      name: "custom",
     }),
   ],
   destination: "src/server/server.ts",
@@ -12,7 +12,7 @@ export const server: Module = Module.new({
 export const google: Module = Module.new({
   content: [
     Bespoke.new({
-      name: "google",
+      name: "custom",
     }),
   ],
   destination: "src/server/google.ts",
@@ -21,7 +21,7 @@ export const google: Module = Module.new({
 export const index: Module = Module.new({
   content: [
     Bespoke.new({
-      name: "index",
+      name: "custom",
     }),
   ],
   destination: "src/server/index.ts",
@@ -30,7 +30,7 @@ export const index: Module = Module.new({
 export const root: Module = Module.new({
   content: [
     Bespoke.new({
-      name: "root",
+      name: "custom",
     }),
   ],
   destination: "src/server/root.ts",
@@ -39,7 +39,7 @@ export const root: Module = Module.new({
 export const utility: Module = Module.new({
   content: [
     Bespoke.new({
-      name: "utility",
+      name: "custom",
     }),
   ],
   destination: "src/server/utility.ts",
