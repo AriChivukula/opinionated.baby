@@ -1,7 +1,7 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/server/google.ts::module>>
+ * SOURCE<<gen/server.ts::Google>>
  * BESPOKE<<getOAuthClient, getLoginURL, genAccessToken, genAccessTokenInfo, genUserForAccessToken>>
  * SIGNED<<PGwO+6Bjf72Si8TBEIzen19q/uwpucO/5Ggh8u0wMmOk/BPWh9Sm5Y4ZxzmJI4GNxck6/WZycXvw7F/4eEWzzQ==>>
  */

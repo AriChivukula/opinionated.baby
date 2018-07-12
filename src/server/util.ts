@@ -1,7 +1,7 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/server/util.ts::module>>
+ * SOURCE<<gen/server.ts::Util>>
  * BESPOKE<<makeSync<T>, genNullOnThrow<T>>>
  * SIGNED<<2m34PnVVRoF9SFCHuaToEY4UQOiX8F+wA1aSsvAVttE67YwlTGsB8uP7m69x2hKn9S0oQPCfzlKN9/PhHi0L/Q==>>
  */

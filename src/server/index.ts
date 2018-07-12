@@ -1,7 +1,7 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/server/index.ts::module>>
+ * SOURCE<<gen/server.ts::Index>>
  * BESPOKE<<main, handler>>
  * SIGNED<<4zMZbzOp/z/0yhs2rcJGxqHS6WKofygAF4d5we/BydKyQZIWgmhLr4z811sktN3Pnauy6VyOv7MJvzwyTKE+kw==>>
  */

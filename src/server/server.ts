@@ -1,7 +1,7 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/server/server.ts::module>>
+ * SOURCE<<gen/server.ts::Server>>
  * BESPOKE<<servers>>
  * SIGNED<<t793RpMk6FtnvSaTcr+3R8567fAo8eBMb2ony7sKsJEd5ozmmrbxGArMftgPuAIYfJAK2zPUCoopPhhRAN2OYw==>>
  */

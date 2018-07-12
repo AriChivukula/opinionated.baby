@@ -1,7 +1,7 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/views.ts::TopBarReact>>
+ * SOURCE<<gen/website.ts::TopBar>>
  * BESPOKE<<imports, render, implementation, relay>>
  * SIGNED<<nERiIastBWG6bZUM0PoT5oM6/QwQWmfo3Q1Ag5q6pFRHzZsUX8oTuH3BurNfT+8w5OUItXuFsRmbGfNix4VLDw==>>
  */

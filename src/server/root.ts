@@ -1,7 +1,7 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/server/root.ts::module>>
+ * SOURCE<<gen/server.ts::Root>>
  * BESPOKE<<genRoot>>
  * SIGNED<<yF/EPJSI/BOS/l72eD4xkDh7mcwe8BbByWXLs5VMsJ1/JyRD1+kQOdhnzZKn5O540XH4rIgk5aFs6OEywrkyqw==>>
  */

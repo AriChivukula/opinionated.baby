@@ -1,7 +1,7 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/views.ts::ContentReact>>
+ * SOURCE<<gen/website.ts::Content>>
  * BESPOKE<<imports, render>>
  * SIGNED<<HGQ2naQjVCG8EdBOFyN/JsFC80EWUKgn2zE8tGwn+dqCbgH3trBWCjDHwkH1zccsaIX6CG1sxWtebWDqSSjozA==>>
  */

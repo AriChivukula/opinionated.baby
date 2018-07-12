@@ -1,7 +1,7 @@
 /**
  * This file is partially generated; only edit bespoke sections.
  *
- * SOURCE<<gen/website/util.ts::module>>
+ * SOURCE<<gen/website.ts::Util>>
  * BESPOKE<<goto>>
  * SIGNED<<xmEAmBCNkmKkh5J4cChPNmzfMV9za8dykTqYkxcp6vXCxNnsX9pYsV8JaGtW9B+ec5kmTEUgb0MctNZrBsQX3Q==>>
  */
