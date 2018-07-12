@@ -1,6 +1,6 @@
 import { Bespoke, Import, Module, Type, Variable } from "typescriptase";
 
-export const module: Module = Module.new({
+export const index: Module = Module.new({
   content: [
     Import.new({
       name: "@babel/polyfill",
