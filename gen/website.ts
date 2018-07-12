@@ -1,4 +1,4 @@
-import { Bespoke, Import, Module, Type, Variable } from "typescriptase";
+import { Bespoke, Function, Import, Module, Type, Variable } from "typescriptase";
 
 export const index: Module = Module.new({
   content: [
@@ -17,4 +17,23 @@ export const index: Module = Module.new({
     }),
   ],
   destination: "src/website/index.tsx",
+});
+
+export const util: Module = Module.new({
+  content: [
+    Function.Sync.newExported({
+      content: [
+        Bespoke.new({
+          name: "goto",
+        }),
+      ],
+      inTypes: [
+        Type.Argument.new({ name: "url", type: "string" }),
+        Type.Argument.new({ default: "false", name: "samePage", type: "boolean" }),
+      ],
+      name: "goto",
+      outType: Type.Anonymous.new({ type: "void" }),
+    }),
+  ],
+  destination: "src/website/util.tsx",
 });
