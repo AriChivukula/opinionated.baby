@@ -9,7 +9,7 @@
 /* BESPOKE START <<neptune>> */
 import gremlin from "gremlin";
 
-export async function init(): Promise<object> {
+export async function NeptuneInit(): Promise<object> {
   new gremlin.driver.DriverRemoteConnection(`ws://${process.env.NEPTUNE}/gremlin`);
 }
 
