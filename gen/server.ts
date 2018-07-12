@@ -26,10 +26,6 @@ export const Server: Module = Module.new({
       name: "./root",
       with: ["genRoot"],
     }),
-    Import.new({
-      name: "./neptune",
-      with: ["neptuneInit"],
-    }),
     Bespoke.new({
       name: "servers",
     }),
@@ -155,6 +151,10 @@ export const Index: Module = Module.new({
     Import.new({
       name: "./server",
       with: ["graphQL"],
+    }),
+    Import.new({
+      name: "./neptune",
+      with: ["neptuneInit"],
     }),
     Variable.newImmutable({
       assignment: "express()",
