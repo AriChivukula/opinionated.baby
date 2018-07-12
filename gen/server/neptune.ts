@@ -5,5 +5,6 @@ export const module: Module = Module.new({
     Bespoke.new({
       name: "neptune",
     }),
+  ],
   destination: "src/server/neptune.ts",
 });
