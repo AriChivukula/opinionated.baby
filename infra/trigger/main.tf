@@ -42,10 +42,6 @@ resource "aws_route" "ob_route" {
   route_table_id = "${aws_vpc.ob_vpc.main_route_table_id}"
   destination_cidr_block = "0.0.0.0/0"
   gateway_id = "${aws_internet_gateway.ob_gateway.id}"
-
-  tags {
-    Name = "${var.NAME}"
-  }
 }
 
 resource "aws_security_group" "ob_security" {
