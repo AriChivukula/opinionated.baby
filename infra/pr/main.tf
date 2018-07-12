@@ -2,9 +2,9 @@ terraform {
   backend "s3" {}
 }
 
-variable "CLIENT_ID" {}
-
 variable "BUILD" {}
+
+variable "CLIENT_ID" {}
 
 variable "CLIENT_SECRET" {}
 
