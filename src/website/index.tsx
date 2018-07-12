@@ -7,4 +7,13 @@
  */
 
 /* BESPOKE START <<custom>> */
+import "@babel/polyfill";
+
+import {
+  render,
+} from "./website";
+
+window.onload = (): void => {
+  render("https://dynamic-ENV_BUILD.ENV_DOMAIN/graphql/ENV_NAME-ENV_BUILD/");
+};
 /* BESPOKE END <<custom>> */
