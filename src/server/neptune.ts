@@ -7,4 +7,7 @@
  */
 
 /* BESPOKE START <<neptune>> */
+import gremlin from "gremlin";
+
+new gremlin.driver.DriverRemoteConnection(`ws://${process.env.NEPTUNE}/gremlin`);
 /* BESPOKE END <<neptune>> */
