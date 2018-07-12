@@ -219,3 +219,35 @@ export const Root: Module = Module.new({
   ],
   destination: "src/server/root.ts",
 });
+
+export const Util: Module = Module.new({
+  content: [
+    Function.Sync.newExported({
+      content: [
+        Bespoke.new({
+          name: "makeSync<T>",
+        }),
+      ],
+      inTypes: [
+        Type.Argument.new({ name: "wasAsync", type: "Promise<T>" }),
+      ],
+      name: "makeSync",
+      outType: Type.Anonymous.new({ type: "void" }),
+      templates: ["T"],
+    }),
+    Function.Async.newExported({
+      content: [
+        Bespoke.new({
+          name: "genNullOnThrow<T>",
+        }),
+      ],
+      inTypes: [
+        Type.Argument.new({ name: "mightThrow", type: "() => Promise<T>" }),
+      ],
+      name: "genNullOnThrow",
+      outType: Type.Anonymous.new({ type: "Promise<T | null>" }),
+      templates: ["T"],
+    }),
+  ],
+  destination: "src/server/util.ts",
+});
