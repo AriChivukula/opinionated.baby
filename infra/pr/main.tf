@@ -41,7 +41,7 @@ data "aws_security_group" "ob_security" {
 data "aws_vpc" "ob_vpc" {
   filter {
     name = "tag:Name"
-    value = "${var.NAME}"
+    values = ["${var.NAME}"]
   }
 }
 
