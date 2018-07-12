@@ -7,7 +7,7 @@
  */
 
 /* BESPOKE START <<neptune>> */
-import gremlin from "gremlin";
+import * as gremlin from "gremlin";
 
 let neptuneDriver: gremlin.driver.DriverRemoteConnection;
 
