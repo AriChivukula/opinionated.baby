@@ -16,6 +16,8 @@ variable "GREMLIN_HOST" {}
 
 variable "ROLLBAR_SERVER" {}
 
+variable "NEPTUNE" {}
+
 provider "aws" {}
 
 data "aws_acm_certificate" "ob_certificate" {
@@ -47,13 +49,14 @@ resource "aws_lambda_function" "ob_lambda" {
 
   environment {
     variables = {
-      TF_VAR_CLIENT_ID      = "${var.CLIENT_ID}"
-      TF_VAR_CLIENT_SECRET  = "${var.CLIENT_SECRET}"
-      TF_VAR_NAME           = "${var.NAME}"
-      TF_VAR_DOMAIN         = "${var.DOMAIN}"
-      TF_VAR_BUILD          = "${var.BUILD}"
-      TF_VAR_GREMLIN_HOST   = "${var.GREMLIN_HOST}"
+      TF_VAR_CLIENT_ID = "${var.CLIENT_ID}"
+      TF_VAR_CLIENT_SECRET = "${var.CLIENT_SECRET}"
+      TF_VAR_NAME = "${var.NAME}"
+      TF_VAR_DOMAIN = "${var.DOMAIN}"
+      TF_VAR_BUILD = "${var.BUILD}"
+      TF_VAR_GREMLIN_HOST = "${var.GREMLIN_HOST}"
       TF_VAR_ROLLBAR_SERVER = "${var.ROLLBAR_SERVER}"
+      TF_VAR_NEPTUNE = "${var.NEPTUNE}"
       DEBUG                 = "*"
     }
   }
