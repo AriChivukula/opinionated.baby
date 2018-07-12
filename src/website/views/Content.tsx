@@ -28,7 +28,7 @@ import {
 
 import {
   goto,
-} from "../util";
+} from "../utility";
 
 interface ITools {
   graphic: string;
