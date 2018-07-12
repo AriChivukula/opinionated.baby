@@ -32,6 +32,7 @@ app.use(cors(), helmet(), bearer(), json(), urlencoded({ extended: true }));
 
 app.use((req: express.Request, res: express.Response, next: () => void): void => {
   if (!didSetup) {
+    NeptuneInit();
     didSetup = true;
   }
   next();
