@@ -69,9 +69,9 @@ resource "aws_route_table" "ob_table" {
 }
 
 resource "aws_route" "ob_route_nat" {
-  route_table_id  = "${lookup(aws_route_table.ob_table[count.index], "id")}"
+  route_table_id  = "${element(aws_route_table.ob_table.*.id, count.index)}"
   destination_cidr_block = "0.0.0.0/0"
-  nat_gateway_id = "${lookup(aws_nat_gateway.ob_nat[count.index], "id")}"
+  nat_gateway_id = "${element(aws_nat_gateway.ob_nat.*.id, count.index)}"
 }
 
 resource "aws_security_group" "ob_security" {
