@@ -9,7 +9,7 @@ variable "DOMAIN" {}
 provider "aws" {}
 
 locals {
-  "ob_az" = ["us-east-1a", "us-east-1a"]
+  "ob_az" = ["us-east-1a", "us-east-1b"]
 }
 
 resource "aws_vpc" "ob_vpc" {
@@ -71,6 +71,7 @@ resource "aws_route_table" "ob_table" {
 }
 
 resource "aws_route" "ob_route_nat" {
+  count = "${length(local.ob_az)}"
   route_table_id  = "${element(aws_route_table.ob_table.*.id, count.index)}"
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id = "${element(aws_nat_gateway.ob_nat.*.id, count.index)}"
