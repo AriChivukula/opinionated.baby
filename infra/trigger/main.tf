@@ -8,7 +8,9 @@ variable "DOMAIN" {}
 
 provider "aws" {}
 
-data "aws_availability_zones" "ob_az" {}
+locals {
+  "ob_az" = ["us-east-1a", "us-east-1a"]
+}
 
 resource "aws_vpc" "ob_vpc" {
   cidr_block = "192.168.0.0/16"
@@ -19,9 +21,9 @@ resource "aws_vpc" "ob_vpc" {
 }
 
 resource "aws_subnet" "ob_subnet" {
-  count = "${length(data.aws_availability_zones.ob_az.names)}"
+  count = "${length(local.ob_az)}"
   cidr_block = "${cidrsubnet(aws_vpc.ob_vpc.cidr_block, 8, count.index)}"
-  availability_zone = "${data.aws_availability_zones.ob_az.names[count.index]}"
+  availability_zone = "${local.ob_az[count.index]}"
   vpc_id = "${aws_vpc.ob_vpc.id}"
   map_public_ip_on_launch = true
 
@@ -39,12 +41,12 @@ resource "aws_internet_gateway" "ob_gateway" {
 }
 
 resource "aws_eip" "ob_eip" {
-  count = "${length(data.aws_availability_zones.ob_az.names)}"
+  count = "${length(local.ob_az)}"
   vpc = true
 }
 
 resource "aws_nat_gateway" "ob_nat" {
-  count = "${length(data.aws_availability_zones.ob_az.names)}"
+  count = "${length(local.ob_az)}"
   allocation_id = "${element(aws_eip.ob_eip.*.id, count.index)}"
   subnet_id = "${element(aws_subnet.ob_subnet.*.id, count.index)}"
   
@@ -60,7 +62,7 @@ resource "aws_route" "ob_route_iw" {
 }
 
 resource "aws_route_table" "ob_table" {
-  count = "${length(data.aws_availability_zones.ob_az.names)}"
+  count = "${length(local.ob_az)}"
   vpc_id = "${aws_vpc.ob_vpc.id}"
 
   tags {
