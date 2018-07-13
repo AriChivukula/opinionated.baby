@@ -70,6 +70,12 @@ resource "aws_route_table" "ob_table" {
   }
 }
 
+resource "aws_route_table_association" "ob_assoc" {
+  count = "${length(local.ob_az)}"
+  subnet_id = "${element(aws_subnet.ob_subnet.*.id, count.index)}"
+  route_table_id = "${element(aws_route_table.ob_table.*.id, count.index)}"
+}
+
 resource "aws_route" "ob_route_nat" {
   count = "${length(local.ob_az)}"
   route_table_id  = "${element(aws_route_table.ob_table.*.id, count.index)}"
