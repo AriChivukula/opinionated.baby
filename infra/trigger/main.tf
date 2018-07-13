@@ -8,10 +8,6 @@ variable "DOMAIN" {}
 
 provider "aws" {}
 
-locals {
-  "ob_az" = ["us-east-1a", "us-east-1b"]
-}
-
 resource "aws_vpc" "ob_vpc" {
   cidr_block = "192.168.0.0/16"
 
@@ -20,10 +16,8 @@ resource "aws_vpc" "ob_vpc" {
   }
 }
 
-resource "aws_subnet" "ob_subnet" {
-  count = "${length(local.ob_az)}"
-  cidr_block = "${cidrsubnet(aws_vpc.ob_vpc.cidr_block, 8, count.index)}"
-  availability_zone = "${local.ob_az[count.index]}"
+resource "aws_subnet" "ob_subnet_public" {
+  cidr_block = "${cidrsubnet(aws_vpc.ob_vpc.cidr_block, 8, 0)}"
   vpc_id = "${aws_vpc.ob_vpc.id}"
   map_public_ip_on_launch = true
 
@@ -32,7 +26,7 @@ resource "aws_subnet" "ob_subnet" {
   }
 }
 
-resource "aws_internet_gateway" "ob_gateway" {
+resource "aws_internet_gateway" "ob_internet" {
   vpc_id = "${aws_vpc.ob_vpc.id}"
 
   tags {
@@ -40,29 +34,40 @@ resource "aws_internet_gateway" "ob_gateway" {
   }
 }
 
+resource "aws_route" "ob_route_iw" {
+  route_table_id = "${aws_vpc.ob_vpc.main_route_table_id}"
+  gateway_id = "${aws_internet_gateway.ob_internet.id}"
+  destination_cidr_block = "0.0.0.0/0"
+}
+
+resource "aws_route_table_association" "ob_assoc" {
+  subnet_id = "${aws_subnet.ob_subnet_public.id}"
+  route_table_id = "${aws_route.ob_route_iw.id}"
+}
+
 resource "aws_eip" "ob_eip" {
-  count = "${length(local.ob_az)}"
   vpc = true
 }
 
 resource "aws_nat_gateway" "ob_nat" {
-  count = "${length(local.ob_az)}"
-  allocation_id = "${element(aws_eip.ob_eip.*.id, count.index)}"
-  subnet_id = "${element(aws_subnet.ob_subnet.*.id, count.index)}"
+  allocation_id = "${aws_eip.ob_eip.id}"
+  subnet_id = "${aws_subnet.ob_subnet_public.id}"
   
   tags {
     Name = "${var.NAME}"
   }
 }
 
-resource "aws_route" "ob_route_iw" {
-  route_table_id = "${aws_vpc.ob_vpc.main_route_table_id}"
-  gateway_id = "${aws_internet_gateway.ob_gateway.id}"
-  destination_cidr_block = "0.0.0.0/0"
+resource "aws_subnet" "ob_subnet_private" {
+  cidr_block = "${cidrsubnet(aws_vpc.ob_vpc.cidr_block, 8, 1)}"
+  vpc_id = "${aws_vpc.ob_vpc.id}"
+
+  tags {
+    Name = "${var.NAME}"
+  }
 }
 
 resource "aws_route_table" "ob_table" {
-  count = "${length(local.ob_az)}"
   vpc_id = "${aws_vpc.ob_vpc.id}"
 
   tags {
@@ -71,16 +76,14 @@ resource "aws_route_table" "ob_table" {
 }
 
 resource "aws_route_table_association" "ob_assoc" {
-  count = "${length(local.ob_az)}"
-  subnet_id = "${element(aws_subnet.ob_subnet.*.id, count.index)}"
-  route_table_id = "${element(aws_route_table.ob_table.*.id, count.index)}"
+  subnet_id = "${aws_subnet.ob_subnet_private.id}"
+  route_table_id = "${aws_route_table.ob_table.id}"
 }
 
 resource "aws_route" "ob_route_nat" {
-  count = "${length(local.ob_az)}"
-  route_table_id  = "${element(aws_route_table.ob_table.*.id, count.index)}"
+  route_table_id  = "${aws_route_table.ob_table.id}"
   destination_cidr_block = "0.0.0.0/0"
-  nat_gateway_id = "${element(aws_nat_gateway.ob_nat.*.id, count.index)}"
+  nat_gateway_id = "${aws_nat_gateway.ob_nat.id}"
 }
 
 resource "aws_security_group" "ob_security" {
