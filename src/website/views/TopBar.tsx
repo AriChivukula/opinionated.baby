@@ -16,7 +16,6 @@ import {
 /* BESPOKE START <<imports>> */
 import * as cookie from "js-cookie";
 
-import * as Relay from "relay-runtime";
 import {
   Toolbar,
   ToolbarFixedAdjust,
