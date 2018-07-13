@@ -45,8 +45,8 @@ resource "aws_eip" "ob_eip" {
 
 resource "aws_nat_gateway" "ob_nat" {
   count = "${length(data.aws_availability_zones.ob_az.names)}"
-  allocation_id = "${aws_eip.ob_eip.id[count.index]}"
-  subnet_id = "${aws_subnet.ob_subnet.id[count.index]}"
+  allocation_id = "${element(aws_eip.ob_eip.*.id, count.index)}"
+  subnet_id = "${element(aws_subnet.ob_subnet.*.id, count.index)}"
   
   tags {
     Name = "${var.NAME}"
