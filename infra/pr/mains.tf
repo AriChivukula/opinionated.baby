@@ -12,6 +12,8 @@ variable "NAME" {}
 
 variable "DOMAIN" {}
 
+variable "LOCAL_DOMAIN" {}
+
 variable "ROLLBAR_SERVER" {}
 
 provider "aws" {}
@@ -236,7 +238,7 @@ resource "aws_s3_bucket_object" "ob_object" {
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
-  aliases = ["${var.DOMAIN}"]
+  aliases = ["${var.LOCAL_DOMAIN}"]
   enabled = true
   default_root_object = "index.html"
 
@@ -254,13 +256,13 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
       query_string = "false"
     }
 
-    target_origin_id = "${var.DOMAIN}"
+    target_origin_id = "${var.LOCAL_DOMAIN}"
     viewer_protocol_policy = "redirect-to-https"
   }
 
   origin {
     domain_name = "${data.aws_s3_bucket.ob_bucket.bucket_domain_name}"
-    origin_id = "${var.DOMAIN}"
+    origin_id = "${var.LOCAL_DOMAIN}"
     origin_path = "/${var.BUILD}"
 
     custom_origin_config {
@@ -288,7 +290,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
 }
 
 resource "aws_route53_record" "ob_record_static" {
-  name = "${var.DOMAIN}."
+  name = "${var.LOCAL_DOMAIN}."
   type = "A"
   zone_id = "${data.aws_route53_zone.ob_zone.zone_id}"
 
