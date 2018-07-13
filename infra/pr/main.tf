@@ -45,7 +45,7 @@ data "aws_vpc" "ob_vpc" {
   }
 }
 
-data "aws_subnet" "ob_subnet" {
+data "aws_subnet_ids" "ob_subnet" {
   vpc_id = "${data.aws_vpc.ob_vpc.id}"
   filter {
     name = "tag:Type"
@@ -77,7 +77,7 @@ resource "aws_lambda_function" "ob_lambda" {
   }
   
   vpc_config {
-    subnet_ids = ["${data.aws_subnet.ob_subnet.id}"]
+    subnet_ids = ["${data.aws_subnet_ids.ob_subnet.ids}"]
     security_group_ids = ["${data.aws_security_group.ob_security.id}"]
   }
 
