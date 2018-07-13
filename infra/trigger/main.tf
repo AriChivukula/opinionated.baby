@@ -34,15 +34,23 @@ resource "aws_internet_gateway" "ob_internet" {
   }
 }
 
+resource "aws_route_table" "ob_table_public" {
+  vpc_id = "${aws_vpc.ob_vpc.id}"
+
+  tags {
+    Name = "${var.NAME}"
+  }
+}
+
 resource "aws_route" "ob_route_iw" {
-  route_table_id = "${aws_vpc.ob_vpc.main_route_table_id}"
+  route_table_id = "${aws_route_table.ob_table_public.id}"
   gateway_id = "${aws_internet_gateway.ob_internet.id}"
   destination_cidr_block = "0.0.0.0/0"
 }
 
 resource "aws_route_table_association" "ob_assoc_public" {
   subnet_id = "${aws_subnet.ob_subnet_public.id}"
-  route_table_id = "${aws_route.ob_route_iw.id}"
+  route_table_id = "${aws_route_table.ob_table_public.id}"
 }
 
 resource "aws_eip" "ob_eip" {
@@ -67,7 +75,7 @@ resource "aws_subnet" "ob_subnet_private" {
   }
 }
 
-resource "aws_route_table" "ob_table" {
+resource "aws_route_table" "ob_table_private" {
   vpc_id = "${aws_vpc.ob_vpc.id}"
 
   tags {
@@ -77,11 +85,11 @@ resource "aws_route_table" "ob_table" {
 
 resource "aws_route_table_association" "ob_assoc_private" {
   subnet_id = "${aws_subnet.ob_subnet_private.id}"
-  route_table_id = "${aws_route_table.ob_table.id}"
+  route_table_id = "${aws_route_table.ob_table_private.id}"
 }
 
 resource "aws_route" "ob_route_nat" {
-  route_table_id  = "${aws_route_table.ob_table.id}"
+  route_table_id  = "${aws_route_table.ob_table_private.id}"
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id = "${aws_nat_gateway.ob_nat.id}"
 }
