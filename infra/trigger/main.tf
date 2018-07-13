@@ -40,7 +40,7 @@ resource "aws_route" "ob_route_iw" {
   destination_cidr_block = "0.0.0.0/0"
 }
 
-resource "aws_route_table_association" "ob_assoc" {
+resource "aws_route_table_association" "ob_assoc_public" {
   subnet_id = "${aws_subnet.ob_subnet_public.id}"
   route_table_id = "${aws_route.ob_route_iw.id}"
 }
@@ -75,7 +75,7 @@ resource "aws_route_table" "ob_table" {
   }
 }
 
-resource "aws_route_table_association" "ob_assoc" {
+resource "aws_route_table_association" "ob_assoc_private" {
   subnet_id = "${aws_subnet.ob_subnet_private.id}"
   route_table_id = "${aws_route_table.ob_table.id}"
 }
