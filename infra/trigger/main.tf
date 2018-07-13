@@ -38,10 +38,40 @@ resource "aws_internet_gateway" "ob_gateway" {
   }
 }
 
-resource "aws_route" "ob_route" {
+resource "aws_eip" "ob_eip" {
+  count = "${length(data.aws_availability_zones.ob_az.names)}"
+  vpc = true
+}
+
+resource "aws_nat_gateway" "ob_nat" {
+  count = "${length(data.aws_availability_zones.ob_az.names)}"
+  allocation_id = "${aws_eip.ob_eip.id[count.index]}"
+  subnet_id = "${aws_subnet.ob_subnet.id[count.index]}"
+  
+  tags {
+    Name = "${var.NAME}"
+  }
+}
+
+resource "aws_route" "ob_route_iw" {
   route_table_id = "${aws_vpc.ob_vpc.main_route_table_id}"
   gateway_id = "${aws_internet_gateway.ob_gateway.id}"
   destination_cidr_block = "0.0.0.0/0"
+}
+
+resource "aws_route_table" "ob_table" {
+  count = "${length(data.aws_availability_zones.ob_az.names)}"
+  vpc_id = "${aws_vpc.ob_vpc.id}"
+
+  tags {
+    Name = "${var.NAME}"
+  }
+}
+
+resource "aws_route" "ob_route_nat" {
+  route_table_id  = "${aws_route_table.ob_table[count.index].id}"
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id = "${aws_nat_gateway.ob_nat[count.index].id}"
 }
 
 resource "aws_security_group" "ob_security" {
