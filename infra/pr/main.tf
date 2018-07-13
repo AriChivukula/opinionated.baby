@@ -2,9 +2,9 @@ terraform {
   backend "s3" {}
 }
 
-variable "CLIENT_ID" {}
-
 variable "BUILD" {}
+
+variable "CLIENT_ID" {}
 
 variable "CLIENT_SECRET" {}
 
@@ -12,7 +12,7 @@ variable "NAME" {}
 
 variable "DOMAIN" {}
 
-variable "GREMLIN_HOST" {}
+variable "LOCAL_DOMAIN" {}
 
 variable "ROLLBAR_SERVER" {}
 
@@ -34,6 +34,25 @@ data "aws_route53_zone" "ob_zone" {
   name = "${var.DOMAIN}."
 }
 
+data "aws_security_group" "ob_security" {
+  name = "${var.NAME}"
+}
+
+data "aws_vpc" "ob_vpc" {
+  filter {
+    name = "tag:Name"
+    values = ["${var.NAME}"]
+  }
+}
+
+data "aws_subnet" "ob_subnet" {
+  vpc_id = "${data.aws_vpc.ob_vpc.id}"
+  filter {
+    name = "tag:Type"
+    values = ["Private"]
+  }
+}
+
 resource "aws_lambda_function" "ob_lambda" {
   function_name = "${var.NAME}-${var.BUILD}"
   handler = "index.handler"
@@ -52,10 +71,14 @@ resource "aws_lambda_function" "ob_lambda" {
       TF_VAR_NAME = "${var.NAME}"
       TF_VAR_DOMAIN = "${var.DOMAIN}"
       TF_VAR_BUILD = "${var.BUILD}"
-      TF_VAR_GREMLIN_HOST = "${var.GREMLIN_HOST}"
       TF_VAR_ROLLBAR_SERVER = "${var.ROLLBAR_SERVER}"
       DEBUG = "*"
     }
+  }
+  
+  vpc_config {
+    subnet_ids = ["${data.aws_subnet.ob_subnet.id}"]
+    security_group_ids = ["${data.aws_security_group.ob_security.id}"]
   }
 
   tags {
@@ -215,7 +238,7 @@ resource "aws_s3_bucket_object" "ob_object" {
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
-  aliases = ["static-${var.BUILD}.${var.DOMAIN}"]
+  aliases = ["${var.LOCAL_DOMAIN}"]
   enabled = true
   default_root_object = "index.html"
 
@@ -233,13 +256,13 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
       query_string = "false"
     }
 
-    target_origin_id = "static-${var.BUILD}.${var.DOMAIN}"
+    target_origin_id = "${var.LOCAL_DOMAIN}"
     viewer_protocol_policy = "redirect-to-https"
   }
 
   origin {
     domain_name = "${data.aws_s3_bucket.ob_bucket.bucket_domain_name}"
-    origin_id = "static-${var.BUILD}.${var.DOMAIN}"
+    origin_id = "${var.LOCAL_DOMAIN}"
     origin_path = "/${var.BUILD}"
 
     custom_origin_config {
@@ -267,7 +290,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
 }
 
 resource "aws_route53_record" "ob_record_static" {
-  name = "static-${var.BUILD}.${var.DOMAIN}."
+  name = "${var.LOCAL_DOMAIN}."
   type = "A"
   zone_id = "${data.aws_route53_zone.ob_zone.zone_id}"
 

@@ -1,6 +1,7 @@
 set -e
 
 export TF_VAR_BUILD=$TRAVIS_BUILD_NUMBER
+export TF_VAR_LOCAL_DOMAIN=static-$TF_VAR_BUILD.$TF_VAR_DOMAIN
 bash shell/build.sh
 terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=tfstate/${TF_VAR_BUILD}.tfstate" infra/pr
 terraform apply -auto-approve infra/pr
