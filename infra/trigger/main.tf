@@ -19,7 +19,6 @@ resource "aws_vpc" "ob_vpc" {
 resource "aws_subnet" "ob_subnet_public" {
   cidr_block = "${cidrsubnet(aws_vpc.ob_vpc.cidr_block, 8, 0)}"
   vpc_id = "${aws_vpc.ob_vpc.id}"
-  map_public_ip_on_launch = true
 
   tags {
     Name = "${var.NAME}"
@@ -39,6 +38,7 @@ resource "aws_route_table" "ob_table_public" {
 
   tags {
     Name = "${var.NAME}"
+    Type = "Public"
   }
 }
 
@@ -72,6 +72,7 @@ resource "aws_subnet" "ob_subnet_private" {
 
   tags {
     Name = "${var.NAME}"
+    Type = "Private"
   }
 }
 
