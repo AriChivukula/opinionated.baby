@@ -18,7 +18,7 @@ import cors from "cors";
 import express from "express";
 import bearer from "express-bearer-token";
 import helmet from "helmet";
-import * as Rollbar from "rollbar";
+import Rollbar from "rollbar";
 
 import {
   graphQL,
