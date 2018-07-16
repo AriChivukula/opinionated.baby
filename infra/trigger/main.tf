@@ -22,7 +22,7 @@ resource "aws_subnet" "ob_subnet_public" {
   count = "${length(data.aws_availability_zones.ob_azs.names)}"
   cidr_block = "${cidrsubnet(aws_vpc.ob_vpc.cidr_block, 8, count.index)}"
   vpc_id = "${aws_vpc.ob_vpc.id}"
-  availability_zone = "data.aws_availability_zones.ob_azs.names[count.index]"
+  availability_zone = "${data.aws_availability_zones.ob_azs.names[count.index]}"
 
   tags {
     Name = "${var.NAME}"
@@ -76,7 +76,7 @@ resource "aws_subnet" "ob_subnet_private" {
   count = "${length(data.aws_availability_zones.ob_azs.names)}"
   cidr_block = "${cidrsubnet(aws_vpc.ob_vpc.cidr_block, 8, count.index + length(data.aws_availability_zones.ob_azs.names))}"
   vpc_id = "${aws_vpc.ob_vpc.id}"
-  availability_zone = "data.aws_availability_zones.ob_azs.names[count.index]"
+  availability_zone = "${data.aws_availability_zones.ob_azs.names[count.index]}"
 
   tags {
     Name = "${var.NAME}"
