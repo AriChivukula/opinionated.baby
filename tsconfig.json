@@ -35,10 +35,9 @@
       "ESNext.AsyncIterable",
       "ESNext.Array"
     ],
-    "inlineSourceMap": true,
     "module": "CommonJS",
     "moduleResolution": "Node",
     "target": "ES3",
-    "sourceMap": true
+    "strict": true
   }
 }
