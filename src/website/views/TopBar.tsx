@@ -17,13 +17,8 @@ import {
 import * as cookie from "js-cookie";
 
 import {
-  Toolbar,
-  ToolbarFixedAdjust,
-  ToolbarIcon,
-  ToolbarRow,
-  ToolbarSection,
-  ToolbarTitle,
-} from "rmwc/Toolbar";
+  SimpleTopAppBar,
+} from "rmwc/TopAppBar";
 import {
   Url,
 } from "url";
@@ -57,40 +52,27 @@ class __TopBar extends React.Component<ITopBarProps> {
 
       return <div />;
     }
-    let login: JSX.Element = (
-      <ToolbarIcon
-        use="person"
-        onClick={(): void => { this.googleAuth(); }}
-      />
-    );
+    let actionItem: object = {
+      onClick: (): void => this.googleAuth(),
+      use: "person",
+    };
     if (this.props.data.me !== null) {
-      login = (
-        <>
-          <ToolbarTitle>{this.props.data.me.email}</ToolbarTitle>
-          <ToolbarIcon
-            use="exit_to_app"
-            onClick={(): void => { this.logout(); }}
-          />
-        </>
-      );
+      let actionItem: object = {
+        onClick: (): void => this.logout(),
+        use: "exit_to_app",
+      };
     }
 
     return (
-      <>
-        <Toolbar fixed waterfall>
-          <ToolbarRow>
-            <ToolbarSection alignStart>
-              <ToolbarTitle onClick={(): void => { goto("https://github.com/arichiv/opinionated.baby/"); }}>
-                {document.title}
-              </ToolbarTitle>
-            </ToolbarSection>
-            <ToolbarSection alignEnd>
-              {login}
-            </ToolbarSection>
-          </ToolbarRow>
-        </Toolbar>
-        <ToolbarFixedAdjust />
-      </>
+      <SimpleTopAppBar
+        title={document.title}
+        fixed={true}
+        navigationIcon={{
+          onClick: (): void => goto("https://github.com/arichiv/opinionated.baby/"),
+          use: "code",
+        }}
+        actionItems={[actionItem]}
+      />
     );
     /* BESPOKE END <<render>> */
   }
