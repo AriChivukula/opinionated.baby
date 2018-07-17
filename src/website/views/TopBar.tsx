@@ -18,6 +18,7 @@ import * as cookie from "js-cookie";
 
 import {
   SimpleTopAppBar,
+  TopAppBarFixedAdjust,
 } from "rmwc/TopAppBar";
 import {
   Url,
@@ -64,15 +65,18 @@ class __TopBar extends React.Component<ITopBarProps> {
     }
 
     return (
-      <SimpleTopAppBar
-        title={document.title}
-        fixed={true}
-        navigationIcon={{
-          onClick: (): void => goto("https://github.com/arichiv/opinionated.baby/"),
-          use: "code",
-        }}
-        actionItems={[actionItem]}
-      />
+      <>
+        <SimpleTopAppBar
+          title={document.title}
+          fixed={true}
+          navigationIcon={{
+            onClick: (): void => goto("https://github.com/arichiv/opinionated.baby/"),
+            use: "code",
+          }}
+          actionItems={[actionItem]}
+        />
+        <TopAppBarFixedAdjust />
+      </>
     );
     /* BESPOKE END <<render>> */
   }
