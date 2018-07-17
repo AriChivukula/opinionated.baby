@@ -57,7 +57,7 @@ class __TopBar extends React.Component<ITopBarProps> {
       use: "person",
     };
     if (this.props.data.me !== null) {
-      let actionItem: object = {
+      actionItem = {
         onClick: (): void => this.logout(),
         use: "exit_to_app",
       };
