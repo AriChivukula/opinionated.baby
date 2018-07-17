@@ -9,7 +9,7 @@
 /* BESPOKE START <<custom>> */
 import "@babel/polyfill";
 
-import * as lambda from "aws-serverless-express";
+import lambda from "aws-serverless-express";
 import {
   json,
   urlencoded,
