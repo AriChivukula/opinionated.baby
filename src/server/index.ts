@@ -9,7 +9,6 @@
 /* BESPOKE START <<custom>> */
 import "@babel/polyfill";
 
-// @ts-ignore
 import lambda from "aws-serverless-express";
 import {
   json,
