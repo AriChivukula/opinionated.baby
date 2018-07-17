@@ -15,7 +15,8 @@
     ],
     "instrument": true,
     "extension": [
-      ".+(ts|tsx)"
+      ".ts",
+      ".tsx"
     ],
     "require": [
       "ts-node/register"
