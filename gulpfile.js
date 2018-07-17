@@ -14,7 +14,7 @@ var project = ts.createProject("tsconfig.json", { module: "ES2015", target: "ES2
 
 gulp.task(
   "build:1:typescript",
-  () => gulp.src(["src/**/*.ts", "src/**/*.tsx"])
+  () => gulp.src(["src/**/*.@(ts|tsx)"])
     .pipe(project())
     .js
     .pipe(gulp.dest("build/1")),
