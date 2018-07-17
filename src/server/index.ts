@@ -7,6 +7,11 @@
  */
 
 /* BESPOKE START <<custom>> */
+declare module "aws-serverless-express" {
+  var x: any;
+  export = x;
+}
+
 import "@babel/polyfill";
 
 import * as lambda from "aws-serverless-express";
