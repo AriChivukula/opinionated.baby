@@ -11,11 +11,11 @@
   "nyc": {
     "all": true,
     "include": [
-      "src/**/*.tsx?"
+      "src/**/*.+(ts|tsx)"
     ],
     "instrument": true,
     "extension": [
-      ".tsx?"
+      ".+(ts|tsx)"
     ],
     "require": [
       "ts-node/register"
