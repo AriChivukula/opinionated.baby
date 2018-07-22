@@ -39,7 +39,7 @@
     "googleapis": "32.0.0",
     "graphql": "0.13.2",
     "gremlin": "3.2.9",
-    "helmet": "3.12.1",
+    "helmet": "3.12.2",
     "rollbar": "2.4.2"
   },
   "devDependencies": {
@@ -60,7 +60,7 @@
     "@types/react": "16.4.6",
     "@types/react-dom": "16.0.6",
     "@types/react-relay": "1.3.6",
-    "@types/react-router-dom": "4.2.7",
+    "@types/react-router-dom": "4.3.0",
     "@types/relay-runtime": "1.3.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-plugin-relay": "1.6.0",
@@ -83,7 +83,7 @@
     "react-router-dom": "4.3.1",
     "relay-compiler": "1.6.0",
     "relay-runtime": "1.6.0",
-    "rmwc": "1.8.2",
+    "rmwc": "1.8.3",
     "rollup-plugin-uglify": "4.0.0",
     "rollup-stream": "1.24.1",
     "source-map-support": "0.5.6",
