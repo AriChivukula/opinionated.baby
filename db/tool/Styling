@@ -1,5 +1,5 @@
 {
-  graphic: "style",
-  link: "https://sass-lang.com/",
-  title: "SASS"
+  "icon": "style",
+  "link": "https://sass-lang.com/",
+  "title": "SASS"
 }
