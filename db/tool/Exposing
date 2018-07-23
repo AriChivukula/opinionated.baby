@@ -1,5 +1,5 @@
 {
-  graphic: "graphic_eq",
-  link: "https://graphql.org/",
-  title: "GraphQL"
+  "icon": "graphic_eq",
+  "link": "https://graphql.org/",
+  "title": "GraphQL"
 }
