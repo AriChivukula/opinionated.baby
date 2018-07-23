@@ -1,5 +1,5 @@
 {
-  graphic: "widgets",
-  link: "https://tinkerpop.apache.org/",
-  title: "Tinkerpop"
+  "icon": "widgets",
+  "link": "https://tinkerpop.apache.org/",
+  "title": "Tinkerpop"
 }
