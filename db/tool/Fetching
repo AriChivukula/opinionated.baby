@@ -1,5 +1,5 @@
 {
-  graphic: "build",
-  link: "https://facebook.github.io/relay/",
-  title: "Relay"
+  "icon": "build",
+  "link": "https://facebook.github.io/relay/",
+  "title": "Relay"
 }
