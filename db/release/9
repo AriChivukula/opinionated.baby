@@ -1,4 +1,4 @@
 {
-  titleA: "Bossy",
-  titleB: "Biker"
+  "title": "Bossy",
+  "subtitle": "Biker"
 }
