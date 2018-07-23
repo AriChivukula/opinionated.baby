@@ -1,5 +1,5 @@
 {
-  graphic: "flip_to_front",
-  link: "https://reactjs.org/",
-  title: "React"
+  "icon": "flip_to_front",
+  "link": "https://reactjs.org/",
+  "title": "React"
 }
