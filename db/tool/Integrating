@@ -1,5 +1,5 @@
 {
-  graphic: "share",
-  link: "https://travis-ci.org/",
-  title: "Travis CI"
+  "icon": "share",
+  "link": "https://travis-ci.org/",
+  "title": "Travis CI"
 }
