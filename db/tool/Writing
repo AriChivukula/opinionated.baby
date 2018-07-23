@@ -1,5 +1,5 @@
 {
-  graphic: "language",
-  link: "https://www.typescriptlang.org/",
-  title: "TypeScript"
+  "icon": "language",
+  "link": "https://www.typescriptlang.org/",
+  "title": "TypeScript"
 }
