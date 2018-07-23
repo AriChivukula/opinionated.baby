@@ -40,7 +40,7 @@
     "googleapis": "32.0.0",
     "graphql": "0.13.2",
     "gremlin": "3.2.9",
-    "helmet": "3.12.2",
+    "helmet": "3.13.0",
     "rollbar": "2.4.2"
   },
   "devDependencies": {
