@@ -43,20 +43,23 @@ class _Page extends React.Component<IPageProps> {
     if (this.props.data === null) {
       return <LinearProgress determinate={false} />;
     } else if (urlParts.searchParams.has("code")) {
+      // @ts-ignore
+      const TopBarJSX = <TopBar {...this.props} />;
       return (
         <>
-          // @ts-ignore
-          <TopBar {...this.props} />
+          {TopBarJSX}
           <LinearProgress determinate={false} />
         </>
       );
     } else {
+      // @ts-ignore
+      const TopBarJSX = <TopBar {...this.props} />;
+      // @ts-ignore
+      const ContentJSX = <Content {...this.props} />;
       return (
         <>
-          // @ts-ignore
-          <TopBar {...this.props} />
-          // @ts-ignore
-          <Content {...this.props} />
+          {TopBarJSX}
+          {ContentJSX}
         </>
       );
     }

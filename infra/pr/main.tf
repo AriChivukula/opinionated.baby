@@ -2,7 +2,7 @@ terraform {
   backend "s3" {}
 }
 
-variable "BUILD" {}
+variable "BRANCH" {}
 
 variable "CLIENT_ID" {}
 
@@ -54,7 +54,7 @@ data "aws_subnet_ids" "ob_subnet" {
 }
 
 resource "aws_lambda_function" "ob_lambda" {
-  function_name = "${var.NAME}-${var.BUILD}"
+  function_name = "${var.NAME}-${var.BRANCH}"
   handler = "index.handler"
   role = "${data.aws_iam_role.ob_iam.arn}"
   runtime = "nodejs8.10"
@@ -70,7 +70,7 @@ resource "aws_lambda_function" "ob_lambda" {
       TF_VAR_CLIENT_SECRET = "${var.CLIENT_SECRET}"
       TF_VAR_NAME = "${var.NAME}"
       TF_VAR_DOMAIN = "${var.DOMAIN}"
-      TF_VAR_BUILD = "${var.BUILD}"
+      TF_VAR_BRANCH = "${var.BRANCH}"
       TF_VAR_ROLLBAR_SERVER = "${var.ROLLBAR_SERVER}"
       DEBUG = "*"
     }
@@ -87,7 +87,7 @@ resource "aws_lambda_function" "ob_lambda" {
 }
 
 resource "aws_api_gateway_rest_api" "ob_api" {
-  name = "${var.NAME}-${var.BUILD}"
+  name = "${var.NAME}-${var.BRANCH}"
 }
 
 resource "aws_api_gateway_resource" "ob_resource" {
@@ -134,7 +134,7 @@ resource "aws_api_gateway_deployment" "ob_deployment" {
 }
 
 resource "aws_api_gateway_domain_name" "ob_gateway" {
-  domain_name = "dynamic-${var.BUILD}.${var.DOMAIN}"
+  domain_name = "dynamic-${var.BRANCH}.${var.DOMAIN}"
 
   certificate_arn = "${data.aws_acm_certificate.ob_certificate.arn}"
 }
@@ -148,13 +148,13 @@ resource "aws_api_gateway_base_path_mapping" "ob_map" {
 resource "aws_lambda_permission" "ob_permission" {
   statement_id = "AllowAPIGatewayInvoke"
   action = "lambda:InvokeFunction"
-  function_name = "${var.NAME}-${var.BUILD}"
+  function_name = "${var.NAME}-${var.BRANCH}"
   principal = "apigateway.amazonaws.com"
   source_arn = "${aws_api_gateway_deployment.ob_deployment.execution_arn}/*/*"
 }
 
 resource "aws_route53_record" "ob_record_dynamic" {
-  name = "dynamic-${var.BUILD}.${var.DOMAIN}."
+  name = "dynamic-${var.BRANCH}.${var.DOMAIN}."
   type = "A"
   zone_id = "${data.aws_route53_zone.ob_zone.zone_id}"
 
@@ -230,7 +230,7 @@ locals {
 resource "aws_s3_bucket_object" "ob_object" {
   count = "${length(local.files)}"
   bucket = "${var.NAME}"
-  key = "${var.BUILD}/${lookup(local.files[count.index], "file")}"
+  key = "${var.BRANCH}/${lookup(local.files[count.index], "file")}"
   source = "static/${lookup(local.files[count.index], "file")}"
   acl = "public-read"
   content_type = "${lookup(local.files[count.index], "type")}"
@@ -263,7 +263,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
   origin {
     domain_name = "${data.aws_s3_bucket.ob_bucket.bucket_domain_name}"
     origin_id = "${var.LOCAL_DOMAIN}"
-    origin_path = "/${var.BUILD}"
+    origin_path = "/${var.BRANCH}"
 
     custom_origin_config {
       http_port = 80
