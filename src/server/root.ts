@@ -35,6 +35,7 @@ export async function genRoot(
       accessToken: "",
     }),
     me: async (): Promise<object | null> => genNullOnThrow(
+      // @ts-ignore
       async (): Promise<object | null> => await genUserForAccessToken(req.token),
     ),
     tools: async (): Promise<object[]> => genNullOnThrow(
