@@ -63,7 +63,7 @@ export const TopBar: Module = React({
   props: [
     Type.Required.new({
       name: "data",
-      types: ["TopBarQuery", "null"],
+      types: "TopBarQuery",
     }),
   ],
   relayMutation: true,
