@@ -5,7 +5,7 @@ export TF_VAR_LOCAL_DOMAIN=TEMP.$DOMAIN
 bash shell/build.sh
 export TFSTATES="$(aws s3 ls s3://${TF_VAR_NAME} --recursive | grep 'PR_' | awk '{print $4}')"
 echo "${TFSTATES}"
-for TFSTATE in $TFSTATES:
+for TFSTATE in $TFSTATES
 do
   echo "${TFSTATE}"
   echo "no" | terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=${TFSTATE}" infra/pr || true
