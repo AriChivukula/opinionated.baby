@@ -34,22 +34,20 @@ export async function genRoot(
     logout: async (): Promise<object> => ({
       accessToken: "",
     }),
-    me: async (): Promise<object | null> => genNullOnThrow(
+    me: async (): Promise<object | null> => await genNullOnThrow(
       // @ts-ignore
       async (): Promise<object | null> => await genUserForAccessToken(req.token),
     ),
-    tools: async (): Promise<object[]> => genNullOnThrow(
-      async (): Promise<object[]> => Object.entries(DB["tool"]).map(([ key, value ]): object => { 
-        value["id"] = key;
-        return value;
-      }),
-    ),
-    releases: async (): Promise<object[]> => genNullOnThrow(
-      async (): Promise<object[]> => Object.entries(DB["release"]).map(([ key, value ]): object => { 
-        value["id"] = key;
-        return value;
-      }),
-    ),
+    tools: async (): Promise<object[]> => Object.entries(DB["tool"]).map(([ key, value ]): object => {
+      // @ts-ignore
+      value["id"] = key;
+      return value;
+    }),
+    releases: async (): Promise<object[]> => Object.entries(DB["release"]).map(([ key, value ]): object => {
+      // @ts-ignore
+      value["id"] = key;
+      return value;
+    }),
   };
 }
 /* BESPOKE END <<custom>> */

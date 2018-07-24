@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website.ts::Content>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<nQDyCqyZ94D4Hff43huvMS83Jn6CSLBbKYRMj/oLir9NoWqO0gO5gLZ5l0DOZxgvDjcy6YmlSkIgMFUxrW3emw==>>
+ * SIGNED<<kNZpRE++OuXcNS5jT6X7Tp6jOvX35BGjQO9bXFLP+I8WqNhF/nwiWyLnMcUzcw75MRRHLhxAupDdSMCsttT3bQ==>>
  */
 
 import * as React from "react";
@@ -170,7 +170,7 @@ class __Content extends React.Component<IContentProps> {
   /* BESPOKE END <<implementation>> */
 }
 
-const _Content: React.ComponentType = createFragmentContainer(
+const _Content: React.ComponentType<IContentProps> = createFragmentContainer(
   __Content,
   /* BESPOKE START <<relay>> */
   graphql`
