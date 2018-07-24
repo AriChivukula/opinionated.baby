@@ -45,7 +45,7 @@ class _Root extends React.Component<IRootProps> {
         variables={{}}
         query={graphql`
           query RootQuery {
-            ...ContentQuery,
+            ...ContentQuery
             ...TopBarQuery
           }
         `}
