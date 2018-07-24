@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website.ts::Page>>
  * BESPOKE<<imports, render, implementation>>
- * SIGNED<<XmFCve8nWfz4XdJXkvRH3RLjJ9sYdESu1Nm83AvAPml1yVoH0yS8+4WxpqF++W6/n8XLKit+KU/3A6DESNVgQA==>>
+ * SIGNED<<uiHZWck8TbLb4b455x7GYdRIQ+FwbgTyiIg8tLSEQoXfr+zh6N9RJusY7Qe/i014G74hTF4jmq6sUDR1aSLyjA==>>
  */
 
 import * as React from "react";
@@ -17,6 +17,9 @@ import {
 } from "url";
 
 import {
+  ContentQuery,
+} from "./__generated__/ContentQuery.graphql";
+import {
   TopBarQuery,
 } from "./__generated__/TopBarQuery.graphql";
 import {
@@ -28,7 +31,7 @@ import {
 /* BESPOKE END <<imports>> */
 
 export interface IPageProps {
-  data: TopBarQuery | null;
+  data: TopBarQuery | ContentQuery | null;
 }
 
 class _Page extends React.Component<IPageProps> {
@@ -50,7 +53,7 @@ class _Page extends React.Component<IPageProps> {
       return (
         <>
           <TopBar {...this.props} />
-          <Content />
+          <Content {...this.props} />
         </>
       );
     }

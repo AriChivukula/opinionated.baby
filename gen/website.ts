@@ -21,6 +21,13 @@ export const utility: Module = Module.new({
 export const Content: Module = React({
   destination: "src/website/views/Content.tsx",
   name: "Content",
+  props: [
+    Type.Required.new({
+      name: "data",
+      type: "ContentQuery",
+    }),
+  ],
+  relayType: ERelayType.FRAGMENT,
 });
 
 export const FourOhFour: Module = React({
@@ -34,7 +41,7 @@ export const Page: Module = React({
   props: [
     Type.Required.new({
       name: "data",
-      types: ["TopBarQuery", "null"],
+      types: ["TopBarQuery", "ContentQuery", "null"],
     }),
   ],
 });

@@ -1,0 +1,33 @@
+{
+  "folders": {
+    "release": {
+      "key": {
+        "type": "number"
+      },
+      "document": {
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        }
+      }
+    },
+    "tool": {
+      "key": {
+        "type": "string"
+      },
+      "document": {
+        "icon": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
