@@ -8,6 +8,7 @@
 
 /* BESPOKE START <<custom>> */
 import * as express from "express";
+import { DB } from "foia-db";
 
 import {
   genAccessToken,
@@ -34,8 +35,19 @@ export async function genRoot(
       accessToken: "",
     }),
     me: async (): Promise<object | null> => genNullOnThrow(
-      // @ts-ignore
-      async () => genUserForAccessToken(req.token),
+      async (): Promise<object | null> => await genUserForAccessToken(req.token),
+    ),
+    tools: async (): Promise<object[]> => genNullOnThrow(
+      async (): Promise<object[]> => Object.entries(DB.tools).map((key, value) => { 
+        value.ID = key;
+        return value;
+      }),
+    ),
+    releases: async (): Promise<object[]> => genNullOnThrow(
+      async (): Promise<object[]> => Object.entries(DB.releases).map((key, value) => { 
+        value.ID = key;
+        return value;
+      }),
     ),
   };
 }
