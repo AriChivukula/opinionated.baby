@@ -45,6 +45,7 @@ class _Page extends React.Component<IPageProps> {
     } else if (urlParts.searchParams.has("code")) {
       return (
         <>
+          // @ts-node
           <TopBar {...this.props} />
           <LinearProgress determinate={false} />
         </>
@@ -52,7 +53,9 @@ class _Page extends React.Component<IPageProps> {
     } else {
       return (
         <>
+          // @ts-node
           <TopBar {...this.props} />
+          // @ts-node
           <Content {...this.props} />
         </>
       );
