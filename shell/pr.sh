@@ -1,8 +1,7 @@
 set -e
 
-export TF_VAR_BUILD=$TRAVIS_BUILD_NUMBER
-export TF_VAR_LOCAL_DOMAIN=static-$TF_VAR_BUILD.$TF_VAR_DOMAIN
+export c=$TRAVIS_BRANCH
 bash shell/build.sh
-terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=tfstate/${TF_VAR_BUILD}.tfstate" infra/pr
+terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=tfstate/PR_${TF_VAR_BRANCH}.tfstate" infra/pr
 terraform apply -auto-approve infra/pr
-curl -u "${GITHUB_USER}:${GITHUB_TOKEN}" -X POST -d "{\"body\": \"[Test ${TF_VAR_BUILD}](https://static-${TF_VAR_BUILD}.${TF_VAR_DOMAIN})\"}" "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments"
+curl -u "${GITHUB_USER}:${GITHUB_TOKEN}" -X POST -d "{\"body\": \"[Test ${TF_VAR_BRANCH}](https://static-${TF_VAR_BRANCH}.${TF_VAR_DOMAIN})\"}" "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments"
