@@ -119,25 +119,25 @@ class __Content extends React.Component<IContentProps> {
   ): JSX.Element {
     return (
       <>
-        {releases.map((item: IReleases, index: number) => (
+        {this.props.data.releases.map((item: any, index: number) => (
           <GridCell span={4} key={index}>
             <Card>
               <CardPrimaryAction
-                onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/${item.version}/`); }}>
+                onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
                 <CardMedia
                   square
-                  style={{backgroundImage: `url(images/${item.version}.jpg)`}}
+                  style={{backgroundImage: `url(images/v${item.id}.jpg)`}}
                 />
                 <Typography
                   use="headline4"
                   style={{padding: "1rem"}}>
                   <Typography theme="text-secondary-on-background">
-                    {item.version}
+                    v{item.id}
                   </Typography>
                   <br />
-                  {item.titleA}
+                  {item.title}
                   <br />
-                  {item.titleB}
+                  {item.subtitle}
                 </Typography>
               </CardPrimaryAction>
             </Card>
@@ -151,14 +151,14 @@ class __Content extends React.Component<IContentProps> {
   ): JSX.Element {
     return (
       <>
-        {tools.map((item: ITools, index: number) => (
+        {this.props.data.tools.map((item: any, index: number) => (
           <GridCell span={3} key={index}>
             <List twoLine>
               <a onClick={(): void => { goto(item.link); }}>
                 <SimpleListItem
-                  graphic={item.graphic}
+                  graphic={item.icon}
                   text={item.title}
-                  secondaryText={item.subtitle}
+                  secondaryText={item.id}
                 />
               </a>
             </List>
