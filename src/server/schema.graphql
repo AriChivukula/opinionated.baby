@@ -3,9 +3,24 @@ type User {
   email: String!
 }
 
+type Release {
+  id: ID!
+  title: String!
+  subtitle: String!
+}
+
+type Tool {
+  id: ID!
+  icon: String!
+  link: String!
+  title: String!
+}
+
 type Query {
   me: User
   loginURL: String!
+  releases: Release[]
+  tools: Tool[]
 }
 
 type AccessToken {
