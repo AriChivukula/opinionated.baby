@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website.ts::TopBar>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<nERiIastBWG6bZUM0PoT5oM6/QwQWmfo3Q1Ag5q6pFRHzZsUX8oTuH3BurNfT+8w5OUItXuFsRmbGfNix4VLDw==>>
+ * SIGNED<<CgyZPXVzosq7pnspucOXooBN3N/jJmrWDYZGYlUKGCZf+4eRnDVVknoYXwfEPoR07LG6Hj/6hC8PloJkpn904Q==>>
  */
 
 import * as React from "react";
@@ -158,7 +158,7 @@ class __TopBar extends React.Component<ITopBarProps> {
   /* BESPOKE END <<implementation>> */
 }
 
-const _TopBar: React.ComponentType = createFragmentContainer(
+const _TopBar: React.ComponentType<ITopBarProps> = createFragmentContainer(
   __TopBar,
   /* BESPOKE START <<relay>> */
   graphql`
