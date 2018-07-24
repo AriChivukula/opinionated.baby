@@ -76,7 +76,7 @@ class __Content extends React.Component<IContentProps> {
             Important choices I made for you
           </Typography>
         </GridCell>
-        {renderContent()}
+        {this.renderTools()}
         <GridCell span={12}>
           <Typography use="headline2" tag="div">
             <span style={{textDecoration: "line-through"}}>
@@ -108,7 +108,7 @@ class __Content extends React.Component<IContentProps> {
             Release history
           </Typography>
         </GridCell>
-        {renderReleases()}
+        {this.renderReleases()}
       </Grid>
     );
     /* BESPOKE END <<render>> */
@@ -147,7 +147,7 @@ class __Content extends React.Component<IContentProps> {
     );
   }
 
-  private renderContent(
+  private renderTools(
   ): JSX.Element {
     return (
       <>
