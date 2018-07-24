@@ -34,7 +34,7 @@ export async function genRoot(
     logout: async (): Promise<object> => ({
       accessToken: "",
     }),
-    me: async (): Promise<object | null> => genNullOnThrow(
+    me: async (): Promise<object | null> => await genNullOnThrow(
       // @ts-ignore
       async (): Promise<object | null> => await genUserForAccessToken(req.token),
     ),
