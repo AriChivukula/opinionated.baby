@@ -176,16 +176,16 @@ const _Content: React.ComponentType = createFragmentContainer(
   graphql`
     fragment ContentQuery on Query {
       releases {
-        id,
-        title,
-        subtitle
-      },
-      tools {
-        id,
-        icon,
-        link,
+        id
         title
-      },
+        subtitle
+      }
+      tools {
+        id
+        icon
+        link
+        title
+      }
     }
   `,
   /* BESPOKE END <<relay>> */
