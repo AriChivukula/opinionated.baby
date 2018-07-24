@@ -33,184 +33,6 @@ import {
 import {
   goto,
 } from "../utility";
-
-interface ITools {
-  graphic: string;
-  link: string;
-  subtitle: string;
-  title: string;
-}
-
-interface IReleases {
-  titleA: string;
-  titleB: string;
-  version: string;
-}
-
-const tools: ITools[] = [
-  {
-    graphic: "star",
-    link: "https://www.terraform.io/",
-    subtitle: "Orchestration",
-    title: "Terraform",
-  },
-  {
-    graphic: "memory",
-    link: "https://aws.amazon.com/lambda/",
-    subtitle: "Server(less)",
-    title: "Lambda",
-  },
-  {
-    graphic: "bug_report",
-    link: "https://rollbar.com/",
-    subtitle: "Debugging",
-    title: "Rollbar",
-  },
-  {
-    graphic: "share",
-    link: "https://travis-ci.org/",
-    subtitle: "CI/CD",
-    title: "Travis CI",
-  },
-  {
-    graphic: "language",
-    link: "https://www.typescriptlang.org/",
-    subtitle: "Language",
-    title: "TypeScript",
-  },
-  {
-    graphic: "extension",
-    link: "https://github.com/AriChivukula/typescriptase",
-    subtitle: "Code Generation",
-    title: "Typescriptase",
-  },
-  {
-    graphic: "cached",
-    link: "https://nodejs.org/en/",
-    subtitle: "Runtime",
-    title: "Node.js",
-  },
-  {
-    graphic: "unarchive",
-    link: "https://www.yarnpkg.com/",
-    subtitle: "Dependency",
-    title: "yarn",
-  },
-  {
-    graphic: "playlist_add_check",
-    link: "https://mochajs.org/",
-    subtitle: "Testing",
-    title: "Mocha",
-  },
-  {
-    graphic: "line_style",
-    link: "https://codeclimate.com/",
-    subtitle: "Quality",
-    title: "Code Climate",
-  },
-  {
-    graphic: "graphic_eq",
-    link: "https://graphql.org/",
-    subtitle: "API",
-    title: "GraphQL",
-  },
-  {
-    graphic: "widgets",
-    link: "https://tinkerpop.apache.org/",
-    subtitle: "Model",
-    title: "Tinkerpop",
-  },
-  {
-    graphic: "flip_to_front",
-    link: "https://reactjs.org/",
-    subtitle: "Interface",
-    title: "React",
-  },
-  {
-    graphic: "build",
-    link: "https://facebook.github.io/relay/",
-    subtitle: "Fetch",
-    title: "Relay",
-  },
-  {
-    graphic: "local_library",
-    link: "https://material.io/components/web/",
-    subtitle: "Theme",
-    title: "Material Design",
-  },
-  {
-    graphic: "style",
-    link: "https://sass-lang.com/",
-    subtitle: "Style",
-    title: "SASS",
-  },
-];
-
-function renderContent(
-): JSX.Element {
-  return (
-    <>
-      {tools.map((item: ITools, index: number) => (
-        <GridCell span={3} key={index}>
-          <List twoLine>
-            <a onClick={(): void => { goto(item.link); }}>
-              <SimpleListItem
-                graphic={item.graphic}
-                text={item.title}
-                secondaryText={item.subtitle}
-              />
-            </a>
-          </List>
-        </GridCell>
-      ))}
-    </>
-  );
-}
-
-const releases: IReleases[] = [
-  { titleA: "Bossy", titleB: "Biker", version: "v9" },
-  { titleA: "Wild", titleB: "Warrior", version: "v8" },
-  { titleA: "Pragmatic", titleB: "Plotter", version: "v7" },
-  { titleA: "Radical", titleB: "Robot", version: "v6" },
-  { titleA: "Fierce", titleB: "Feline", version: "v5" },
-  { titleA: "Staunch", titleB: "Sibling", version: "v4" },
-  { titleA: "Tilted", titleB: "Turtle", version: "v3" },
-  { titleA: "Assertive", titleB: "Actor", version: "v2" },
-  { titleA: "Dogged", titleB: "Dapper", version: "v1" },
-  { titleA: "Cocksure", titleB: "Castle", version: "v0" },
-];
-
-function renderReleases(
-): JSX.Element {
-  return (
-    <>
-      {releases.map((item: IReleases, index: number) => (
-        <GridCell span={4} key={index}>
-          <Card>
-            <CardPrimaryAction
-              onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/${item.version}/`); }}>
-              <CardMedia
-                square
-                style={{backgroundImage: `url(images/${item.version}.jpg)`}}
-              />
-              <Typography
-                use="headline4"
-                style={{padding: "1rem"}}>
-                <Typography theme="text-secondary-on-background">
-                  {item.version}
-                </Typography>
-                <br />
-                {item.titleA}
-                <br />
-                {item.titleB}
-              </Typography>
-            </CardPrimaryAction>
-          </Card>
-        </GridCell>
-      ))}
-    </>
-  );
-}
 /* BESPOKE END <<imports>> */
 
 export interface IContentProps {
@@ -289,6 +111,58 @@ class __Content extends React.Component<IContentProps> {
   }
 
   /* BESPOKE START <<implementation>> */
+  function renderReleases(
+  ): JSX.Element {
+    return (
+      <>
+        {releases.map((item: IReleases, index: number) => (
+          <GridCell span={4} key={index}>
+            <Card>
+              <CardPrimaryAction
+                onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/${item.version}/`); }}>
+                <CardMedia
+                  square
+                  style={{backgroundImage: `url(images/${item.version}.jpg)`}}
+                />
+                <Typography
+                  use="headline4"
+                  style={{padding: "1rem"}}>
+                  <Typography theme="text-secondary-on-background">
+                    {item.version}
+                  </Typography>
+                  <br />
+                  {item.titleA}
+                  <br />
+                  {item.titleB}
+                </Typography>
+              </CardPrimaryAction>
+            </Card>
+          </GridCell>
+        ))}
+      </>
+    );
+  }
+
+  function renderContent(
+  ): JSX.Element {
+    return (
+      <>
+        {tools.map((item: ITools, index: number) => (
+          <GridCell span={3} key={index}>
+            <List twoLine>
+              <a onClick={(): void => { goto(item.link); }}>
+                <SimpleListItem
+                  graphic={item.graphic}
+                  text={item.title}
+                  secondaryText={item.subtitle}
+                />
+              </a>
+            </List>
+          </GridCell>
+        ))}
+      </>
+    );
+  }
   /* BESPOKE END <<implementation>> */
 }
 
