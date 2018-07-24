@@ -39,13 +39,13 @@ export async function genRoot(
       async (): Promise<object | null> => await genUserForAccessToken(req.token),
     ),
     tools: async (): Promise<object[]> => genNullOnThrow(
-      async (): Promise<object[]> => Object.entries(DB.tools).map(([ key: string, value: object ]): object => { 
+      async (): Promise<object[]> => Object.entries(DB.tools).map(([ key, value ]): object => { 
         entries[1].id = entries[0];
         return value;
       }),
     ),
     releases: async (): Promise<object[]> => genNullOnThrow(
-      async (): Promise<object[]> => Object.entries(DB.releases).map(([ key: number, value: object ]): object => { 
+      async (): Promise<object[]> => Object.entries(DB.releases).map(([ key, value ]): object => { 
         value.id = key;
         return value;
       }),
