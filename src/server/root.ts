@@ -40,7 +40,7 @@ export async function genRoot(
     ),
     tools: async (): Promise<object[]> => genNullOnThrow(
       async (): Promise<object[]> => Object.entries(DB.tools).map(([ key, value ]): object => { 
-        entries[1].id = entries[0];
+        value.id = key;
         return value;
       }),
     ),
