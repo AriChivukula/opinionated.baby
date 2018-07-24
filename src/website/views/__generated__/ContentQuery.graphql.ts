@@ -1,6 +1,5 @@
-/* tslint:disable */
-
 import { ConcreteFragment } from "relay-runtime";
+
 export type ContentQuery = {
     readonly releases: ({
         readonly id: string;
