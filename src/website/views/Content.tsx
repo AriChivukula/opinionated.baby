@@ -2,11 +2,15 @@
  * This file is partially generated; only edit bespoke sections.
  *
  * SOURCE<<gen/website.ts::Content>>
- * BESPOKE<<imports, render>>
- * SIGNED<<HGQ2naQjVCG8EdBOFyN/JsFC80EWUKgn2zE8tGwn+dqCbgH3trBWCjDHwkH1zccsaIX6CG1sxWtebWDqSSjozA==>>
+ * BESPOKE<<imports, render, implementation, relay>>
+ * SIGNED<<nQDyCqyZ94D4Hff43huvMS83Jn6CSLBbKYRMj/oLir9NoWqO0gO5gLZ5l0DOZxgvDjcy6YmlSkIgMFUxrW3emw==>>
  */
 
 import * as React from "react";
+import {
+  createFragmentContainer,
+  graphql,
+} from "react-relay";
 
 /* BESPOKE START <<imports>> */
 import {
@@ -209,9 +213,15 @@ function renderReleases(
 }
 /* BESPOKE END <<imports>> */
 
-export function _Content(
-): JSX.Element {
-  /* BESPOKE START <<render>> */
+export interface IContentProps {
+  data: ContentQuery;
+}
+
+class __Content extends React.Component<IContentProps> {
+
+  public render(
+  ): JSX.Element {
+    /* BESPOKE START <<render>> */
   return (
     <Grid>
       <GridCell span={12}>
@@ -275,7 +285,17 @@ export function _Content(
       {renderReleases()}
     </Grid>
   );
-  /* BESPOKE END <<render>> */
+    /* BESPOKE END <<render>> */
+  }
+
+  /* BESPOKE START <<implementation>> */
+  /* BESPOKE END <<implementation>> */
 }
+
+const _Content: React.ComponentType = createFragmentContainer(
+  __Content,
+  /* BESPOKE START <<relay>> */
+  /* BESPOKE END <<relay>> */
+);
 
 export { _Content as Content };
