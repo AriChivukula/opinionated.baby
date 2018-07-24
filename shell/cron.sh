@@ -3,7 +3,7 @@ set -e
 export TF_VAR_BRANCH=$TRAVIS_BRANCH
 export TF_VAR_LOCAL_DOMAIN=TEMP.$DOMAIN
 bash shell/build.sh
-export TFSTATES="$(aws s3 ls 's3://${TF_VAR_NAME}/tfstate' | grep 'PR_' | awk '{print $4}')"
+export TFSTATES="$(aws s3 ls s3://${TF_VAR_NAME}/tfstate | grep 'PR_' | awk '{print $4}')"
 for TFSTATE in $TFSTATES:
 do
   echo "${TFSTATE}"
