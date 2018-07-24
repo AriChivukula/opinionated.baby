@@ -41,7 +41,7 @@ export const Page: Module = React({
   props: [
     Type.Required.new({
       name: "data",
-      types: ["TopBarQuery" "ContentQuery", "null"],
+      types: ["TopBarQuery", "ContentQuery", "null"],
     }),
   ],
 });
