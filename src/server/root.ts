@@ -38,18 +38,14 @@ export async function genRoot(
       // @ts-ignore
       async (): Promise<object | null> => await genUserForAccessToken(req.token),
     ),
-    tools: async (): Promise<object[]> => genNullOnThrow(
-      async (): Promise<object[]> => Object.entries(DB["tool"]).map(([ key, value ]): object => { 
-        value["id"] = key;
-        return value;
-      }),
-    ),
-    releases: async (): Promise<object[]> => genNullOnThrow(
-      async (): Promise<object[]> => Object.entries(DB["release"]).map(([ key, value ]): object => { 
-        value["id"] = key;
-        return value;
-      }),
-    ),
+    tools: async (): Promise<object[]> => Object.entries(DB["tool"]).map(([ key, value ]): object => { 
+      value["id"] = key;
+      return value;
+    }),
+    releases: async (): Promise<object[]> => Object.entries(DB["release"]).map(([ key, value ]): object => { 
+      value["id"] = key;
+      return value;
+    }),
   };
 }
 /* BESPOKE END <<custom>> */
