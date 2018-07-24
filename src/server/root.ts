@@ -39,13 +39,13 @@ export async function genRoot(
     ),
     tools: async (): Promise<object[]> => genNullOnThrow(
       async (): Promise<object[]> => Object.entries(DB.tools).map((key, value) => { 
-        value.ID = key;
+        value.id = key;
         return value;
       }),
     ),
     releases: async (): Promise<object[]> => genNullOnThrow(
       async (): Promise<object[]> => Object.entries(DB.releases).map((key, value) => { 
-        value.ID = key;
+        value.id = key;
         return value;
       }),
     ),
