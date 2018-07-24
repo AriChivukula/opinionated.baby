@@ -19,8 +19,8 @@ type Tool {
 type Query {
   me: User
   loginURL: String!
-  releases: Release[]
-  tools: Tool[]
+  releases: [Release]
+  tools: [Tool]
 }
 
 type AccessToken {
