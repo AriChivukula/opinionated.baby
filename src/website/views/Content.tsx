@@ -33,6 +33,10 @@ import {
 import {
   goto,
 } from "../utility";
+
+import {
+  ContentQuery,
+} from "./__generated__/ContentQuery.graphql";
 /* BESPOKE END <<imports>> */
 
 export interface IContentProps {
@@ -169,6 +173,21 @@ class __Content extends React.Component<IContentProps> {
 const _Content: React.ComponentType = createFragmentContainer(
   __Content,
   /* BESPOKE START <<relay>> */
+  graphql`
+    fragment ContentQuery on Query {
+      releases {
+        id,
+        title,
+        subtitle
+      },
+      tools {
+        id,
+        icon,
+        link,
+        title
+      },
+    }
+  `,
   /* BESPOKE END <<relay>> */
 );
 
