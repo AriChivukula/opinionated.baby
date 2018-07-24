@@ -3,9 +3,9 @@ set -e
 export TF_VAR_BRANCH=$TRAVIS_BRANCH
 export TF_VAR_LOCAL_DOMAIN=TEMP.$DOMAIN
 bash shell/build.sh
-while :
+export TFSTATES="$(aws s3 ls 's3://${TF_VAR_NAME}/tfstate' | grep 'PR_' | awk '{print $4}')"
+for TFSTATE in $TFSTATES:
 do
-  export TFSTATE="$(aws s3 ls s3://${TF_VAR_NAME}/tfstate/PR_*.tfstate --page-size 1 | awk '{print $4}')"
   echo "${TFSTATE}"
   echo "no" | terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=${TFSTATE}" infra/pr || true
   terraform destroy -auto-approve infra/pr || true
