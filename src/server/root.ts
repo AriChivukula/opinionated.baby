@@ -8,7 +8,7 @@
 
 /* BESPOKE START <<custom>> */
 import * as express from "express";
-import { Graph } from "foia-db";
+import { Graph, IVertex } from "foia-db";
 
 import {
   genAccessToken,
