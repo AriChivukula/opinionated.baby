@@ -1,5 +1,5 @@
 {
-  "release": {
+  "VL-release": {
     "id": {
       "type": "number"
     },
@@ -13,7 +13,7 @@
       }
     }
   },
-  "tool": {
+  "VL-tool": {
     "id": {
       "type": "string"
     },
