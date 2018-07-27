@@ -1,32 +1,32 @@
 {
-  "folders": {
-    "release": {
-      "key": {
-        "type": "number"
-      },
-      "document": {
-        "title": {
-          "type": "string"
-        },
-        "subtitle": {
-          "type": "string"
-        }
-      }
+  "release": {
+    "id": {
+      "type": "number"
     },
-    "tool": {
-      "key": {
+    "edges": {},
+    "document": {
+      "title": {
         "type": "string"
       },
-      "document": {
-        "icon": {
-          "type": "string"
-        },
-        "link": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        }
+      "subtitle": {
+        "type": "string"
+      }
+    }
+  },
+  "tool": {
+    "id": {
+      "type": "string"
+    },
+    "edges": {},
+    "document": {
+      "icon": {
+        "type": "string"
+      },
+      "link": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
       }
     }
   }
