@@ -5,7 +5,7 @@
     },
     "edges": {
     },
-    "document": {
+    "properties": {
       "title": {
         "type": "string"
       },
@@ -20,7 +20,7 @@
     },
     "edges": {
     },
-    "document": {
+    "properties": {
       "icon": {
         "type": "string"
       },
