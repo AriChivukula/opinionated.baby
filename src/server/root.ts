@@ -38,8 +38,8 @@ export async function genRoot(
       // @ts-ignore
       async (): Promise<object | null> => await genUserForAccessToken(req.token),
     ),
-    tools: async (): Promise<object[]> => Graph.V().outV("tool").listV().map((v: IVertex) => Object.assign(v, v.properties)),
-    releases: async (): Promise<object[]> => Graph.V().outV("release").listV().map((v: IVertex) => Object.assign(v, v.properties)),
+    tools: async (): Promise<object[]> => Graph.read().V().outV("tool").listV().map((v: IVertex) => Object.assign(v, v.properties)),
+    releases: async (): Promise<object[]> => Graph.read().V().outV("release").listV().map((v: IVertex) => Object.assign(v, v.properties)),
   };
 }
 /* BESPOKE END <<custom>> */
