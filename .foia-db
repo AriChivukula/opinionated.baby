@@ -3,7 +3,8 @@
     "id": {
       "type": "number"
     },
-    "edges": {},
+    "edges": {
+    },
     "document": {
       "title": {
         "type": "string"
@@ -17,7 +18,8 @@
     "id": {
       "type": "string"
     },
-    "edges": {},
+    "edges": {
+    },
     "document": {
       "icon": {
         "type": "string"
