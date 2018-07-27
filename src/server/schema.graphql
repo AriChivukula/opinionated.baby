@@ -3,17 +3,25 @@ type User {
   email: String!
 }
 
-type Release {
-  id: ID!
+type ReleaseProperties {
   title: String!
   subtitle: String!
 }
 
-type Tool {
+type Release {
   id: ID!
-  icon: String!
+  properties: ReleaseProperties!
+}
+
+type ToolProperties {
   link: String!
   title: String!
+  icon: String!
+}
+
+type Tool {
+  id: ID!
+  properties: ToolProperties!
 }
 
 type Query {
