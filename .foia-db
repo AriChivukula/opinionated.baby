@@ -1,32 +1,34 @@
 {
-  "folders": {
-    "release": {
-      "key": {
-        "type": "number"
-      },
-      "document": {
-        "title": {
-          "type": "string"
-        },
-        "subtitle": {
-          "type": "string"
-        }
-      }
+  "VL-release": {
+    "id": {
+      "type": "number"
     },
-    "tool": {
-      "key": {
+    "edges": {
+    },
+    "properties": {
+      "title": {
         "type": "string"
       },
-      "document": {
-        "icon": {
-          "type": "string"
-        },
-        "link": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        }
+      "subtitle": {
+        "type": "string"
+      }
+    }
+  },
+  "VL-tool": {
+    "id": {
+      "type": "string"
+    },
+    "edges": {
+    },
+    "properties": {
+      "icon": {
+        "type": "string"
+      },
+      "link": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
       }
     }
   }

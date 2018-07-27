@@ -10,3 +10,4 @@ chmod +x ./cc-test-reporter
 mv cc-test-reporter $HOME/.local/bin/cc-test-reporter
 npm install --global --upgrade yarn
 yarn
+yarn picaresque
