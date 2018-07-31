@@ -40,14 +40,14 @@ export async function genRoot(
     ),
     tools: async (): Promise<object[]> => Graph.read().Vertices().outVertex("tool").listVertices().map((v: IVertex) => ({
       id: v.id,
-      title: v.properties["title"].id,
-      subtitle: v.properties["subtitle"].id,
-    })),
-    releases: async (): Promise<object[]> => Graph.read().Vertices().outVertex("release").listVertices().map((v: IVertex) => ({
-      id: v.id,
       icon: v.properties["icon"].id,
       link: v.properties["link"].id,
       title: v.properties["title"].id,
+    })),
+    releases: async (): Promise<object[]> => Graph.read().Vertices().outVertex("release").listVertices().map((v: IVertex) => ({
+      id: v.id,
+      title: v.properties["title"].id,
+      subtitle: v.properties["subtitle"].id,
     })),
   };
 }
