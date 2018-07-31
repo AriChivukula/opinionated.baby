@@ -14,6 +14,6 @@ import {
 } from "./website";
 
 window.onload = (): void => {
-  render("https://dynamic-ENV_BRANCH.ENV_DOMAIN/graphql/ENV_NAME-ENV_BUILD/");
+  render("https://dynamic-ENV_BRANCH.ENV_DOMAIN/graphql/ENV_NAME-ENV_BRANCH/");
 };
 /* BESPOKE END <<custom>> */
