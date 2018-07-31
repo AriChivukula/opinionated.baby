@@ -1,5 +1,5 @@
 {
-  "VL-release": {
+  "release": {
     "id": {
       "type": "number"
     },
@@ -7,14 +7,16 @@
     },
     "properties": {
       "title": {
-        "type": "string"
+        "type": "string",
+        "metadata": {}
       },
       "subtitle": {
-        "type": "string"
+        "type": "string",
+        "metadata": {}
       }
     }
   },
-  "VL-tool": {
+  "tool": {
     "id": {
       "type": "string"
     },
@@ -22,13 +24,16 @@
     },
     "properties": {
       "icon": {
-        "type": "string"
+        "type": "string",
+        "metadata": {}
       },
       "link": {
-        "type": "string"
+        "type": "string",
+        "metadata": {}
       },
       "title": {
-        "type": "string"
+        "type": "string",
+        "metadata": {}
       }
     }
   }
