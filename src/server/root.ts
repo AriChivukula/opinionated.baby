@@ -38,17 +38,21 @@ export async function genRoot(
       // @ts-ignore
       async (): Promise<object | null> => await genUserForAccessToken(req.token),
     ),
-    tools: async (): Promise<object[]> => Graph.read().Vertices().outVertex("tool").listVertices().map((v: IVertex) => ({
-      id: v.id,
-      title: v.properties["title"].id,
-      subtitle: v.properties["subtitle"].id,
-    })),
-    releases: async (): Promise<object[]> => Graph.read().Vertices().outVertex("release").listVertices().map((v: IVertex) => ({
-      id: v.id,
-      icon: v.properties["icon"].id,
-      link: v.properties["link"].id,
-      title: v.properties["title"].id,
-    })),
+    tools: async (): Promise<object[]> => {
+      return Graph.read().Vertices().outVertex("tool").listVertices().map((v: IVertex) => ({
+        id: v.id,
+        title: v.properties["title"].id,
+        subtitle: v.properties["subtitle"].id,
+      }));
+    },
+    releases: async (): Promise<object[]> => {
+      return Graph.read().Vertices().outVertex("release").listVertices().map((v: IVertex) => ({
+        id: v.id,
+        icon: v.properties["icon"].id,
+        link: v.properties["link"].id,
+        title: v.properties["title"].id,
+      }));
+    },
   };
 }
 /* BESPOKE END <<custom>> */
