@@ -23,7 +23,6 @@ export async function genRoot(
   req: express.Request,
   res: express.Response,
 ): Promise<object> {
-  console.log(Graph.read().Vertices().outVertex("tool").listVertices());
   return {
     login: async ({ input }: { input: { code: string } }): Promise<object> => {
       const accessToken: string = await genAccessToken(input.code);
