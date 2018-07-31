@@ -63,7 +63,7 @@ gulp.task(
 
 gulp.task(
   "build:2:static",
-  () => gulp.src("src/**/*.@(graphql|jpg|png|snap)")
+  () => gulp.src("src/**/*.@(graphql|jpg|png)")
     .pipe(gulp.dest("build/2")),
 );
 
