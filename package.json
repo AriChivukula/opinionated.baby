@@ -23,8 +23,7 @@
     ],
     "reporter": [
       "lcov"
-    ],
-    "sourceMap": true
+    ]
   },
   "private": true,
   "dependencies": {
