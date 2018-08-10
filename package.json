@@ -28,7 +28,7 @@
   },
   "private": true,
   "dependencies": {
-    "@babel/polyfill": "7.0.0-beta.56",
+    "@babel/polyfill": "7.0.0-rc.1",
     "aws-serverless-express": "3.2.0",
     "body-parser": "1.18.3",
     "cors": "2.8.4",
