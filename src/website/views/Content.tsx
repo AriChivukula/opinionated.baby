@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website.ts::Content>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<CndotfDtGQ0TmeJ/GB/07qby8R2Q2YcaDxVguN4FAjcEJMqDW6iow7zppg8S6u1FxMg5/HZyH0h53+ML0clpwA==>>
+ * SIGNED<<0LZX0PmRN5L/T0xOoPH2438jXkgZ4eFMq+XtZ/pyVuEFIyfNW/jjsRGPiF+eSVU1UPvW03SLl2ce1lV48AiGHw==>>
  */
 
 import * as React from "react";
@@ -42,7 +42,7 @@ import {
 /* BESPOKE END <<imports>> */
 
 export interface IContentProps {
-  data: MappedFragmentProps<RemoveRelayProp<ContentQuery>>;
+  data: ContentQuery;
 }
 
 class __Content extends React.Component<IContentProps> {
@@ -172,7 +172,7 @@ class __Content extends React.Component<IContentProps> {
   /* BESPOKE END <<implementation>> */
 }
 
-const _Content: React.ComponentType<IContentProps> = createFragmentContainer(
+const _Content: React.ComponentType<MappedFragmentProps<RemoveRelayProp<IContentProps>>> = createFragmentContainer(
   __Content,
   /* BESPOKE START <<relay>> */
   graphql`

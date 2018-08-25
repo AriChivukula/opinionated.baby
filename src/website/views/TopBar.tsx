@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website.ts::TopBar>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<SvY8OiQomm+jJ8HzzGqcUXYEGNhNu1+quEgs+jOR/P8Z8iikmynNd30w4uIGvSi+Wno8ZTzmDIH+LGnJRebiGw==>>
+ * SIGNED<<fznzArZlUDYhf0Irty2mNWYJZotkpUrVequEbyJVDOU4i1tWcgfuWA4eWq9G6nsed6pD2/mjQfdKfTHC+gIniw==>>
  */
 
 import * as React from "react";
@@ -41,7 +41,7 @@ import {
 /* BESPOKE END <<imports>> */
 
 export interface ITopBarProps {
-  data: MappedFragmentProps<RemoveRelayProp<TopBarQuery>>;
+  data: TopBarQuery;
 }
 
 class __TopBar extends React.Component<ITopBarProps> {
@@ -160,7 +160,7 @@ class __TopBar extends React.Component<ITopBarProps> {
   /* BESPOKE END <<implementation>> */
 }
 
-const _TopBar: React.ComponentType<ITopBarProps> = createFragmentContainer(
+const _TopBar: React.ComponentType<MappedFragmentProps<RemoveRelayProp<ITopBarProps>>> = createFragmentContainer(
   __TopBar,
   /* BESPOKE START <<relay>> */
   graphql`
