@@ -119,7 +119,7 @@ class __Content extends React.Component<IContentProps> {
   ): JSX.Element {
     return (
       <>
-        {this.props.data.releases.map((item: any, index: number) => (
+        {this.props.data!.releases.map((item: any, index: number) => (
           <GridCell span={4} key={index}>
             <Card>
               <CardPrimaryAction
@@ -151,7 +151,7 @@ class __Content extends React.Component<IContentProps> {
   ): JSX.Element {
     return (
       <>
-        {this.props.data.tools.map((item: any, index: number) => (
+        {this.props.data!.tools.map((item: any, index: number) => (
           <GridCell span={3} key={index}>
             <List twoLine>
               <a onClick={(): void => { goto(item.link); }}>
