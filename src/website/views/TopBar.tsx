@@ -3,15 +3,16 @@
  *
  * SOURCE<<gen/website.ts::TopBar>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<hd2ZWjeP0VtTjkfdN4rwFpSBZLkIPAMKCzxcVDOPfjT8xU3ghNViT+tPmjxhfKOpcEIG8S8byXmKg0nZgMwQBw==>>
+ * SIGNED<<SvY8OiQomm+jJ8HzzGqcUXYEGNhNu1+quEgs+jOR/P8Z8iikmynNd30w4uIGvSi+Wno8ZTzmDIH+LGnJRebiGw==>>
  */
 
 import * as React from "react";
 import {
-  _FragmentRefs,
   commitMutation,
   createFragmentContainer,
   graphql,
+  MappedFragmentProps,
+  RemoveRelayProp,
 } from "react-relay";
 
 /* BESPOKE START <<imports>> */
@@ -40,7 +41,7 @@ import {
 /* BESPOKE END <<imports>> */
 
 export interface ITopBarProps {
-  data: _FragmentRefs<TopBarQuery>;
+  data: MappedFragmentProps<RemoveRelayProp<TopBarQuery>>;
 }
 
 class __TopBar extends React.Component<ITopBarProps> {
