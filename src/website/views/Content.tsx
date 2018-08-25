@@ -3,13 +3,15 @@
  *
  * SOURCE<<gen/website.ts::Content>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<kNZpRE++OuXcNS5jT6X7Tp6jOvX35BGjQO9bXFLP+I8WqNhF/nwiWyLnMcUzcw75MRRHLhxAupDdSMCsttT3bQ==>>
+ * SIGNED<<0LZX0PmRN5L/T0xOoPH2438jXkgZ4eFMq+XtZ/pyVuEFIyfNW/jjsRGPiF+eSVU1UPvW03SLl2ce1lV48AiGHw==>>
  */
 
 import * as React from "react";
 import {
   createFragmentContainer,
   graphql,
+  MappedFragmentProps,
+  RemoveRelayProp,
 } from "react-relay";
 
 /* BESPOKE START <<imports>> */
@@ -119,7 +121,7 @@ class __Content extends React.Component<IContentProps> {
   ): JSX.Element {
     return (
       <>
-        {this.props.data.releases.map((item: any, index: number) => (
+        {this.props.data.releases!.map((item: any, index: number) => (
           <GridCell span={4} key={index}>
             <Card>
               <CardPrimaryAction
@@ -151,7 +153,7 @@ class __Content extends React.Component<IContentProps> {
   ): JSX.Element {
     return (
       <>
-        {this.props.data.tools.map((item: any, index: number) => (
+        {this.props.data.tools!.map((item: any, index: number) => (
           <GridCell span={3} key={index}>
             <List twoLine>
               <a onClick={(): void => { goto(item.link); }}>
@@ -170,7 +172,7 @@ class __Content extends React.Component<IContentProps> {
   /* BESPOKE END <<implementation>> */
 }
 
-const _Content: React.ComponentType<IContentProps> = createFragmentContainer(
+const _Content: React.ComponentType<MappedFragmentProps<RemoveRelayProp<IContentProps>>> = createFragmentContainer(
   __Content,
   /* BESPOKE START <<relay>> */
   graphql`

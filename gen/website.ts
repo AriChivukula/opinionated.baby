@@ -21,12 +21,7 @@ export const utility: Module = Module.new({
 export const Content: Module = React({
   destination: "src/website/views/Content.tsx",
   name: "Content",
-  props: [
-    Type.Required.new({
-      name: "data",
-      type: "ContentQuery",
-    }),
-  ],
+  props: [],
   relayType: ERelayType.FRAGMENT,
 });
 
@@ -60,12 +55,7 @@ export const Root: Module = React({
 export const TopBar: Module = React({
   destination: "src/website/views/TopBar.tsx",
   name: "TopBar",
-  props: [
-    Type.Required.new({
-      name: "data",
-      type: "TopBarQuery",
-    }),
-  ],
+  props: [],
   relayMutation: true,
   relayType: ERelayType.FRAGMENT,
 });
