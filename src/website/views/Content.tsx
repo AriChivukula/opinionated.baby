@@ -3,11 +3,12 @@
  *
  * SOURCE<<gen/website.ts::Content>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<kNZpRE++OuXcNS5jT6X7Tp6jOvX35BGjQO9bXFLP+I8WqNhF/nwiWyLnMcUzcw75MRRHLhxAupDdSMCsttT3bQ==>>
+ * SIGNED<<8uqaxFgatEmUoSI6tz+1KV7ifDbOlNYIvcJoWja+2Fu8jTFZbdtbg+AMrZ/Rzf5+HnTLUzAhNfxTjbsX6r2GEA==>>
  */
 
 import * as React from "react";
 import {
+  $FragmentRef,
   createFragmentContainer,
   graphql,
 } from "react-relay";
@@ -41,6 +42,7 @@ import {
 
 export interface IContentProps {
   data: ContentQuery;
+  data: $FragmentRef<ContentQuery>;
 }
 
 class __Content extends React.Component<IContentProps> {
