@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website.ts::Content>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<8uqaxFgatEmUoSI6tz+1KV7ifDbOlNYIvcJoWja+2Fu8jTFZbdtbg+AMrZ/Rzf5+HnTLUzAhNfxTjbsX6r2GEA==>>
+ * SIGNED<<IgUpRrPvZjvFzWxjC7+nh0UMjaKW8MR0OyXkScQ7yVUU5+B13cDOOPfvj37iY5nY4nO5T/Y7XimcFliBeiQQxw==>>
  */
 
 import * as React from "react";
@@ -41,7 +41,6 @@ import {
 /* BESPOKE END <<imports>> */
 
 export interface IContentProps {
-  data: ContentQuery;
   data: $FragmentRef<ContentQuery>;
 }
 

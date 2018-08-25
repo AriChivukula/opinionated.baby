@@ -3,7 +3,7 @@
  *
  * SOURCE<<gen/website.ts::TopBar>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<Ccz01qrE3adzSOonYbif8DRXln8AsQl4GOn3V4xhM0pi7H5IpuVJg5cbQ4VgJ1PaTrqVspcEM2TBwREOsO7bNg==>>
+ * SIGNED<<F9y4UjKZT3JQqdYOIVQZ5ltbbvCcrswwTk+JOhpr+JH/k/UkRe0muue4c1q4A8nhZyXa6l0qSTWOeZKvJuoa9g==>>
  */
 
 import * as React from "react";
@@ -40,7 +40,6 @@ import {
 /* BESPOKE END <<imports>> */
 
 export interface ITopBarProps {
-  data: TopBarQuery;
   data: $FragmentRef<TopBarQuery>;
 }
 
