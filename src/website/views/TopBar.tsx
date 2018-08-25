@@ -3,12 +3,12 @@
  *
  * SOURCE<<gen/website.ts::TopBar>>
  * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<F9y4UjKZT3JQqdYOIVQZ5ltbbvCcrswwTk+JOhpr+JH/k/UkRe0muue4c1q4A8nhZyXa6l0qSTWOeZKvJuoa9g==>>
+ * SIGNED<<hd2ZWjeP0VtTjkfdN4rwFpSBZLkIPAMKCzxcVDOPfjT8xU3ghNViT+tPmjxhfKOpcEIG8S8byXmKg0nZgMwQBw==>>
  */
 
 import * as React from "react";
 import {
-  $FragmentRef,
+  _FragmentRefs,
   commitMutation,
   createFragmentContainer,
   graphql,
@@ -40,7 +40,7 @@ import {
 /* BESPOKE END <<imports>> */
 
 export interface ITopBarProps {
-  data: $FragmentRef<TopBarQuery>;
+  data: _FragmentRefs<TopBarQuery>;
 }
 
 class __TopBar extends React.Component<ITopBarProps> {
