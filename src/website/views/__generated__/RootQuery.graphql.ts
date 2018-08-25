@@ -7,6 +7,10 @@ export type RootQueryVariables = {};
 export type RootQueryResponse = {
     readonly " $fragmentRefs": ContentQuery$ref & TopBarQuery$ref;
 };
+export type RootQuery = {
+    readonly response: RootQueryResponse;
+    readonly variables: RootQueryVariables;
+};
 
 
 

@@ -1,8 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _TopBarQuery$ref: unique symbol;
-export type TopBarQuery$ref = typeof _TopBarQuery$ref;
+export type TopBarQuery$ref = any;
 export type TopBarQuery = {
     readonly loginURL: string;
     readonly me: ({

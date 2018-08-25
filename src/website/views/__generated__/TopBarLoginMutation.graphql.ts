@@ -12,6 +12,10 @@ export type TopBarLoginMutationResponse = {
         readonly accessToken: string;
     };
 };
+export type TopBarLoginMutation = {
+    readonly response: TopBarLoginMutationResponse;
+    readonly variables: TopBarLoginMutationVariables;
+};
 
 
 

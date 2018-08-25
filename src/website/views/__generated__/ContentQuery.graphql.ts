@@ -1,8 +1,7 @@
 /* tslint:disable */
 
 import { ConcreteFragment } from "relay-runtime";
-declare const _ContentQuery$ref: unique symbol;
-export type ContentQuery$ref = typeof _ContentQuery$ref;
+export type ContentQuery$ref = any;
 export type ContentQuery = {
     readonly releases: ReadonlyArray<({
         readonly id: string;
