@@ -38,7 +38,6 @@
     "google-auth-library": "1.6.1",
     "googleapis": "33.0.0",
     "graphql": "0.13.2",
-    "gremlin": "3.2.9",
     "helmet": "3.13.0",
     "rollbar": "2.4.4"
   },
