@@ -10,9 +10,6 @@ import * as React from "react";
 
 /* BESPOKE START <<imports>> */
 import {
-  LinearProgress,
-} from "rmwc/LinearProgress";
-import {
   Url,
 } from "url";
 
@@ -41,16 +38,10 @@ class _Page extends React.Component<IPageProps> {
     /* BESPOKE START <<render>> */
     const urlParts: URL = new URL(window.location.href);
     if (this.props.data === null) {
-      return <LinearProgress determinate={false} />;
+      return <div></div>;
     } else if (urlParts.searchParams.has("code")) {
       // @ts-ignore
-      const TopBarJSX = <TopBar {...this.props} />;
-      return (
-        <>
-          {TopBarJSX}
-          <LinearProgress determinate={false} />
-        </>
-      );
+      return <TopBar {...this.props} />;
     } else {
       // @ts-ignore
       const TopBarJSX = <TopBar {...this.props} />;
