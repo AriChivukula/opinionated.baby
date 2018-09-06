@@ -37,7 +37,7 @@
     "express-graphql": "0.6.12",
     "google-auth-library": "2.0.0",
     "googleapis": "33.0.0",
-    "graphql": "14.0.0",
+    "graphql": "14.0.2",
     "helmet": "3.13.0",
     "rollbar": "2.4.5"
   },
