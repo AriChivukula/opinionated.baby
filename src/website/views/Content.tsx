@@ -135,7 +135,7 @@ class __Content extends React.Component<IContentProps> {
                 <Typography
                   use="headline4"
                   style={{padding: "1rem"}}>
-                  <Typography theme="text-secondary-on-background">
+                  <Typography use="headline4" theme="text-secondary-on-background">
                     v{item.id}
                   </Typography>
                   <br />
