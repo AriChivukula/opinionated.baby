@@ -64,6 +64,7 @@ class __Content extends React.Component<IContentProps> {
             with choice overload.
             {" "}
             <Typography
+              use="body1"
               theme="text-secondary-on-background"
               onClick={(): void => { goto("https://github.com/AriChivukula/opinionated.baby/"); }}>
               Opinionated Baby
@@ -98,6 +99,7 @@ class __Content extends React.Component<IContentProps> {
             the vitality and happy, healthy development of our
             {" "}
             <Typography
+              use="body1"
               theme="text-secondary-on-background"
               onClick={(): void => { goto("http://www.nic.baby/policies.html"); }}>
               babies and children
