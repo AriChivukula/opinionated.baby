@@ -18,6 +18,7 @@ import {
 import {
   Card,
   CardMedia,
+  CardMediaContent,
   CardPrimaryAction,
 } from "rmwc/Card";
 import {
@@ -64,6 +65,7 @@ class __Content extends React.Component<IContentProps> {
             with choice overload.
             {" "}
             <Typography
+              use="body1"
               theme="text-secondary-on-background"
               onClick={(): void => { goto("https://github.com/AriChivukula/opinionated.baby/"); }}>
               Opinionated Baby
@@ -98,6 +100,7 @@ class __Content extends React.Component<IContentProps> {
             the vitality and happy, healthy development of our
             {" "}
             <Typography
+              use="body1"
               theme="text-secondary-on-background"
               onClick={(): void => { goto("http://www.nic.baby/policies.html"); }}>
               babies and children
@@ -126,14 +129,15 @@ class __Content extends React.Component<IContentProps> {
             <Card>
               <CardPrimaryAction
                 onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
-                <CardMedia
-                  square
-                  style={{backgroundImage: `url(images/v${item.id}.jpg)`}}
-                />
+                <CardMedia square>
+                  <CardMediaContent>
+                    <div style={{backgroundImage: `url(images/v${item.id}.jpg)`}} />
+                  </CardMediaContent>
+                </CardMedia>
                 <Typography
                   use="headline4"
                   style={{padding: "1rem"}}>
-                  <Typography theme="text-secondary-on-background">
+                  <Typography use="headline4" theme="text-secondary-on-background">
                     v{item.id}
                   </Typography>
                   <br />
