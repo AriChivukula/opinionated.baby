@@ -131,11 +131,7 @@ class __Content extends React.Component<IContentProps> {
                 onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
                 <CardMedia square>
                   <CardMediaContent>
-                    <Typography
-                      use="body2"
-                      tag="div"
-                      style={{backgroundImage: `url(images/v${item.id}.jpg)`}}
-                    >
+                    <div style={{backgroundImage: `url(images/v${item.id}.jpg)`}} />
                   </CardMediaContent>
                 </CardMedia>
                 <Typography
