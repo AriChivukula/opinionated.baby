@@ -18,6 +18,7 @@ import {
 import {
   Card,
   CardMedia,
+  CardMediaContent,
   CardPrimaryAction,
 } from "rmwc/Card";
 import {
@@ -128,10 +129,15 @@ class __Content extends React.Component<IContentProps> {
             <Card>
               <CardPrimaryAction
                 onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
-                <CardMedia
-                  square
-                  style={{backgroundImage: `url(images/v${item.id}.jpg)`}}
-                />
+                <CardMedia square>
+                  <CardMediaContent>
+                    <Typography
+                      use="body2"
+                      tag="div"
+                      style={{backgroundImage: `url(images/v${item.id}.jpg)`}}
+                    >
+                  </CardMediaContent>
+                </CardMedia>
                 <Typography
                   use="headline4"
                   style={{padding: "1rem"}}>
