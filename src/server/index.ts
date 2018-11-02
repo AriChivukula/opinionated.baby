@@ -18,7 +18,6 @@ import cors from "cors";
 import express from "express";
 import bearer from "express-bearer-token";
 import helmet from "helmet";
-import Rollbar from "rollbar";
 
 import {
   graphQL,
@@ -38,13 +37,6 @@ app.use((req: express.Request, res: express.Response, next: () => void): void =>
 });
 
 app.use("/graphql", graphQL);
-
-app.use((new Rollbar({
-  accessToken: process.env.TF_VAR_ROLLBAR_SERVER,
-  verbose: true,
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-})).errorHandler());
 
 export function handler(
   event: object,
