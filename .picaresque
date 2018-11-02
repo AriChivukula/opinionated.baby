@@ -8,9 +8,6 @@
   "AWS_SECRET_ACCESS_KEY": {
     "description": "AWS Secret"
   },
-  "CC_TEST_REPORTER_ID": {
-    "description": "CC Token"
-  },
   "GITHUB_TOKEN": {
     "description": "GitHub Token"
   },
@@ -28,11 +25,5 @@
   },
   "TF_VAR_NAME": {
     "description": "Name"
-  },
-  "TF_VAR_ROLLBAR_CLIENT": {
-    "description": "Rollbar client token"
-  },
-  "TF_VAR_ROLLBAR_SERVER": {
-    "description": "Rollbar server token"
   }
 }
