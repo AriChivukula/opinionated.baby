@@ -38,7 +38,6 @@ gulp.task(
   () => gulp.src("src/**/*.html")
     .pipe(replace("ENV_TITLE", pkg.title))
     .pipe(replace("ENV_VERSION", pkg.version))
-    .pipe(replace("ENV_ROLLBAR", process.env.TF_VAR_ROLLBAR_CLIENT))
     .pipe(gulp.dest("build/2")),
 );
 
