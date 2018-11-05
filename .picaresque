@@ -25,5 +25,8 @@
   },
   "TF_VAR_NAME": {
     "description": "Name"
+  },
+  "TF_VAR_HONEYCOMB": {
+    "description": "Honeycomb server token"
   }
 }
