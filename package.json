@@ -21,7 +21,8 @@
     "google-auth-library": "2.0.1",
     "googleapis": "34.0.0",
     "graphql": "14.0.2",
-    "helmet": "3.14.0"
+    "helmet": "3.14.0",
+    "honeycomb-beeline": "1.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",
