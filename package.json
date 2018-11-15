@@ -66,7 +66,7 @@
     "relay-compiler": "1.7.0",
     "relay-compiler-language-typescript": "1.1.1",
     "relay-runtime": "1.7.0",
-    "rmwc": "3.0.9",
+    "rmwc": "3.0.10",
     "rollup-plugin-uglify": "6.0.0",
     "rollup-stream": "1.24.1",
     "ts-node": "7.0.1",
