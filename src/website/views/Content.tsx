@@ -129,11 +129,10 @@ class __Content extends React.Component<IContentProps> {
             <Card>
               <CardPrimaryAction
                 onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
-                <CardMedia square>
-                  <CardMediaContent>
-                    <div style={{backgroundImage: `url(images/v${item.id}.jpg)`}} />
-                  </CardMediaContent>
-                </CardMedia>
+                <CardMedia
+                  square
+                  style={{backgroundImage: `url(images/v${item.id}.jpg)`}}
+                />
                 <Typography
                   use="headline4"
                   style={{padding: "1rem"}}>

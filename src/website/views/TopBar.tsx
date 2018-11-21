@@ -57,12 +57,12 @@ class __TopBar extends React.Component<ITopBarProps> {
     }
     let actionItem: object = {
       onClick: (): void => this.googleAuth(),
-      use: "person",
+      icon: "person",
     };
     if (this.props.data.me !== null) {
       actionItem = {
         onClick: (): void => this.logout(),
-        use: "exit_to_app",
+        icon: "exit_to_app",
       };
     }
 
@@ -73,7 +73,7 @@ class __TopBar extends React.Component<ITopBarProps> {
           fixed={true}
           navigationIcon={{
             onClick: (): void => goto("https://github.com/arichiv/opinionated.baby/"),
-            use: "code",
+            icon: "code",
           }}
           actionItems={[actionItem]}
         />
