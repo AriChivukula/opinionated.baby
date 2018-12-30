@@ -128,23 +128,22 @@ class __Content extends React.Component<IContentProps> {
           <GridCell span={4} key={index}>
             <Card>
               <CardPrimaryAction>
-                <div onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
-                  <CardMedia
-                    square
-                    style={{backgroundImage: `url(images/v${item.id}.jpg)`}}
-                  />
-                  <Typography
-                    use="headline4"
-                    style={{padding: "1rem"}}>
-                    <Typography use="headline4" theme="text-secondary-on-background">
-                      v{item.id}
-                    </Typography>
-                    <br />
-                    {item.title}
-                    <br />
-                    {item.subtitle}
+                onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
+                <CardMedia
+                  square
+                  style={{backgroundImage: `url(images/v${item.id}.jpg)`}}
+                />
+                <Typography
+                  use="headline4"
+                  style={{padding: "1rem"}}>
+                  <Typography use="headline4" theme="text-secondary-on-background">
+                    v{item.id}
                   </Typography>
-                </div>
+                  <br />
+                  {item.title}
+                  <br />
+                  {item.subtitle}
+                </Typography>
               </CardPrimaryAction>
             </Card>
           </GridCell>
