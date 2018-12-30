@@ -127,7 +127,7 @@ class __Content extends React.Component<IContentProps> {
         {this.props.data.releases!.map((item: any, index: number) => (
           <GridCell span={4} key={index}>
             <Card>
-              <CardPrimaryAction>
+              <CardPrimaryAction
                 onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
                 <CardMedia
                   square
