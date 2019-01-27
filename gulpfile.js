@@ -22,7 +22,7 @@ gulp.task(
 
 gulp.task(
   "build:1:relay",
-  shell.task("relay-compiler --src build/1/ --schema src/server/schema.graphql"),
+  shell.task("relay-compiler --src build/1/ --schema src/server/schema.graphql --watchman false"),
 );
 
 gulp.task(
