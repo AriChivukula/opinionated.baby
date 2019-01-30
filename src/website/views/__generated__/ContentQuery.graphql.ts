@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 export type ContentQuery$ref = any;
 export type ContentQuery = {
     readonly releases: ReadonlyArray<({
@@ -19,7 +19,7 @@ export type ContentQuery = {
 
 
 
-const node: ConcreteFragment = (function(){
+const node: ReaderFragment = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
@@ -50,8 +50,8 @@ return {
       "concreteType": "Release",
       "plural": true,
       "selections": [
-        v0,
-        v1,
+        (v0/*: any*/),
+        (v1/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
@@ -70,7 +70,7 @@ return {
       "concreteType": "Tool",
       "plural": true,
       "selections": [
-        v0,
+        (v0/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
@@ -85,7 +85,7 @@ return {
           "args": null,
           "storageKey": null
         },
-        v1
+        (v1/*: any*/)
       ]
     }
   ]

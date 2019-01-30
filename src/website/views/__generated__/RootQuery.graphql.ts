@@ -60,11 +60,6 @@ v1 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "RootQuery",
-  "id": null,
-  "text": "query RootQuery {\n  ...ContentQuery\n  ...TopBarQuery\n}\n\nfragment ContentQuery on Query {\n  releases {\n    id\n    title\n    subtitle\n  }\n  tools {\n    id\n    icon\n    link\n    title\n  }\n}\n\nfragment TopBarQuery on Query {\n  loginURL\n  me {\n    id\n    email\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "RootQuery",
@@ -98,8 +93,8 @@ return {
         "concreteType": "Release",
         "plural": true,
         "selections": [
-          v0,
-          v1,
+          (v0/*: any*/),
+          (v1/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -118,7 +113,7 @@ return {
         "concreteType": "Tool",
         "plural": true,
         "selections": [
-          v0,
+          (v0/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -133,7 +128,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          v1
+          (v1/*: any*/)
         ]
       },
       {
@@ -152,7 +147,7 @@ return {
         "concreteType": "User",
         "plural": false,
         "selections": [
-          v0,
+          (v0/*: any*/),
           {
             "kind": "ScalarField",
             "alias": null,
@@ -163,6 +158,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "RootQuery",
+    "id": null,
+    "text": "query RootQuery {\n  ...ContentQuery\n  ...TopBarQuery\n}\n\nfragment ContentQuery on Query {\n  releases {\n    id\n    title\n    subtitle\n  }\n  tools {\n    id\n    icon\n    link\n    title\n  }\n}\n\nfragment TopBarQuery on Query {\n  loginURL\n  me {\n    id\n    email\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

@@ -67,24 +67,26 @@ v1 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "mutation",
-  "name": "TopBarLogoutMutation",
-  "id": null,
-  "text": "mutation TopBarLogoutMutation(\n  $input: LogoutInput\n) {\n  logout(input: $input) {\n    accessToken\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "TopBarLogoutMutation",
     "type": "Mutation",
     "metadata": null,
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v1/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "TopBarLogoutMutation",
-    "argumentDefinitions": v0,
-    "selections": v1
+    "argumentDefinitions": (v0/*: any*/),
+    "selections": (v1/*: any*/)
+  },
+  "params": {
+    "operationKind": "mutation",
+    "name": "TopBarLogoutMutation",
+    "id": null,
+    "text": "mutation TopBarLogoutMutation(\n  $input: LogoutInput\n) {\n  logout(input: $input) {\n    accessToken\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();
