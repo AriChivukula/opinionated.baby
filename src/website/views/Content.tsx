@@ -66,7 +66,7 @@ class __Content extends React.Component<IContentProps> {
             {" "}
             <Typography
               use="body1"
-              theme="text-secondary-on-background"
+              theme="textSecondaryOnBackground"
               onClick={(): void => { goto("https://github.com/AriChivukula/opinionated.baby/"); }}>
               Opinionated Baby
             </Typography>
@@ -101,7 +101,7 @@ class __Content extends React.Component<IContentProps> {
             {" "}
             <Typography
               use="body1"
-              theme="text-secondary-on-background"
+              theme="textSecondaryOnBackground"
               onClick={(): void => { goto("http://www.nic.baby/policies.html"); }}>
               babies and children
             </Typography>
@@ -136,7 +136,7 @@ class __Content extends React.Component<IContentProps> {
                   use="headline4"
                   style={{padding: "1rem"}}
                   onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
-                  <Typography use="headline4" theme="text-secondary-on-background">
+                  <Typography use="headline4" theme="textSecondaryOnBackground">
                     v{item.id}
                   </Typography>
                   <br />
