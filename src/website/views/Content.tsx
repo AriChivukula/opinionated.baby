@@ -20,18 +20,18 @@ import {
   CardMedia,
   CardMediaContent,
   CardPrimaryAction,
-} from "rmwc/Card";
+} from "@rmwc/card";
 import {
   Grid,
   GridCell,
-} from "rmwc/Grid";
+} from "@rmwc/grid";
 import {
   List,
   SimpleListItem,
-} from "rmwc/List";
+} from "@rmwc/list";
 import {
   Typography,
-} from "rmwc/Typography";
+} from "@rmwc/typography";
 
 import {
   goto,

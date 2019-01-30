@@ -1,6 +1,6 @@
 /* tslint:disable */
 
-import { ConcreteFragment } from "relay-runtime";
+import { ReaderFragment } from "relay-runtime";
 export type TopBarQuery$ref = any;
 export type TopBarQuery = {
     readonly loginURL: string;
@@ -13,7 +13,7 @@ export type TopBarQuery = {
 
 
 
-const node: ConcreteFragment = {
+const node: ReaderFragment = {
   "kind": "Fragment",
   "name": "TopBarQuery",
   "type": "Query",
