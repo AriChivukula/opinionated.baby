@@ -11,7 +11,7 @@ import * as React from "react";
 /* BESPOKE START <<imports>> */
 import {
   LinearProgress,
-} from "rmwc/LinearProgress";
+} from "@rmwc/linear-progress";
 import {
   Url,
 } from "url";
