@@ -39,6 +39,9 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "target": "ES3",
-    "strict": true
+    "strict": true,
+    "exclude": [
+      "src/website/views/__generated__/*.ts"
+    ]
   }
 }
