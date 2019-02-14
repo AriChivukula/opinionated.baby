@@ -42,7 +42,7 @@ fragment TopBarQuery on Query {
   }
 }
 */
-
+// @ts-ignore
 const node: ConcreteRequest = (function(){
 var v0 = {
   "kind": "ScalarField",
