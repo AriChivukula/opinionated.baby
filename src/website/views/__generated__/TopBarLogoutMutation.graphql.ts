@@ -28,7 +28,7 @@ mutation TopBarLogoutMutation(
   }
 }
 */
-// @ts-ignore
+
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
