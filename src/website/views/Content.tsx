@@ -124,7 +124,7 @@ class __Content extends React.Component<IContentProps> {
   ): JSX.Element {
     return (
       <>
-        {this.props.data.releases!.sort((a, b) => parseInt(a.id) - parseInt(b.id)).map((item: any, index: number) => (
+        {this.props.data.releases!.sort((a: any, b: any) => parseInt(a.id) - parseInt(b.id)).map((item: any, index: number) => (
           <GridCell span={4} key={index}>
             <Card>
               <CardPrimaryAction>
