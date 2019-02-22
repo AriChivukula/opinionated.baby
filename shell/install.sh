@@ -7,4 +7,3 @@ unzip terraform_0.11.11_linux_amd64.zip -d $HOME/.local/bin
 rm terraform_0.11.11_linux_amd64.zip
 npm install --global --upgrade yarn
 yarn
-yarn picaresque
