@@ -63,7 +63,7 @@
     "gulp-string-replace": "1.1.2",
     "gulp-typescript": "5.0.0",
     "js-cookie": "2.2.0",
-    "mocha": "6.0.0",
+    "mocha": "6.0.1",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-relay": "2.0.0",
@@ -76,7 +76,7 @@
     "rollup-plugin-uglify": "6.0.2",
     "rollup-stream": "1.24.1",
     "ts-node": "8.0.2",
-    "typescript": "3.3.3",
+    "typescript": "3.3.3333",
     "typescriptase": "0.7.5",
     "uglifyify": "5.0.1",
     "vinyl-source-stream": "2.0.0"
