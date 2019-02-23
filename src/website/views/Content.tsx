@@ -15,12 +15,6 @@ import {
 } from "react-relay";
 
 /* BESPOKE START <<imports>> */
-import {
-  Card,
-  CardMedia,
-  CardMediaContent,
-  CardPrimaryAction,
-} from "@rmwc/card";
 import Card, {
   CardPrimaryContent,
   CardMedia,
