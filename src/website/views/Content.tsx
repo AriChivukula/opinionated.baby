@@ -25,15 +25,13 @@ import {
   Cell,
   Grid,
 } from "@material/react-layout-grid";
-import {
-  List,
-  SimpleListItem,
-} from "@rmwc/list";
+import List, {ListItem, ListItemGraphic, ListItemText} from "@material/react-list";
 import {
   Headline2,
   Headline4,
   Body1,
 } from "@material/react-typography";
+import MaterialIcon from '@material/react-material-icon';
 
 import {
   goto,
@@ -159,11 +157,13 @@ class __Content extends React.Component<IContentProps> {
           <Cell columns={3} key={index}>
             <List twoLine>
               <a onClick={(): void => { goto(item.link); }}>
-                <SimpleListItem
-                  graphic={item.icon}
-                  text={item.title}
-                  secondaryText={item.id}
-                />
+                <ListItem>
+                  <ListItemGraphic graphic={<MaterialIcon icon={item.icon} />} />
+                  <ListItemText
+                    primaryText={item.title}
+                    secondaryText={item.id}
+                  />
+                <ListItem/>
               </a>
             </List>
           </Cell>
