@@ -30,8 +30,10 @@ import {
   SimpleListItem,
 } from "@rmwc/list";
 import {
-  Typography,
-} from "@rmwc/typography";
+  Headline2,
+  Headline4,
+  Body1,
+} from "@material/react-typography";
 
 import {
   goto,
@@ -54,44 +56,43 @@ class __Content extends React.Component<IContentProps> {
     return (
       <Grid>
         <GridCell span={12}>
-          <Typography use="headline2" tag="div">
+          <Headline2>
             A confidently immature starting point
-          </Typography>
+          </Headline2>
         </GridCell>
         <GridCell span={12}>
-          <Typography use="body1" tag="div">
+          <Body1>
             The hardest part of building a new dynamic website is avoiding
             all the dragons. Starting a development environment can freeze us
             with choice overload.
             {" "}
-            <Typography
-              use="body1"
-              theme="textSecondaryOnBackground"
+            <Body1
+              class="textSecondaryOnBackground"
               onClick={(): void => { goto("https://github.com/AriChivukula/opinionated.baby/"); }}>
               Opinionated Baby
-            </Typography>
+            </Body1>
             {" "}
             solves this by moving the starting line past the quagmire of setup
             and into the pleasure of production logic.
-          </Typography>
+          </Body1>
         </GridCell>
         <GridCell span={12}>
-          <Typography use="headline2" tag="div">
+          <Headline2>
             Important choices I made for you
-          </Typography>
+          </Headline2>
         </GridCell>
         {this.renderTools()}
         <GridCell span={12}>
-          <Typography use="headline2" tag="div">
+          <Headline2>
             <span style={{textDecoration: "line-through"}}>
               Self justification
             </span>
             {" "}
             Philosophy
-          </Typography>
+          </Headline2>
         </GridCell>
         <GridCell span={12}>
-          <Typography use="body1" tag="div">
+          <Body1>
             This framework is one-size-fits-me. It's an open source
             version of a system I use when building complex websites.
             Anyone may attempt to use, critique, or contribute to it. The
@@ -99,19 +100,18 @@ class __Content extends React.Component<IContentProps> {
             short of capricious. My general mission and purpose is to support
             the vitality and happy, healthy development of our
             {" "}
-            <Typography
-              use="body1"
-              theme="textSecondaryOnBackground"
+            <Body1
+              class="textSecondaryOnBackground"
               onClick={(): void => { goto("http://www.nic.baby/policies.html"); }}>
               babies and children
-            </Typography>
+            </Body1>
             .
-          </Typography>
+          </Body1>
         </GridCell>
         <GridCell span={12}>
-          <Typography use="headline2" tag="div">
+          <Headline2>
             Release history
-          </Typography>
+          </Headline2>
         </GridCell>
         {this.renderReleases()}
       </Grid>
@@ -132,18 +132,17 @@ class __Content extends React.Component<IContentProps> {
                   square
                   style={{backgroundImage: `url(images/v${item.id}.jpg)`}}
                 />
-                <Typography
-                  use="headline4"
+                <Headline4
                   style={{padding: "1rem"}}
                   onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
-                  <Typography use="headline4" theme="textSecondaryOnBackground">
+                  <Headline4 class="textSecondaryOnBackground">
                     v{item.id}
-                  </Typography>
+                  </Headline4>
                   <br />
                   {item.title}
                   <br />
                   {item.subtitle}
-                </Typography>
+                </Headline4>
               </CardPrimaryAction>
             </Card>
           </GridCell>
