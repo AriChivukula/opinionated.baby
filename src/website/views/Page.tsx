@@ -9,7 +9,7 @@
 import * as React from "react";
 
 /* BESPOKE START <<imports>> */
-import LinearProgress from "@rmwc/linear-progress";
+import LinearProgress from "@material/react-linear-progress";
 import {
   Url,
 } from "url";
