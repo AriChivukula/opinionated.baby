@@ -13,7 +13,7 @@ import { Graph, IVertex } from "foia-db";
 import {
   genAccessToken,
   genUserForAccessToken,
-  getLoginURL,
+  genLoginURL,
 } from "./google";
 import {
   genNullOnThrow,
@@ -30,7 +30,7 @@ export async function genRoot(
 
       return { accessToken };
     },
-    loginURL: async (): Promise<string> => getLoginURL(),
+    loginURL: async (): Promise<string> => await genLoginURL(),
     logout: async (): Promise<object> => ({
       accessToken: "",
     }),
