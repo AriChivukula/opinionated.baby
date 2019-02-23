@@ -9,9 +9,7 @@
 import * as React from "react";
 
 /* BESPOKE START <<imports>> */
-import {
-  LinearProgress,
-} from "@rmwc/linear-progress";
+import LinearProgress from "@rmwc/linear-progress";
 import {
   Url,
 } from "url";
@@ -41,7 +39,7 @@ class _Page extends React.Component<IPageProps> {
     /* BESPOKE START <<render>> */
     const urlParts: URL = new URL(window.location.href);
     // @ts-ignore
-    const ProgressJSX = <LinearProgress />;
+    const ProgressJSX = <LinearProgress indeterminate />;
     if (this.props.data === null) {
       return ProgressJSX;
     } else if (urlParts.searchParams.has("code")) {
