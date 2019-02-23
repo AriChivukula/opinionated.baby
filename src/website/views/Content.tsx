@@ -63,7 +63,7 @@ class __Content extends React.Component<IContentProps> {
             with choice overload.
             {" "}
             <Body1
-              class="textSecondaryOnBackground"
+              className="textSecondaryOnBackground"
               onClick={(): void => { goto("https://github.com/AriChivukula/opinionated.baby/"); }}>
               Opinionated Baby
             </Body1>
@@ -97,7 +97,7 @@ class __Content extends React.Component<IContentProps> {
             the vitality and happy, healthy development of our
             {" "}
             <Body1
-              class="textSecondaryOnBackground"
+              className="textSecondaryOnBackground"
               onClick={(): void => { goto("http://www.nic.baby/policies.html"); }}>
               babies and children
             </Body1>
@@ -127,7 +127,7 @@ class __Content extends React.Component<IContentProps> {
                 <Headline4
                   style={{padding: "1rem"}}
                   onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
-                  <Headline4 class="textSecondaryOnBackground">
+                  <Headline4 className="textSecondaryOnBackground">
                     v{item.id}
                   </Headline4>
                   <br />
@@ -135,7 +135,7 @@ class __Content extends React.Component<IContentProps> {
                   <br />
                   {item.subtitle}
                 </Headline4>
-                <CardMedia square imageUrl={"images/v" + item.id ".jpg"} />
+                <CardMedia square imageUrl={"images/v" + item.id + ".jpg"} />
               </CardPrimaryContent>
             </Card>
           </Cell>
