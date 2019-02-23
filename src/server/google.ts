@@ -23,7 +23,7 @@ export interface IAccessTokenInfo {
   data: { email?: string | undefined; user_id?: string | undefined; verified_email?: boolean | undefined };
 }
 
-function async genVaultClient(
+async function genVaultClient(
 ): Promise<vault.client> {
   return await vault({
     endpoint: "https://nomoresecrets.chivuku.la/",
@@ -31,7 +31,7 @@ function async genVaultClient(
   }).init();
 }
 
-function async genOAuthClient(
+async function genOAuthClient(
 ): Promise<OAuth2Client> {
   const client = await genVaultClient();
   const client_id = await client.read("opinionated.baby/TF_VAR_CLIENT_ID");
