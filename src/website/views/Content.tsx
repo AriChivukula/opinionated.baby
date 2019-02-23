@@ -21,6 +21,10 @@ import {
   CardMediaContent,
   CardPrimaryAction,
 } from "@rmwc/card";
+import Card, {
+  CardPrimaryContent,
+  CardMedia,
+} from "@material/react-card";
 import {
   Cell,
   Grid,
@@ -125,11 +129,7 @@ class __Content extends React.Component<IContentProps> {
         {Array(...(this.props.data.releases || [])).sort((a: any, b: any) => parseInt(a.id) - parseInt(b.id)).map((item: any, index: number) => (
           <Cell columns={4} key={index}>
             <Card>
-              <CardPrimaryAction>
-                <CardMedia
-                  square
-                  style={{backgroundImage: `url(images/v${item.id}.jpg)`}}
-                />
+              <CardPrimaryContent>
                 <Headline4
                   style={{padding: "1rem"}}
                   onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
@@ -141,7 +141,8 @@ class __Content extends React.Component<IContentProps> {
                   <br />
                   {item.subtitle}
                 </Headline4>
-              </CardPrimaryAction>
+                <CardMedia square imageUrl={"images/v" + item.id ".jpg"} />
+              </CardPrimaryContent>
             </Card>
           </Cell>
         ))}
