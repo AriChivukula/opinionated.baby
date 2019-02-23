@@ -26,7 +26,7 @@ export interface IAccessTokenInfo {
 function getVaultClient(
 ): vault.client {
   return vault({
-    endpoint: "https://nomoresecrets.chivuku.la/",
+    endpoint: "https://nomoresecrets.chivuku.la",
     token: process.env.TF_VAR_VAULT_TOKEN,
   });
 }
