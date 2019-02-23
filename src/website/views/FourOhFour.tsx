@@ -13,8 +13,8 @@ import {
   Link,
 } from "react-router-dom";
 import {
-  Typography,
-} from "@rmwc/typography";
+  Headline2,
+} from "@material/react-typography";
 /* BESPOKE END <<imports>> */
 
 export function _FourOhFour(
@@ -22,9 +22,9 @@ export function _FourOhFour(
   /* BESPOKE START <<render>> */
   return (
     <Link to="/">
-      <Typography use="headline2" tag="div">
+      <Headline2>
         FourOhFour
-      </Typography>
+      </Headline2>
     </Link>
   );
   /* BESPOKE END <<render>> */
