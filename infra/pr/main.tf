@@ -10,6 +10,8 @@ variable "DOMAIN" {}
 
 variable "LOCAL_DOMAIN" {}
 
+variable "VAULT_TOKEN" {}
+
 provider "aws" {}
 
 data "aws_acm_certificate" "ob_certificate" {
@@ -63,6 +65,7 @@ resource "aws_lambda_function" "ob_lambda" {
       TF_VAR_NAME = "${var.NAME}"
       TF_VAR_DOMAIN = "${var.DOMAIN}"
       TF_VAR_BRANCH = "${var.BRANCH}"
+      TF_VAR_VAULT_TOKEN = "${var.VAULT_TOKEN}"
       DEBUG = "*"
     }
   }
