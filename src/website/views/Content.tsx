@@ -22,9 +22,9 @@ import {
   CardPrimaryAction,
 } from "@rmwc/card";
 import {
+  Cell,
   Grid,
-  GridCell,
-} from "@rmwc/grid";
+} from "@material/react-layout-grid";
 import {
   List,
   SimpleListItem,
@@ -55,12 +55,12 @@ class __Content extends React.Component<IContentProps> {
     /* BESPOKE START <<render>> */
     return (
       <Grid>
-        <GridCell span={12}>
+        <Cell columns={12}>
           <Headline2>
             A confidently immature starting point
           </Headline2>
-        </GridCell>
-        <GridCell span={12}>
+        </Cell>
+        <Cell columns={12}>
           <Body1>
             The hardest part of building a new dynamic website is avoiding
             all the dragons. Starting a development environment can freeze us
@@ -75,14 +75,14 @@ class __Content extends React.Component<IContentProps> {
             solves this by moving the starting line past the quagmire of setup
             and into the pleasure of production logic.
           </Body1>
-        </GridCell>
-        <GridCell span={12}>
+        </Cell>
+        <Cell columns={12}>
           <Headline2>
             Important choices I made for you
           </Headline2>
-        </GridCell>
+        </Cell>
         {this.renderTools()}
-        <GridCell span={12}>
+        <Cell columns={12}>
           <Headline2>
             <span style={{textDecoration: "line-through"}}>
               Self justification
@@ -90,8 +90,8 @@ class __Content extends React.Component<IContentProps> {
             {" "}
             Philosophy
           </Headline2>
-        </GridCell>
-        <GridCell span={12}>
+        </Cell>
+        <Cell columns={12}>
           <Body1>
             This framework is one-size-fits-me. It's an open source
             version of a system I use when building complex websites.
@@ -107,12 +107,12 @@ class __Content extends React.Component<IContentProps> {
             </Body1>
             .
           </Body1>
-        </GridCell>
-        <GridCell span={12}>
+        </Cell>
+        <Cell columns={12}>
           <Headline2>
             Release history
           </Headline2>
-        </GridCell>
+        </Cell>
         {this.renderReleases()}
       </Grid>
     );
@@ -125,7 +125,7 @@ class __Content extends React.Component<IContentProps> {
     return (
       <>
         {Array(...(this.props.data.releases || [])).sort((a: any, b: any) => parseInt(a.id) - parseInt(b.id)).map((item: any, index: number) => (
-          <GridCell span={4} key={index}>
+          <Cell columns={4} key={index}>
             <Card>
               <CardPrimaryAction>
                 <CardMedia
@@ -145,7 +145,7 @@ class __Content extends React.Component<IContentProps> {
                 </Headline4>
               </CardPrimaryAction>
             </Card>
-          </GridCell>
+          </Cell>
         ))}
       </>
     );
@@ -156,7 +156,7 @@ class __Content extends React.Component<IContentProps> {
     return (
       <>
         {this.props.data.tools!.map((item: any, index: number) => (
-          <GridCell span={3} key={index}>
+          <Cell columns={3} key={index}>
             <List twoLine>
               <a onClick={(): void => { goto(item.link); }}>
                 <SimpleListItem
@@ -166,7 +166,7 @@ class __Content extends React.Component<IContentProps> {
                 />
               </a>
             </List>
-          </GridCell>
+          </Cell>
         ))}
       </>
     );
