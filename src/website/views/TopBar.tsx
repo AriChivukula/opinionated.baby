@@ -53,7 +53,7 @@ class __TopBar extends React.Component<ITopBarProps> {
 
       return <div />;
     }
-    let actionItem: object = <MaterialIcon
+    let actionItem: JSX.Element = <MaterialIcon
       onClick={(): void => this.googleAuth()}
       icon="person"
     />;
