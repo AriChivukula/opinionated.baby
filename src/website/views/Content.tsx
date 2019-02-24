@@ -132,16 +132,16 @@ class __Content extends React.Component<IContentProps> {
       <Row>
         {Array(...(this.props.data.releases || [])).sort((a: any, b: any) => parseInt(a.id) - parseInt(b.id)).map((item: any, index: number) => (
           <Cell columns={4} key={index}>
-            <Card>
-              <CardPrimaryContent>
-                <a onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
+            <a onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
+              <Card>
+                <CardPrimaryContent>
                   <CardMedia
                    square
                    imageUrl={"images/v" + item.id + ".jpg"}
                   />
-                </a>
-              </CardPrimaryContent>
-            </Card>
+                </CardPrimaryContent>
+              </Card>
+            </a>
           </Cell>
         ))}
       </Row>
