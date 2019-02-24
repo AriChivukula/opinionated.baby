@@ -25,10 +25,11 @@ export interface IAccessTokenInfo {
 
 async function genVaultClient(
 ): Promise<vault.client> {
-  return await vault({
-    endpoint: "https://nomoresecrets.chivuku.la",
+  return vault({
+    apiVersion: 'v1',
+    endpoint: "https://nomoresecrets.chivuku.la:443",
     token: process.env.TF_VAR_VAULT_TOKEN,
-  }).initialized();
+  });
 }
 
 async function genOAuthClient(
