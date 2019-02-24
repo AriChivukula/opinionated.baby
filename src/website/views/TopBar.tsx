@@ -56,12 +56,12 @@ class __TopBar extends React.Component<ITopBarProps> {
     let actionItem: object = <MaterialIcon
       onClick={(): void => this.googleAuth()}
       icon="person"
-    \>;
+    />;
     if (this.props.data.me !== null) {
       actionItem = <MaterialIcon
         onClick={(): void => this.logout()}
         icon="exit_to_app"
-      \>;
+      />;
     }
 
     return (
