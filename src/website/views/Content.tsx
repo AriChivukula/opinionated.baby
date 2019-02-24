@@ -62,11 +62,10 @@ class __Content extends React.Component<IContentProps> {
             all the dragons. Starting a development environment can freeze us
             with choice overload.
             {" "}
-            <Body1
-              className="textSecondaryOnBackground"
+            <span
               onClick={(): void => { goto("https://github.com/AriChivukula/opinionated.baby/"); }}>
               Opinionated Baby
-            </Body1>
+            </span>
             {" "}
             solves this by moving the starting line past the quagmire of setup
             and into the pleasure of production logic.
@@ -96,11 +95,9 @@ class __Content extends React.Component<IContentProps> {
             short of capricious. My general mission and purpose is to support
             the vitality and happy, healthy development of our
             {" "}
-            <Body1
-              className="textSecondaryOnBackground"
-              onClick={(): void => { goto("http://www.nic.baby/policies.html"); }}>
+            <span onClick={(): void => { goto("http://www.nic.baby/policies.html"); }}>
               babies and children
-            </Body1>
+            </span>
             .
           </Body1>
         </Cell>
@@ -125,15 +122,8 @@ class __Content extends React.Component<IContentProps> {
             <Card>
               <CardPrimaryContent>
                 <Headline4
-                  style={{padding: "1rem"}}
                   onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
-                  <Headline4 className="textSecondaryOnBackground">
                     v{item.id}
-                  </Headline4>
-                  <br />
-                  {item.title}
-                  <br />
-                  {item.subtitle}
                 </Headline4>
                 <CardMedia square imageUrl={"images/v" + item.id + ".jpg"} />
               </CardPrimaryContent>
