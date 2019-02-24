@@ -13,6 +13,7 @@ import {
 import {
   google,
 } from "googleapis";
+import vault from "node-vault";
 
 export interface IAccessToken {
   tokens: { access_token?: string | null };
@@ -22,28 +23,40 @@ export interface IAccessTokenInfo {
   data: { email?: string | undefined; user_id?: string | undefined; verified_email?: boolean | undefined };
 }
 
-function getOAuthClient(
-): OAuth2Client {
+async function genVaultClient(
+): Promise<vault.client> {
+  return vault({
+    apiVersion: 'v1',
+    endpoint: "https://nomoresecrets.chivuku.la:443",
+    token: process.env.TF_VAR_VAULT_TOKEN,
+  });
+}
+
+async function genOAuthClient(
+): Promise<OAuth2Client> {
+  const client = await genVaultClient();
+  const client_id = await client.read("opinionated.baby/data/TF_VAR_CLIENT_ID");
+  const client_secret = await client.read("opinionated.baby/data/TF_VAR_CLIENT_SECRET");
   return new OAuth2Client(
-    process.env.TF_VAR_CLIENT_ID,
-    process.env.TF_VAR_CLIENT_SECRET,
+    client_id[""],
+    client_secret[""],
     "https://" + process.env.TF_VAR_DOMAIN,
   );
 }
 
-export function getLoginURL(
-): string {
-  return getOAuthClient()
-    .generateAuthUrl({
-      scope: ["profile", "email"],
-    });
+export async function genLoginURL(
+): Promise<string> {
+  const client = await genOAuthClient();
+  return client.generateAuthUrl({
+    scope: ["profile", "email"],
+  });
 }
 
 export async function genAccessToken(
   code: string,
 ): Promise<string> {
-  const accessToken: IAccessToken = await getOAuthClient()
-    .getToken(code);
+  const client = await genOAuthClient();
+  const accessToken: IAccessToken = await client.getToken(code);
 
   return accessToken.tokens.access_token as string;
 }

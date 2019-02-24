@@ -18,10 +18,8 @@ import {
 /* BESPOKE START <<imports>> */
 import * as cookie from "js-cookie";
 
-import {
-  SimpleTopAppBar,
-  TopAppBarFixedAdjust,
-} from "@rmwc/top-app-bar";
+import TopAppBar, {TopAppBarFixedAdjust} from "@material/react-top-app-bar";
+import MaterialIcon from "@material/react-material-icon";
 import {
   Url,
 } from "url";
@@ -55,26 +53,26 @@ class __TopBar extends React.Component<ITopBarProps> {
 
       return <div />;
     }
-    let actionItem: object = {
-      onClick: (): void => this.googleAuth(),
-      icon: "person",
-    };
+    let actionItem: JSX.Element = <MaterialIcon
+      onClick={(): void => this.googleAuth()}
+      icon="person"
+    />;
     if (this.props.data.me !== null) {
-      actionItem = {
-        onClick: (): void => this.logout(),
-        icon: "exit_to_app",
-      };
+      actionItem = <MaterialIcon
+        onClick={(): void => this.logout()}
+        icon="exit_to_app"
+      />;
     }
 
     return (
       <>
-        <SimpleTopAppBar
+        <TopAppBar
           title={document.title}
-          fixed={true}
-          navigationIcon={{
-            onClick: (): void => goto("https://github.com/arichiv/opinionated.baby/"),
-            icon: "code",
-          }}
+          fixed
+          navigationIcon={<MaterialIcon
+            onClick={(): void => goto("https://github.com/arichiv/opinionated.baby/")}
+            icon="code"
+          />}
           actionItems={[actionItem]}
         />
         <TopAppBarFixedAdjust />

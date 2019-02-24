@@ -4,17 +4,13 @@ terraform {
 
 variable "BRANCH" {}
 
-variable "CLIENT_ID" {}
-
-variable "CLIENT_SECRET" {}
-
 variable "NAME" {}
 
 variable "DOMAIN" {}
 
 variable "LOCAL_DOMAIN" {}
 
-variable "HONEYCOMB" {}
+variable "VAULT_TOKEN" {}
 
 provider "aws" {}
 
@@ -66,12 +62,10 @@ resource "aws_lambda_function" "ob_lambda" {
 
   environment {
     variables = {
-      TF_VAR_CLIENT_ID = "${var.CLIENT_ID}"
-      TF_VAR_CLIENT_SECRET = "${var.CLIENT_SECRET}"
       TF_VAR_NAME = "${var.NAME}"
       TF_VAR_DOMAIN = "${var.DOMAIN}"
       TF_VAR_BRANCH = "${var.BRANCH}"
-      TF_VAR_HONEYCOMB = "${var.HONEYCOMB}"
+      TF_VAR_VAULT_TOKEN = "${var.VAULT_TOKEN}"
       DEBUG = "*"
     }
   }

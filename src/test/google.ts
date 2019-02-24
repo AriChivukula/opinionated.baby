@@ -12,13 +12,13 @@ import "mocha";
 import * as chai from "chai";
 
 import {
-  getLoginURL,
+  genLoginURL,
 } from "../server/google";
 
 it(
   "getLoginURL",
   async (): Promise<void> => {
-    const url: string = getLoginURL();
+    const url: string = await genLoginURL();
     chai.expect(url).to.include("accounts.google.com");
   },
 );
