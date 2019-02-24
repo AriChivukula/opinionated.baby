@@ -134,10 +134,6 @@ class __Content extends React.Component<IContentProps> {
           <Cell columns={4} key={index}>
             <Card>
               <CardPrimaryContent>
-                <Headline4
-                  onClick={(): void => { goto(`https://github.com/AriChivukula/opinionated.baby/releases/tag/v${item.id}/`); }}>
-                    v{item.id}
-                </Headline4>
                 <CardMedia square imageUrl={"images/v" + item.id + ".jpg"} />
               </CardPrimaryContent>
             </Card>
