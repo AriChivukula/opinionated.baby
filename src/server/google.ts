@@ -28,10 +28,7 @@ async function genVaultClient(
   return await vault({
     endpoint: "https://nomoresecrets.chivuku.la",
     token: process.env.TF_VAR_VAULT_TOKEN,
-  }).init({
-    secret_shares: 1,
-    secret_threshold: 1,
-  });
+  }).initialized();
 }
 
 async function genOAuthClient(
