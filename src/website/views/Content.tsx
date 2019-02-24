@@ -158,7 +158,7 @@ class __Content extends React.Component<IContentProps> {
                     primaryText={item.title}
                     secondaryText={item.id}
                   />
-                <ListItem/>
+                </ListItem>
               </a>
             </List>
           </Cell>
