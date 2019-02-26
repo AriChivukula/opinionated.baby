@@ -54,7 +54,7 @@
     "@types/node": "11.9.5",
     "@types/node-vault": "0.5.3",
     "@types/prop-types": "15.5.9",
-    "@types/react": "16.8.4",
+    "@types/react": "16.8.5",
     "@types/react-dom": "16.8.2",
     "@types/react-relay": "1.3.12",
     "@types/react-router-dom": "4.3.1",
