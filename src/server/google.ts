@@ -38,8 +38,8 @@ async function genOAuthClient(
   const client_id = await client.read("opinionated.baby/data/TF_VAR_CLIENT_ID");
   const client_secret = await client.read("opinionated.baby/data/TF_VAR_CLIENT_SECRET");
   return new OAuth2Client(
-    client_id[""],
-    client_secret[""],
+    client_id["data"]["data"][""],
+    client_secret["data"]["data"][""],
     "https://" + process.env.TF_VAR_DOMAIN,
   );
 }
