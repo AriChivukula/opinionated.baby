@@ -1,5 +1,6 @@
 set -e
 
+yarn relay-compiler --src src/ --schema src/server/schema.graphql --language typescript --watchman false
 yarn gulp build
 yarn install --production=true --ignore-engines
 cp build/3/server/index.js index.js
