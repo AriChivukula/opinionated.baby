@@ -1,7 +1,5 @@
 export TF_VAR_BRANCH=$TRAVIS_BRANCH
 yarn ts-node node_modules/.bin/typescriptase --files gen/*.ts
-terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=tfstate/trigger.tfstate" infra/trigger
-terraform apply -auto-approve infra/trigger
 git remote add target "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
 git add -A
 git commit -m "ACTUALIZE ${TF_VAR_BRANCH}"
