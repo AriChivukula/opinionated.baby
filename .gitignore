@@ -1,8 +1,8 @@
-/coverage
-/build
-/node_modules
-/package-lock.json
 *.backup
 *.terraform
 __generated__
+.foia-db.json
+build
+node_modules
+package-lock.json
 yarn.lock
