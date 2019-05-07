@@ -35,17 +35,16 @@ data "aws_security_group" "ob_security" {
 }
 
 data "aws_vpc" "ob_vpc" {
-  filter {
-    name = "tag:Name"
-    values = ["${var.NAME}"]
+  tags {
+    Name = "aol"
   }
 }
 
 data "aws_subnet_ids" "ob_subnet" {
   vpc_id = "${data.aws_vpc.ob_vpc.id}"
-  filter {
-    name = "tag:Type"
-    values = ["Private"]
+  tags {
+    Name = "aol"
+    Type = "Private"
   }
 }
 
