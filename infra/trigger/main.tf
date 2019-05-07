@@ -8,106 +8,15 @@ variable "DOMAIN" {}
 
 provider "aws" {}
 
-resource "aws_vpc" "ob_vpc" {
-  cidr_block = "192.168.0.0/16"
-
+data "aws_vpc" "ob_vpc" {
   tags {
-    Name = "${var.NAME}"
+    Name = "aol"
   }
-}
-
-data "aws_availability_zones" "ob_azs" {}
-
-resource "aws_subnet" "ob_subnet_public" {
-  count = "${length(data.aws_availability_zones.ob_azs.names)}"
-  cidr_block = "${cidrsubnet(aws_vpc.ob_vpc.cidr_block, 8, count.index)}"
-  vpc_id = "${aws_vpc.ob_vpc.id}"
-  availability_zone = "${data.aws_availability_zones.ob_azs.names[count.index]}"
-
-  tags {
-    Name = "${var.NAME}"
-    Type = "Public"
-  }
-}
-
-resource "aws_internet_gateway" "ob_internet" {
-  vpc_id = "${aws_vpc.ob_vpc.id}"
-
-  tags {
-    Name = "${var.NAME}"
-  }
-}
-
-resource "aws_route_table" "ob_table_public" {
-  vpc_id = "${aws_vpc.ob_vpc.id}"
-
-  tags {
-    Name = "${var.NAME}"
-    Type = "Public"
-  }
-}
-
-resource "aws_route" "ob_route_iw" {
-  route_table_id = "${aws_route_table.ob_table_public.id}"
-  gateway_id = "${aws_internet_gateway.ob_internet.id}"
-  destination_cidr_block = "0.0.0.0/0"
-}
-
-resource "aws_route_table_association" "ob_assoc_public" {
-  count = "${length(data.aws_availability_zones.ob_azs.names)}"
-  subnet_id = "${element(aws_subnet.ob_subnet_public.*.id, count.index)}"
-  route_table_id = "${aws_route_table.ob_table_public.id}"
-}
-
-resource "aws_eip" "ob_eip" {
-  vpc = true
-}
-
-resource "aws_nat_gateway" "ob_nat" {
-  allocation_id = "${aws_eip.ob_eip.id}"
-  subnet_id = "${aws_subnet.ob_subnet_public.0.id}"
-  
-  tags {
-    Name = "${var.NAME}"
-  }
-}
-
-resource "aws_subnet" "ob_subnet_private" {
-  count = "${length(data.aws_availability_zones.ob_azs.names)}"
-  cidr_block = "${cidrsubnet(aws_vpc.ob_vpc.cidr_block, 8, count.index + length(data.aws_availability_zones.ob_azs.names))}"
-  vpc_id = "${aws_vpc.ob_vpc.id}"
-  availability_zone = "${data.aws_availability_zones.ob_azs.names[count.index]}"
-
-  tags {
-    Name = "${var.NAME}"
-    Type = "Private"
-  }
-}
-
-resource "aws_route_table" "ob_table_private" {
-  vpc_id = "${aws_vpc.ob_vpc.id}"
-
-  tags {
-    Name = "${var.NAME}"
-    Type = "Private"
-  }
-}
-
-resource "aws_route" "ob_route_nat" {
-  route_table_id  = "${aws_route_table.ob_table_private.id}"
-  destination_cidr_block = "0.0.0.0/0"
-  nat_gateway_id = "${aws_nat_gateway.ob_nat.id}"
-}
-
-resource "aws_route_table_association" "ob_assoc_private" {
-  count = "${length(data.aws_availability_zones.ob_azs.names)}"
-  subnet_id = "${element(aws_subnet.ob_subnet_private.*.id, count.index)}"
-  route_table_id = "${aws_route_table.ob_table_private.id}"
 }
 
 resource "aws_security_group" "ob_security" {
   name = "${var.NAME}"
-  vpc_id = "${aws_vpc.ob_vpc.id}"
+  vpc_id = "${data.aws_vpc.ob_vpc.id}"
 
   ingress {
     from_port = 0
