@@ -35,14 +35,14 @@ data "aws_security_group" "ob_security" {
 }
 
 data "aws_vpc" "ob_vpc" {
-  tags {
+  tags = {
     Name = "aol"
   }
 }
 
 data "aws_subnet_ids" "ob_subnet" {
   vpc_id = "${data.aws_vpc.ob_vpc.id}"
-  tags {
+  tags = {
     Name = "aol"
     Type = "Private"
   }
@@ -74,7 +74,7 @@ resource "aws_lambda_function" "ob_lambda" {
     security_group_ids = ["${data.aws_security_group.ob_security.id}"]
   }
 
-  tags {
+  tags = {
     Name = "${var.NAME}"
   }
 }
@@ -227,7 +227,7 @@ resource "aws_s3_bucket_object" "ob_object" {
   source = "static/${lookup(local.files[count.index], "file")}"
   acl = "public-read"
   content_type = "${lookup(local.files[count.index], "type")}"
-  etag = "${md5(file("static/${lookup(local.files[count.index], "file")}"))}"
+  etag = "${filemd5("static/${lookup(local.files[count.index], "file")}")}"
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
@@ -272,7 +272,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
     }
   }
 
-  tags {
+  tags = {
     Name = "${var.NAME}"
   }
 
