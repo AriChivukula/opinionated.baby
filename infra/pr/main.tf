@@ -35,14 +35,14 @@ data "aws_security_group" "ob_security" {
 }
 
 data "aws_vpc" "ob_vpc" {
-  tags {
+  tags = {
     Name = "aol"
   }
 }
 
 data "aws_subnet_ids" "ob_subnet" {
   vpc_id = "${data.aws_vpc.ob_vpc.id}"
-  tags {
+  tags = {
     Name = "aol"
     Type = "Private"
   }
@@ -57,7 +57,7 @@ resource "aws_lambda_function" "ob_lambda" {
   timeout = 300
   filename = "dynamic.zip"
   publish = true
-  source_code_hash = "${base64sha256(file("dynamic.zip"))}"
+  source_code_hash = "${filebase64sha256("dynamic.zip")}"
 
   environment {
     variables = {
@@ -70,11 +70,11 @@ resource "aws_lambda_function" "ob_lambda" {
   }
   
   vpc_config {
-    subnet_ids = ["${data.aws_subnet_ids.ob_subnet.ids}"]
+    subnet_ids = data.aws_subnet_ids.ob_subnet.ids
     security_group_ids = ["${data.aws_security_group.ob_security.id}"]
   }
 
-  tags {
+  tags = {
     Name = "${var.NAME}"
   }
 }
@@ -227,7 +227,7 @@ resource "aws_s3_bucket_object" "ob_object" {
   source = "static/${lookup(local.files[count.index], "file")}"
   acl = "public-read"
   content_type = "${lookup(local.files[count.index], "type")}"
-  etag = "${md5(file("static/${lookup(local.files[count.index], "file")}"))}"
+  etag = "${filemd5("static/${lookup(local.files[count.index], "file")}")}"
 }
 
 resource "aws_cloudfront_distribution" "ob_distribution" {
@@ -272,7 +272,7 @@ resource "aws_cloudfront_distribution" "ob_distribution" {
     }
   }
 
-  tags {
+  tags = {
     Name = "${var.NAME}"
   }
 
