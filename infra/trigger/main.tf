@@ -9,7 +9,7 @@ variable "DOMAIN" {}
 provider "aws" {}
 
 data "aws_vpc" "ob_vpc" {
-  tags {
+  tags = {
     Name = "aol"
   }
 }
@@ -38,7 +38,7 @@ resource "aws_acm_certificate" "ob_certificate" {
   subject_alternative_names = ["*.${var.DOMAIN}"]
   validation_method = "DNS"
 
-  tags {
+  tags = {
     Name = "${var.NAME}"
   }
 }
@@ -47,7 +47,7 @@ resource "aws_s3_bucket" "ob_bucket" {
   bucket = "${var.NAME}"
   force_destroy = true
 
-  tags {
+  tags = {
     Name = "${var.NAME}"
   }
 
@@ -59,7 +59,7 @@ resource "aws_s3_bucket" "ob_bucket" {
 resource "aws_route53_zone" "ob_zone" {
   name = "${var.DOMAIN}."
 
-  tags {
+  tags = {
     Name = "${var.NAME}"
   }
 }
@@ -79,7 +79,7 @@ resource "aws_route53_record" "ob_record" {
 
 resource "aws_acm_certificate_validation" "ob_validation" {
   certificate_arn = "${aws_acm_certificate.ob_certificate.arn}"
-  validation_record_fqdns = ["${aws_route53_record.ob_record.*.fqdn}"]
+  validation_record_fqdns = aws_route53_record.ob_record.*.fqdn
 }
 
 resource "aws_iam_role" "ob_iam" {
