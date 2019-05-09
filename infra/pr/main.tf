@@ -70,7 +70,7 @@ resource "aws_lambda_function" "ob_lambda" {
   }
   
   vpc_config {
-    subnet_ids = ["${data.aws_subnet_ids.ob_subnet.ids}"]
+    subnet_ids = data.aws_subnet_ids.ob_subnet.ids
     security_group_ids = ["${data.aws_security_group.ob_security.id}"]
   }
 
