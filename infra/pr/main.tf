@@ -57,7 +57,7 @@ resource "aws_lambda_function" "ob_lambda" {
   timeout = 300
   filename = "dynamic.zip"
   publish = true
-  source_code_hash = "${base64sha256(file("dynamic.zip"))}"
+  source_code_hash = "${filebase64sha256("dynamic.zip")}"
 
   environment {
     variables = {
