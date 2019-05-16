@@ -52,7 +52,7 @@ resource "aws_lambda_function" "ob_lambda" {
   function_name = "${var.NAME}-${var.BRANCH}"
   handler = "index.handler"
   role = "${data.aws_iam_role.ob_iam.arn}"
-  runtime = "nodejs8.10"
+  runtime = "nodejs10.x"
   memory_size = 256
   timeout = 300
   filename = "dynamic.zip"
