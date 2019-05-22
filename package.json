@@ -31,8 +31,8 @@
     "node-vault": "0.9.8"
   },
   "devDependencies": {
-    "@babel/core": "7.4.4",
-    "@babel/preset-env": "7.4.4",
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
     "@material/react-card": "0.11.0",
     "@material/react-layout-grid": "0.12.1",
     "@material/react-linear-progress": "0.12.0",
@@ -78,7 +78,7 @@
     "react-relay-network-modern": "3.0.3",
     "react-router-dom": "5.0.0",
     "relay-compiler": "4.0.0",
-    "relay-compiler-language-typescript": "4.2.0",
+    "relay-compiler-language-typescript": "4.3.0",
     "relay-runtime": "4.0.0",
     "rollup-plugin-uglify": "6.0.2",
     "rollup-stream": "1.24.1",
