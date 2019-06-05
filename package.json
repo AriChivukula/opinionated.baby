@@ -76,7 +76,7 @@
     "react-dom": "16.8.6",
     "react-relay": "4.0.0",
     "react-relay-network-modern": "3.0.4",
-    "react-router-dom": "5.0.0",
+    "react-router-dom": "5.0.1",
     "relay-compiler": "4.0.0",
     "relay-compiler-language-typescript": "4.3.0",
     "relay-runtime": "4.0.0",
