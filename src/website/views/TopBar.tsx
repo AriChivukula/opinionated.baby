@@ -34,8 +34,8 @@ import {
   TopBarLogoutMutationResponse,
 } from "./__generated__/TopBarLogoutMutation.graphql";
 import {
-  TopBarQuery,
-} from "./__generated__/TopBarQuery.graphql";
+  TopBar_data as TopBarQuery,
+} from "./__generated__/TopBar_data.graphql";
 /* BESPOKE END <<imports>> */
 
 export interface ITopBarProps {
@@ -161,15 +161,17 @@ class __TopBar extends React.Component<ITopBarProps> {
 const _TopBar: React.ComponentType<MappedFragmentProps<RemoveRelayProp<ITopBarProps>>> = createFragmentContainer(
   __TopBar,
   /* BESPOKE START <<relay>> */
-  graphql`
-    fragment TopBarQuery on Query {
-      loginURL,
-      me {
-        id,
-        email
+  {
+    data: graphql`
+      fragment TopBar_data on Query {
+        loginURL,
+        me {
+          id,
+          email
+        }
       }
-    }
-  `,
+    `,
+  },
   /* BESPOKE END <<relay>> */
 );
 

@@ -20,11 +20,11 @@ import {
 } from "relay-runtime";
 
 import {
-  ContentQuery,
-} from "./__generated__/ContentQuery.graphql";
+  Content_data as ContentQuery,
+} from "./__generated__/Content_data.graphql";
 import {
-  TopBarQuery,
-} from "./__generated__/TopBarQuery.graphql";
+  TopBar_data as TopBarQuery,
+} from "./__generated__/TopBar_data.graphql";
 import {
   Page,
 } from "./Page";
@@ -45,8 +45,8 @@ class _Root extends React.Component<IRootProps> {
         variables={{}}
         query={graphql`
           query RootQuery {
-            ...ContentQuery
-            ...TopBarQuery
+            ...Content_data
+            ...TopBar_data
           }
         `}
         render={({error, props}: {error: Error | null; props: TopBarQuery | ContentQuery}): JSX.Element => {

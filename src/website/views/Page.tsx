@@ -15,11 +15,11 @@ import {
 } from "url";
 
 import {
-  ContentQuery,
-} from "./__generated__/ContentQuery.graphql";
+  Content_data as ContentQuery,
+} from "./__generated__/Content_data.graphql";
 import {
-  TopBarQuery,
-} from "./__generated__/TopBarQuery.graphql";
+  TopBar_data as TopBarQuery,
+} from "./__generated__/TopBar_data.graphql";
 import {
   Content,
 } from "./Content";
