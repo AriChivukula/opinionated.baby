@@ -161,15 +161,17 @@ class __TopBar extends React.Component<ITopBarProps> {
 const _TopBar: React.ComponentType<MappedFragmentProps<RemoveRelayProp<ITopBarProps>>> = createFragmentContainer(
   __TopBar,
   /* BESPOKE START <<relay>> */
-  graphql`
-    fragment TopBarQuery on Query {
-      loginURL,
-      me {
-        id,
-        email
+  {
+    data: graphql`
+      fragment TopBarQuery on Query {
+        loginURL,
+        me {
+          id,
+          email
+        }
       }
-    }
-  `,
+    `,
+  },
   /* BESPOKE END <<relay>> */
 );
 
