@@ -45,8 +45,8 @@ class _Root extends React.Component<IRootProps> {
         variables={{}}
         query={graphql`
           query RootQuery {
-            ...ContentQuery
-            ...TopBarQuery
+            ...Content_data
+            ...TopBar_data
           }
         `}
         render={({error, props}: {error: Error | null; props: TopBarQuery | ContentQuery}): JSX.Element => {
