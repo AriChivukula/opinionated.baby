@@ -38,7 +38,7 @@ import {
 
 import {
   Content_data as ContentQuery,
-} from "./__generated__/ContentQuery.graphql";
+} from "./__generated__/Content_data.graphql";
 /* BESPOKE END <<imports>> */
 
 export interface IContentProps {
