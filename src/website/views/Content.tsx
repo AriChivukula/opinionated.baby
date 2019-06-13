@@ -37,7 +37,7 @@ import {
 } from "../utility";
 
 import {
-  ContentQuery,
+  Content_data,
 } from "./__generated__/ContentQuery.graphql";
 /* BESPOKE END <<imports>> */
 
@@ -178,7 +178,7 @@ const _Content: React.ComponentType<MappedFragmentProps<RemoveRelayProp<IContent
   /* BESPOKE START <<relay>> */
   {
     data: graphql`
-      fragment ContentQuery on Query {
+      fragment Content_data on Query {
         releases {
           id
           title
