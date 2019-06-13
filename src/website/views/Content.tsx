@@ -37,7 +37,7 @@ import {
 } from "../utility";
 
 import {
-  Content_data,
+  Content_data as ContentQuery,
 } from "./__generated__/ContentQuery.graphql";
 /* BESPOKE END <<imports>> */
 
