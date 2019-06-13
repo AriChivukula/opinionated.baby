@@ -21,10 +21,10 @@ import {
 
 import {
   Content_data as ContentQuery,
-} from "./__generated__/ContentQuery.graphql";
+} from "./__generated__/Content_data.graphql";
 import {
   TopBar_data as TopBarQuery,
-} from "./__generated__/TopBarQuery.graphql";
+} from "./__generated__/TopBar_data.graphql";
 import {
   Page,
 } from "./Page";
