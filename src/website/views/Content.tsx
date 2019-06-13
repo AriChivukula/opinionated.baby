@@ -176,6 +176,7 @@ class __Content extends React.Component<IContentProps> {
 const _Content: React.ComponentType<MappedFragmentProps<RemoveRelayProp<IContentProps>>> = createFragmentContainer(
   __Content,
   /* BESPOKE START <<relay>> */
+
   graphql`
     fragment ContentQuery on Query {
       releases {
