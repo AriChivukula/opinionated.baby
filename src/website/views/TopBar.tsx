@@ -34,7 +34,7 @@ import {
   TopBarLogoutMutationResponse,
 } from "./__generated__/TopBarLogoutMutation.graphql";
 import {
-  TopBar_data,
+  TopBar_data as TopBarQuery,
 } from "./__generated__/TopBarQuery.graphql";
 /* BESPOKE END <<imports>> */
 
