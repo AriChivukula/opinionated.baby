@@ -88,10 +88,10 @@ class __TopBar extends React.Component<ITopBarProps> {
             }
           }
         `,
-        onCompleted: (response: TopBarLoginMutationResponse, errors: Error[]): void => {
+        onCompleted: (response: unknown, errors: Error[]): void => {
           cookie.set(
             "accessToken",
-            response.login.accessToken,
+            (response as TopBarLoginMutationResponse).login.accessToken,
             {
               domain: ".opinionated.baby",
               secure: true,
@@ -121,10 +121,10 @@ class __TopBar extends React.Component<ITopBarProps> {
             }
           }
         `,
-        onCompleted: (response: TopBarLogoutMutationResponse, errors: Error[]): void => {
+        onCompleted: (response: unknown, errors: Error[]): void => {
           cookie.set(
             "accessToken",
-            response.logout.accessToken,
+            (response as TopBarLogoutMutationResponse).logout.accessToken,
             {
               domain: ".opinionated.baby",
               secure: true,
