@@ -1,21 +1,13 @@
-/**
- * This file is partially generated; only edit bespoke sections.
- *
- * SOURCE<<gen/website.ts::TopBar>>
- * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<fznzArZlUDYhf0Irty2mNWYJZotkpUrVequEbyJVDOU4i1tWcgfuWA4eWq9G6nsed6pD2/mjQfdKfTHC+gIniw==>>
- */
-
 import * as React from "react";
 import {
   commitMutation,
   createFragmentContainer,
   graphql,
-  MappedFragmentProps,
-  RemoveRelayProp,
 } from "react-relay";
+import {
+  PayloadError,
+} from "relay-runtime";
 
-/* BESPOKE START <<imports>> */
 import * as cookie from "js-cookie";
 
 import TopAppBar, {TopAppBarFixedAdjust} from "@material/react-top-app-bar";
@@ -36,7 +28,6 @@ import {
 import {
   TopBar_data as TopBarQuery,
 } from "./__generated__/TopBar_data.graphql";
-/* BESPOKE END <<imports>> */
 
 export interface ITopBarProps {
   data: TopBarQuery;
@@ -46,7 +37,6 @@ class __TopBar extends React.Component<ITopBarProps> {
 
   public render(
   ): JSX.Element {
-    /* BESPOKE START <<render>> */
     const urlParts: URL = new URL(window.location.href);
     if (urlParts.searchParams.has("code")) {
       this.login(urlParts.searchParams.get("code") as string);
@@ -78,10 +68,8 @@ class __TopBar extends React.Component<ITopBarProps> {
         <TopAppBarFixedAdjust />
       </>
     );
-    /* BESPOKE END <<render>> */
   }
 
-  /* BESPOKE START <<implementation>> */
   private googleAuth(
   ): void {
     if ("loginURL" in this.props.data) {
@@ -103,10 +91,10 @@ class __TopBar extends React.Component<ITopBarProps> {
             }
           }
         `,
-        onCompleted: (response: TopBarLoginMutationResponse, errors: Error[]): void => {
+        onCompleted: (response: unknown, errors: readonly PayloadError[] | null | undefined): void => {
           cookie.set(
             "accessToken",
-            response.login.accessToken,
+            (response as TopBarLoginMutationResponse).login.accessToken,
             {
               domain: ".opinionated.baby",
               secure: true,
@@ -136,10 +124,10 @@ class __TopBar extends React.Component<ITopBarProps> {
             }
           }
         `,
-        onCompleted: (response: TopBarLogoutMutationResponse, errors: Error[]): void => {
+        onCompleted: (response: unknown, errors: readonly PayloadError[] | null | undefined): void => {
           cookie.set(
             "accessToken",
-            response.logout.accessToken,
+            (response as TopBarLogoutMutationResponse).logout.accessToken,
             {
               domain: ".opinionated.baby",
               secure: true,
@@ -155,12 +143,10 @@ class __TopBar extends React.Component<ITopBarProps> {
       },
     );
   }
-  /* BESPOKE END <<implementation>> */
 }
 
-const _TopBar: React.ComponentType<MappedFragmentProps<RemoveRelayProp<ITopBarProps>>> = createFragmentContainer(
+const _TopBar = createFragmentContainer(
   __TopBar,
-  /* BESPOKE START <<relay>> */
   {
     data: graphql`
       fragment TopBar_data on Query {
@@ -172,7 +158,6 @@ const _TopBar: React.ComponentType<MappedFragmentProps<RemoveRelayProp<ITopBarPr
       }
     `,
   },
-  /* BESPOKE END <<relay>> */
 );
 
 export { _TopBar as TopBar };
