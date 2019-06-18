@@ -88,7 +88,7 @@ class __TopBar extends React.Component<ITopBarProps> {
             }
           }
         `,
-        onCompleted: (response: unknown, errors: Error[]): void => {
+        onCompleted: (response: unknown, errors: readonly PayloadError[] | null | undefined): void => {
           cookie.set(
             "accessToken",
             (response as TopBarLoginMutationResponse).login.accessToken,
@@ -121,7 +121,7 @@ class __TopBar extends React.Component<ITopBarProps> {
             }
           }
         `,
-        onCompleted: (response: unknown, errors: Error[]): void => {
+        onCompleted: (response: unknown, errors: readonly PayloadError[] | null | undefined): void => {
           cookie.set(
             "accessToken",
             (response as TopBarLogoutMutationResponse).logout.accessToken,
