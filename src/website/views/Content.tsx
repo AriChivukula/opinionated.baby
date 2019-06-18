@@ -10,8 +10,6 @@ import * as React from "react";
 import {
   createFragmentContainer,
   graphql,
-  MappedFragmentProps,
-  RemoveRelayProp,
 } from "react-relay";
 
 /* BESPOKE START <<imports>> */
@@ -39,7 +37,6 @@ import {
 import {
   Content_data as ContentQuery,
 } from "./__generated__/Content_data.graphql";
-/* BESPOKE END <<imports>> */
 
 export interface IContentProps {
   data: ContentQuery;
@@ -49,7 +46,6 @@ class __Content extends React.Component<IContentProps> {
 
   public render(
   ): JSX.Element {
-    /* BESPOKE START <<render>> */
     return (
       <Grid>
        <Row>
@@ -122,10 +118,8 @@ class __Content extends React.Component<IContentProps> {
         {this.renderReleases()}
       </Grid>
     );
-    /* BESPOKE END <<render>> */
   }
 
-  /* BESPOKE START <<implementation>> */
   private renderReleases(
   ): JSX.Element {
     return (
@@ -170,12 +164,10 @@ class __Content extends React.Component<IContentProps> {
       </Row>
     );
   }
-  /* BESPOKE END <<implementation>> */
 }
 
-const _Content: React.ComponentType<MappedFragmentProps<RemoveRelayProp<IContentProps>>> = createFragmentContainer(
+const _Content = createFragmentContainer(
   __Content,
-  /* BESPOKE START <<relay>> */
   {
     data: graphql`
       fragment Content_data on Query {
@@ -193,7 +185,6 @@ const _Content: React.ComponentType<MappedFragmentProps<RemoveRelayProp<IContent
       }
     `,
   },
-  /* BESPOKE END <<relay>> */
 );
 
 export { _Content as Content };
