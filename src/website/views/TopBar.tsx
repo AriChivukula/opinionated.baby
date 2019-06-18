@@ -3,8 +3,10 @@ import {
   commitMutation,
   createFragmentContainer,
   graphql,
-  PayloadError,
 } from "react-relay";
+import {
+  PayloadError,
+} from "relay-runtime";
 
 import * as cookie from "js-cookie";
 
