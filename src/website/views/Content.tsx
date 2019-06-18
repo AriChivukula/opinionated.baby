@@ -1,18 +1,9 @@
-/**
- * This file is partially generated; only edit bespoke sections.
- *
- * SOURCE<<gen/website.ts::Content>>
- * BESPOKE<<imports, render, implementation, relay>>
- * SIGNED<<0LZX0PmRN5L/T0xOoPH2438jXkgZ4eFMq+XtZ/pyVuEFIyfNW/jjsRGPiF+eSVU1UPvW03SLl2ce1lV48AiGHw==>>
- */
-
 import * as React from "react";
 import {
   createFragmentContainer,
   graphql,
 } from "react-relay";
 
-/* BESPOKE START <<imports>> */
 import Card, {
   CardPrimaryContent,
   CardMedia,
