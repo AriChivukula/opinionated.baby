@@ -10,7 +10,13 @@ import {
 
 import * as cookie from "js-cookie";
 
-import TopAppBar, {TopAppBarFixedAdjust} from "@material/react-top-app-bar";
+import TopAppBar, {
+  TopAppBarFixedAdjust,
+  TopAppBarIcon,
+  TopAppBarRow,
+  TopAppBarSection,
+  TopAppBarTitle,
+} from "@material/react-top-app-bar";
 import MaterialIcon from "@material/react-material-icon";
 import {
   Url,
@@ -56,15 +62,24 @@ class __TopBar extends React.Component<ITopBarProps> {
 
     return (
       <>
-        <TopAppBar
-          title={document.title}
-          fixed
-          navigationIcon={<MaterialIcon
-            onClick={(): void => goto("https://github.com/arichiv/opinionated.baby/")}
-            icon="code"
-          />}
-          actionItems={[actionItem]}
-        />
+        <TopAppBar fixed>
+          <TopAppBarRow>
+            <TopAppBarSection align='start'>
+              <TopAppBarIcon navIcon tabIndex={0}>
+                <MaterialIcon
+                  onClick={(): void => goto("https://github.com/arichiv/opinionated.baby/")}
+                  icon="code"
+                />
+              </TopAppBarIcon>
+              <TopAppBarTitle>{document.title}</TopAppBarTitle>
+            </TopAppBarSection>
+            <TopAppBarSection align='end' role='toolbar'>
+              <TopAppBarIcon actionItem tabIndex={0}>
+                {actionItem}
+              </TopAppBarIcon>
+            </TopAppBarSection>
+          </TopAppBarRow>
+        </TopAppBar>
         <TopAppBarFixedAdjust />
       </>
     );
