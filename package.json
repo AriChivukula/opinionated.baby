@@ -36,7 +36,7 @@
     "@material/react-card": "0.11.0",
     "@material/react-layout-grid": "0.13.0",
     "@material/react-linear-progress": "0.13.0",
-    "@material/react-list": "0.11.0",
+    "@material/react-list": "0.14.0",
     "@material/react-material-icon": "0.11.0",
     "@material/react-top-app-bar": "0.13.0",
     "@material/react-typography": "0.13.0",
