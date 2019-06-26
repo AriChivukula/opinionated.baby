@@ -15,6 +15,7 @@ import TopAppBar, {
   TopAppBarIcon,
   TopAppBarRow,
   TopAppBarSection,
+  TopAppBarTitle,
 } from "@material/react-top-app-bar";
 import MaterialIcon from "@material/react-material-icon";
 import {
