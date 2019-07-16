@@ -23,7 +23,7 @@
     "express": "4.17.1",
     "express-bearer-token": "2.4.0",
     "foia-db": "0.2.0",
-    "express-graphql": "0.8.0",
+    "express-graphql": "0.9.0",
     "google-auth-library": "4.2.5",
     "googleapis": "41.0.0",
     "graphql": "14.4.2",
