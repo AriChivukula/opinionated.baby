@@ -1,12 +1,3 @@
-/**
- * This file is partially generated; only edit bespoke sections.
- *
- * SOURCE<<gen/server.ts::google>>
- * BESPOKE<<custom>>
- * SIGNED<<J9FCy5Eb9w0afcgAaRFGr3gxQY8sbFhMkYnvR4PLOLGutLf1jQN3nT49Pgi/UgT8KqpaBJanNZoyEo3inVMTZQ==>>
- */
-
-/* BESPOKE START <<custom>> */
 import {
   OAuth2Client,
 } from "google-auth-library";
@@ -24,7 +15,7 @@ export interface IAccessTokenInfo {
 }
 
 async function genVaultClient(
-): Promise<vault.client> {
+): Promise<vault.Client> {
   return vault({
     apiVersion: 'v1',
     endpoint: "https://nomoresecrets.chivuku.la:443",
@@ -81,4 +72,3 @@ export async function genUserForAccessToken(
   }
   return { id: info.data.user_id, email: info.data.email };
 }
-/* BESPOKE END <<custom>> */
