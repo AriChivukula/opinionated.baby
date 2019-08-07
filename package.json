@@ -70,7 +70,7 @@
     "gulp-shell": "0.7.1",
     "gulp-string-replace": "1.1.2",
     "gulp-typescript": "5.0.1",
-    "js-cookie": "2.2.0",
+    "js-cookie": "2.2.1",
     "mocha": "6.2.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
