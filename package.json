@@ -41,7 +41,7 @@
     "@material/react-top-app-bar": "0.15.0",
     "@material/react-typography": "0.15.0",
     "@types/aws-serverless-express": "3.3.1",
-    "@types/body-parser": "1.17.0",
+    "@types/body-parser": "1.17.1",
     "@types/chai": "4.2.0",
     "@types/classnames": "2.2.9",
     "@types/cors": "2.8.5",
