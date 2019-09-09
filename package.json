@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
-    "@babel/preset-env": "7.5.5",
+    "@babel/preset-env": "7.6.0",
     "@material/react-card": "0.15.0",
     "@material/react-layout-grid": "0.15.0",
     "@material/react-linear-progress": "0.15.0",
