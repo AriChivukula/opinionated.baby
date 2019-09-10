@@ -1,0 +1,39 @@
+on:
+  push:
+    branches:
+    - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@master
+    - name: Test Deploy
+      run: |
+        npm install --global --upgrade yarn
+        yarn
+        yarn foia-db
+        yarn mocha
+        yarn gulp build
+        yarn install --production=true --ignore-engines
+        cp build/3/server/index.js index.js
+        cp build/3/server/schema.graphql schema.graphql
+        zip -q -r dynamic.zip node_modules index.js schema.graphql .foia-db .foia-db.json
+        cp -R build/3/website static
+        rm -rf index.js schema.graphql
+        wget https://releases.hashicorp.com/terraform/0.12.0/terraform_0.12.0_linux_amd64.zip
+        unzip terraform_0.12.0_linux_amd64.zip
+        rm terraform_0.12.0_linux_amd64.zip
+        echo "no" | ./terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=tfstate/trigger.tfstate" infra/trigger
+        ./terraform apply -auto-approve infra/trigger > /dev/null
+        echo "no" | ./terraform init -backend-config="bucket=${TF_VAR_NAME}" -backend-config="key=tfstate/master.tfstate" infra/pr
+        ./terraform apply -auto-approve infra/pr > /dev/null
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        TF_VAR_VAULT_TOKEN: ${{ secrets.TF_VAR_VAULT_TOKEN }}
+        TF_VAR_DOMAIN: opinionated.baby
+        TF_VAR_LOCAL_DOMAIN: opinionated.baby
+        TF_VAR_NAME: opinionatedbaby
+        TF_VAR_BRANCH: master
