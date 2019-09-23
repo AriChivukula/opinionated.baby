@@ -79,7 +79,7 @@
     "react-router-dom": "5.0.1",
     "relay-compiler": "5.0.0",
     "relay-compiler-language-typescript": "5.0.0",
-    "relay-runtime": "5.0.0",
+    "relay-runtime": "6.0.0",
     "rollup-plugin-uglify": "6.0.3",
     "rollup-stream": "1.24.1",
     "ts-node": "8.4.1",
