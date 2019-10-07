@@ -34,8 +34,8 @@ export function render(
       authMiddleware({
         allowEmptyToken: true,
         token: (): string => cookie.get("accessToken") || "",
-      }) as INetwork,
-    ]),
+      }),
+    ]) as INetwork,
     store: new Store(new RecordSource()),
   });
   const renderer: () => JSX.Element = (): JSX.Element => <Root environment={environment} />;
