@@ -5,7 +5,6 @@ import {
   authMiddleware,
   RelayNetworkLayer,
   urlMiddleware,
-// @ts-ignore
 } from "react-relay-network-modern";
 import {
   BrowserRouter,
