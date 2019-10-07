@@ -29,6 +29,7 @@ export function render(
   apiURL: string,
 ): void {
   const environment: Environment = new Environment({
+    // @ts-ignore
     network: new RelayNetworkLayer([
       urlMiddleware({ url: apiURL }),
       authMiddleware({
