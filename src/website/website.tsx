@@ -13,7 +13,6 @@ import {
 } from "react-router-dom";
 import {
   Environment,
-  INetwork,
   RecordSource,
   Store,
 } from "relay-runtime";
@@ -35,7 +34,7 @@ export function render(
         allowEmptyToken: true,
         token: (): string => cookie.get("accessToken") || "",
       }),
-    ]) as INetwork,
+    ]),
     store: new Store(new RecordSource()),
   });
   const renderer: () => JSX.Element = (): JSX.Element => <Root environment={environment} />;
