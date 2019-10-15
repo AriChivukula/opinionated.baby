@@ -78,7 +78,7 @@
     "react-relay-network-modern": "4.1.0",
     "react-router-dom": "5.1.2",
     "relay-compiler": "6.0.0",
-    "relay-compiler-language-typescript": "7.0.0",
+    "relay-compiler-language-typescript": "8.0.0",
     "relay-runtime": "6.0.0",
     "rollup-plugin-uglify": "6.0.3",
     "rollup-stream": "1.24.1",
