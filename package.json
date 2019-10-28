@@ -73,7 +73,7 @@
     "js-cookie": "2.2.1",
     "mocha": "6.2.2",
     "react": "16.10.2",
-    "react-dom": "16.10.2",
+    "react-dom": "16.11.0",
     "react-relay": "6.0.0",
     "react-relay-network-modern": "4.2.0",
     "react-router-dom": "5.1.2",
