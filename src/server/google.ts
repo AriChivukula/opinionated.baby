@@ -11,7 +11,7 @@ export interface IAccessToken {
 }
 
 export interface IAccessTokenInfo {
-  data: { email?: string | null | undefined; user_id?: string | null | undefined; verified_email?: boolean | undefined };
+  data: { email?: string | null | undefined; user_id?: string | null | undefined; verified_email?: boolean | null | undefined };
 }
 
 async function genVaultClient(
