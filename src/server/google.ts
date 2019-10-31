@@ -11,7 +11,7 @@ export interface IAccessToken {
 }
 
 export interface IAccessTokenInfo {
-  data: { email?: string | undefined; user_id?: string | undefined; verified_email?: boolean | undefined };
+  data: { email?: string | null | undefined; user_id?: string | null | undefined; verified_email?: boolean | null | undefined };
 }
 
 async function genVaultClient(
@@ -64,10 +64,10 @@ export async function genUserForAccessToken(
   accessToken: string,
 ): Promise<object> {
   const info: IAccessTokenInfo = await genAccessTokenInfo(accessToken);
-  if (info.data.user_id === undefined) {
+  if (info.data.user_id === undefined || info.data.user_id === null) {
     throw new Error("Missing user id");
   }
-  if (info.data.email === undefined) {
+  if (info.data.email === undefined || info.data.email === null) {
     throw new Error("Missing email");
   }
   return { id: info.data.user_id, email: info.data.email };
