@@ -64,7 +64,7 @@
     "graphql-compiler": "1.7.0",
     "gulp": "4.0.2",
     "gulp-babel": "8.0.0",
-    "gulp-bro": "1.0.3",
+    "gulp-bro": "2.0.0",
     "gulp-cli": "2.2.0",
     "gulp-sass": "4.0.2",
     "gulp-shell": "0.7.1",
