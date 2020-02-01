@@ -50,7 +50,7 @@
     "@types/graphql": "14.5.0",
     "@types/helmet": "0.0.45",
     "@types/js-cookie": "2.2.4",
-    "@types/mocha": "5.2.7",
+    "@types/mocha": "7.0.1",
     "@types/node": "13.5.0",
     "@types/node-vault": "0.9.0",
     "@types/prop-types": "15.7.3",
