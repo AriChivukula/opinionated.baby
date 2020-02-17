@@ -67,7 +67,7 @@
     "gulp-bro": "2.0.0",
     "gulp-cli": "2.2.0",
     "gulp-sass": "4.0.2",
-    "gulp-shell": "0.7.1",
+    "gulp-shell": "0.8.0",
     "gulp-string-replace": "1.1.2",
     "gulp-typescript": "5.0.1",
     "js-cookie": "2.2.1",
