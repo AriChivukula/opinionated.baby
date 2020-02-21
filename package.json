@@ -24,7 +24,7 @@
     "express-bearer-token": "2.4.0",
     "foia-db": "0.2.0",
     "express-graphql": "0.9.0",
-    "google-auth-library": "5.9.2",
+    "google-auth-library": "5.10.0",
     "googleapis": "47.0.0",
     "graphql": "14.6.0",
     "helmet": "3.21.2",
@@ -51,7 +51,7 @@
     "@types/helmet": "0.0.45",
     "@types/js-cookie": "2.2.4",
     "@types/mocha": "7.0.1",
-    "@types/node": "13.7.1",
+    "@types/node": "13.7.4",
     "@types/node-vault": "0.9.0",
     "@types/prop-types": "15.7.3",
     "@types/react": "16.9.22",
@@ -83,7 +83,7 @@
     "rollup-plugin-uglify": "6.0.4",
     "rollup-stream": "1.24.1",
     "ts-node": "8.6.2",
-    "typescript": "3.7.5",
+    "typescript": "3.8.2",
     "uglifyify": "5.0.2",
     "vinyl-source-stream": "2.0.0"
   }
