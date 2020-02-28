@@ -52,7 +52,7 @@
     "@types/js-cookie": "2.2.5",
     "@types/mocha": "7.0.1",
     "@types/node": "13.7.4",
-    "@types/node-vault": "0.9.0",
+    "@types/node-vault": "0.9.1",
     "@types/prop-types": "15.7.3",
     "@types/react": "16.9.22",
     "@types/react-dom": "16.9.5",
