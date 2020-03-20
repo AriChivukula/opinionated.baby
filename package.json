@@ -71,7 +71,7 @@
     "gulp-string-replace": "1.1.2",
     "gulp-typescript": "5.0.1",
     "js-cookie": "2.2.1",
-    "mocha": "7.1.0",
+    "mocha": "7.1.1",
     "react": "16.13.0",
     "react-dom": "16.13.1",
     "react-relay": "9.0.0",
