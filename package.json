@@ -51,7 +51,7 @@
     "@types/helmet": "0.0.45",
     "@types/js-cookie": "2.2.5",
     "@types/mocha": "7.0.2",
-    "@types/node": "13.9.2",
+    "@types/node": "13.9.4",
     "@types/node-vault": "0.9.1",
     "@types/prop-types": "15.7.3",
     "@types/react": "16.9.23",
