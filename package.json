@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
-    "@babel/preset-env": "7.8.7",
+    "@babel/preset-env": "7.9.0",
     "@material/react-card": "0.15.0",
     "@material/react-layout-grid": "0.15.0",
     "@material/react-linear-progress": "0.15.0",
@@ -51,7 +51,7 @@
     "@types/helmet": "0.0.45",
     "@types/js-cookie": "2.2.5",
     "@types/mocha": "7.0.2",
-    "@types/node": "13.9.4",
+    "@types/node": "13.9.5",
     "@types/node-vault": "0.9.1",
     "@types/prop-types": "15.7.3",
     "@types/react": "16.9.27",
