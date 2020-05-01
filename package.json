@@ -59,7 +59,7 @@
     "@types/react-relay": "7.0.3",
     "@types/react-router-dom": "5.1.5",
     "@types/relay-runtime": "8.0.8",
-    "babel-plugin-relay": "9.0.0",
+    "babel-plugin-relay": "9.1.0",
     "chai": "4.2.0",
     "graphql-compiler": "1.7.0",
     "gulp": "4.0.2",
