@@ -26,7 +26,7 @@
     "express-graphql": "0.9.0",
     "google-auth-library": "6.0.2",
     "googleapis": "52.1.0",
-    "graphql": "14.6.0",
+    "graphql": "14.7.0",
     "helmet": "3.23.3",
     "node-vault": "0.9.18"
   },
