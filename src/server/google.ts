@@ -15,7 +15,7 @@ export interface IAccessTokenInfo {
 }
 
 async function genVaultClient(
-): Promise<vault.Client> {
+): Promise<vault.client> {
   return vault({
     apiVersion: 'v1',
     endpoint: "https://nomoresecrets.chivuku.la:443",
