@@ -10,7 +10,7 @@ jobs:
     - uses: actions/setup-node@master
     - name: Test Deploy
       run: |
-        npm install --global --upgrade yarn
+        npm install --upgrade yarn
         yarn
         yarn foia-db
         yarn mocha
