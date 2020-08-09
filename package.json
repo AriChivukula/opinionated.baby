@@ -27,7 +27,7 @@
     "google-auth-library": "6.0.5",
     "googleapis": "55.0.0",
     "graphql": "14.7.0",
-    "helmet": "3.23.3",
+    "helmet": "4.0.0",
     "node-vault": "0.9.18"
   },
   "devDependencies": {
