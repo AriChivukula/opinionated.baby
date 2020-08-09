@@ -28,7 +28,7 @@
     "googleapis": "55.0.0",
     "graphql": "14.7.0",
     "helmet": "4.0.0",
-    "node-vault": "0.9.18"
+    "node-vault": "0.9.20"
   },
   "devDependencies": {
     "@babel/core": "7.11.1",
