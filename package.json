@@ -72,7 +72,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-relay": "10.0.1",
-    "react-relay-network-modern": "4.7.4",
+    "react-relay-network-modern": "4.7.6",
     "react-router-dom": "5.2.0",
     "relay-compiler": "9.1.0",
     "relay-compiler-language-typescript": "13.0.1",
