@@ -31,7 +31,7 @@
     "node-vault": "0.9.20"
   },
   "devDependencies": {
-    "@babel/core": "7.11.1",
+    "@babel/core": "7.11.4",
     "@babel/preset-env": "7.11.0",
     "@material/react-card": "0.15.0",
     "@material/react-layout-grid": "0.15.0",
