@@ -80,7 +80,7 @@
     "rollup-plugin-uglify": "6.0.4",
     "rollup-stream": "1.24.1",
     "ts-node": "9.0.0",
-    "typescript": "4.0.2",
+    "typescript": "4.0.3",
     "uglifyify": "5.0.2",
     "vinyl-source-stream": "2.0.0"
   }
