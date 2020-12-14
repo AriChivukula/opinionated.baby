@@ -71,7 +71,7 @@
     "mocha": "8.2.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "react-relay": "10.1.0",
+    "react-relay": "10.1.1",
     "react-relay-network-modern": "6.0.0",
     "react-router-dom": "5.2.0",
     "relay-compiler": "9.1.0",
